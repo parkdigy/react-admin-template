@@ -1,0 +1,72 @@
+.Table {
+  .MuiTable-root.MuiTable-stickyHeader {
+  }
+  .MuiTable-root {
+    > .MuiTableHead-root > .MuiTableRow-root > .MuiTableCell-root {
+      background-color: #f8f8f8;
+    }
+    > .MuiTableHead-root > .MuiTableRow-root.TableTopHeadCaptionRow > .MuiTableCell-root {
+      background-color: #efefef;
+    }
+
+    .TableButton {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .FormSelect {
+    width: 100%;
+
+    .MuiInputBase-root {
+      min-width: 58px !important;
+
+      .MuiSelect-select {
+        font-size: 10.5px;
+        padding: 5px 25px 5px 10px;
+        text-align: left;
+      }
+
+      .MuiSvgIcon-root {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.Form.Search {
+  .FormRadioGroup {
+    .MuiButtonBase-root.MuiRadio-root {
+      padding-right: 5px !important;
+    }
+  }
+}
+
+.TableMenuButton-Popper {
+  ul.MuiList-root > li {
+    font-size: 13px;
+    .material-icons {
+      margin-right: 7px;
+      font-size: 16px;
+    }
+    &[color='primary'] {
+      color: #1976d2;
+    }
+    &[color='secondary'] {
+      color: #9c27b0;
+    }
+    &[color='error'],
+    &[color='danger'] {
+      color: #d32f2f;
+    }
+    &[color='warning'] {
+      color: #ed6c02;
+    }
+    &[color='info'] {
+      color: #0288d1;
+    }
+    &[color='success'] {
+      color: #2e7d32;
+    }
+  }
+}

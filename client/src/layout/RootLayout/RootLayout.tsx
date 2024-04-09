@@ -1,16 +1,26 @@
 /********************************************************************************************************************
  * 루트 레이아웃 컴포넌트
+ * - app 초기화 및 로그인 확인
  * ******************************************************************************************************************/
 
 import '../../init';
 
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AppContextProvider, LoadingContextProvider } from '@context';
-import { AxiosLoading, ErrorRetry, Loading, LoadingCommands } from '@ccomp';
-import RootLayoutAppInitializer from './RootLayoutAppInitializer';
+import React from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { createApi, ApiResult } from '@api';
+import app from '@app';
+import { ApiError } from '@pdg/api';
+import { AuthSignInResponseData } from '@const';
+import { DialogContextProvider } from '@pdg/react-dialog';
+import { Box, Button, Icon, Typography } from '@mui/material';
+import { AxiosLoading, ErrorBoundary, ErrorRetry, Loading, LoadingCommands } from '@ccomp';
+import { SnackbarProvider } from 'notistack';
+import { AppAuthInfo, AppContextProvider, LoadingContextProvider } from '@context';
+import { ThemeBase } from '../../theme';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
 import { loadable } from '@common';
+import RootLayoutAppInitializer from './RootLayoutAppInitializer';
+import CardLayout from '../CardLayout';
 import DefaultLayout from '../DefaultLayout';
 import '../../sass/index.scss';
 
@@ -19,9 +29,10 @@ const RootLayout = withErrorBoundary(() => {
    * Use
    * ******************************************************************************************************************/
 
-  const [error] = useErrorBoundary((error) => {
+  const [boundaryError] = useErrorBoundary((error) => {
     const errorName = (error as Error).name;
     if (errorName === 'ChunkLoadError') {
+      hideHtmlLoading();
       setErrorName(errorName);
       loadable.checkUpdate();
     }
@@ -37,6 +48,9 @@ const RootLayout = withErrorBoundary(() => {
    * State
    * ******************************************************************************************************************/
 
+  const [initialized, setInitialized] = useState(false);
+  const [auth, setAuth] = useState<AppAuthInfo>();
+  const [error, setError] = useState(false);
   const [errorName, setErrorName] = useState<string | undefined>();
 
   /********************************************************************************************************************
@@ -44,9 +58,22 @@ const RootLayout = withErrorBoundary(() => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
-    hideHtmlLoading();
+    if (error) {
+      hideHtmlLoading();
+    } else {
+      showHtmlLoading();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [error]);
+
+  useEffect(() => {
+    if (!boundaryError) {
+      hideHtmlLoading();
+    } else {
+      showHtmlLoading();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [boundaryError]);
 
   /********************************************************************************************************************
    * Effect
@@ -69,6 +96,10 @@ const RootLayout = withErrorBoundary(() => {
   /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
+
+  const clearAuth = useCallback(() => {
+    setAuth(undefined);
+  }, []);
 
   const getHtmlLoading = useCallback((): HTMLElement | null => {
     return document.getElementById('___appLoading');
@@ -124,42 +155,110 @@ const RootLayout = withErrorBoundary(() => {
   }, [getHtmlLoading]);
 
   /********************************************************************************************************************
+   * Effect - 로그인 처리
+   * ******************************************************************************************************************/
+
+  useEffect(() => {
+    if (!error) {
+      if (window.location.pathname.startsWith('/auth/')) {
+        setInitialized(true);
+      } else {
+        // 로그인 확인
+        createApi<AuthSignInResponseData>({
+          onError(err: ApiError<ApiResult>) {
+            app.hideLoading();
+
+            if (err.response?.data?.result?.c === 99997) {
+              clearAuth();
+              window.location.href = '/auth/signin';
+            } else {
+              setTimeout(() => {
+                setError(true);
+              }, 500);
+            }
+          },
+        })
+          .get('auth.signin')
+          .then(({ data }) => {
+            setAuth(data);
+            setInitialized(true);
+            setError(false);
+          });
+      }
+    }
+  }, [error, setAuth, clearAuth]);
+
+  /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
-  if (error) {
-    return (
-      <>
-        {errorName === 'ChunkLoadError' ? (
-          <Loading
-            ref={(commands: LoadingCommands) => {
-              if (commands) {
-                commands.show();
-              }
-            }}
-          />
-        ) : (
-          <ErrorRetry error={error as Error} onRetry={() => window.location.reload()} />
-        )}
-      </>
-    );
-  } else {
-    return (
-      <BrowserRouter>
-        <AppContextProvider value={{ showHtmlLoading, hideHtmlLoading, removeHtmlLoading }}>
-          <RootLayoutAppInitializer />
-
+  return (
+    <BrowserRouter>
+      <ThemeBase>
+        <AppContextProvider value={{ auth, setAuth, clearAuth, showHtmlLoading, hideHtmlLoading, removeHtmlLoading }}>
           <LoadingContextProvider>
-            <AxiosLoading />
+            <DialogContextProvider>
+              <SnackbarProvider>
+                <RootLayoutAppInitializer />
 
-            <Routes>
-              <Route path='/*' element={<DefaultLayout />} />
-            </Routes>
+                {error ? (
+                  <Box
+                    style={{
+                      position: 'fixed',
+                      display: 'flex',
+                      width: '100%',
+                      height: '100%',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
+                      <div>
+                        <Icon fontSize='large' color='error' style={{ cursor: 'pointer' }}>
+                          error
+                        </Icon>
+                      </div>
+                      <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
+                      <p>잠시 후 재시도 해주세요.</p>
+                      <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={() => setError(false)}>
+                        <Typography fontSize='inherit'>재시도</Typography>
+                      </Button>
+                    </Box>
+                  </Box>
+                ) : boundaryError ? (
+                  <>
+                    {errorName === 'ChunkLoadError' ? (
+                      <Loading
+                        ref={(commands: LoadingCommands) => {
+                          if (commands) {
+                            commands.show();
+                          }
+                        }}
+                      />
+                    ) : (
+                      <ErrorRetry error={boundaryError as Error} onRetry={() => window.location.reload()} />
+                    )}
+                  </>
+                ) : initialized ? (
+                  <>
+                    <AxiosLoading />
+
+                    <ErrorBoundary>
+                      <Routes>
+                        {!auth && <Route path='/auth/*' element={<CardLayout />} />}
+                        {auth && <Route path='/*' element={<DefaultLayout />} />}
+                        <Route path='*' element={<Navigate to='/' />} />
+                      </Routes>
+                    </ErrorBoundary>
+                  </>
+                ) : null}
+              </SnackbarProvider>
+            </DialogContextProvider>
           </LoadingContextProvider>
         </AppContextProvider>
-      </BrowserRouter>
-    );
-  }
+      </ThemeBase>
+    </BrowserRouter>
+  );
 });
 
 export default RootLayout;

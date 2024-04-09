@@ -6,7 +6,9 @@ import React from 'react';
 import { LoadingContextProviderProps as Props } from './LoadingContextProvider.types';
 import LoadingContext from '../LoadingContext';
 import './LoadingContextProvider.scss';
+import app from '@app';
 
+/** LoadingContext 를 제공하는 Context Provider */
 const LoadingContextProvider: React.FC<Props> = ({ children }) => {
   /********************************************************************************************************************
    * Ref
@@ -26,6 +28,7 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
    * Function
    * ******************************************************************************************************************/
 
+  /** 로딩 표시 횟수를 증가 */
   const increaseShowCount = useCallback(() => {
     if (notUseTimerRef.current) {
       clearTimeout(notUseTimerRef.current);
@@ -37,6 +40,7 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
     setIsShow(true);
   }, []);
 
+  /** 로딩 표시 횟수를 감소 */
   const decreaseShowCount = useCallback(() => {
     if (showCountRef.current > 0) {
       showCountRef.current -= 1;
@@ -56,13 +60,28 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
     }
   }, []);
 
+  /** 로딩 표시 */
   const showLoading = useCallback(() => {
     increaseShowCount();
   }, [increaseShowCount]);
 
+  /** 로딩 숨김 */
   const hideLoading = useCallback(() => {
     decreaseShowCount();
   }, [decreaseShowCount]);
+
+  /********************************************************************************************************************
+   * Effect
+   * ******************************************************************************************************************/
+
+  useEffect(() => {
+    app.setShowLoading(showLoading);
+    app.setHideLoading(hideLoading);
+  }, [showLoading, hideLoading]);
+
+  /********************************************************************************************************************
+   * Render
+   * ******************************************************************************************************************/
 
   return (
     <LoadingContext.Provider

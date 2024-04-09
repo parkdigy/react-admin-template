@@ -1,6 +1,6 @@
 export interface LoadingContextValue {
-  showLoading(): void;
-  hideLoading(): void;
+  showLoading(): void; // 로딩 표시
+  hideLoading(): void; // 로딩 숨김
 }
 
 /* eslint-disable */

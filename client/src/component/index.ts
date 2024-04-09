@@ -1,2 +1,5 @@
 export * from './Common';
-export * from './Home';
+export * from './Auth';
+export * from './Dashboard';
+export * from './Admin';
+export * from './Test';

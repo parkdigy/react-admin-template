@@ -1,10 +1,12 @@
 {
-  "name": "react-template",
+  "name": "react-admin-template",
   "scripts": {
     "dev": "npm run client:dev",
+    "dev-no-update": "npm run client:dev-no-update",
     "build": "npm run server:build && npm run client:build",
     "build:win": "npm run server:build:win && npm run client:build:win",
     "client:dev": "cd client && npm run dev",
+    "client:dev-no-update": "cd client && npm run dev-no-update",
     "client:build": "cd client && npm run build",
     "server:dev": "cd server && npm run dev",
     "server:build": "cd server && npm run build",

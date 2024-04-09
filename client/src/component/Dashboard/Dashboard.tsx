@@ -1,11 +1,11 @@
 /********************************************************************************************************************
- * Home 컴포넌트
+ * Dashboard 컴포넌트
  * ******************************************************************************************************************/
 
 import React from 'react';
 
-const Home = () => {
-  return <div>Home</div>;
+const Dashboard = () => {
+  return <div>Dashboard</div>;
 };
 
-export default Home;
+export default Dashboard;

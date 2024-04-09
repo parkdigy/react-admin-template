@@ -1,28 +1,51 @@
 import fileDownload from 'js-file-download';
 import { AxiosResponse } from 'axios';
 import { ApiOption, Api, ApiError, ApiRequestData, ApiRequestOption } from '@pdg/api';
+import { DialogProps } from '@pdg/react-dialog';
 import { ApiResult } from './api.types';
 import app from '@app';
+import { ReactNode } from 'react';
+
+type ApiAuthObject = {
+  intro: ReactNode;
+  color?: DialogProps['color'];
+};
+
+export type ApiAuth = ReactNode | ApiAuthObject;
 
 const defaultOption: ApiOption = {
   baseUrl: '/api',
   timeParamName: '__t__',
+  async onRequest(config, baseUrl, path, requestData, requestOption) {
+    if (!requestOption?.silent) {
+      // 로딩 표시
+      app.showLoading();
+    }
+    return config;
+  },
   async onResponse(res, config, baseUrl, path, requestData, requestOption) {
+    if (!requestOption?.silent) {
+      // 로딩 숨김
+      app.hideLoading();
+    }
     const responseData = res.data;
     if (!requestOption?.raw) {
       if (!responseData || !responseData?.result)
         throw new ApiError('예샹치 못한 오류가 발생했습니다.', 'API_ERR_NO_RESULT');
       if (responseData.result.r) {
+        // redirect
         app.navigate(responseData.result.r);
       }
       if (responseData.result.ro) {
+        // redirect 새창으로 열기
         window.open(responseData.result.ro);
       }
       if (responseData.result.c !== 0) {
         throw new ApiError(responseData.result.m, `${responseData.result.c}`);
       } else {
         if (!requestOption?.silent && notEmpty(responseData.result.m)) {
-          app.showSuccessAlert(responseData.result.m);
+          // 성공 메시지 표시
+          app.showSuccessSnackbar(responseData.result.m);
         }
       }
     }
@@ -30,20 +53,37 @@ const defaultOption: ApiOption = {
   },
   onError(err: ApiError<ApiResult>) {
     const { silent } = err.requestOption || {};
+    if (!silent) {
+      // 로딩 숨김
+      app.hideLoading();
+    }
+
     const data = err.response?.data;
     if (data && typeof data === 'object' && data.result) {
       if (data.result.c === 99997) {
+        // 로그인 페이지로 이동
         window.location.href = '/auth/signin';
       } else if (!silent) {
-        app.showErrorAlert(
+        // 에러 메시지 표시
+        app.showErrorSnackbar(
           `(${data.result.c}) ${notEmpty(data.result.m) ? data.result.m : '예상치 못한 오류가 발생했습니다.'}`
         );
       }
     } else if (!silent) {
-      app.showErrorAlert(`(${err.code}) ${err.message}`);
+      // 에러 메시지 표시
+      app.showErrorSnackbar(`(${err.code}) ${err.message}`);
     }
   },
 };
+
+/** 인증 Dialog 표시 */
+function showAuthDialog(auth: ApiAuth, onSuccess: () => void, onFail: () => void) {
+  if (auth && typeof auth === 'object' && (auth as Dict)['intro']) {
+    app.showAuthDialog({ ...(auth as ApiAuthObject), onSuccess, onFail });
+  } else {
+    app.showAuthDialog({ intro: auth as ReactNode, onSuccess, onFail });
+  }
+}
 
 export default {
   /**
@@ -57,32 +97,104 @@ export default {
   },
 
   /**
-   * POST 요청
+   * POST 요청 (인증 필요)
+   * @param auth 인증 Dialog 메시지
    * @param path API 경로
    * @param data 요청 데이터
    * @param option API 옵션
    */
-  post<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+  post<T>(auth: ApiAuth, path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+    return new Promise<T>((resolve, reject) => {
+      showAuthDialog(
+        auth,
+        () => {
+          new Api<T>(defaultOption)
+            .post(path, data, option)
+            .then((data) => resolve(data))
+            .catch((err) => reject(err));
+        },
+        () => {
+          reject(new Error('API_AUTH_CANCEL'));
+        }
+      );
+    });
+  },
+
+  /**
+   * POST 요청 (인증 없음)
+   * @param path API 경로
+   * @param data 요청 데이터
+   * @param option API 옵션
+   */
+  notAuthPost<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
     return new Api<T>(defaultOption).post(path, data, option);
   },
 
   /**
-   * PATCH 요청
+   * PATCH 요청 (인증 필요)
+   * @param auth 인증 Dialog 메시지
    * @param path API 경로
    * @param data 요청 데이터
    * @param option API 옵션
    */
-  patch<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+  patch<T>(auth: ApiAuth, path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+    return new Promise<T>((resolve, reject) => {
+      showAuthDialog(
+        auth,
+        () => {
+          new Api<T>(defaultOption)
+            .patch(path, data, option)
+            .then((data) => resolve(data))
+            .catch((err) => reject(err));
+        },
+        () => {
+          reject(new Error('API_AUTH_CANCEL'));
+        }
+      );
+    });
+  },
+
+  /**
+   * PATCH 요청 (인증 없음)
+   * @param path API 경로
+   * @param data 요청 데이터
+   * @param option API 옵션
+   */
+  notAuthPatch<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
     return new Api<T>(defaultOption).patch(path, data, option);
   },
 
   /**
-   * DELETE 요청
+   * DELETE 요청 (인증 필요)
+   * @param auth 인증 Dialog 메시지
    * @param path API 경로
    * @param data 요청 데이터
    * @param option API 옵션
    */
-  delete<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+  delete<T>(auth: ApiAuth, path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+    return new Promise<T>((resolve, reject) => {
+      showAuthDialog(
+        auth,
+        () => {
+          new Api<T>(defaultOption)
+            .delete(path, data, option)
+            .then((data) => resolve(data))
+            .catch((err) => reject(err));
+        },
+        () => {
+          reject(new Error('API_AUTH_CANCEL'));
+        }
+      );
+    });
+  },
+
+  /**
+   * DELETE 요청 (인증 없음)
+   * @param path API 경로
+   * @param data 요청 데이터
+   * @param option API 옵션
+   */
+  notAuthDelete<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
     return new Api<T>(defaultOption).delete(path, data, option);
   },
 
@@ -97,6 +209,8 @@ export default {
     const option: ApiOption = {
       ...defaultOption,
       async onResponse(res: AxiosResponse) {
+        app.hideLoading();
+
         const contentDisposition = res.headers['content-disposition'];
         if (contentDisposition) {
           fileName = getFilenameFromContentDispositionHeader(contentDisposition);

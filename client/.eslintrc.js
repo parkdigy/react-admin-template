@@ -38,7 +38,12 @@ module.exports = {
     'react/state-in-constructor': ['error', 'always'],
     'react/no-deprecated': ['error'],
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      {
+        additionalHooks: '(useFormBlockData|useFormBlockValid)',
+      },
+    ],
     'no-plusplus': ['error'],
     'prefer-template': ['error'],
     'jsx-quotes': ['error', 'prefer-single'],

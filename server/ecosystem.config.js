@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'react-template',
+      name: 'react-admin-template',
       script: './dist/app.js',
       instances: 1,
       exec_mode: 'cluster',

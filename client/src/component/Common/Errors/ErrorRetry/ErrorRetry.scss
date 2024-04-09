@@ -7,18 +7,4 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
-  .ErrorRetry-message-container {
-    font-size: 14px;
-    opacity: 0.5;
-    font-weight: 700;
-  }
-
-  .ErrorRetry-retry-container {
-    margin-top: 15px;
-    button {
-      padding: 5px 10px;
-      font-size: 12px;
-    }
-  }
 }

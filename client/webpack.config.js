@@ -34,11 +34,12 @@ class MyHtmlPlugin {
         const htmls = data.html.split(splitText);
         const inject = `
           <title>${isProduction ? '<%= title %>' : env.APP_NAME}</title>
-          <script>window.$$MyAppConfig = {version: '${new Date().getTime()}'}</script>
+          <script>window.$$AppConfig = {version: '${new Date().getTime()}'}</script>
           <script>
-            window.$$MyAppConfig = {
-              version: window.$$MyAppConfig.version,
+            window.$$AppConfig = {
+              version: window.$$AppConfig.version,
               env: '${isProduction ? '<%= appEnv %>' : env.APP_ENV}',
+              title: '${isProduction ? '<%= title %>' : env.APP_NAME}',
             };
           </script>
         `;
@@ -58,6 +59,7 @@ class MyHtmlPlugin {
 const alias = {
   '@sass': path.resolve(__dirname, 'src/sass'),
   '@types': path.resolve(__dirname, 'src/@types'),
+  '@styles': path.resolve(__dirname, 'src/@styles'),
   '@common': path.resolve(__dirname, 'src/common'),
   '@comp': path.resolve(__dirname, 'src/component'),
   '@ccomp': path.resolve(__dirname, 'src/component/Common'),
@@ -66,6 +68,7 @@ const alias = {
   '@app': path.resolve(__dirname, 'src/common/app'),
   '@api': path.resolve(__dirname, 'src/common/api'),
   '@util': path.resolve(__dirname, 'src/common/util'),
+  '@dialog': path.resolve(__dirname, 'src/dialog'),
 };
 
 /********************************************************************************************************************
@@ -137,6 +140,20 @@ const options = {
                   const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                   if (packageName === '@pdg') {
                     return `vendors/_pdg_${module.context.match(/[\\/]node_modules\/@pdg[\\/](.*?)([\\/]|$)/)[1]}`;
+                  } else if (packageName === '@mui') {
+                    const subPackageName = module.context.match(/[\\/]node_modules\/@mui[\\/](.*?)([\\/]|$)/)[1];
+                    if (subPackageName === 'material') {
+                      const subSubPackageName = module.context.match(
+                        /[\\/]node_modules\/@mui\/material[\\/](.*?)([\\/]|$)/
+                      )[1];
+                      return `vendors/_mui_material_${subSubPackageName.replace('@', '')}`;
+                    } else if (subPackageName === 'x-date-pickers') {
+                      const subSubPackageName = module.context.match(
+                        /[\\/]node_modules\/@mui\/x-date-pickers[\\/](.*?)([\\/]|$)/
+                      )[1];
+                      return `vendors/_mui_x-date-pickers_${subSubPackageName.replace('@', '')}`;
+                    }
+                    return `vendors/_mui_${subPackageName.replace('@', '')}`;
                   }
                   return `vendors/${packageName.replace('@', '')}`;
                 }
