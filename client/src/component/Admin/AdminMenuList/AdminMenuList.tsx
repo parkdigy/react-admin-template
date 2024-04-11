@@ -193,15 +193,15 @@ export const AdminMenuList: React.FC<Props> = () => {
       <AdminMenuButtonsContainer style={{ marginBottom: 10 }}>
         {sortChanged ? (
           <>
-            <PdgButton variant='outlined' color='secondary' icon='Replay' onClick={() => loadMenuList()}>
+            <PdgButton variant='outlined' color='secondary' startIcon='Replay' onClick={() => loadMenuList()}>
               순서 초기화
             </PdgButton>
-            <PdgButton variant='contained' color='secondary' icon='SaveAlt' onClick={saveSeq}>
+            <PdgButton variant='contained' color='secondary' startIcon='SaveAlt' onClick={saveSeq}>
               순서 저장
             </PdgButton>
           </>
         ) : (
-          <PdgButton variant='contained' icon='Add' onClick={() => addSubMenu()}>
+          <PdgButton variant='contained' startIcon='Add' onClick={() => addSubMenu()}>
             새 메인 메뉴
           </PdgButton>
         )}

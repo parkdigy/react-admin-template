@@ -87,7 +87,7 @@ const AdminUserPasswordChangeForm = () => {
         <FormFooter>
           <FormRow>
             <FormCol>
-              <FormButton type='submit' icon='save_alt'>
+              <FormButton type='submit' startIcon='save_alt'>
                 확인
               </FormButton>
             </FormCol>

@@ -215,12 +215,12 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
       <FormFooter>
         <FormRow>
           <FormCol>
-            <FormButton icon='close' onClick={cancel}>
+            <FormButton startIcon='close' onClick={cancel}>
               취소
             </FormButton>
           </FormCol>
           <FormCol>
-            <FormButton type='submit' icon='save_alt'>
+            <FormButton type='submit' startIcon='save_alt'>
               {id ? '수정' : '등록'}
             </FormButton>
           </FormCol>

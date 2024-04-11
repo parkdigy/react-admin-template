@@ -256,7 +256,6 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
         onRender(item) {
           return (
             <TableMenuButton
-              icon='MoreVert'
               variant='text'
               placement='left'
               menuList={
@@ -269,7 +268,13 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
                   </MenuItem>
                   <Divider />
                   <StyledTableMenuItemCopyToClipboard>
-                    <CopyToClipboardButton variant='text' fullWidth disableRipple text={item.email} icon='content_copy'>
+                    <CopyToClipboardButton
+                      variant='text'
+                      fullWidth
+                      disableRipple
+                      text={item.email}
+                      startIcon='content_copy'
+                    >
                       Email 복사
                     </CopyToClipboardButton>
                   </StyledTableMenuItemCopyToClipboard>
@@ -279,7 +284,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
                       fullWidth
                       disableRipple
                       text={item.mobile}
-                      icon='content_copy'
+                      startIcon='content_copy'
                     >
                       Mobile 복사
                     </CopyToClipboardButton>

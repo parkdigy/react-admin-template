@@ -156,7 +156,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
               value={ifNullOrUndefined(info?.admin_group_id, undefined)}
               endAdornment={
                 editable && hasWriteRoleGroup ? (
-                  <FormButton sx={{ mr: 1 }} icon='add' iconProps={{ style: { marginLeft: -5 } }} onClick={addGroup}>
+                  <FormButton sx={{ mr: 1 }} startIcon='add' startIconMarginLeft='-0.3em' onClick={addGroup}>
                     그룹 등록
                   </FormButton>
                 ) : undefined
@@ -169,12 +169,12 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
         <FormFooter>
           <FormRow>
             <FormCol>
-              <FormButton icon='close' onClick={cancel}>
+              <FormButton startIcon='close' onClick={cancel}>
                 취소
               </FormButton>
             </FormCol>
             <FormCol>
-              <FormButton type='submit' icon='save_alt'>
+              <FormButton type='submit' startIcon='save_alt'>
                 {id ? '수정' : '등록'}
               </FormButton>
             </FormCol>

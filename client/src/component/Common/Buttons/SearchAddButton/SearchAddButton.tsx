@@ -7,7 +7,7 @@ import React from 'react';
 import { SearchButton, SearchButtonProps } from '@pdg/react-form';
 
 export const SearchAddButton: React.FC<Omit<SearchButtonProps, 'startIcon' | 'color' | 'variant'>> = (props) => {
-  return <SearchButton icon='add' iconProps={{ style: { marginLeft: -5 } }} variant='contained' {...props} />;
+  return <SearchButton startIcon='add' startIconMarginLeft='-0.3em' variant='contained' {...props} />;
 };
 
 export default SearchAddButton;

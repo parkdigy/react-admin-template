@@ -150,7 +150,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
                 color='success'
                 size='small'
                 variant={menu.is_super_admin_menu ? 'contained' : 'outlined'}
-                icon={menu.is_super_admin_menu ? 'Check' : 'Close'}
+                startIcon={menu.is_super_admin_menu ? 'Check' : 'Close'}
                 onClick={handleSuperClick}
               >
                 SUPER
@@ -159,7 +159,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
                 color='success'
                 size='small'
                 variant={menu.is_all_user_menu ? 'contained' : 'outlined'}
-                icon={menu.is_all_user_menu ? 'Check' : 'Close'}
+                startIcon={menu.is_all_user_menu ? 'Check' : 'Close'}
                 onClick={handleAllClick}
               >
                 ALL
@@ -172,7 +172,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
               size='small'
               variant='contained'
               color='info'
-              icon='Edit'
+              startIcon='Edit'
               onClick={() => onEdit(menu)}
             >
               수정
@@ -183,7 +183,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
               variant='contained'
               size='small'
               disabled={sortChanged}
-              icon='Add'
+              startIcon='Add'
               onClick={() => onAddSubMenu(menu)}
             >
               새 하위 메뉴
@@ -194,7 +194,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
             size='small'
             color='error'
             disabled={sortChanged || !menu.editable || menu.items.length > 0}
-            icon='Delete'
+            startIcon='Delete'
             onClick={() => onRemove(menu)}
           >
             삭제

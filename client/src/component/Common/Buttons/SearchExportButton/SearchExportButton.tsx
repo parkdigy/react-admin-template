@@ -36,7 +36,7 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
   return items ? (
     <ClickAwayListener onClickAway={() => setOpen(false)}>
       <div>
-        <SearchButton {...props} style={style} icon='download' onClick={() => setOpen((old) => !old)} />
+        <SearchButton {...props} style={style} startIcon='download' onClick={() => setOpen((old) => !old)} />
         <Dropdown open={open}>
           <Menu slots={{ listbox: Listbox }}>
             {items.map((info, idx) => (
@@ -61,7 +61,7 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
       </div>
     </ClickAwayListener>
   ) : (
-    <SearchButton {...props} style={style} icon='download' />
+    <SearchButton {...props} style={style} startIcon='download' />
   );
 };
 
