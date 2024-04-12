@@ -21,7 +21,10 @@
     "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i && cd client && npm run reinstall-module && cd .. && cd server && npm run reinstall-module",
     "make:publish:development": "git branch publish/development && git checkout publish/development && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/development' && git push origin publish/development",
     "make:publish:staging": "git branch publish/staging && git checkout publish/staging && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/staging' && git push origin publish/staging",
-    "make:publish:production": "git branch publish/production && git checkout publish/production && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/production' && git push origin publish/production"
+    "make:publish:production": "git branch publish/production && git checkout publish/production && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/production' && git push origin publish/production",
+    "publish:development": "git checkout publish/development && git merge main && git push origin publish/development && git checkout main",
+    "publish:staging": "git checkout publish/staging && git merge main && git push origin publish/staging && git checkout main",
+    "publish:production": "git checkout publish/production && git merge main && git push origin publish/production && git checkout main"
   },
   "repository": {
     "type": "git",
