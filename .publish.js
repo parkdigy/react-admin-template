@@ -31,11 +31,6 @@ exec(`git checkout publish/${mode}`, (err, stdout, stderr) => {
         : 'GIT_EDITOR=true git merge --continue';
       console.log(command);
       exec(command, (err, stdout, stderr) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-
         console.log(`git push origin publish/${mode}`);
         exec(`git push origin publish/${mode}`, (err, stdout, stderr) => {
           if (err) {
