@@ -30,6 +30,12 @@ const AdminUserLoginLogListDialog: React.FC<AdminUserLoginLogListDialogProps> = 
     changedRef.current = true;
   }, []);
 
+  /** 다이얼로그 보이기 - Dialog.onShow */
+  const handleShow = useCallback(() => {
+    changedRef.current = false;
+    onShow();
+  }, [onShow]);
+
   /** 다이얼로그 닫기 - Dialog.onClose */
   const handleClose = useCallback(() => {
     if (onChange && changedRef.current) {
@@ -38,7 +44,7 @@ const AdminUserLoginLogListDialog: React.FC<AdminUserLoginLogListDialogProps> = 
     onClose();
   }, [onChange, onClose]);
 
-  /** 스크롤 최상단으로 이동 - AdminUserLoginLogList.onRequestScrollToTop */
+  /** 스크롤 최상단으로 이동 요청 이벤트 */
   const handleRequestScrollToTop = useCallback(() => {
     dialogRef.current?.scrollToTop();
   }, [dialogRef]);
@@ -69,7 +75,7 @@ const AdminUserLoginLogListDialog: React.FC<AdminUserLoginLogListDialogProps> = 
           />
         </ErrorBoundary>
       }
-      onShow={onShow}
+      onShow={handleShow}
       onClose={handleClose}
     />
   );
