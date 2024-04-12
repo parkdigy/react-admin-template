@@ -1,0 +1,8 @@
+.nvmrc
+package.json
+client/dist
+client/.gitignore
+server/dist
+server/.gitignore
+server/ecosystem.config.js
+server/package.json
