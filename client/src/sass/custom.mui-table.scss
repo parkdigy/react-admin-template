@@ -46,8 +46,8 @@
   ul.MuiList-root > li {
     font-size: 13px;
     .material-icons {
-      margin-right: 7px;
-      font-size: 16px;
+      margin-right: 7px !important;
+      font-size: 16px !important;
     }
     &[color='primary'] {
       color: #1976d2;
