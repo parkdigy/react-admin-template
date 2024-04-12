@@ -1,8 +1,2 @@
-# production
-/dist
-
-# production deploy (이건 주석 처리하면 안됨)
-/deploy.dat
-
 # development
 /@dev

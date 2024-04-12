@@ -18,7 +18,14 @@
     "pm2:delete": "cd server && npm run pm2:delete",
     "install:prod": "cd server && npm run install:prod",
     "reset-gitignore": "git rm -r --cached . && git add .",
-    "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i && cd client && npm run reinstall-module && cd .. && cd server && npm run reinstall-module"
+    "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i && cd client && npm run reinstall-module && cd .. && cd server && npm run reinstall-module",
+    "make:publish:development": "git branch publish/development && git checkout publish/development && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/development' && git push origin publish/development",
+    "make:publish:staging": "git branch publish/staging && git checkout publish/staging && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/staging' && git push origin publish/staging",
+    "make:publish:production": "git branch publish/production && git checkout publish/production && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/production' && git push origin publish/production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkdigy/react-template.git"
   },
   "eslintConfig": {},
   "devDependencies": {
