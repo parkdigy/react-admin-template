@@ -26,7 +26,10 @@
     "make:publish:production": "git checkout main && git branch publish/production && git checkout publish/production && sed -i '' 's/#PUB#//g' .gitignore && npm run reset-gitignore && git add . && git commit -m 'publish/production' && git push --set-upstream origin publish/production",
     "publish:development": "cross-env NODE_ENV=development node .publish.js",
     "publish:staging": "cross-env NODE_ENV=staging node .publish.js",
-    "publish:production": "cross-env NODE_ENV=production node .publish.js"
+    "publish:production": "cross-env NODE_ENV=production node .publish.js",
+    "pub:dev": "npm run publish:development",
+    "pub:staging": "npm run publish:staging",
+    "pub:prod": "npm run publish:production"
   },
   "repository": {
     "type": "git",
