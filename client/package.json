@@ -10,7 +10,13 @@
     "build": "npm run clean:prod && npm run lint && npm run build:webpack",
     "build:win": "npm run clean:prod:win && npm run lint && npm run build:webpack",
     "reinstall-module": "rm -rf node_modules && rm -f package-lock.json && npm i",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "publish:development": "cd .. && npm run publish:development",
+    "publish:staging": "cd .. && npm run publish:staging",
+    "publish:production": "cd .. && npm run publish:production",
+    "pub:dev": "cd .. && npm run pub:dev",
+    "pub:staging": "cd .. && npm run pub:staging",
+    "pub:prod": "cd .. && npm run pub:prod"
   },
   "devDependencies": {
     "@dnd-kit/core": "^6.1.0",
