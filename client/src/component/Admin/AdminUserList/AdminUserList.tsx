@@ -184,121 +184,122 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   );
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<AdminUserListDataItem> = useMemo(
-    () => [
-      {
-        label: 'ID',
-        name: 'id',
-        width: 60,
-        minWidth: 60,
-        onGetStyle: getLockStyle,
-      },
-      {
-        label: '이메일',
-        name: 'email',
-        align: 'left',
-        minWidth: 150,
-        ellipsis: true,
-        onGetStyle: getLockStyle,
-      },
-      {
-        label: '이름',
-        name: 'name',
-        align: 'left',
-        width: 90,
-        minWidth: 90,
-        ellipsis: true,
-        onGetStyle: getLockStyle,
-      },
-      {
-        type: 'tel',
-        label: '휴대폰번호',
-        name: 'tel',
-        width: 120,
-        minWidth: 120,
-        onGetStyle: getLockStyle,
-      },
-      {
-        type: hasReadRoleGroup ? 'button' : undefined,
-        label: '그룹',
-        width: 180,
-        minWidth: 180,
-        onRender(item): React.ReactNode {
-          return (
-            item.admin_group_name && (
-              <>
-                {hasReadRoleGroup ? (
-                  <TableButton fullWidth onClick={() => showGroupFormDialog(item)}>
-                    {item.admin_group_name}
-                  </TableButton>
-                ) : (
-                  item.admin_group_name
-                )}
-              </>
-            )
-          );
+  const tableColumns = useMemo(
+    () =>
+      [
+        {
+          label: 'ID',
+          name: 'id',
+          width: 60,
+          minWidth: 60,
+          onGetStyle: getLockStyle,
         },
-      },
-      {
-        label: '계정상태',
-        width: 70,
-        minWidth: 70,
-        onGetStyle: getLockStyle,
-        onRender(item) {
-          return item.is_lock ? <Typography color='error'>제한</Typography> : '정상';
+        {
+          label: '이메일',
+          name: 'email',
+          align: 'left',
+          minWidth: 150,
+          ellipsis: true,
+          onGetStyle: getLockStyle,
         },
-      },
-      {
-        type: 'datetime',
-        label: '생성일',
-        name: 'create_date',
-        width: 150,
-        minWidth: 150,
-        onGetStyle: getLockStyle,
-      },
-      auth?.is_super && {
-        type: 'button',
-        label: '로그인내역',
-        width: 90,
-        minWidth: 90,
-        onRender(item) {
-          return <TableButton onClick={() => showLoginLogDialog(item)}>보기</TableButton>;
+        {
+          label: '이름',
+          name: 'name',
+          align: 'left',
+          width: 90,
+          minWidth: 90,
+          ellipsis: true,
+          onGetStyle: getLockStyle,
         },
-      },
-      {
-        type: 'button',
-        label: '비번초기화',
-        width: 90,
-        minWidth: 90,
-        onRender(item) {
-          return (
-            !item.must_password_change && (
-              <TableButton disabled={!item.editable || !hasWriteRole} onClick={() => passwordReset(item)}>
-                초기화
+        {
+          type: 'tel',
+          label: '휴대폰번호',
+          name: 'tel',
+          width: 120,
+          minWidth: 120,
+          onGetStyle: getLockStyle,
+        },
+        {
+          type: hasReadRoleGroup ? 'button' : undefined,
+          label: '그룹',
+          width: 180,
+          minWidth: 180,
+          onRender(item): React.ReactNode {
+            return (
+              item.admin_group_name && (
+                <>
+                  {hasReadRoleGroup ? (
+                    <TableButton fullWidth onClick={() => showGroupFormDialog(item)}>
+                      {item.admin_group_name}
+                    </TableButton>
+                  ) : (
+                    item.admin_group_name
+                  )}
+                </>
+              )
+            );
+          },
+        },
+        {
+          label: '계정상태',
+          width: 70,
+          minWidth: 70,
+          onGetStyle: getLockStyle,
+          onRender(item) {
+            return item.is_lock ? <Typography color='error'>제한</Typography> : '정상';
+          },
+        },
+        {
+          type: 'datetime',
+          label: '생성일',
+          name: 'create_date',
+          width: 150,
+          minWidth: 150,
+          onGetStyle: getLockStyle,
+        },
+        auth?.is_super && {
+          type: 'button',
+          label: '로그인내역',
+          width: 90,
+          minWidth: 90,
+          onRender(item) {
+            return <TableButton onClick={() => showLoginLogDialog(item)}>보기</TableButton>;
+          },
+        },
+        {
+          type: 'button',
+          label: '비번초기화',
+          width: 90,
+          minWidth: 90,
+          onRender(item) {
+            return (
+              !item.must_password_change && (
+                <TableButton disabled={!item.editable || !hasWriteRole} onClick={() => passwordReset(item)}>
+                  초기화
+                </TableButton>
+              )
+            );
+          },
+        },
+        {
+          type: 'button',
+          label: '제한/해제',
+          width: 90,
+          minWidth: 90,
+          onRender(item) {
+            const disabled = !item.editable || !hasWriteRole;
+            return item.is_lock ? (
+              <TableButton disabled={disabled} onClick={() => toggleLock(item)}>
+                해제
               </TableButton>
-            )
-          );
+            ) : (
+              <TableButton disabled={disabled} color='error' onClick={() => toggleLock(item)}>
+                제한
+              </TableButton>
+            );
+          },
         },
-      },
-      {
-        type: 'button',
-        label: '제한/해제',
-        width: 90,
-        minWidth: 90,
-        onRender(item) {
-          const disabled = !item.editable || !hasWriteRole;
-          return item.is_lock ? (
-            <TableButton disabled={disabled} onClick={() => toggleLock(item)}>
-              해제
-            </TableButton>
-          ) : (
-            <TableButton disabled={disabled} color='error' onClick={() => toggleLock(item)}>
-              제한
-            </TableButton>
-          );
-        },
-      },
-    ],
+      ] as TableColumns<AdminUserListDataItem>,
     [
       auth?.is_super,
       getLockStyle,

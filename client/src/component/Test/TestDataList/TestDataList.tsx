@@ -202,100 +202,101 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   );
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<TestDataListDataItem> = useMemo(
-    () => [
-      { label: 'ID', name: 'id', width: 70 },
-      {
-        label: 'Text<br/>Text Array',
-        name: 'text',
-        align: 'left',
-        ellipsis: true,
-        onRender: (item) => (
-          <>
-            <p className='text-ellipsis'>{item.text}</p>
-            <p className='text-ellipsis opacity-50'>{item.text_array.join(', ')}</p>
-          </>
-        ),
-      }, // auto width
-      { label: 'Email', name: 'email', width: 150, align: 'left', ellipsis: true },
-      { label: 'Mobile', type: 'tel', name: 'mobile', width: 100 },
-      {
-        label: 'Company Num<br/>Personal Num',
-        width: 120,
-        onRender: (item) => (
-          <>
-            <p>{util.companyNo.autoDash(item.company_num)}</p>
-            <p>{util.personalNo.autoDash(item.personal_num)}</p>
-          </>
-        ),
-      },
-      { label: 'Int', type: 'number', name: 'num_int', width: 70 },
-      { label: 'Float', type: 'number', name: 'num_float', width: 80 },
-      { label: 'Bool', width: 50, onRender: (item) => (item.bool ? 'Y' : 'N') },
-      { label: 'Date', type: 'date', name: 'date', width: 90 },
-      { label: 'Datetime', type: 'datetime', name: 'datetime', width: 140 },
-      { label: 'Status', width: 60, name: 'status_name' },
-      {
-        label: 'Create Date<br/>Update Date',
-        width: 140,
-        onRender: (item) => (
-          <>
-            <div>
-              <PdgDateText value={item.create_date} />
-            </div>
-            <div>
-              <PdgDateText value={item.update_date} />
-            </div>
-          </>
-        ),
-      },
-      {
-        id: 'more',
-        type: 'button',
-        width: 50,
-        onRender(item) {
-          return (
-            <TableMenuButton
-              variant='text'
-              placement='left'
-              menuList={
-                <MenuList>
-                  <MenuItem onClick={() => handleTableMenuClick(Menu.edit, item)}>
-                    <Icon>edit</Icon> 수정
-                  </MenuItem>
-                  <MenuItem color='danger' onClick={() => handleTableMenuClick(Menu.remove, item)}>
-                    <Icon>delete</Icon> 삭제
-                  </MenuItem>
-                  <Divider />
-                  <StyledTableMenuItemCopyToClipboard>
-                    <CopyToClipboardButton
-                      variant='text'
-                      fullWidth
-                      disableRipple
-                      text={item.email}
-                      startIcon='content_copy'
-                    >
-                      Email 복사
-                    </CopyToClipboardButton>
-                  </StyledTableMenuItemCopyToClipboard>
-                  <StyledTableMenuItemCopyToClipboard>
-                    <CopyToClipboardButton
-                      variant='text'
-                      fullWidth
-                      disableRipple
-                      text={item.mobile}
-                      startIcon='content_copy'
-                    >
-                      Mobile 복사
-                    </CopyToClipboardButton>
-                  </StyledTableMenuItemCopyToClipboard>
-                </MenuList>
-              }
-            />
-          );
+  const tableColumns = useMemo(
+    () =>
+      [
+        { label: 'ID', name: 'id', width: 70 },
+        {
+          label: 'Text<br/>Text Array',
+          name: 'text',
+          align: 'left',
+          ellipsis: true,
+          onRender: (item) => (
+            <>
+              <p className='text-ellipsis'>{item.text}</p>
+              <p className='text-ellipsis opacity-50'>{item.text_array.join(', ')}</p>
+            </>
+          ),
+        }, // auto width
+        { label: 'Email', name: 'email', width: 150, align: 'left', ellipsis: true },
+        { label: 'Mobile', type: 'tel', name: 'mobile', width: 100 },
+        {
+          label: 'Company Num<br/>Personal Num',
+          width: 120,
+          onRender: (item) => (
+            <>
+              <p>{util.companyNo.autoDash(item.company_num)}</p>
+              <p>{util.personalNo.autoDash(item.personal_num)}</p>
+            </>
+          ),
         },
-      },
-    ],
+        { label: 'Int', type: 'number', name: 'num_int', width: 70 },
+        { label: 'Float', type: 'number', name: 'num_float', width: 80 },
+        { label: 'Bool', width: 50, onRender: (item) => (item.bool ? 'Y' : 'N') },
+        { label: 'Date', type: 'date', name: 'date', width: 90 },
+        { label: 'Datetime', type: 'datetime', name: 'datetime', width: 140 },
+        { label: 'Status', width: 60, name: 'status_name' },
+        {
+          label: 'Create Date<br/>Update Date',
+          width: 140,
+          onRender: (item) => (
+            <>
+              <div>
+                <PdgDateText value={item.create_date} />
+              </div>
+              <div>
+                <PdgDateText value={item.update_date} />
+              </div>
+            </>
+          ),
+        },
+        {
+          id: 'more',
+          type: 'button',
+          width: 50,
+          onRender(item) {
+            return (
+              <TableMenuButton
+                variant='text'
+                placement='left'
+                menuList={
+                  <MenuList>
+                    <MenuItem onClick={() => handleTableMenuClick(Menu.edit, item)}>
+                      <Icon>edit</Icon> 수정
+                    </MenuItem>
+                    <MenuItem color='danger' onClick={() => handleTableMenuClick(Menu.remove, item)}>
+                      <Icon>delete</Icon> 삭제
+                    </MenuItem>
+                    <Divider />
+                    <StyledTableMenuItemCopyToClipboard>
+                      <CopyToClipboardButton
+                        variant='text'
+                        fullWidth
+                        disableRipple
+                        text={item.email}
+                        startIcon='content_copy'
+                      >
+                        Email 복사
+                      </CopyToClipboardButton>
+                    </StyledTableMenuItemCopyToClipboard>
+                    <StyledTableMenuItemCopyToClipboard>
+                      <CopyToClipboardButton
+                        variant='text'
+                        fullWidth
+                        disableRipple
+                        text={item.mobile}
+                        startIcon='content_copy'
+                      >
+                        Mobile 복사
+                      </CopyToClipboardButton>
+                    </StyledTableMenuItemCopyToClipboard>
+                  </MenuList>
+                }
+              />
+            );
+          },
+        },
+      ] as TableColumns<TestDataListDataItem>,
     [handleTableMenuClick]
   );
 

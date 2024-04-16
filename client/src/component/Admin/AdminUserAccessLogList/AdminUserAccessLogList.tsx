@@ -85,34 +85,35 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
   );
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<AdminUserAccessLogListDataItem> = useMemo(
-    () => [
-      { label: '이메일', name: 'email', width: 250, minWidth: 150, paddingLeft: 20 },
-      {
-        label: '구분',
-        align: 'center',
-        width: 80,
-        minWidth: 80,
-        onRender(item): React.ReactNode {
-          switch (item.type) {
-            case 'VIEW':
-              return '화면';
-            case 'EXPORT':
-              return 'Export';
-          }
+  const tableColumns = useMemo(
+    () =>
+      [
+        { label: '이메일', name: 'email', width: 250, minWidth: 150, paddingLeft: 20 },
+        {
+          label: '구분',
+          align: 'center',
+          width: 80,
+          minWidth: 80,
+          onRender(item): React.ReactNode {
+            switch (item.type) {
+              case 'VIEW':
+                return '화면';
+              case 'EXPORT':
+                return 'Export';
+            }
+          },
         },
-      },
-      { label: '화면', name: 'title', minWidth: 200 },
-      { label: 'URL', name: 'url', minWidth: 200 },
-      {
-        type: 'datetime',
-        label: '사용시간',
-        name: 'create_date',
-        align: 'center',
-        width: 150,
-        minWidth: 150,
-      },
-    ],
+        { label: '화면', name: 'title', minWidth: 200 },
+        { label: 'URL', name: 'url', minWidth: 200 },
+        {
+          type: 'datetime',
+          label: '사용시간',
+          name: 'create_date',
+          align: 'center',
+          width: 150,
+          minWidth: 150,
+        },
+      ] as TableColumns<AdminUserAccessLogListDataItem>,
     []
   );
 

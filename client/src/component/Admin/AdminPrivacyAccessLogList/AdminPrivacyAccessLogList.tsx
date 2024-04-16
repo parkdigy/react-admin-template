@@ -97,15 +97,16 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
   );
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<AdminPrivacyAccessLogListDataItem> = useMemo(
-    () => [
-      { label: 'ID', name: 'id', width: 100 },
-      { label: '조회 관리자', width: 150, onRender: (item) => `(${item.admin_user_id}) ${item.admin_user_name}` },
-      { label: '구분', name: 'type_name', width: 300, align: 'left', onGetTooltip: (info) => info.type_name },
-      { label: '사유', name: 'reason', align: 'left', onGetTooltip: (info) => <pre>{info.reason}</pre> },
-      { label: '참조 ID', name: 'parent_id', width: 100, onHide: (info) => info.parent_id === 0 },
-      { label: '조회일자', type: 'datetime', name: 'create_date', width: 150, minWidth: 100 },
-    ],
+  const tableColumns = useMemo(
+    () =>
+      [
+        { label: 'ID', name: 'id', width: 100 },
+        { label: '조회 관리자', width: 150, onRender: (item) => `(${item.admin_user_id}) ${item.admin_user_name}` },
+        { label: '구분', name: 'type_name', width: 300, align: 'left', onGetTooltip: (info) => info.type_name },
+        { label: '사유', name: 'reason', align: 'left', onGetTooltip: (info) => <pre>{info.reason}</pre> },
+        { label: '참조 ID', name: 'parent_id', width: 100, onHide: (info) => info.parent_id === 0 },
+        { label: '조회일자', type: 'datetime', name: 'create_date', width: 150, minWidth: 100 },
+      ] as TableColumns<AdminPrivacyAccessLogListDataItem>,
     []
   );
 

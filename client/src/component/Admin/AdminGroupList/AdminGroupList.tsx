@@ -77,23 +77,24 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   );
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<AdminGroupListDataItem> = useMemo(
-    () => [
-      { label: 'ID', name: 'id', width: 100, minWidth: 70 },
-      { label: '그룹 이름', name: 'name', align: 'left', minWidth: 100 },
-      {
-        label: '인원수',
-        name: 'user_count',
-        width: 150,
-        minWidth: 70,
-      },
-      {
-        label: '상태',
-        width: 150,
-        minWidth: 70,
-        onRender: (item) => (item.is_lock ? <Typography color='error'>제한</Typography> : '정상'),
-      },
-    ],
+  const tableColumns = useMemo(
+    () =>
+      [
+        { label: 'ID', name: 'id', width: 100, minWidth: 70 },
+        { label: '그룹 이름', name: 'name', align: 'left', minWidth: 100 },
+        {
+          label: '인원수',
+          name: 'user_count',
+          width: 150,
+          minWidth: 70,
+        },
+        {
+          label: '상태',
+          width: 150,
+          minWidth: 70,
+          onRender: (item) => (item.is_lock ? <Typography color='error'>제한</Typography> : '정상'),
+        },
+      ] as TableColumns<AdminGroupListDataItem>,
     []
   );
 

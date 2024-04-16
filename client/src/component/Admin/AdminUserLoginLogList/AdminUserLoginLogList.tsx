@@ -90,21 +90,22 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
   }, [auth?.is_super, email, exportData, hasExportRole]);
 
   /** 테이블 컬럼 */
-  const tableColumns: TableColumns<AdminUserLoginLogListDataItem> = useMemo(
-    () => [
-      { label: '이메일', name: 'email', align: 'left', minWidth: 200, paddingLeft: 20 },
-      { label: '이름', name: 'name', width: 150, minWidth: 80 },
-      { type: 'datetime', label: '로그인시간', name: 'create_date', width: 160, minWidth: 160 },
-      { label: 'IP', name: 'ip_address', width: 150, minWidth: 100 },
-      {
-        label: 'Location',
-        width: 200,
-        minWidth: 150,
-        onRender(item) {
-          return item.ip_country === 'Unknown' ? 'Unknown' : `${item.ip_city}, ${item.ip_country}`;
+  const tableColumns = useMemo(
+    () =>
+      [
+        { label: '이메일', name: 'email', align: 'left', minWidth: 200, paddingLeft: 20 },
+        { label: '이름', name: 'name', width: 150, minWidth: 80 },
+        { type: 'datetime', label: '로그인시간', name: 'create_date', width: 160, minWidth: 160 },
+        { label: 'IP', name: 'ip_address', width: 150, minWidth: 100 },
+        {
+          label: 'Location',
+          width: 200,
+          minWidth: 150,
+          onRender(item) {
+            return item.ip_country === 'Unknown' ? 'Unknown' : `${item.ip_city}, ${item.ip_country}`;
+          },
         },
-      },
-    ],
+      ] as TableColumns<AdminUserLoginLogListDataItem>,
     []
   );
 
