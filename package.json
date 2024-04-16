@@ -27,7 +27,8 @@
     "publish:production": "cross-env NODE_ENV=production node .publish.js",
     "pub:dev": "npm run publish:development",
     "pub:staging": "npm run publish:staging",
-    "pub:prod": "npm run publish:production"
+    "pub:prod": "npm run publish:production",
+    "pub:all": "npm run pub:dev && npm run pub:staging && npm run pub:prod"
   },
   "repository": {
     "type": "git",

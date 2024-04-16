@@ -16,7 +16,8 @@
     "publish:production": "cd .. && npm run publish:production",
     "pub:dev": "cd .. && npm run pub:dev",
     "pub:staging": "cd .. && npm run pub:staging",
-    "pub:prod": "cd .. && npm run pub:prod"
+    "pub:prod": "cd .. && npm run pub:prod",
+    "pub:all": "cd .. && npm run pub:all"
   },
   "devDependencies": {
     "@dnd-kit/core": "^6.1.0",
