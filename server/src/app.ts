@@ -119,7 +119,7 @@ app.get(appleAppSiteAssociationPath, function (req, res) {
 });
 
 /** .well-known/apple-app-site-association */
-app.get(`/.well-known/${appleAppSiteAssociationPath}`, function (req, res) {
+app.get(`/.well-known${appleAppSiteAssociationPath}`, function (req, res) {
   if (appleAppSiteAssociation) {
     res.set('Content-Type', 'application/json');
     res.status(200).send(appleAppSiteAssociation);
