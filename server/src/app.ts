@@ -1,7 +1,6 @@
 import './init';
 
 import express from 'express';
-
 import session from 'express-session';
 import RedisStore from 'connect-redis';
 import { createClient } from 'redis';
@@ -99,9 +98,38 @@ if (
   );
 }
 
+/** version */
 let realVersion = Version;
 app.get('/api/*/version/app', function (req, res) {
   realVersion.app(req, res);
+});
+
+/** apple-app-site-association */
+const appleAppSiteAssociationPath = '/apple-app-site-association';
+const appleAppSiteAssociation = fs.existsSync(`${getClientPath()}${appleAppSiteAssociationPath}`)
+  ? fs.readFileSync(`${getClientPath()}${appleAppSiteAssociationPath}`)
+  : undefined;
+app.get(appleAppSiteAssociationPath, function (req, res) {
+  if (appleAppSiteAssociation) {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).end(appleAppSiteAssociation);
+  } else {
+    res.status(404).end();
+  }
+});
+
+/** .well-known/apple-app-site-association */
+const wellKnownAppleAppSiteAssociationPath = '/.well-known/apple-app-site-association';
+const wellKnownAppleAppSiteAssociation = fs.existsSync(`${getClientPath()}${wellKnownAppleAppSiteAssociationPath}`)
+  ? fs.readFileSync(`${getClientPath()}${wellKnownAppleAppSiteAssociationPath}`)
+  : undefined;
+app.get(wellKnownAppleAppSiteAssociationPath, function (req, res) {
+  if (wellKnownAppleAppSiteAssociation) {
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).end(wellKnownAppleAppSiteAssociation);
+  } else {
+    res.status(404).end();
+  }
 });
 
 if (process.env.API_URL) {
