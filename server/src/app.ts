@@ -111,22 +111,18 @@ const appleAppSiteAssociation = fs.existsSync(`${getClientPath()}${appleAppSiteA
   : undefined;
 app.get(appleAppSiteAssociationPath, function (req, res) {
   if (appleAppSiteAssociation) {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).end(appleAppSiteAssociation);
+    res.set('Content-Type', 'application/json');
+    res.status(200).send(appleAppSiteAssociation);
   } else {
     res.status(404).end();
   }
 });
 
 /** .well-known/apple-app-site-association */
-const wellKnownAppleAppSiteAssociationPath = '/.well-known/apple-app-site-association';
-const wellKnownAppleAppSiteAssociation = fs.existsSync(`${getClientPath()}${wellKnownAppleAppSiteAssociationPath}`)
-  ? fs.readFileSync(`${getClientPath()}${wellKnownAppleAppSiteAssociationPath}`)
-  : undefined;
-app.get(wellKnownAppleAppSiteAssociationPath, function (req, res) {
-  if (wellKnownAppleAppSiteAssociation) {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).end(wellKnownAppleAppSiteAssociation);
+app.get(`/.well-known/${appleAppSiteAssociationPath}`, function (req, res) {
+  if (appleAppSiteAssociation) {
+    res.set('Content-Type', 'application/json');
+    res.status(200).send(appleAppSiteAssociation);
   } else {
     res.status(404).end();
   }
