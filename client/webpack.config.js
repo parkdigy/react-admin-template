@@ -95,18 +95,18 @@ const options = {
     host: env.APP_HOST,
     port: env.APP_PORT,
     historyApiFallback: true,
-    hot: true,
     client: {
       overlay: { errors: false, runtimeErrors: false, warnings: false },
       progress: false,
     },
-    proxy: {
-      '/api': {
+    proxy: [
+      {
+        context: ['/api'],
         target: env.API_URL,
         changeOrigin: true,
         pathRewrite: { '^/api': '/' },
       },
-    },
+    ],
   },
   performance: {
     hints: isProduction ? 'warning' : false,
