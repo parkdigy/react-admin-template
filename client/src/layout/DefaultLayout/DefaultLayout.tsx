@@ -3,7 +3,7 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
@@ -15,7 +15,6 @@ import { config } from '@common';
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();
   const location = useLocation();
-  const navigate = useNavigate();
 
   /********************************************************************************************************************
    * State
@@ -106,17 +105,6 @@ const DefaultLayout = () => {
   }, []);
 
   /********************************************************************************************************************
-   * Event Handler
-   * ******************************************************************************************************************/
-
-  /** 메뉴 클릭 - AdminLayout.onMenuClick */
-  const handleMenuClick = (menuItem: AdminLayout.MenuItem) => {
-    if (menuItem.uri) {
-      navigate(menuItem.uri);
-    }
-  };
-
-  /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
@@ -140,7 +128,6 @@ const DefaultLayout = () => {
           </Button>
         </Box>
       }
-      onMenuClick={handleMenuClick}
     >
       <MainRouter />
     </AdminLayout.DefaultLayout>
