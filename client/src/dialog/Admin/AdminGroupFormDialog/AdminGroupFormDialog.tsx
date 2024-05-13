@@ -5,10 +5,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { ErrorBoundary } from '@ccomp';
-import { AdminGroupFormDialogProps } from './AdminGroupFormDialog.types';
+import { AdminGroupFormDialogProps as Props } from './AdminGroupFormDialog.types';
 import { AdminGroupForm } from '@comp';
 
-const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSuccess, onShow, onClose }) => {
+const AdminGroupFormDialog = ({ id, subTitle, onSuccess, onShow, onClose }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/
@@ -25,7 +25,7 @@ const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSucce
    * Function
    * ******************************************************************************************************************/
 
-  /** 다이얼로그 닫기 */
+  /** 닫기 */
   const close = useCallback(() => {
     dialogRef.current?.close();
   }, []);
@@ -34,7 +34,17 @@ const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSucce
    * Event Handler
    * ******************************************************************************************************************/
 
-  /** 저장 성공 - AdminGroupForm.onSuccess */
+  /** 사용자 데이터 변경 이벤트 */
+  const handleValueChange = useCallback(() => {
+    setChanged(true);
+  }, []);
+
+  /** 초기화 값 변경 이벤트 */
+  const handleResetValueChange = useCallback(() => {
+    setChanged(false);
+  }, []);
+
+  /** 저장 성공 이벤트 */
   const handleSuccess = useCallback(() => {
     if (onSuccess) onSuccess();
     close();
@@ -53,9 +63,16 @@ const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSucce
       escapeClose={!changed}
       backdropClose={!changed}
       title={empty(id) ? '새 그룹' : '그룹 수정'}
+      subTitle={subTitle}
       content={
         <ErrorBoundary>
-          <AdminGroupForm id={id} onChange={() => setChanged(true)} onSuccess={handleSuccess} onCancel={close} />
+          <AdminGroupForm
+            id={id}
+            onValueChange={handleValueChange}
+            onResetValueChange={handleResetValueChange}
+            onSuccess={handleSuccess}
+            onCancel={close}
+          />
         </ErrorBoundary>
       }
       onShow={onShow}
@@ -65,3 +82,67 @@ const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSucce
 };
 
 export default AdminGroupFormDialog;
+
+// import React from 'react';
+// import { Dialog, DialogCommands } from '@pdg/react-dialog';
+// import { ErrorBoundary } from '@ccomp';
+// import { AdminGroupFormDialogProps } from './AdminGroupFormDialog.types';
+// import { AdminGroupForm } from '@comp';
+//
+// const AdminGroupFormDialog: React.FC<AdminGroupFormDialogProps> = ({ id, onSuccess, onShow, onClose }) => {
+//   /********************************************************************************************************************
+//    * Ref
+//    * ******************************************************************************************************************/
+//
+//   const dialogRef = useRef<DialogCommands>(null);
+//
+//   /********************************************************************************************************************
+//    * State
+//    * ******************************************************************************************************************/
+//
+//   const [changed, setChanged] = useState(false);
+//
+//   /********************************************************************************************************************
+//    * Function
+//    * ******************************************************************************************************************/
+//
+//   /** 다이얼로그 닫기 */
+//   const close = useCallback(() => {
+//     dialogRef.current?.close();
+//   }, []);
+//
+//   /********************************************************************************************************************
+//    * Event Handler
+//    * ******************************************************************************************************************/
+//
+//   /** 저장 성공 - AdminGroupForm.onSuccess */
+//   const handleSuccess = useCallback(() => {
+//     if (onSuccess) onSuccess();
+//     close();
+//   }, [onSuccess, close]);
+//
+//   /********************************************************************************************************************
+//    * Render
+//    * ******************************************************************************************************************/
+//
+//   return (
+//     <Dialog
+//       fullWidth
+//       maxWidth='md'
+//       ref={dialogRef}
+//       autoClose
+//       escapeClose={!changed}
+//       backdropClose={!changed}
+//       title={empty(id) ? '새 그룹' : '그룹 수정'}
+//       content={
+//         <ErrorBoundary>
+//           <AdminGroupForm id={id} onChange={() => setChanged(true)} onSuccess={handleSuccess} onCancel={close} />
+//         </ErrorBoundary>
+//       }
+//       onShow={onShow}
+//       onClose={onClose}
+//     />
+//   );
+// };
+//
+// export default AdminGroupFormDialog;

@@ -40,9 +40,9 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = useMemo(() => app.hasMenuWriteRole(app.Menu.Admin.User), []);
-  const hasReadRoleGroup = useMemo(() => app.hasMenuReadRole(app.Menu.Admin.Group), []);
-  const hasExportRole = useMemo(() => app.hasMenuExportRole(app.Menu.Admin.User), []);
+  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.User);
+  const hasReadRoleGroup = app.hasMenuReadRole(app.Menu.Admin.Group);
+  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.User);
 
   /********************************************************************************************************************
    * Effect

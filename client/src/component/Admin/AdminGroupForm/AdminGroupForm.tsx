@@ -3,39 +3,39 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { AdminGroupFormProps } from './AdminGroupForm.types';
 import {
   Form,
-  FormCol,
   FormRow,
+  FormCol,
   FormText,
-  FormAutocomplete,
-  FormAutocompleteItem,
   FormButton,
-  FormValueMap,
+  FormCommands,
   FormBody,
   FormFooter,
   FormAutocompleteItems,
+  FormAutocompleteItem,
+  FormAutocomplete,
 } from '@pdg/react-form';
-import {
-  Admin,
-  AdminGroupEditRequestData,
-  AdminGroupInfoData,
-  AdminGroupMenuListData,
-  AdminGroupMenuListDataItemBase,
-} from '@const';
-import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
-import { PdgIconText } from '@pdg/react-component';
+import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
+import { Admin, AdminGroupInfoData, AdminGroupMenuListData, AdminGroupMenuListDataItemBase } from '@const';
 import { useConfirmDialog } from '@pdg/react-dialog';
 import app from '@app';
+import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
+import { PdgButton, PdgIconText } from '@pdg/react-component';
 
-const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess, onCancel }) => {
+const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
    * Dialog
    * ******************************************************************************************************************/
 
   const confirmDialog = useConfirmDialog();
+
+  /********************************************************************************************************************
+   * Ref
+   * ******************************************************************************************************************/
+
+  const formRef = useRef<FormCommands>(null);
 
   /********************************************************************************************************************
    * State
@@ -46,22 +46,14 @@ const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess
   const [privacyAccess] = useState({ new_read: false });
 
   /********************************************************************************************************************
-   * Memo
-   * ******************************************************************************************************************/
-
-  const hasWriteRole = useMemo(() => app.hasMenuWriteRole(app.Menu.Admin.Group), []);
-  const editable = useMemo(() => hasWriteRole && (!info || !info.info || info.info.editable), [hasWriteRole, info]);
-
-  /********************************************************************************************************************
    * Effect
    * ******************************************************************************************************************/
 
   useEffect(() => {
     loadMenuList();
-    loadInfo();
-
+    loadInfo(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   /********************************************************************************************************************
    * Function
@@ -78,16 +70,21 @@ const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess
     }
   }, [id]);
 
-  /** 그룹 정보 불러오기 */
-  const loadInfo = useCallback(() => {
-    if (id) {
-      Admin.Group.info(id).then(({ data: info }) => {
-        setInfo(info);
-      });
-    } else {
+  /** 정보 불러오기 */
+  const loadInfo = useCallback((id?: number) => {
+    if (id == null) {
       setInfo(undefined);
+    } else {
+      Admin.Group.info(id).then(({ data }) => {
+        setInfo(data);
+      });
     }
-  }, [id]);
+  }, []);
+
+  /** 취소 */
+  const cancel = useCallback(() => {
+    if (onCancel) onCancel();
+  }, [onCancel]);
 
   /********************************************************************************************************************
    * Event Handler
@@ -131,19 +128,10 @@ const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess
     [confirmDialog]
   );
 
-  /** 사용자가 직접 데이터 수정 - Form.onValueChangeByUser */
-  const handleChangeByUser = useCallback(() => {
-    if (onChange) onChange();
-  }, [onChange]);
-
   /** 그룹 저장 - Form.onSubmit */
   const handleSubmit = useCallback(
-    (data: FormValueMap) => {
-      const finalData = data as unknown as AdminGroupEditRequestData;
-
-      if (id) finalData.id = id;
-
-      finalData.is_privacy_access = privacyAccess.new_read;
+    (data: Dict) => {
+      data.is_privacy_access = privacyAccess.new_read;
 
       if (menu) {
         const menuRoles: {
@@ -171,16 +159,16 @@ const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess
         });
 
         if (notEmpty(menuRoles)) {
-          finalData.menu = JSON.stringify(menuRoles);
+          data.menu = JSON.stringify(menuRoles);
         }
       }
 
       if (id) {
-        Admin.Group.edit('그룹 정보를 수정하시겠습니까?', finalData).then(() => {
+        Admin.Group.edit('그룹 정보를 수정하시겠습니까?', id, data).then(() => {
           if (onSuccess) onSuccess();
         });
       } else {
-        Admin.Group.add('그룹을 등록하시겠습니까?', finalData).then(() => {
+        Admin.Group.add('그룹을 등록하시겠습니까?', data).then(() => {
           if (onSuccess) onSuccess();
         });
       }
@@ -189,129 +177,137 @@ const AdminGroupForm: React.FC<AdminGroupFormProps> = ({ id, onChange, onSuccess
   );
 
   /********************************************************************************************************************
+   * Variable
+   * ******************************************************************************************************************/
+
+  const editable = app.hasMenuWriteRole(app.Menu.Admin.Group) && (!info || !info.info || info.info.editable);
+
+  /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
-  return (
-    <>
-      <Form onSubmit={handleSubmit} disabled={!editable} onValueChangeByUser={handleChangeByUser}>
-        <FormBody>
-          <FormRow>
+  return !id || info ? (
+    <Form ref={formRef} disabled={!editable} onSubmit={handleSubmit} onValueChangeByUser={onValueChange}>
+      <FormBody>
+        <FormRow>
+          <FormCol>
+            <FormText
+              name='name'
+              label='그룹 이름'
+              readOnly={info?.info?.id === SUPER_ADMIN_GROUP_ID}
+              required
+              value={info?.info.name}
+            />
+          </FormCol>
+        </FormRow>
+        <FormRow>
+          <FormCol>
+            <FormAutocomplete
+              name='users'
+              label='사용자'
+              multiple
+              formValueSort
+              value={info?.users}
+              disableClearable
+              onRenderItem={(item) => (
+                <div>
+                  {item.label} {notEmpty(item.groupName) && <Chip label={item.groupName} size='small' sx={{ ml: 1 }} />}
+                </div>
+              )}
+              onLoadItems={handleUsersLoadItems}
+              onAddItem={handleUsersAddItem}
+            />
+          </FormCol>
+        </FormRow>
+        {menu && (
+          <FormRow line label='권한 설정' icon='LibraryAddCheck'>
             <FormCol>
-              <FormText
-                name='name'
-                label='그룹 이름'
-                readOnly={info?.info?.id === SUPER_ADMIN_GROUP_ID}
-                required
-                value={info?.info.name}
-              />
-            </FormCol>
-          </FormRow>
-          <FormRow>
-            <FormCol>
-              <FormAutocomplete
-                name='users'
-                label='사용자'
-                multiple
-                formValueSort
-                value={info?.users}
-                disableClearable
-                onRenderItem={(item) => (
-                  <div>
-                    {item.label}{' '}
-                    {notEmpty(item.groupName) && <Chip label={item.groupName} size='small' sx={{ ml: 1 }} />}
-                  </div>
-                )}
-                onLoadItems={handleUsersLoadItems}
-                onAddItem={handleUsersAddItem}
-              />
-            </FormCol>
-          </FormRow>
-          {menu && (
-            <FormRow line label='권한 설정' icon='LibraryAddCheck'>
-              <FormCol>
-                <Table
-                  sx={{
-                    '.MuiTableCell-root': {
-                      padding: '0 10px',
-                    },
-                  }}
-                >
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>대분류</TableCell>
-                      <TableCell>중분류</TableCell>
-                      <TableCell align='center'>조회</TableCell>
-                      <TableCell align='center'>수정</TableCell>
-                      <TableCell align='center'>Export</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {menu.map((info) => (
-                      <React.Fragment key={info.id}>
-                        <TableRow>
-                          <TableCell rowSpan={(info.items?.length || 0) + 1}>{info.name}</TableCell>
-                          {info.items?.length === 0 && (
-                            <>
-                              <TableCell />
-                              <AdminGroupFormRoleTableCells
-                                item={info}
-                                disabled={!editable}
-                                onChange={handleChangeByUser}
-                              />
-                            </>
-                          )}
+              <div style={{ width: '100%', textAlign: 'right', marginTop: -38, zIndex: 2 }}>
+                <span style={{ backgroundColor: '#fff', paddingLeft: 10 }}>
+                  <PdgButton size='small' startIcon='Download'>
+                    다른 그룹에서 권한 가져오기
+                  </PdgButton>
+                </span>
+              </div>
+              <Table
+                sx={{
+                  '.MuiTableCell-root': {
+                    padding: '0 10px',
+                  },
+                }}
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell style={{ minWidth: 100 }}>대분류</TableCell>
+                    <TableCell style={{ minWidth: 100 }}>중분류</TableCell>
+                    <TableCell align='center' style={{ width: 100 }}>
+                      조회
+                    </TableCell>
+                    <TableCell align='center' style={{ width: 100 }}>
+                      수정
+                    </TableCell>
+                    <TableCell align='center' style={{ width: 100 }}>
+                      다운로드
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {menu.map((info) => (
+                    <React.Fragment key={info.id}>
+                      <TableRow>
+                        <TableCell rowSpan={(info.items?.length || 0) + 1}>{info.name}</TableCell>
+                        {info.items?.length === 0 && (
+                          <>
+                            <TableCell />
+                            <AdminGroupFormRoleTableCells item={info} disabled={!editable} onChange={onValueChange} />
+                          </>
+                        )}
+                      </TableRow>
+                      {info.items?.map((subInfo) => (
+                        <TableRow key={subInfo.id}>
+                          <TableCell>{subInfo.name}</TableCell>
+                          <AdminGroupFormRoleTableCells item={subInfo} disabled={!editable} onChange={onValueChange} />
                         </TableRow>
-                        {info.items?.map((subInfo) => (
-                          <TableRow key={subInfo.id}>
-                            <TableCell>{subInfo.name}</TableCell>
-                            <AdminGroupFormRoleTableCells
-                              item={subInfo}
-                              disabled={!editable}
-                              onChange={handleChangeByUser}
-                            />
-                          </TableRow>
-                        ))}
-                      </React.Fragment>
-                    ))}
-                    <TableRow>
-                      <TableCell>
-                        <PdgIconText icon='person'>개인정보</PdgIconText>
-                      </TableCell>
-                      <TableCell />
-                      <AdminGroupFormRoleTableCells
-                        item={privacyAccess}
-                        noWrite
-                        noExport
-                        disabled={!editable}
-                        onChange={handleChangeByUser}
-                      />
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              </FormCol>
-            </FormRow>
-          )}
-        </FormBody>
-        {editable && (
-          <FormFooter>
-            <FormRow>
-              <FormCol>
-                <FormButton startIcon='close' onClick={() => onCancel && onCancel()}>
-                  취소
-                </FormButton>
-              </FormCol>
-              <FormCol>
-                <FormButton type='submit' startIcon='save_alt'>
-                  {id ? '수정' : '등록'}
-                </FormButton>
-              </FormCol>
-            </FormRow>
-          </FormFooter>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                  <TableRow>
+                    <TableCell>
+                      <PdgIconText icon='person'>개인정보</PdgIconText>
+                    </TableCell>
+                    <TableCell />
+                    <AdminGroupFormRoleTableCells
+                      item={privacyAccess}
+                      noWrite
+                      noExport
+                      disabled={!editable}
+                      onChange={onValueChange}
+                    />
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </FormCol>
+          </FormRow>
         )}
-      </Form>
-    </>
-  );
+      </FormBody>
+      {editable && (
+        <FormFooter>
+          <FormRow>
+            <FormCol>
+              <FormButton startIcon='close' onClick={cancel}>
+                취소
+              </FormButton>
+            </FormCol>
+            <FormCol>
+              <FormButton type='submit' startIcon='save_alt'>
+                {id ? '수정' : '등록'}
+              </FormButton>
+            </FormCol>
+          </FormRow>
+        </FormFooter>
+      )}
+    </Form>
+  ) : null;
 };
 
 export default AdminGroupForm;

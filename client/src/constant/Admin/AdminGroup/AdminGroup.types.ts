@@ -76,18 +76,3 @@ export type AdminGroupMenuListData = AdminGroupMenuListDataItem[];
 export interface AdminGroupMenuList extends ApiResult {
   data: AdminGroupMenuListData;
 }
-
-/********************************************************************************************************************
- * add/edit
- * ******************************************************************************************************************/
-
-export interface AdminGroupAddRequestData {
-  name: string;
-  users?: string;
-  is_privacy_access?: boolean;
-  menu?: string;
-}
-
-export interface AdminGroupEditRequestData extends AdminGroupAddRequestData {
-  id: number;
-}

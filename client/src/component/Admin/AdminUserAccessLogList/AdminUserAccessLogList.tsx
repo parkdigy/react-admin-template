@@ -19,10 +19,10 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
   const searchTableRef = useRef<SearchTableCommands<AdminUserAccessLogListDataItem>>(null);
 
   /********************************************************************************************************************
-   * Memo
+   * Variable
    * ******************************************************************************************************************/
 
-  const hasExportRole = useMemo(() => app.hasMenuExportRole(app.Menu.Admin.AccessLog), []);
+  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.AccessLog);
 
   /********************************************************************************************************************
    * State

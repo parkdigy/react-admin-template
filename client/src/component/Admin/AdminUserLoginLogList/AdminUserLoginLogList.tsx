@@ -29,7 +29,7 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
    * Memo
    * ******************************************************************************************************************/
 
-  const hasExportRole = useMemo(() => app.hasMenuExportRole(app.Menu.Admin.LoginLog), []);
+  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.LoginLog);
 
   /********************************************************************************************************************
    * Function

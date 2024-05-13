@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox, TableCell } from '@mui/material';
-import { useFirstSkipEffect } from '@pdg/react-hook';
+import { useAutoUpdateLayoutState, useFirstSkipEffect } from '@pdg/react-hook';
 
 const AdminGroupFormRoleTableCells: React.FC<{
   item: {
@@ -18,19 +18,9 @@ const AdminGroupFormRoleTableCells: React.FC<{
    * State
    * ******************************************************************************************************************/
 
-  const [r, setR] = useState(!!item?.new_read);
-  const [w, setW] = useState(!!item?.new_write);
-  const [e, setE] = useState(!!item?.new_export);
-
-  /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useFirstSkipEffect(() => {
-    setR(!!item?.new_read);
-    setW(!!item?.new_write);
-    setE(!!item?.new_export);
-  }, [item]);
+  const [r, setR] = useAutoUpdateLayoutState(!!item?.new_read);
+  const [w, setW] = useAutoUpdateLayoutState(!!item?.new_write);
+  const [e, setE] = useAutoUpdateLayoutState(!!item?.new_export);
 
   /********************************************************************************************************************
    * Function
@@ -114,4 +104,4 @@ const AdminGroupFormRoleTableCells: React.FC<{
   );
 };
 
-export default AdminGroupFormRoleTableCells;
+export default React.memo(AdminGroupFormRoleTableCells);

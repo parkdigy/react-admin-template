@@ -49,9 +49,9 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = useMemo(() => app.hasMenuWriteRole(app.Menu.Admin.User), []);
-  const hasWriteRoleGroup = useMemo(() => app.hasMenuWriteRole(app.Menu.Admin.Group), []);
-  const editable = useMemo(() => hasWriteRole && (!info || info.editable), [hasWriteRole, info]);
+  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.User);
+  const hasWriteRoleGroup = app.hasMenuWriteRole(app.Menu.Admin.Group);
+  const editable = hasWriteRole && (!info || info.editable);
 
   /********************************************************************************************************************
    * Effect

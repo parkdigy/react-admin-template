@@ -22,10 +22,15 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
   const searchTableRef = useRef<SearchTableCommands<AdminPrivacyAccessLogListDataItem>>(null);
 
   /********************************************************************************************************************
+   * Variable
+   * ******************************************************************************************************************/
+
+  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.PrivacyAccessLog);
+
+  /********************************************************************************************************************
    * Memo
    * ******************************************************************************************************************/
 
-  const hasExportRole = useMemo(() => app.hasMenuExportRole(app.Menu.Admin.PrivacyAccessLog), []);
   const initSearchDate: FormDateRangePickerProps['value'] = useMemo(() => [dayjs().subtract(29, 'days'), dayjs()], []);
 
   /********************************************************************************************************************

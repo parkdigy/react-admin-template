@@ -30,7 +30,7 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = useMemo(() => app.hasMenuWriteRole(app.Menu.Admin.Group), []);
+  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.Group);
 
   /********************************************************************************************************************
    * Function

@@ -4,8 +4,6 @@
 
 import api, { ApiResult } from '@api';
 import {
-  AdminGroupAddRequestData,
-  AdminGroupEditRequestData,
   AdminGroupInfo,
   AdminGroupList,
   AdminGroupListRequestData,
@@ -49,11 +47,11 @@ export default {
     return result;
   },
   // 그룹 등록
-  add(authIntro: ReactNode, data: AdminGroupAddRequestData) {
+  add(authIntro: ReactNode, data: Dict) {
     return api.post<ApiResult>(authIntro, 'admin.group', data);
   },
   // 그룹 수정
-  edit(authIntro: ReactNode, data: AdminGroupEditRequestData) {
-    return api.patch<ApiResult>(authIntro, 'admin.group', data);
+  edit(authIntro: ReactNode, id: number, data: Dict) {
+    return api.patch<ApiResult>(authIntro, `admin.group.${id}`, data);
   },
 };

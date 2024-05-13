@@ -30,27 +30,20 @@ const AdminMenuForm: React.FC<Props> = ({
   const [id, setId] = useState<string>('');
 
   /********************************************************************************************************************
-   * Memo
+   * Variable
    * ******************************************************************************************************************/
 
   /** 부모 메뉴 */
-  const parentMenu = useMemo(() => (initId ? info?.parent : initParentMenu), [info?.parent, initId, initParentMenu]);
+  const parentMenu = initId ? info?.parent : initParentMenu;
 
   /** 최종 ID */
-  const finalId = useMemo(
-    () => (parentMenu ? `${parentMenu?.id}/${id.toLowerCase()}` : id.toLowerCase()),
-    [id, parentMenu]
-  );
+  const finalId = parentMenu ? `${parentMenu?.id}/${id.toLowerCase()}` : id.toLowerCase();
 
   /** ID 입력 도움말 */
-  const idHelperText = useMemo(() => {
-    if (finalId !== id) {
-      return `최종 ID : ${finalId}`;
-    }
-  }, [finalId, id]);
+  const idHelperText = finalId !== id ? `최종 ID : ${finalId}` : undefined;
 
   /** URI */
-  const uri = useMemo(() => `/${finalId}`, [finalId]);
+  const uri = `/${finalId}`;
 
   /********************************************************************************************************************
    * Effect
