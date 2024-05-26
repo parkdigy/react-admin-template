@@ -110,27 +110,39 @@ const DefaultLayout = () => {
 
   const logo = useMemo(
     () => (
-      <span style={{ color: config.env === 'staging' ? 'magenta' : config.env === 'production' ? undefined : 'red' }}>
-        {config.title}
-      </span>
+      <div>
+        <span style={{ color: config.env === 'staging' ? 'magenta' : config.env === 'production' ? undefined : 'red' }}>
+          {config.title}
+        </span>
+      </div>
     ),
     []
   );
 
   return menu ? (
-    <AdminLayout.DefaultLayout
-      logo={logo}
-      menu={menu}
-      appBarControl={
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          <Button variant='text' onClick={signOut}>
-            로그아웃
-          </Button>
-        </Box>
-      }
-    >
-      <MainRouter />
-    </AdminLayout.DefaultLayout>
+    <>
+      <AdminLayout.DefaultLayout
+        logo={logo}
+        menu={menu}
+        appBarControl={
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Button variant='text' onClick={signOut}>
+              로그아웃
+            </Button>
+          </Box>
+        }
+      >
+        <MainRouter />
+      </AdminLayout.DefaultLayout>
+      {config.env === 'local' && (
+        <div style={{ position: 'fixed', zIndex: 1201, left: 0, bottom: 0, display: 'flex' }}>
+          <div style={{ height: 3, backgroundColor: '#9C27B0', width: 600 }}></div>
+          <div style={{ height: 3, backgroundColor: '#1E88E5', width: 300 }}></div>
+          <div style={{ height: 3, backgroundColor: '#FF5722', width: 300 }}></div>
+          <div style={{ height: 3, backgroundColor: '#43A047', width: 336 }}></div>
+        </div>
+      )}
+    </>
   ) : null;
 };
 
