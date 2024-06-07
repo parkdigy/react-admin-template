@@ -43,7 +43,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
 
   const [info, setInfo] = useState<AdminGroupInfoData>();
   const [menu, setMenu] = useState<AdminGroupMenuListData>();
-  const [privacyAccess] = useState({ new_read: false });
+  const [privacyAccess, setPrivacyAccess] = useState({ new_read: false });
 
   /********************************************************************************************************************
    * Effect
@@ -77,6 +77,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
     } else {
       Admin.Group.info(id).then(({ data }) => {
         setInfo(data);
+        setPrivacyAccess({ new_read: data.info.is_privacy_access });
       });
     }
   }, []);
