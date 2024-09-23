@@ -97,7 +97,9 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
           },
           onClose() {
             if (!isConfirm) {
-              onCancel && onCancel();
+              if (onCancel) {
+                onCancel();
+              }
             }
           },
         });
@@ -120,11 +122,15 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
     (data: FormValueMap) => {
       if (id) {
         Test.dataEdit('정보를 수정하시겠습니까?', id, data).then(() => {
-          onSuccess && onSuccess();
+          if (onSuccess) {
+            onSuccess();
+          }
         });
       } else {
         Test.dataAdd('등록하시겠습니까?', data).then(() => {
-          onSuccess && onSuccess();
+          if (onSuccess) {
+            onSuccess();
+          }
         });
       }
     },

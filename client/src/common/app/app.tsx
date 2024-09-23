@@ -249,14 +249,18 @@ const app = {
    * 로딩 표시
    */
   showLoading() {
-    _showLoading && _showLoading();
+    if (_showLoading) {
+      _showLoading();
+    }
   },
 
   /**
    * 로딩 숨김
    */
   hideLoading() {
-    _hideLoading && _hideLoading();
+    if (_hideLoading) {
+      _hideLoading();
+    }
   },
 };
 

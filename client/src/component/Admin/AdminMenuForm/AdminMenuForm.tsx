@@ -90,14 +90,18 @@ const AdminMenuForm: React.FC<Props> = ({
     (data: Dict) => {
       if (initId) {
         Admin.Menu.edit('정보를 수정하시겠습니까?', initId, data).then(() => {
-          onSuccess && onSuccess();
+          if (onSuccess) {
+            onSuccess();
+          }
         });
       } else {
         if (parentMenu) {
           data.parent_id = parentMenu.id;
         }
         Admin.Menu.add('등록하시겠습니까?', data).then(() => {
-          onSuccess && onSuccess();
+          if (onSuccess) {
+            onSuccess();
+          }
         });
       }
     },
