@@ -244,7 +244,17 @@ const options = {
       {
         test: /\.(sa|sc)ss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              implementation: require('sass'),
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,

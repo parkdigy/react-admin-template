@@ -255,7 +255,7 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
           value = decoder.decode(new Uint8Array(bytes));
           needsEncodingFixup = false;
         }
-      } catch (e) {} //eslint-disable-line no-empty
+      } catch {} //eslint-disable-line no-empty
     }
     return value;
   }
@@ -338,7 +338,7 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
       }
       try {
         newText = atob(newText);
-      } catch (e) {} //eslint-disable-line no-empty
+      } catch {} //eslint-disable-line no-empty
       return textdecode(charset, newText);
     });
   }
