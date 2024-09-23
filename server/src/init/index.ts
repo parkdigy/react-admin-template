@@ -1,7 +1,9 @@
 import './global.PdgUtil';
 import path from 'path';
+import dotenv from 'dotenv';
 
-require('dotenv').config({ path: path.resolve(__dirname, './../../.env') }).parsed;
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+dotenv.config({ path: path.resolve(__dirname, './../../.env') }).parsed;
 
 declare global {
   function getClientPath(): string;
