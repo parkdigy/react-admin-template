@@ -1,3 +1,5 @@
+import config from '../../common/config';
+
 declare global {
   /**
    * 로그를 출력합니다.
@@ -8,7 +10,9 @@ declare global {
 }
 
 globalThis.ll = function (message?: any, ...optionalParams: any[]) {
-  console.log(message, ...optionalParams);
+  if (contains(['local', 'development'], config.env)) {
+    console.log(`[${config.env}]`, message, ...optionalParams);
+  }
 };
 
 export {};
