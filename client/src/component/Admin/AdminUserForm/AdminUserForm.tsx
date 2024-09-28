@@ -92,7 +92,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
 
   /** 취소 */
   const cancel = useCallback(() => {
-    if (onCancel) onCancel();
+    onCancel && onCancel();
   }, [onCancel]);
 
   /** 그룹 추가 */
@@ -113,11 +113,11 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
     (data: FormValueMap) => {
       if (id) {
         Admin.User.edit('사용자 정보를 수정하시겠습니까?', id, data).then(() => {
-          if (onSuccess) onSuccess();
+          onSuccess && onSuccess();
         });
       } else {
         Admin.User.add('사용자를 등록하시겠습니까?', data).then(() => {
-          if (onSuccess) onSuccess();
+          onSuccess && onSuccess();
         });
       }
     },

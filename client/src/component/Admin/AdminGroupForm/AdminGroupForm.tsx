@@ -84,7 +84,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
 
   /** 취소 */
   const cancel = useCallback(() => {
-    if (onCancel) onCancel();
+    onCancel && onCancel();
   }, [onCancel]);
 
   /********************************************************************************************************************
@@ -166,11 +166,11 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
 
       if (id) {
         Admin.Group.edit('그룹 정보를 수정하시겠습니까?', id, data).then(() => {
-          if (onSuccess) onSuccess();
+          onSuccess && onSuccess();
         });
       } else {
         Admin.Group.add('그룹을 등록하시겠습니까?', data).then(() => {
-          if (onSuccess) onSuccess();
+          onSuccess && onSuccess();
         });
       }
     },

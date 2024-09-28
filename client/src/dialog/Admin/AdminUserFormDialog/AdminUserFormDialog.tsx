@@ -36,7 +36,7 @@ const AdminUserFormDialog: React.FC<AdminUserFormDialogProps> = ({ id, onSuccess
 
   /** 저장 성공 - AdminUserForm.onSuccess */
   const handleSuccess = useCallback(() => {
-    if (onSuccess) onSuccess();
+    onSuccess && onSuccess();
     close();
   }, [onSuccess, close]);
 

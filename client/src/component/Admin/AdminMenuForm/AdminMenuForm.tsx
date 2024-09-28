@@ -78,7 +78,7 @@ const AdminMenuForm: React.FC<Props> = ({
 
   /** 취소 */
   const cancel = useCallback(() => {
-    if (onCancel) onCancel();
+    onCancel && onCancel();
   }, [onCancel]);
 
   /********************************************************************************************************************
@@ -90,18 +90,14 @@ const AdminMenuForm: React.FC<Props> = ({
     (data: Dict) => {
       if (initId) {
         Admin.Menu.edit('정보를 수정하시겠습니까?', initId, data).then(() => {
-          if (onSuccess) {
-            onSuccess();
-          }
+          onSuccess && onSuccess();
         });
       } else {
         if (parentMenu) {
           data.parent_id = parentMenu.id;
         }
         Admin.Menu.add('등록하시겠습니까?', data).then(() => {
-          if (onSuccess) {
-            onSuccess();
-          }
+          onSuccess && onSuccess();
         });
       }
     },

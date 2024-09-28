@@ -46,7 +46,7 @@ const AdminMenuFormDialog: React.FC<AdminMenuFormDialogProps> = ({ parentMenu, i
 
   /** 저장 성공 - AdminMenuForm.onSuccess */
   const handleSuccess = useCallback(() => {
-    if (onSuccess) onSuccess();
+    onSuccess && onSuccess();
     close();
   }, [onSuccess, close]);
 

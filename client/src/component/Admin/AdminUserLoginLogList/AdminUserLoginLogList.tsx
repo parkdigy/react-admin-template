@@ -38,7 +38,7 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
   /** 로그인 로그 목록 불러오기 */
   const getData = useCallback(
     (data: FormValueMap) => {
-      if (onRequestScrollToTop) onRequestScrollToTop();
+      onRequestScrollToTop && onRequestScrollToTop();
       return new Promise<SearchTableData<AdminUserLoginLogListDataItem>>((resolve) => {
         Admin.User.LoginLog.list({ ...data, limit }).then(({ data: items, paging }) => {
           resolve({ items, paging });

@@ -53,11 +53,11 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, 
   /** 다이얼로그 닫기 - Dialog.onClose */
   const handleClose = useCallback(() => {
     if (successRef.current) {
-      if (onSuccess) onSuccess();
+      onSuccess && onSuccess();
     } else {
-      if (onFail) onFail();
+      onFail && onFail();
     }
-    if (onClose) onClose();
+    onClose && onClose();
   }, [onSuccess, onFail, onClose]);
 
   /********************************************************************************************************************
