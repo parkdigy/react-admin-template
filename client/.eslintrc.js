@@ -35,6 +35,7 @@ module.exports = {
     '@typescript-eslint/no-empty-object-type': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
+    'no-empty-pattern': 'off',
     'no-useless-constructor': ['warn'],
     'react/no-unused-state': ['warn'],
     'react/state-in-constructor': ['error', 'always'],
