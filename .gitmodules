@@ -1,4 +1,0 @@
-[submodule "client/shared_modules/react-common-component-2"]
-	path = client/shared_modules/react-common-component-2
-	url = https://github.com/NextAppsDeveloperTeam/react-common-component-2.git
-  branch = master
