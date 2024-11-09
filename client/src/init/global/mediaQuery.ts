@@ -30,7 +30,7 @@ const _useScreenSize = () => {
   const isMax = useMediaQuery('(min-width: 1301px)');
 
   return useMemo(() => {
-    function selectValue(xxs: any, xs?: any, sm?: any, md?: any, lg?: any, max?: any) {
+    function screenValue(xxs: any, xs?: any, sm?: any, md?: any, lg?: any, max?: any) {
       const resultXxs = xxs;
       const resultXs = ifUndefined(xs, xxs);
       const resultSm = ifUndefined(sm, resultXs);
@@ -54,7 +54,7 @@ const _useScreenSize = () => {
     const isExactMax = !isXxs && !isXs && !isSm && !isMd && !isLg && isMax;
 
     return {
-      selectValue,
+      screenValue,
       isXxs,
       isXs,
       isSm,
