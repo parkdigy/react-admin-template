@@ -3,10 +3,9 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { PageRootContainer } from '@ccomp';
 
 const Dashboard = () => {
-  return <PageRootContainer>Dashboard</PageRootContainer>;
+  return <div>Dashboard</div>;
 };
 
 export default Dashboard;
