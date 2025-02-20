@@ -1,8 +1,8 @@
-@import './custom';
-@import './custom.opacity';
-@import './custom.text';
-@import './custom.margin.padding';
-@import './custom.width.height';
-@import './custom.mui-table';
+@use './custom';
+@use './custom_opacity';
+@use './custom_text';
+@use './custom_margin_padding';
+@use './custom_width_height';
+@use './custom_mui-table';
 
-@import './simplebar';
+@use './simplebar';

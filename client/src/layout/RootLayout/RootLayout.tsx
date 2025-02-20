@@ -193,7 +193,12 @@ const RootLayout = withErrorBoundary(() => {
    * ******************************************************************************************************************/
 
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <ThemeBase>
         <AppContextProvider value={{ auth, setAuth, clearAuth, showHtmlLoading, hideHtmlLoading, removeHtmlLoading }}>
           <LoadingContextProvider>
