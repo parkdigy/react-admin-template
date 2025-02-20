@@ -1,4 +1,4 @@
-@use './variable_color' as *;
+@use './variable_color' as c;
 
 // prettier-ignore
 html {
@@ -25,47 +25,47 @@ html {
   .text-line-through { text-decoration: line-through; }
 
   /* primary */
-  .text-primary { color: $color-primary; }
-  .text-primary-light { color: $color-primary-light; }
-  .text-primary-dark { color: $color-primary-dark; }
+  .text-primary { color: c.$color-primary; }
+  .text-primary-light { color: c.$color-primary-light; }
+  .text-primary-dark { color: c.$color-primary-dark; }
 
   /* secondary */
-  .text-secondary { color: $color-secondary; }
-  .text-secondary-light { color: $color-secondary-light; }
-  .text-secondary-dark { color: $color-secondary-dark; }
+  .text-secondary { color: c.$color-secondary; }
+  .text-secondary-light { color: c.$color-secondary-light; }
+  .text-secondary-dark { color: c.$color-secondary-dark; }
 
   /* error */
-  .text-error { color: $color-error; }
-  .text-error-light { color: $color-error-light; }
-  .text-error-dark { color: $color-error-dark; }
+  .text-error { color: c.$color-error; }
+  .text-error-light { color: c.$color-error-light; }
+  .text-error-dark { color: c.$color-error-dark; }
 
   /* warning */
-  .text-warning { color: $color-warning; }
-  .text-warning-light { color: $color-warning-light; }
-  .text-warning-dark { color: $color-warning-dark; }
+  .text-warning { color: c.$color-warning; }
+  .text-warning-light { color: c.$color-warning-light; }
+  .text-warning-dark { color: c.$color-warning-dark; }
 
   /* info */
-  .text-info { color: $color-info; }
-  .text-info-light { color: $color-info-light; }
-  .text-info-dark { color: $color-info-dark; }
+  .text-info { color: c.$color-info; }
+  .text-info-light { color: c.$color-info-light; }
+  .text-info-dark { color: c.$color-info-dark; }
 
   /* success */
-  .text-success { color: $color-success; }
-  .text-success-light { color: $color-success-light; }
-  .text-success-dark { color: $color-success-dark; }
+  .text-success { color: c.$color-success; }
+  .text-success-light { color: c.$color-success-light; }
+  .text-success-dark { color: c.$color-success-dark; }
 
   /* grey, gray */
-  .text-gray, .text-grey { color: $color-gray; }
-  .text-gray-50, .text-grey-50 { color: $color-gray-50; }
-  .text-gray-100, .text-grey-100 { color: $color-gray-100; }
-  .text-gray-200, .text-grey-200 { color: $color-gray-200; }
-  .text-gray-300, .text-grey-300 { color: $color-gray-300; }
-  .text-gray-400, .text-grey-400 { color: $color-gray-400; }
-  .text-gray-500, .text-grey-500 { color: $color-gray-500; }
-  .text-gray-600, .text-grey-600 { color: $color-gray-600; }
-  .text-gray-700, .text-grey-700 { color: $color-gray-700; }
-  .text-gray-800, .text-grey-800 { color: $color-gray-800; }
-  .text-gray-900, .text-grey-900 { color: $color-gray-900; }
+  .text-gray, .text-grey { color: c.$color-gray; }
+  .text-gray-50, .text-grey-50 { color: c.$color-gray-50; }
+  .text-gray-100, .text-grey-100 { color: c.$color-gray-100; }
+  .text-gray-200, .text-grey-200 { color: c.$color-gray-200; }
+  .text-gray-300, .text-grey-300 { color: c.$color-gray-300; }
+  .text-gray-400, .text-grey-400 { color: c.$color-gray-400; }
+  .text-gray-500, .text-grey-500 { color: c.$color-gray-500; }
+  .text-gray-600, .text-grey-600 { color: c.$color-gray-600; }
+  .text-gray-700, .text-grey-700 { color: c.$color-gray-700; }
+  .text-gray-800, .text-grey-800 { color: c.$color-gray-800; }
+  .text-gray-900, .text-grey-900 { color: c.$color-gray-900; }
 
   /* size */
   .text-1 { font-size: 1px; }
