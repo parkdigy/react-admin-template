@@ -1,4 +1,4 @@
 export interface ErrorRetryProps {
-  fullScreen?: boolean;
+  error?: Error;
   onRetry?: () => void;
 }

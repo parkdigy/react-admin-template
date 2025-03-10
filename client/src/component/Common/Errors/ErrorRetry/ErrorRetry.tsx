@@ -4,54 +4,50 @@
 
 import React from 'react';
 import { ErrorRetryProps as Props } from './ErrorRetry.types';
-import Button from '../../Button';
-import Icon from '../../Icon';
-import styled from 'styled-components';
+import { Alert, Box, Button, Icon, Typography } from '@mui/material';
+import './ErrorRetry.scss';
 
-const ErrorRetry: React.FC<Props> = ({ fullScreen, onRetry }) => {
+const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
+  /********************************************************************************************************************
+   * State
+   * ******************************************************************************************************************/
+
+  const [showError, setShowError] = useState(false);
+
   /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
   return (
-    <Container className={classnames(fullScreen && 'full-screen')}>
-      <div>
-        <Icon size={32}>error</Icon>
-      </div>
-      <div>
-        <p>오류가 발생했습니다.</p>
-        {onRetry && <p>잠시 후 재시도 해주세요.</p>}
-      </div>
-      {onRetry && (
-        <Button color='light' onClick={onRetry}>
-          재시도
-        </Button>
-      )}
-    </Container>
+    <div className='ErrorRetry'>
+      <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
+        <div>
+          <Icon
+            fontSize='large'
+            color='error'
+            style={{ cursor: 'pointer' }}
+            onClick={error ? () => setShowError(true) : undefined}
+          >
+            error
+          </Icon>
+        </div>
+        {error && showError && (
+          <Alert severity='error' style={{ textAlign: 'left' }}>
+            <div>
+              <pre style={{ margin: 0, padding: 0 }}>{error.stack}</pre>
+            </div>
+          </Alert>
+        )}
+        <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
+        <p>잠시 후 재시도 해주세요.</p>
+        {onRetry && (
+          <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={onRetry}>
+            <Typography fontSize='inherit'>재시도</Typography>
+          </Button>
+        )}
+      </Box>
+    </div>
   );
 };
 
 export default ErrorRetry;
-
-/********************************************************************************************************************
- * Styled Components
- * ******************************************************************************************************************/
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-  gap: 10px;
-
-  &.full-screen {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-`;
