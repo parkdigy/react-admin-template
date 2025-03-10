@@ -22,11 +22,16 @@ const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
     <div className='ErrorRetry'>
       <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
         <div>
-          <Icon fontSize='large' color='error' style={{ cursor: 'pointer' }} onClick={() => setShowError(true)}>
+          <Icon
+            fontSize='large'
+            color='error'
+            style={{ cursor: 'pointer' }}
+            onClick={error ? () => setShowError(true) : undefined}
+          >
             error
           </Icon>
         </div>
-        {showError && (
+        {error && showError && (
           <Alert severity='error' style={{ textAlign: 'left' }}>
             <div>
               <pre style={{ margin: 0, padding: 0 }}>{error.stack}</pre>
