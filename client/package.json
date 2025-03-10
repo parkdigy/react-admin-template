@@ -83,6 +83,7 @@
     "simplebar-react": "^3.2.5",
     "source-map-loader": "^5.0.0",
     "style-loader": "^4.0.0",
+    "styled-components": "^6.1.15",
     "ts-loader": "^9.5.2",
     "typescript": "5.7.3",
     "url-loader": "^4.1.1",

@@ -30,11 +30,7 @@ const ErrorCatcher = withErrorBoundary(({ children }: { children: ReactElement }
     [boundaryError]
   );
 
-  return boundaryError && !skipError ? (
-    <ErrorRetry error={boundaryError as Error} onRetry={() => location.reload()} />
-  ) : (
-    children
-  );
+  return boundaryError && !skipError ? <ErrorRetry onRetry={() => location.reload()} /> : children;
 });
 
 const ErrorBoundary: React.FC<Props> = ({ children }) => {
