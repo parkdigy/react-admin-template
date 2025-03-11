@@ -10,13 +10,3 @@ export interface AppContextValue {
   hideHtmlLoading(): void; // HTML 로딩 숨김
   removeHtmlLoading(): void; // HTML 로딩 제거
 }
-
-/* eslint-disable */
-export const AppContextDefaultValue: AppContextValue = {
-  setAuth() {},
-  clearAuth() {},
-  showHtmlLoading() {},
-  hideHtmlLoading() {},
-  removeHtmlLoading() {},
-};
-/* eslint-enable */
