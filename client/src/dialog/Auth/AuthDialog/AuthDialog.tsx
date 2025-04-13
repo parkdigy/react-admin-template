@@ -68,6 +68,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, 
     <Dialog
       ref={ref}
       autoClose
+      maxWidth='xs'
       color={color}
       backdropClose
       escapeClose
@@ -75,10 +76,8 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, 
       title='계정 인증'
       content={
         <Grid container spacing={2} direction='column' sx={{ mt: 0.5, minWidth: 300 }}>
-          <Grid item style={{ textAlign: 'center' }}>
-            {intro}
-          </Grid>
-          <Grid item>
+          <Grid style={{ textAlign: 'center' }}>{intro}</Grid>
+          <Grid>
             <Form sx={{ mt: 2 }} color={color} onSubmit={handleSubmit}>
               <FormBody>
                 <FormRow>

@@ -15,7 +15,7 @@ const useFormBlockValid = (
   onValidChange: (valid: FormValidType) => void,
   delay?: boolean
 ) => {
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout>(undefined);
 
   const [valid, setValid] = useState<FormValidType>(true);
 

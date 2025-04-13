@@ -4,10 +4,8 @@
 
 import React from 'react';
 import { SearchButton } from '@pdg/react-form';
-import { Dropdown } from '@mui/base/Dropdown';
-import { Menu } from '@mui/base/Menu';
 import { SearchExportButtonProps } from './SearchExportButton.types';
-import { ClickAwayListener, MenuItem as BaseMenuItem, menuItemClasses, styled, Typography } from '@mui/material';
+import { MenuItem as BaseMenuItem, menuItemClasses, styled, Typography, Menu } from '@mui/material';
 import { PdgIcon } from '@pdg/react-component';
 
 const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyle, items, ...props }) => {
@@ -15,13 +13,14 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
    * Ref
    * ******************************************************************************************************************/
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const firstMenuItemRef = useRef<HTMLLIElement>(null);
 
   /********************************************************************************************************************
    * State
    * ******************************************************************************************************************/
 
-  const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   /********************************************************************************************************************
    * Memo
@@ -30,57 +29,57 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
   const style = useMemo(() => ({ ...initStyle, paddingLeft: 7, paddingRight: 8 }), [initStyle]);
 
   /********************************************************************************************************************
+   * Event Handler
+   * ******************************************************************************************************************/
+
+  const handleClick = useCallback((event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setAnchorEl(null);
+  }, []);
+
+  /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
   return items ? (
-    <ClickAwayListener onClickAway={() => setOpen(false)}>
-      <div>
-        <SearchButton {...props} style={style} startIcon='download' onClick={() => setOpen((old) => !old)} />
-        <Dropdown open={open}>
-          <Menu slots={{ listbox: Listbox }}>
-            {items.map((info, idx) => (
-              <MenuItem
-                key={idx}
-                ref={idx === 0 ? firstMenuItemRef : undefined}
-                onClick={() => {
-                  setOpen(false);
-                  info.onClick();
-                }}
-              >
-                {info.icon && (
-                  <PdgIcon className='opacity-50' color={info.color}>
-                    {info.icon}
-                  </PdgIcon>
-                )}
-                <Typography color={info.color}>{info.label}</Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Dropdown>
-      </div>
-    </ClickAwayListener>
+    <div ref={containerRef}>
+      <SearchButton
+        {...props}
+        style={style}
+        startIcon='download'
+        aria-haspopup='true'
+        aria-expanded={anchorEl ? 'true' : undefined}
+        onClick={handleClick}
+      />
+      <Menu open={!!anchorEl} anchorEl={anchorEl} onClose={handleClose}>
+        {items.map((info, idx) => (
+          <MenuItem
+            key={idx}
+            ref={idx === 0 ? firstMenuItemRef : undefined}
+            onClick={() => {
+              handleClose();
+              info.onClick();
+            }}
+          >
+            {info.icon && (
+              <PdgIcon className='opacity-50' color={info.color}>
+                {info.icon}
+              </PdgIcon>
+            )}
+            <Typography color={info.color}>{info.label}</Typography>
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
   ) : (
     <SearchButton {...props} style={style} startIcon='download' />
   );
 };
 
 export default SearchExportButton;
-
-const Listbox = styled('ul')`
-  position: absolute;
-  right: 0;
-  padding: 6px;
-  margin: 5px 0;
-  min-width: 200px;
-  border-radius: 12px;
-  overflow: auto;
-  outline: 0;
-  background: #fff;
-  border: 1px solid #dae2ed;
-  box-shadow: 0 4px 10px #dae2ed;
-  z-index: 1;
-`;
 
 const MenuItem = styled(BaseMenuItem)`
   list-style: none;

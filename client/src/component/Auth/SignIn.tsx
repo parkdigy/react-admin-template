@@ -91,10 +91,10 @@ const SignIn: React.FC = () => {
       </CardContent>
       <CardActions disableSpacing sx={{ pt: 0 }}>
         <Grid container>
-          <Grid item>
+          <Grid>
             <Button variant='text'>회원가입</Button>
           </Grid>
-          <Grid item sx={{ flex: 1, textAlign: 'right' }}>
+          <Grid sx={{ flex: 1, textAlign: 'right' }}>
             <Button variant='text'>아이디 찾기</Button>
             <Button variant='text'>비밀번호 찾기</Button>
           </Grid>

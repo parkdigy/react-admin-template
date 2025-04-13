@@ -161,7 +161,9 @@ const app = {
       const key = _enqueueSnackbar(message, {
         autoHideDuration: typeof message === 'string' ? this.getSnackbarAutoHideDuration(message) : undefined,
         anchorOrigin: { horizontal: 'right', vertical: 'top' },
-        onClick: () => this.closeSnackbar(key),
+        SnackbarProps: {
+          onClick: () => this.closeSnackbar(key),
+        },
         ...options,
       });
     } else {

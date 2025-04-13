@@ -42,7 +42,7 @@ const RootLayout = withErrorBoundary(() => {
    * Ref
    * ******************************************************************************************************************/
 
-  const htmlLoadingHideCompleteTimer = useRef<NodeJS.Timeout | undefined>();
+  const htmlLoadingHideCompleteTimer = useRef<NodeJS.Timeout>(undefined);
 
   /********************************************************************************************************************
    * State
@@ -193,12 +193,7 @@ const RootLayout = withErrorBoundary(() => {
    * ******************************************************************************************************************/
 
   return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
+    <BrowserRouter>
       <ThemeBase>
         <AppContextProvider value={{ auth, setAuth, clearAuth, showHtmlLoading, hideHtmlLoading, removeHtmlLoading }}>
           <LoadingContextProvider>

@@ -4,10 +4,9 @@
 
 import React from 'react';
 import { CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import app from '@app';
 import { Tooltip } from '@mui/material';
-import { PdgIconButton } from '@pdg/react-component';
+import { PdgCopyToClipboard, PdgIconButton } from '@pdg/react-component';
 
 const CopyToClipboardIconButton: React.FC<Props> = ({ text, tooltip, icon, size, successMsg, ...props }) => {
   const content = useMemo(
@@ -20,12 +19,12 @@ const CopyToClipboardIconButton: React.FC<Props> = ({ text, tooltip, icon, size,
   );
 
   return (
-    <CopyToClipboard
+    <PdgCopyToClipboard
       text={text}
       onCopy={() => app.showSuccessSnackbar(ifUndefined(successMsg, '클립보드에 복사되었습니다.'))}
     >
       {tooltip === undefined ? content : <Tooltip title={tooltip}>{content}</Tooltip>}
-    </CopyToClipboard>
+    </PdgCopyToClipboard>
   );
 };
 

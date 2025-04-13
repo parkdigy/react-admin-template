@@ -22,13 +22,20 @@ const _mediaQuery = {
 } as const;
 
 const _useScreenSize = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isXxs = useMediaQuery('(max-width: 360px)');
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isXs = useMediaQuery('(max-width: 540px)');
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isSm = useMediaQuery('(max-width: 620px)');
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isMd = useMediaQuery('(max-width: 992px)');
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isLg = useMediaQuery('(max-width: 1200px)');
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const isMax = useMediaQuery('(min-width: 1301px)');
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   return useMemo(() => {
     function screenValue(xxs: any, xs?: any, sm?: any, md?: any, lg?: any, max?: any) {
       const resultXxs = xxs;

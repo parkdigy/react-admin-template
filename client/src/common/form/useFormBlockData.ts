@@ -14,7 +14,7 @@ const useFormBlockData = <T, RT extends Required<T>>(
   onChange: (data: T) => void,
   delay?: boolean
 ) => {
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout>(undefined);
 
   /********************************************************************************************************************
    * Effect
