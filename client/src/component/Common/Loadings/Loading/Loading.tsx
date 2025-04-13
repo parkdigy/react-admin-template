@@ -12,7 +12,7 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
    * ******************************************************************************************************************/
 
   const showCountRef = useRef(0);
-  const notUseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const notUseTimerRef = useRef<NodeJS.Timeout>(undefined);
 
   /********************************************************************************************************************
    * State
@@ -27,12 +27,12 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
 
   useEffect(() => {
     showCountRef.current = 0;
-    notUseTimerRef.current = null;
+    notUseTimerRef.current = undefined;
 
     return () => {
       if (notUseTimerRef.current) {
         clearTimeout(notUseTimerRef.current);
-        notUseTimerRef.current = null;
+        notUseTimerRef.current = undefined;
       }
     };
   }, []);
@@ -45,7 +45,7 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
   const increaseShowCount = useCallback(() => {
     if (notUseTimerRef.current) {
       clearTimeout(notUseTimerRef.current);
-      notUseTimerRef.current = null;
+      notUseTimerRef.current = undefined;
     }
 
     showCountRef.current += 1;
@@ -62,11 +62,11 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
 
         if (notUseTimerRef.current) {
           clearTimeout(notUseTimerRef.current);
-          notUseTimerRef.current = null;
+          notUseTimerRef.current = undefined;
         }
 
         notUseTimerRef.current = setTimeout(() => {
-          notUseTimerRef.current = null;
+          notUseTimerRef.current = undefined;
           setUse(false);
         }, 300);
       }
