@@ -1,5 +1,6 @@
 import { DialogProps, DialogCommands, DialogRequireProps } from '@pdg/react-dialog';
 import {
+  FormEmailProps,
   FormMobileProps,
   FormNumberProps,
   FormTelProps,
@@ -9,7 +10,7 @@ import {
 } from '@pdg/react-form';
 import { ReactNode } from 'react';
 
-export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea';
+export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email';
 
 export interface InputDialogProps<
   T extends InputDialogInputType = 'text',
@@ -31,7 +32,9 @@ export interface InputDialogProps<
           ? InputDialogMobileInputProps
           : T extends 'textarea'
             ? InputDialogTextareaInputProps
-            : InputDialogTextInputProps;
+            : T extends 'email'
+              ? InputDialogEmailInputProps
+              : InputDialogTextInputProps;
   onConfirm?(dialog: DialogCommands, value: Value | ([Required] extends [true] ? never : undefined)): void;
 }
 
@@ -66,3 +69,5 @@ export type InputDialogTelInputProps = Pick<FormTelProps, DefaultPickKeys>;
 export type InputDialogMobileInputProps = Pick<FormMobileProps, DefaultPickKeys>;
 
 export type InputDialogTextareaInputProps = Pick<FormTextareaProps, DefaultPickKeys | 'rows' | 'maxLength'>;
+
+export type InputDialogEmailInputProps = Pick<FormEmailProps, DefaultPickKeys>;

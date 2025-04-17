@@ -11,6 +11,7 @@ import {
   FormButton,
   FormCol,
   FormCommands,
+  FormEmail,
   FormFooter,
   FormMobile,
   FormNumber,
@@ -164,6 +165,15 @@ function InputDialog<
                 )}
                 {inputType === 'textarea' && (
                   <FormTextarea
+                    name='input'
+                    value={initValue as string | undefined}
+                    required={required}
+                    onKeyDown={handleKeyDown}
+                    {...inputProps}
+                  />
+                )}
+                {inputType === 'email' && (
+                  <FormEmail
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
