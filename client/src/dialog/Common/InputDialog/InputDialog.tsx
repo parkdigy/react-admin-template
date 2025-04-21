@@ -16,6 +16,8 @@ import {
   FormMobile,
   FormNumber,
   FormRow,
+  FormTag,
+  FormTagValue,
   FormTel,
   FormText,
   FormTextarea,
@@ -172,6 +174,14 @@ function InputDialog<
                     {...inputProps}
                   />
                 )}
+                {inputType === 'tag' && (
+                  <FormTag
+                    name='input'
+                    value={initValue as FormTagValue | undefined}
+                    required={required}
+                    {...inputProps}
+                  />
+                )}
                 {inputType === 'email' && (
                   <FormEmail
                     name='input'
@@ -203,13 +213,13 @@ function InputDialog<
   return (
     <Dialog
       fullWidth
-      ref={dialogRef}
       autoClose
       escapeClose
       backdropClose
       content={content}
       maxWidth={maxWidth}
       {...props}
+      ref={dialogRef}
       onShow={onShow}
       onClose={onClose}
     />

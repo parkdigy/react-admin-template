@@ -3,6 +3,8 @@ import {
   FormEmailProps,
   FormMobileProps,
   FormNumberProps,
+  FormTagProps,
+  FormTagValue,
   FormTelProps,
   FormTextareaProps,
   FormTextProps,
@@ -10,12 +12,12 @@ import {
 } from '@pdg/react-form';
 import { ReactNode } from 'react';
 
-export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email';
+export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag';
 
 export interface InputDialogProps<
   T extends InputDialogInputType = 'text',
   Required extends boolean | undefined = undefined,
-  Value extends string | number = T extends 'number' ? number : string,
+  Value extends string | FormTagValue | number = T extends 'number' ? number : T extends 'tag' ? FormTagValue : string,
 > extends DialogRequireProps,
     Pick<DialogProps, 'titleIcon' | 'title' | 'color' | 'maxWidth'> {
   inputType?: InputDialogInputType;
@@ -32,9 +34,11 @@ export interface InputDialogProps<
           ? InputDialogMobileInputProps
           : T extends 'textarea'
             ? InputDialogTextareaInputProps
-            : T extends 'email'
-              ? InputDialogEmailInputProps
-              : InputDialogTextInputProps;
+            : T extends 'tag'
+              ? InputDialogTagInputProps
+              : T extends 'email'
+                ? InputDialogEmailInputProps
+                : InputDialogTextInputProps;
   onConfirm?(dialog: DialogCommands, value: Value | ([Required] extends [true] ? never : undefined)): void;
 }
 
@@ -69,5 +73,7 @@ export type InputDialogTelInputProps = Pick<FormTelProps, DefaultPickKeys>;
 export type InputDialogMobileInputProps = Pick<FormMobileProps, DefaultPickKeys>;
 
 export type InputDialogTextareaInputProps = Pick<FormTextareaProps, DefaultPickKeys | 'rows' | 'maxLength'>;
+
+export type InputDialogTagInputProps = Pick<FormTagProps, DefaultPickKeys>;
 
 export type InputDialogEmailInputProps = Pick<FormEmailProps, DefaultPickKeys>;
