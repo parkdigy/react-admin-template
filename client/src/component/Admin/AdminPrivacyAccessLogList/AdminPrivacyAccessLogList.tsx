@@ -1,5 +1,11 @@
 import React from 'react';
-import { SearchTableCommands, SearchTableData, TableColumns } from '@pdg/react-table';
+import {
+  SearchTableCommands,
+  SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  TableColumns,
+} from '@pdg/react-table';
 import { HashSearchTable, SearchExportButton } from '@ccomp';
 import {
   SearchGroup,
@@ -115,23 +121,34 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
     []
   );
 
+  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
+
+  const table = useMemo(
+    () =>
+      ({
+        showEvenColor: true,
+        defaultAlign: 'center',
+        columns: tableColumns,
+      }) as SearchTableTableProps<AdminPrivacyAccessLogListDataItem>,
+    [tableColumns]
+  );
+
   /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
-  return (
-    <HashSearchTable<AdminPrivacyAccessLogListDataItem>
-      ref={searchTableRef}
-      hash={!noHash}
-      fullHeight
-      onGetData={getData}
-      search={{ searchGroups }}
-      table={{
-        showEvenColor: true,
-        defaultAlign: 'center',
-        columns: tableColumns,
-      }}
-    />
+  return useMemo(
+    () => (
+      <HashSearchTable<AdminPrivacyAccessLogListDataItem>
+        ref={searchTableRef}
+        hash={!noHash}
+        fullHeight
+        onGetData={getData}
+        search={search}
+        table={table}
+      />
+    ),
+    [getData, noHash, search, table]
   );
 };
 

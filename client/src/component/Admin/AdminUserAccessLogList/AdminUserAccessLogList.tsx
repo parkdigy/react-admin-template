@@ -3,7 +3,13 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { SearchTableCommands, SearchTableData, TableColumns } from '@pdg/react-table';
+import {
+  SearchTableCommands,
+  SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  TableColumns,
+} from '@pdg/react-table';
 import { SearchGroup, FormText, FormValueMap, FormDateRangePicker, FormSelect } from '@pdg/react-form';
 import { SearchExportButton, HashSearchTable } from '@ccomp';
 import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
@@ -117,23 +123,34 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
     []
   );
 
+  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
+
+  const table = useMemo(
+    () =>
+      ({
+        showEvenColor: true,
+        columns: tableColumns,
+      }) as SearchTableTableProps<AdminUserAccessLogListDataItem>,
+    [tableColumns]
+  );
+
   /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
-  return (
-    <HashSearchTable<AdminUserAccessLogListDataItem>
-      ref={searchTableRef}
-      hash={!noHash}
-      stickyHeader
-      fullHeight
-      onGetData={getData}
-      search={{ searchGroups }}
-      table={{
-        showEvenColor: true,
-        columns: tableColumns,
-      }}
-    />
+  return useMemo(
+    () => (
+      <HashSearchTable<AdminUserAccessLogListDataItem>
+        ref={searchTableRef}
+        hash={!noHash}
+        stickyHeader
+        fullHeight
+        onGetData={getData}
+        search={search}
+        table={table}
+      />
+    ),
+    [getData, noHash, search, table]
   );
 };
 

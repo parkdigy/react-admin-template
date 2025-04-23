@@ -3,7 +3,15 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { SearchTableCommands, SearchTableData, TableButton, TableColumn, TableColumns } from '@pdg/react-table';
+import {
+  SearchTableCommands,
+  SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  TableButton,
+  TableColumn,
+  TableColumns,
+} from '@pdg/react-table';
 import { SearchExportButton, HashSearchTable, SearchAddButton } from '@ccomp';
 import { SearchGroup, FormValueMap, FormSelectCommands, FormSelect, FormSearch } from '@pdg/react-form';
 import { AdminUserListProps as Props } from './AdminUserList.types';
@@ -312,24 +320,38 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
     ]
   );
 
-  /********************************************************************************************************************
-   * Render
-   * ******************************************************************************************************************/
+  const search = useMemo(
+    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as SearchTableSearchProps,
+    [searchGroups]
+  );
 
-  return (
-    <HashSearchTable<AdminUserListDataItem>
-      ref={searchTableRef}
-      hash={!noHash}
-      fullHeight
-      onGetData={getData}
-      search={{ sx: { pt: 2.5 }, labelShrink: true, searchGroups }}
-      table={{
+  const table = useMemo(
+    () =>
+      ({
         showEvenColor: true,
         defaultAlign: 'center',
         columns: tableColumns,
         onClick: showFormDialog,
-      }}
-    />
+      }) as SearchTableTableProps<AdminUserListDataItem>,
+    [showFormDialog, tableColumns]
+  );
+
+  /********************************************************************************************************************
+   * Render
+   * ******************************************************************************************************************/
+
+  return useMemo(
+    () => (
+      <HashSearchTable<AdminUserListDataItem>
+        ref={searchTableRef}
+        hash={!noHash}
+        fullHeight
+        onGetData={getData}
+        search={search}
+        table={table}
+      />
+    ),
+    [getData, noHash, search, table]
   );
 };
 

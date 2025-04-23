@@ -2,6 +2,8 @@ import React from 'react';
 import {
   SearchTableCommands,
   SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
   TableColumn,
   TableColumns,
   TableMenuButton,
@@ -300,26 +302,37 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
     [handleTableMenuClick]
   );
 
-  /********************************************************************************************************************
-   * Render
-   * ******************************************************************************************************************/
+  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
 
-  return (
-    <HashSearchTable<TestDataListDataItem>
-      ref={searchTableRef}
-      hash={!noHash}
-      fullHeight
-      onGetData={getData}
-      search={{ searchGroups }}
-      table={{
+  const table = useMemo(
+    () =>
+      ({
         showEvenColor: true,
         defaultAlign: 'center',
         topHeadRows: tableTopHeadRows,
         columns: tableColumns,
         onClick: handleTableItemClick,
         onGetBodyColumnClassName: handleTableGetBodyColumnClassName,
-      }}
-    />
+      }) as SearchTableTableProps<TestDataListDataItem>,
+    [handleTableGetBodyColumnClassName, handleTableItemClick, tableColumns, tableTopHeadRows]
+  );
+
+  /********************************************************************************************************************
+   * Render
+   * ******************************************************************************************************************/
+
+  return useMemo(
+    () => (
+      <HashSearchTable<TestDataListDataItem>
+        ref={searchTableRef}
+        hash={!noHash}
+        fullHeight
+        onGetData={getData}
+        search={search}
+        table={table}
+      />
+    ),
+    [getData, noHash, search, table]
   );
 };
 

@@ -3,7 +3,13 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { SearchTableCommands, SearchTableData, TableColumns } from '@pdg/react-table';
+import {
+  SearchTableCommands,
+  SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  TableColumns,
+} from '@pdg/react-table';
 import { SearchGroup, FormText, FormValueMap, FormDateRangePicker, FormSelect } from '@pdg/react-form';
 import { AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.types';
 import { Admin, AdminUserLoginLogListDataItem } from '@const';
@@ -109,20 +115,38 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
     []
   );
 
+  const search = useMemo(
+    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as SearchTableSearchProps,
+    [searchGroups]
+  );
+
+  const table = useMemo(
+    () =>
+      ({
+        showEvenColor: true,
+        defaultAlign: 'center',
+        columns: tableColumns,
+      }) as SearchTableTableProps<AdminUserLoginLogListDataItem>,
+    [tableColumns]
+  );
+
   /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
-  return (
-    <HashSearchTable<AdminUserLoginLogListDataItem>
-      ref={searchTableRef}
-      hash={!noHash}
-      fullHeight
-      stickyHeader
-      onGetData={getData}
-      search={{ sx: { pt: 2.5 }, labelShrink: true, searchGroups }}
-      table={{ showEvenColor: true, defaultAlign: 'center', columns: tableColumns }}
-    />
+  return useMemo(
+    () => (
+      <HashSearchTable<AdminUserLoginLogListDataItem>
+        ref={searchTableRef}
+        hash={!noHash}
+        fullHeight
+        stickyHeader
+        onGetData={getData}
+        search={search}
+        table={table}
+      />
+    ),
+    [getData, noHash, search, table]
   );
 };
 
