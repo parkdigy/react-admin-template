@@ -5,7 +5,6 @@
 import React from 'react';
 import { AdminMenuListProps as Props } from './AdminMenuList.types';
 import { Admin, AdminMenuListData, AdminMenuListDataItem } from '@const';
-import { AdminMenuButtonsContainer, AdminMenuContainer, AdminMenuListContainer } from './AdminMenuList.style';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminMenuFormDialog } from '@dialog';
 import { AdminMenuListItem } from './controls';
@@ -13,6 +12,7 @@ import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 import { PdgButton } from '@pdg/react-component';
+import { styled } from '@mui/material';
 
 export const AdminMenuList: React.FC<Props> = () => {
   const id = useId();
@@ -242,3 +242,30 @@ export const AdminMenuList: React.FC<Props> = () => {
 };
 
 export default AdminMenuList;
+
+/********************************************************************************************************************
+ * Styled Components
+ * ******************************************************************************************************************/
+
+export const AdminMenuContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+`;
+
+export const AdminMenuButtonsContainer = styled('div')`
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+
+  > .MuiButtonBase-root {
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+`;
+
+export const AdminMenuListContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+`;
