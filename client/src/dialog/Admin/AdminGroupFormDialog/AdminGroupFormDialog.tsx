@@ -46,7 +46,7 @@ const AdminGroupFormDialog = ({ id, subTitle, onSuccess, onShow, onClose }: Prop
 
   /** 저장 성공 이벤트 */
   const handleSuccess = useCallback(() => {
-    onSuccess && onSuccess();
+    onSuccess?.();
     close();
   }, [onSuccess, close]);
 
@@ -117,7 +117,7 @@ export default AdminGroupFormDialog;
 //
 //   /** 저장 성공 - AdminGroupForm.onSuccess */
 //   const handleSuccess = useCallback(() => {
-//     onSuccess && onSuccess();
+//     onSuccess?.();
 //     close();
 //   }, [onSuccess, close]);
 //

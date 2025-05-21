@@ -92,7 +92,7 @@ function InputDialog<
         } else {
           value = empty(value) ? '' : value;
         }
-        onConfirm && onConfirm(dialogRef.current, value);
+        onConfirm?.(dialogRef.current, value);
       }
     },
     [inputType, onConfirm]

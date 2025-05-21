@@ -75,7 +75,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /** 목록 불러오기 */
   const getData = useCallback(
     (data: FormValueMap) => {
-      onRequestScrollToTop && onRequestScrollToTop();
+      onRequestScrollToTop?.();
       return new Promise<SearchTableData<TestDataListDataItem>>((resolve) => {
         Test.dataList(data).then(({ data: items, paging }) => {
           resolve({ items, paging });

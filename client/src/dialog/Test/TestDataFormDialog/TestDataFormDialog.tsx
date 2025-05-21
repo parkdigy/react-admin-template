@@ -42,7 +42,7 @@ const TestDataFormDialog: React.FC<TestDataFormDialogProps> = ({ id, subTitle, o
 
   /** 저장 성공 이벤트 */
   const handleSuccess = useCallback(() => {
-    onSuccess && onSuccess();
+    onSuccess?.();
     close();
   }, [onSuccess, close]);
 

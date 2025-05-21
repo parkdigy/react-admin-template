@@ -142,7 +142,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /** 사용자 목록 불러오기 */
   const getData = useCallback(
     (data: FormValueMap) => {
-      onRequestScrollToTop && onRequestScrollToTop();
+      onRequestScrollToTop?.();
       return new Promise<SearchTableData<AdminUserListDataItem>>((resolve) => {
         Admin.User.list(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
