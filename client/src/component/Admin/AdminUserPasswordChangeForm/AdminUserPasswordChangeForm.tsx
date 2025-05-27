@@ -54,7 +54,7 @@ const AdminUserPasswordChangeForm = () => {
   return (
     <div>
       <Alert severity='info' sx={{ mb: 2 }}>
-        변경 할 비밀번호를 입력해주세요.
+        변경 할 비밀번호를 입력해 주세요.
       </Alert>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
@@ -66,7 +66,7 @@ const AdminUserPasswordChangeForm = () => {
                 label='새 비밀번호'
                 required
                 autoFocus
-                helperText='10~20자리의 대소문자+숫자+특수문자 조합으로 입력해주세요.'
+                helperText='10~20자리의 대소문자+숫자+특수문자 조합으로 입력해 주세요.'
                 validPattern={
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#&+\-%@=/\\:;,.‘“^`~_|!?*$#<>()[\]{}])[0-9\D]{10,20}/
                 }

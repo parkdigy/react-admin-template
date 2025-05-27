@@ -16,7 +16,7 @@ export function usePrivacyAccessReasonDialog(): (
         required: true,
         titleIcon: 'LockPerson',
         title: '개인정보 조회',
-        intro: <Typography color='error'>개인정보 조회 사유를 입력해주세요.</Typography>,
+        intro: <Typography color='error'>개인정보 조회 사유를 입력해 주세요.</Typography>,
         color: 'error',
         ...props,
       } as any),

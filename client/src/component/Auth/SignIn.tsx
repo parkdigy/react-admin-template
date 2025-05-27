@@ -35,7 +35,7 @@ const SignIn: React.FC = () => {
         if (err.response?.data?.result?.m) {
           setErrorText(err.response.data.result.m);
         } else {
-          setErrorText('로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+          setErrorText('로그인 중 오류가 발생했습니다. 잠시 후 재시도 해주세요.');
         }
       });
   }, []);
