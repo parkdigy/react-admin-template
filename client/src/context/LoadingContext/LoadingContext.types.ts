@@ -3,9 +3,7 @@ export interface LoadingContextValue {
   hideLoading(): void; // 로딩 숨김
 }
 
-/* eslint-disable */
 export const LoadingContextDefaultValue: LoadingContextValue = {
   showLoading() {},
   hideLoading() {},
 };
-/* eslint-enable */

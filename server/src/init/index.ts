@@ -2,7 +2,6 @@ import './global.PdgUtil';
 import path from 'path';
 import dotenv from 'dotenv';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 dotenv.config({ path: path.resolve(__dirname, './../../.env') }).parsed;
 
 declare global {
