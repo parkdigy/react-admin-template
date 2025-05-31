@@ -49,7 +49,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   useEffect(() => {
     loadStatusList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+  }, []);
 
   /********************************************************************************************************************
    * Function
