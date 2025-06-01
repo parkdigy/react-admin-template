@@ -6,7 +6,7 @@
 import '../../init';
 
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { createApi, ApiResult } from '@api';
 import app from '@app';
 import { ApiError } from '@pdg/api';

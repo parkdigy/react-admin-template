@@ -1,4 +1,4 @@
-import { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction } from 'react-router';
 import { AuthDialogPropsParam } from '@dialog';
 import { AuthDialogType, EnqueueSnackbarType, CloseSnackbarType, MenuRoles } from './app.types';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';

@@ -43,8 +43,8 @@ declare global {
   type PartialOmit<T, K extends keyof T> = _PartialOmit<T, K>;
   type RequiredPick<T, K extends keyof T> = _RequiredPick<T, K>;
   type RequiredOmit<T, K extends keyof T> = _RequiredOmit<T, K>;
-  type Lv = _Lv;
-  type Vl = _Vl;
+  type Lv<L, V> = _Lv<L, V>;
+  type Vl<V, L> = _Vl<V, L>;
 
   /** compare */
   var empty: typeof _empty;
