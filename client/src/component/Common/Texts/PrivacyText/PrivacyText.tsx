@@ -5,7 +5,7 @@ import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
 import { PrivacyAccess } from '@const';
 import { useFirstSkipEffect } from '@pdg/react-hook';
-import { companyNoAutoDash, personalNoAutoDash, telNoAutoDash } from '@pdg/util';
+import { businessNoAutoDash, personalNoAutoDash, telNoAutoDash } from '@pdg/util';
 import { PdgIconButton } from '@pdg/react-component';
 
 export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textProps, type, parentId }) => {
@@ -57,7 +57,7 @@ export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textPro
         {textType === 'tel'
           ? telNoAutoDash(text)
           : textType === 'company_num'
-            ? companyNoAutoDash(text)
+            ? businessNoAutoDash(text)
             : textType === 'personal_num'
               ? personalNoAutoDash(text)
               : text}

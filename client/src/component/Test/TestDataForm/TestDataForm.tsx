@@ -11,7 +11,7 @@ import {
   FormFooter,
   FormTag,
   FormMobile,
-  FormCompanyNo,
+  FormBusinessNo,
   FormPersonalNo,
   FormTel,
   FormEmail,
@@ -176,7 +176,7 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
         </FormRow>
         <FormRow>
           <FormCol>
-            <FormCompanyNo name='company_num' label='Company Num' value={info?.company_num} required />
+            <FormBusinessNo name='company_num' label='Company Num' value={info?.company_num} required />
           </FormCol>
           <FormCol>
             <FormPersonalNo

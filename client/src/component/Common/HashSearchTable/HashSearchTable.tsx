@@ -3,7 +3,7 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { SearchTable, SearchTableCommands, TableItem } from '@pdg/react-table';
 import { HashSearchTableProps as Props } from './HashSearchTable.types';
 import './HashSearchTable.scss';

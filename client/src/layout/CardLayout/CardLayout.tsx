@@ -4,7 +4,7 @@
 
 import React from 'react';
 import * as AdminLayout from '@pdg/react-admin-layout';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router';
 import { SignIn } from '@comp';
 import { Box } from '@mui/material';
 import { useAppState } from '@context';
