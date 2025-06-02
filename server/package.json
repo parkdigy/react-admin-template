@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
-    "@pdg/util": "^1.0.25",
+    "@pdg/util": "^1.0.26",
     "@types/cookie-parser": "^1.4.8",
     "@types/csurf": "^1.11.5",
     "@types/ejs": "^3.1.5",
