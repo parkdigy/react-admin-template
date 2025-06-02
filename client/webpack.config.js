@@ -9,7 +9,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { SourceMapDevToolPlugin } = require('webpack');
 /* eslint-enable */
 
@@ -94,6 +94,7 @@ const options = {
   devServer: {
     host: env.APP_HOST,
     port: env.APP_PORT,
+    hot: true,
     historyApiFallback: true,
     client: {
       overlay: { errors: false, runtimeErrors: false, warnings: false },
@@ -167,6 +168,7 @@ const options = {
     new ForkTsCheckerWebpackPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
+      failOnError: isProduction,
       exclude: [
         path.resolve(__dirname, 'node_modules'),
         path.resolve(__dirname, 'dist'),
@@ -202,7 +204,6 @@ const options = {
           new FriendlyErrorsWebpackPlugin({
             clearConsole: true,
           }),
-          new webpack.HotModuleReplacementPlugin(),
           new ReactRefreshWebpackPlugin({ overlay: false }),
         ]),
   ],
@@ -250,7 +251,7 @@ const options = {
           {
             loader: 'sass-loader',
             options: {
-              // eslint-disable-next-line @typescript-eslint/no-require-imports
+              // eslint-disable-next-line @typescript-eslint/no-require-imports,no-undef
               implementation: require('sass'),
             },
           },
