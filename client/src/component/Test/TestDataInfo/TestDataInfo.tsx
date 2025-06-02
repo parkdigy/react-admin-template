@@ -2,7 +2,7 @@ import React from 'react';
 import { TestDataInfoProps as Props } from './TestDataInfo.types';
 import { InfoTable } from '@pdg/react-table';
 import { PrivacyAccess, Test, TestDataInfoData } from '@const';
-import { PrivacyCompanyNumText, PrivacyPersonalNumText, PrivacyTelText, PrivacyText } from '@ccomp';
+import { PrivacyBusinessNoText, PrivacyPersonalNoText, PrivacyTelText, PrivacyText } from '@ccomp';
 
 const TestDataInfo: React.FC<Props> = ({ id }) => {
   /********************************************************************************************************************
@@ -59,24 +59,24 @@ const TestDataInfo: React.FC<Props> = ({ id }) => {
         },
         {
           label: 'Company Num',
-          name: 'company_num',
+          name: 'business_no',
           xs: 12,
           md: 6,
           onRender: (info) => (
-            <PrivacyCompanyNumText
+            <PrivacyBusinessNoText
               type={PrivacyAccess.Type.TestPersonalNum}
               parentId={info.id}
-              text={info.company_num}
+              text={info.business_no}
             />
           ),
         },
         {
           label: 'Personal Num',
-          name: 'personal_num',
+          name: 'personal_no',
           xs: 12,
           md: 6,
           onRender: (info) => (
-            <PrivacyPersonalNumText type={PrivacyAccess.Type.TestMobile} parentId={info.id} text={info.personal_num} />
+            <PrivacyPersonalNoText type={PrivacyAccess.Type.TestMobile} parentId={info.id} text={info.personal_no} />
           ),
         },
         { type: 'divider', icon: 'BlurOn', label: '추가 정보' },

@@ -56,9 +56,9 @@ export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textPro
       <Typography {...textProps}>
         {textType === 'tel'
           ? telNoAutoDash(text)
-          : textType === 'company_num'
+          : textType === 'business_no'
             ? businessNoAutoDash(text)
-            : textType === 'personal_num'
+            : textType === 'personal_no'
               ? personalNoAutoDash(text)
               : text}
       </Typography>

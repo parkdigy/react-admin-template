@@ -176,13 +176,13 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
         </FormRow>
         <FormRow>
           <FormCol>
-            <FormBusinessNo name='company_num' label='Company Num' value={info?.company_num} required />
+            <FormBusinessNo name='business_no' label='Company Num' value={info?.business_no} required />
           </FormCol>
           <FormCol>
             <FormPersonalNo
-              name='personal_num'
+              name='personal_no'
               label='Personal Num'
-              value={info?.personal_num}
+              value={info?.personal_no}
               required
               skipPersonalNumberValidateCheck
             />

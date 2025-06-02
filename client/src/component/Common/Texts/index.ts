@@ -1,4 +1,4 @@
 export * from './PrivacyText';
 export * from './PrivacyTelText';
-export * from './PrivacyCompanyNumText';
-export * from './PrivacyPersonalNumText';
+export * from './PrivacyBusinessNoText';
+export * from './PrivacyPersonalNoText';

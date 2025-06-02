@@ -28,8 +28,8 @@ export interface TestDataListDataItem {
   tel: string;
   mobile: string;
   url: string;
-  company_num: string;
-  personal_num: string;
+  business_no: string;
+  personal_no: string;
   num_int: number;
   num_float: number;
   bool: boolean;
