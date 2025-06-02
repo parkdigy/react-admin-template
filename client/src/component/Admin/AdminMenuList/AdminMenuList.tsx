@@ -247,13 +247,13 @@ export default AdminMenuList;
  * Styled Components
  * ******************************************************************************************************************/
 
-export const AdminMenuContainer = styled('div')`
+const AdminMenuContainer = styled('div')`
   display: flex;
   flex-direction: column;
   width: 800px;
 `;
 
-export const AdminMenuButtonsContainer = styled('div')`
+const AdminMenuButtonsContainer = styled('div')`
   display: flex;
   margin-left: -5px;
   margin-right: -5px;
@@ -265,7 +265,7 @@ export const AdminMenuButtonsContainer = styled('div')`
   }
 `;
 
-export const AdminMenuListContainer = styled('div')`
+const AdminMenuListContainer = styled('div')`
   display: flex;
   flex-direction: column;
 `;
