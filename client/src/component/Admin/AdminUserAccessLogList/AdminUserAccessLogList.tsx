@@ -77,7 +77,6 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
             name='search_date'
             fromLabel='검색기간'
             toLabel='검색기간'
-            readOnlyInput
             disableFuture
             value={[dayjs().subtract(30, 'day'), dayjs()]}
           />

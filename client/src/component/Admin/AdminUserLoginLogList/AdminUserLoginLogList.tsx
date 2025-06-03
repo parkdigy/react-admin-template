@@ -86,7 +86,6 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
             value={[dayjs().subtract(1, 'month').add(1, 'day'), dayjs()]}
             fromLabel='검색기간'
             toLabel='검색기간'
-            readOnlyInput
             disableFuture
           />
         </SearchGroup>
