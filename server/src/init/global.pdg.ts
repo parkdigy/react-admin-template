@@ -10,7 +10,7 @@ import type {
   PartialOmit as _PartialOmit,
   RequiredPick as _RequiredPick,
   RequiredOmit as _RequiredOmit,
-} from '@pdg/util';
+} from '@pdg/types';
 import {
   empty as _empty,
   notEmpty as _notEmpty,
@@ -22,9 +22,9 @@ import {
   ifNotUndefined as _ifNotUndefined,
   ifNullOrUndefined as _ifNullOrUndefined,
   ifNotNullAndUndefined as _ifNotNullAndUndefined,
-} from '@pdg/util';
-import { now as _now, nowJs as _nowJs, nowTime as _nowTime } from '@pdg/util';
-import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/util';
+} from '@pdg/compare';
+import { now as _now, nowJs as _nowJs, nowTime as _nowTime } from '@pdg/date-time';
+import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/data';
 
 /* eslint-disable */
 declare global {

@@ -1,4 +1,5 @@
-import './global.PdgUtil';
+import './global.pdg';
+
 import path from 'path';
 import dotenv from 'dotenv';
 

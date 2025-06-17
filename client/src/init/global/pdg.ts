@@ -12,7 +12,7 @@ import type {
   RequiredOmit as _RequiredOmit,
   Lv as _Lv,
   Vl as _Vl,
-} from '@pdg/util';
+} from '@pdg/types';
 import {
   empty as _empty,
   notEmpty as _notEmpty,
@@ -24,10 +24,9 @@ import {
   ifNotUndefined as _ifNotUndefined,
   ifNullOrUndefined as _ifNullOrUndefined,
   ifNotNullAndUndefined as _ifNotNullAndUndefined,
-} from '@pdg/util';
-import { now as _now, nowJs as _nowJs, nowTime as _nowTime } from '@pdg/util';
-import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/util';
-import { nextTick as _nextTick } from '@pdg/util';
+} from '@pdg/compare';
+import { now as _now, nowJs as _nowJs, nowTime as _nowTime } from '@pdg/date-time';
+import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/data';
 
 /* eslint-disable */
 declare global {
@@ -69,7 +68,7 @@ declare global {
   var copy: typeof _copy;
 
   /** delay */
-  var nextTick: typeof _nextTick;
+  var nextTick: (callback: () => void, delay?: number) => NodeJS.Timeout;
 }
 /* eslint-enable */
 
@@ -96,6 +95,8 @@ globalThis.vl = _vl;
 globalThis.copy = _copy;
 
 /** delay */
-globalThis.nextTick = _nextTick;
+globalThis.nextTick = (callback: () => void, delay?: number): NodeJS.Timeout => {
+  return setTimeout(callback, delay === undefined ? 1 : delay);
+};
 
 export {};
