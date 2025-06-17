@@ -227,8 +227,8 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           width: 120,
           onRender: (item) => (
             <>
-              <p>{util.businessNo.autoDash(item.business_no)}</p>
-              <p>{util.personalNo.autoDash(item.personal_no)}</p>
+              <p>{util.format.businessNo(item.business_no)}</p>
+              <p>{util.format.personalNo(item.personal_no)}</p>
             </>
           ),
         },
