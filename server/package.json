@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
-    "@pdg/compare": "^1.0.4",
+    "@pdg/compare": "^1.0.6",
     "@pdg/data": "^1.0.1",
     "@pdg/date-time": "^1.0.2",
     "@pdg/types": "^1.0.1",
