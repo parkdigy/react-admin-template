@@ -5,8 +5,8 @@ import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
 import { PrivacyAccess } from '@const';
 import { useFirstSkipEffect } from '@pdg/react-hook';
-import { businessNoAutoDash, personalNoAutoDash, telNoAutoDash } from '@pdg/util';
 import { PdgIconButton } from '@pdg/react-component';
+import util from '@util';
 
 export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textProps, type, parentId }) => {
   /********************************************************************************************************************
@@ -55,11 +55,11 @@ export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textPro
     <Box display='inline-flex' flexDirection='row' alignItems='center'>
       <Typography {...textProps}>
         {textType === 'tel'
-          ? telNoAutoDash(text)
+          ? util.format.telNo(text)
           : textType === 'business_no'
-            ? businessNoAutoDash(text)
+            ? util.format.businessNo(text)
             : textType === 'personal_no'
-              ? personalNoAutoDash(text)
+              ? util.format.personalNo(text)
               : text}
       </Typography>
       {!isPrivacyAccess && (
