@@ -32,7 +32,7 @@
     "@pdg/compare": "^1.0.4",
     "@pdg/data": "^1.0.1",
     "@pdg/date-time": "^1.0.2",
-    "@pdg/formatting": "^1.0.3",
+    "@pdg/formatting": "^1.0.4",
     "@pdg/react-admin-layout": "^1.0.47",
     "@pdg/react-component": "^1.0.39",
     "@pdg/react-dialog": "^1.0.31",
