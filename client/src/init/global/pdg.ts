@@ -43,17 +43,17 @@ declare global {
   type RequiredPick<T, K extends keyof T> = _RequiredPick<T, K>;
   type RequiredOmit<T, K extends keyof T> = _RequiredOmit<T, K>;
   type Lv<
-    L = unknown,
-    V = unknown,
+    L = any,
+    V = any,
     Other = {
-      [key: string]: unknown;
+      [key: string]: any;
     },
   > = _Lv<L, V, Other>;
   type Vl<
-    L = unknown,
-    V = unknown,
+    L = any,
+    V = any,
     Other = {
-      [key: string]: unknown;
+      [key: string]: any;
     },
   > = _Vl<V, L, Other>;
 
