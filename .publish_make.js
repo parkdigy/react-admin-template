@@ -20,7 +20,7 @@ const makePublishBranch = (branchName, callback) => {
     isWin
       ? `(Get-Content .gitignore) -replace '#PUB#', '' | Set-Content .gitignore`
       : `sed -i '' 's/#PUB#//g' .gitignore`,
-    'npm run reset-gitignore',
+    'npm run reset:gitignore',
     'git add .',
     `git commit -m '${branchName}'`,
     `git push --set-upstream origin ${branchName}`,

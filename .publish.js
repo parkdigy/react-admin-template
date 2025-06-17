@@ -21,7 +21,7 @@ const publishBranch = (publishBranchName, mergeFromBranchName, callback) => {
       ? `(Get-Content .gitignore) -replace '#PUB#', '' | Set-Content .gitignore`
       : `sed -i '' 's/#PUB#//g' .gitignore`,
     'git add .',
-    'npm run reset-gitignore',
+    'npm run reset:gitignore',
     {
       command: isWin
         ? 'cmd /V /C "set "GIT_EDITOR=true" && git merge --continue"'
