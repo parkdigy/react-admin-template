@@ -4,15 +4,15 @@
 
 import React from 'react';
 import {
-  Form,
-  FormBody,
-  FormButton,
-  FormCol,
-  FormCommands,
-  FormFooter,
-  FormPassword,
-  FormRow,
-  FormValueMap,
+  PForm,
+  PFormBody,
+  PFormButton,
+  PFormCol,
+  PFormCommands,
+  PFormFooter,
+  PFormPassword,
+  PFormRow,
+  PFormValueMap,
 } from '@pdg/react-form';
 import { My, MyPasswordChangeRequestData } from '@const';
 import { Alert } from '@mui/material';
@@ -22,7 +22,7 @@ const AdminUserPasswordChangeForm = () => {
    * Ref
    * ******************************************************************************************************************/
 
-  const formRef = useRef<FormCommands>(null);
+  const formRef = useRef<PFormCommands>(null);
 
   /********************************************************************************************************************
    * Event Handler
@@ -41,7 +41,7 @@ const AdminUserPasswordChangeForm = () => {
   }, []);
 
   /** 비밀번호 변경 - Form.onSubmit */
-  const handleSubmit = useCallback((data: FormValueMap) => {
+  const handleSubmit = useCallback((data: PFormValueMap) => {
     My.passwordChange('비밀번호를 변경하시겠습니까?', data as unknown as MyPasswordChangeRequestData).then(() => {
       formRef.current?.resetAll();
     });
@@ -57,11 +57,11 @@ const AdminUserPasswordChangeForm = () => {
         변경 할 비밀번호를 입력해 주세요.
       </Alert>
 
-      <Form ref={formRef} onSubmit={handleSubmit}>
-        <FormBody>
-          <FormRow>
-            <FormCol>
-              <FormPassword
+      <PForm ref={formRef} onSubmit={handleSubmit}>
+        <PFormBody>
+          <PFormRow>
+            <PFormCol>
+              <PFormPassword
                 name='new_password'
                 label='새 비밀번호'
                 required
@@ -71,29 +71,29 @@ const AdminUserPasswordChangeForm = () => {
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[#&+\-%@=/\\:;,.‘“^`~_|!?*$#<>()[\]{}])[0-9\D]{10,20}/
                 }
               />
-            </FormCol>
-          </FormRow>
-          <FormRow>
-            <FormCol>
-              <FormPassword
+            </PFormCol>
+          </PFormRow>
+          <PFormRow>
+            <PFormCol>
+              <PFormPassword
                 name='new_password_confirm'
                 label='새 비밀번호 확인'
                 required
                 onValidate={handlePasswordConfirmValidate}
               />
-            </FormCol>
-          </FormRow>
-        </FormBody>
-        <FormFooter>
-          <FormRow>
-            <FormCol>
-              <FormButton type='submit' startIcon='save_alt'>
+            </PFormCol>
+          </PFormRow>
+        </PFormBody>
+        <PFormFooter>
+          <PFormRow>
+            <PFormCol>
+              <PFormButton type='submit' startIcon='save_alt'>
                 확인
-              </FormButton>
-            </FormCol>
-          </FormRow>
-        </FormFooter>
-      </Form>
+              </PFormButton>
+            </PFormCol>
+          </PFormRow>
+        </PFormFooter>
+      </PForm>
     </div>
   );
 };

@@ -4,13 +4,13 @@
 
 import React from 'react';
 import {
-  SearchTableCommands,
-  SearchTableData,
-  SearchTableSearchProps,
-  SearchTableTableProps,
-  TableColumns,
+  PSearchTableCommands,
+  PSearchTableData,
+  PSearchTableSearchProps,
+  PSearchTableTableProps,
+  PTableColumns,
 } from '@pdg/react-table';
-import { SearchGroup, FormText, FormValueMap, FormDateRangePicker, FormSelect } from '@pdg/react-form';
+import { PSearchGroup, PFormText, PFormValueMap, PFormDateRangePicker, PFormSelect } from '@pdg/react-form';
 import { SearchExportButton, HashSearchTable } from '@ccomp';
 import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
 import { Admin, AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
@@ -22,7 +22,7 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<SearchTableCommands<AdminUserAccessLogListDataItem>>(null);
+  const searchTableRef = useRef<PSearchTableCommands<AdminUserAccessLogListDataItem>>(null);
 
   /********************************************************************************************************************
    * Variable
@@ -34,15 +34,15 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
    * State
    * ******************************************************************************************************************/
 
-  const [paging, setPaging] = useState<SearchTableData['paging']>();
+  const [paging, setPaging] = useState<PSearchTableData['paging']>();
 
   /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
 
   /** 사용 로그 목록 불러오기 */
-  const getData = useCallback((data: FormValueMap) => {
-    return new Promise<SearchTableData<AdminUserAccessLogListDataItem>>((resolve) => {
+  const getData = useCallback((data: PFormValueMap) => {
+    return new Promise<PSearchTableData<AdminUserAccessLogListDataItem>>((resolve) => {
       Admin.UserAccessLog.list(data as unknown as AdminUserAccessLogListRequestData).then(({ data: items, paging }) => {
         setPaging(paging);
         resolve({ items, paging });
@@ -64,26 +64,26 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
   const searchGroups = useMemo(
     () => (
       <>
-        <SearchGroup max>
-          <FormSelect
+        <PSearchGroup max>
+          <PFormSelect
             name='keyword_option'
             label='검색영역'
             items={[lv('이메일', 'email'), lv('사용자 No.', 'user_id')]}
             value='email'
           />
-          <FormText name='keyword' label='검색어' />
-          <FormSelect name='type' label='구분' items={[lv('전체', ''), lv('화면', 'VIEW'), lv('Export', 'EXPORT')]} />
-          <FormDateRangePicker
+          <PFormText name='keyword' label='검색어' />
+          <PFormSelect name='type' label='구분' items={[lv('전체', ''), lv('화면', 'VIEW'), lv('Export', 'EXPORT')]} />
+          <PFormDateRangePicker
             name='search_date'
             fromLabel='검색기간'
             toLabel='검색기간'
             disableFuture
             value={[dayjs().subtract(30, 'day'), dayjs()]}
           />
-        </SearchGroup>
-        <SearchGroup align='right'>
+        </PSearchGroup>
+        <PSearchGroup align='right'>
           {hasExportRole && <SearchExportButton disabled={(paging?.total || 0) === 0} onClick={exportData} />}
-        </SearchGroup>
+        </PSearchGroup>
       </>
     ),
     [exportData, hasExportRole, paging?.total]
@@ -118,18 +118,18 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
           width: 150,
           minWidth: 150,
         },
-      ] as TableColumns<AdminUserAccessLogListDataItem>,
+      ] as PTableColumns<AdminUserAccessLogListDataItem>,
     []
   );
 
-  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
+  const search = useMemo(() => ({ searchGroups }) as PSearchTableSearchProps, [searchGroups]);
 
   const table = useMemo(
     () =>
       ({
         showEvenColor: true,
         columns: tableColumns,
-      }) as SearchTableTableProps<AdminUserAccessLogListDataItem>,
+      }) as PSearchTableTableProps<AdminUserAccessLogListDataItem>,
     [tableColumns]
   );
 

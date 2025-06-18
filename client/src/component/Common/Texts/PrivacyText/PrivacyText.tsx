@@ -5,7 +5,7 @@ import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
 import { PrivacyAccess } from '@const';
 import { useFirstSkipEffect } from '@pdg/react-hook';
-import { PdgIconButton } from '@pdg/react-component';
+import { PIconButton } from '@pdg/react-component';
 import util from '@util';
 
 export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textProps, type, parentId }) => {
@@ -64,7 +64,7 @@ export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textPro
       </Typography>
       {!isPrivacyAccess && (
         <div style={{ marginLeft: 5, marginTop: -10, marginBottom: -10 }}>
-          <PdgIconButton onClick={handlePrivacyAccessClick}>Visibility</PdgIconButton>
+          <PIconButton onClick={handlePrivacyAccessClick}>Visibility</PIconButton>
         </div>
       )}
     </Box>

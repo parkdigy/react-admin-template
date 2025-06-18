@@ -6,22 +6,22 @@ import React, { KeyboardEvent } from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { InputDialogProps, InputDialogInputType } from './InputDialog.types';
 import {
-  Form,
-  FormBody,
-  FormButton,
-  FormCol,
-  FormCommands,
-  FormEmail,
-  FormFooter,
-  FormMobile,
-  FormNumber,
-  FormRow,
-  FormTag,
-  FormTagValue,
-  FormTel,
-  FormText,
-  FormTextarea,
-  FormUrl,
+  PForm,
+  PFormBody,
+  PFormButton,
+  PFormCol,
+  PFormCommands,
+  PFormEmail,
+  PFormFooter,
+  PFormMobile,
+  PFormNumber,
+  PFormRow,
+  PFormTag,
+  PFormTagValue,
+  PFormTel,
+  PFormText,
+  PFormTextarea,
+  PFormUrl,
 } from '@pdg/react-form';
 import { Box } from '@mui/material';
 
@@ -46,7 +46,7 @@ function InputDialog<
    * ******************************************************************************************************************/
 
   const dialogRef = useRef<DialogCommands>(null);
-  const formRef = useRef<FormCommands>(null);
+  const formRef = useRef<PFormCommands>(null);
 
   /********************************************************************************************************************
    * Memo
@@ -116,12 +116,12 @@ function InputDialog<
     () => (
       <>
         {intro && <Box sx={{ mb: 2 }}>{intro}</Box>}
-        <Form ref={formRef} color={props?.color} onSubmit={handleSubmit}>
-          <FormBody>
-            <FormRow>
-              <FormCol>
+        <PForm ref={formRef} color={props?.color} onSubmit={handleSubmit}>
+          <PFormBody>
+            <PFormRow>
+              <PFormCol>
                 {inputType === 'text' && (
-                  <FormText
+                  <PFormText
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -130,7 +130,7 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'number' && (
-                  <FormNumber
+                  <PFormNumber
                     name='input'
                     value={initValue as number | undefined}
                     required={required}
@@ -139,7 +139,7 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'url' && (
-                  <FormUrl
+                  <PFormUrl
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -148,7 +148,7 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'tel' && (
-                  <FormTel
+                  <PFormTel
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -157,7 +157,7 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'mobile' && (
-                  <FormMobile
+                  <PFormMobile
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -166,7 +166,7 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'textarea' && (
-                  <FormTextarea
+                  <PFormTextarea
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -175,15 +175,15 @@ function InputDialog<
                   />
                 )}
                 {inputType === 'tag' && (
-                  <FormTag
+                  <PFormTag
                     name='input'
-                    value={initValue as FormTagValue | undefined}
+                    value={initValue as PFormTagValue | undefined}
                     required={required}
                     {...inputProps}
                   />
                 )}
                 {inputType === 'email' && (
-                  <FormEmail
+                  <PFormEmail
                     name='input'
                     value={initValue as string | undefined}
                     required={required}
@@ -191,20 +191,20 @@ function InputDialog<
                     {...inputProps}
                   />
                 )}
-              </FormCol>
-            </FormRow>
-          </FormBody>
-          <FormFooter>
-            <FormRow>
-              <FormCol>
-                <FormButton onClick={close}>취소</FormButton>
-              </FormCol>
-              <FormCol>
-                <FormButton type='submit'>확인</FormButton>
-              </FormCol>
-            </FormRow>
-          </FormFooter>
-        </Form>
+              </PFormCol>
+            </PFormRow>
+          </PFormBody>
+          <PFormFooter>
+            <PFormRow>
+              <PFormCol>
+                <PFormButton onClick={close}>취소</PFormButton>
+              </PFormCol>
+              <PFormCol>
+                <PFormButton type='submit'>확인</PFormButton>
+              </PFormCol>
+            </PFormRow>
+          </PFormFooter>
+        </PForm>
       </>
     ),
     [close, handleKeyDown, handleSubmit, initValue, inputProps, inputType, intro, props?.color, required]

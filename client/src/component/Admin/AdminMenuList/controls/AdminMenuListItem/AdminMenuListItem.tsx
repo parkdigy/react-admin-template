@@ -8,7 +8,7 @@ import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Admin } from '@const';
-import { PdgButton, PdgIcon } from '@pdg/react-component';
+import { PButton, PIcon } from '@pdg/react-component';
 import { useFirstSkipEffect } from '@pdg/react-hook';
 import { styled } from '@mui/material';
 
@@ -119,19 +119,19 @@ export const AdminMenuListItem: React.FC<Props> = ({
       <AdminMenuListItemMenuContainer>
         <AdminMenuListItemMenuTitle>
           {menu.id !== 'admin' && (
-            <PdgIcon
+            <PIcon
               ref={menu.id !== 'admin' ? setNodeRef : undefined}
               color='primary'
               {...listeners}
               style={{ cursor: 'pointer' }}
             >
               Reorder
-            </PdgIcon>
+            </PIcon>
           )}
           {menu.icon && (
-            <PdgIcon size='small' style={{ color: '#999999' }}>
+            <PIcon size='small' style={{ color: '#999999' }}>
               {menu.icon}
-            </PdgIcon>
+            </PIcon>
           )}
           <span>{menu.name}</span>
           <span className='opacity-50 font-weight-400'>({menu.id})</span>
@@ -251,7 +251,7 @@ const AdminMenuListItemMenuTitle = styled('div')`
 
 const AdminMenuListItemMenuButtonContainer = styled('div')``;
 
-const AdminMenuListItemMenuButton = styled(PdgButton)`
+const AdminMenuListItemMenuButton = styled(PButton)`
   margin-left: 10px;
   font-weight: 600;
 
@@ -263,7 +263,7 @@ const AdminMenuListItemMenuButton = styled(PdgButton)`
     border: 1px solid transparent;
   }
 
-  .PdgButton-StartIcon {
+  .PButton-StartIcon {
     margin-right: 3px;
     .material-icons {
       font-size: 15px;

@@ -1,16 +1,16 @@
-import { SearchButtonProps } from '@pdg/react-form';
-import { PdgIconProps } from '@pdg/react-component';
+import { PSearchButtonProps } from '@pdg/react-form';
+import { PIconProps } from '@pdg/react-component';
 
 export interface SearchExportButtonItem {
   label: string;
-  icon?: PdgIconProps['children'];
-  color?: PdgIconProps['color'];
+  icon?: PIconProps['children'];
+  color?: PIconProps['color'];
   onClick(): void;
 }
 
 export type SearchExportButtonItems = SearchExportButtonItem[];
 
 export interface SearchExportButtonProps
-  extends Omit<SearchButtonProps, 'children' | 'color' | 'icon' | 'startIcon' | 'endIcon'> {
+  extends Omit<PSearchButtonProps, 'children' | 'color' | 'icon' | 'startIcon' | 'endIcon'> {
   items?: SearchExportButtonItems;
 }

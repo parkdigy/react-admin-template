@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-  SearchTableCommands,
-  SearchTableData,
-  SearchTableSearchProps,
-  SearchTableTableProps,
-  TableColumn,
-  TableColumns,
-  TableMenuButton,
-  TableProps,
+  PSearchTableCommands,
+  PSearchTableData,
+  PSearchTableSearchProps,
+  PSearchTableTableProps,
+  PTableColumn,
+  PTableColumns,
+  PTableMenuButton,
+  PTableProps,
 } from '@pdg/react-table';
 import { CopyToClipboardButton, HashSearchTable, SearchAddButton, SearchExportButton } from '@ccomp';
-import { SearchGroup, FormText, FormValueMap, FormRadioGroup, FormRadioGroupCommands } from '@pdg/react-form';
+import { PSearchGroup, PFormText, PFormValueMap, PFormRadioGroup, PFormRadioGroupCommands } from '@pdg/react-form';
 import { TestDataListProps as Props } from './TestDataList.types';
 import { Test, TestDataListDataItem } from '@const';
 import util from '@util';
@@ -19,7 +19,7 @@ import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { DialogCommands, useDialog } from '@pdg/react-dialog';
 import { TestDataFormDialog, TestDataInfoDialog, usePrivacyAccessReasonDialog } from '@dialog';
 import TestDataStatus from '../../../constant/Test/TestDataStatus';
-import { PdgDateText } from '@pdg/react-component';
+import { PDateText } from '@pdg/react-component';
 
 const Menu = {
   edit: 'edit',
@@ -40,7 +40,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<SearchTableCommands<TestDataListDataItem>>(null);
+  const searchTableRef = useRef<PSearchTableCommands<TestDataListDataItem>>(null);
 
   /********************************************************************************************************************
    * Effect
@@ -60,7 +60,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
     Test.dataStatusList().then(({ data }) => {
       const items = data.map((item) => lv(item.name, item.status));
       items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<FormRadioGroupCommands<TestDataStatus>>('status')?.setItems(items);
+      searchTableRef.current?.getSearch()?.getItem<PFormRadioGroupCommands<TestDataStatus>>('status')?.setItems(items);
     });
   }, []);
 
@@ -74,9 +74,9 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
 
   /** 목록 불러오기 */
   const getData = useCallback(
-    (data: FormValueMap) => {
+    (data: PFormValueMap) => {
       onRequestScrollToTop?.();
-      return new Promise<SearchTableData<TestDataListDataItem>>((resolve) => {
+      return new Promise<PSearchTableData<TestDataListDataItem>>((resolve) => {
         Test.dataList(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
@@ -133,7 +133,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
 
   /** 테이블 아이템 스타일 */
   const handleTableGetBodyColumnClassName = useCallback(
-    (column: TableColumn<TestDataListDataItem>, item: TestDataListDataItem) => {
+    (column: PTableColumn<TestDataListDataItem>, item: TestDataListDataItem) => {
       return column.id !== 'more' && item.status === 'OFF' ? 'opacity-50' : undefined;
     },
     []
@@ -166,11 +166,11 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   const searchGroups = useMemo(
     () => (
       <>
-        <SearchGroup max>
-          <FormText name='keyword' label='검색어' />
-          <FormRadioGroup name='status' label='Status' value='' />
-        </SearchGroup>
-        <SearchGroup align='right'>
+        <PSearchGroup max>
+          <PFormText name='keyword' label='검색어' />
+          <PFormRadioGroup name='status' label='Status' value='' />
+        </PSearchGroup>
+        <PSearchGroup align='right'>
           <SearchExportButton
             items={[
               { label: '다운로드', icon: 'download', onClick: handleExportClick },
@@ -183,7 +183,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
             ]}
           />
           <SearchAddButton onClick={handleAddClick}>새 데이터</SearchAddButton>
-        </SearchGroup>
+        </PSearchGroup>
       </>
     ),
     [handleAddClick, handleExportClick, handleUnMaskingExportClick]
@@ -194,7 +194,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
    * ******************************************************************************************************************/
 
   /** 테이블 상단 헤드 */
-  const tableTopHeadRows: TableProps['topHeadRows'] = useMemo(
+  const tableTopHeadRows: PTableProps['topHeadRows'] = useMemo(
     () => [
       { colSpan: 2 },
       { colSpan: 3, label: 'Group 1', align: 'center' },
@@ -244,10 +244,10 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           onRender: (item) => (
             <>
               <div>
-                <PdgDateText value={item.create_date} />
+                <PDateText value={item.create_date} />
               </div>
               <div>
-                <PdgDateText value={item.update_date} />
+                <PDateText value={item.update_date} />
               </div>
             </>
           ),
@@ -258,7 +258,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           width: 50,
           onRender(item) {
             return (
-              <TableMenuButton
+              <PTableMenuButton
                 variant='text'
                 placement='left'
                 menuList={
@@ -298,11 +298,11 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
             );
           },
         },
-      ] as TableColumns<TestDataListDataItem>,
+      ] as PTableColumns<TestDataListDataItem>,
     [handleTableMenuClick]
   );
 
-  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
+  const search = useMemo(() => ({ searchGroups }) as PSearchTableSearchProps, [searchGroups]);
 
   const table = useMemo(
     () =>
@@ -313,7 +313,7 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
         columns: tableColumns,
         onClick: handleTableItemClick,
         onGetBodyColumnClassName: handleTableGetBodyColumnClassName,
-      }) as SearchTableTableProps<TestDataListDataItem>,
+      }) as PSearchTableTableProps<TestDataListDataItem>,
     [handleTableGetBodyColumnClassName, handleTableItemClick, tableColumns, tableTopHeadRows]
   );
 

@@ -11,7 +11,7 @@ import { AdminMenuListItem } from './controls';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
-import { PdgButton } from '@pdg/react-component';
+import { PButton } from '@pdg/react-component';
 import { styled } from '@mui/material';
 
 export const AdminMenuList: React.FC<Props> = () => {
@@ -193,17 +193,17 @@ export const AdminMenuList: React.FC<Props> = () => {
       <AdminMenuButtonsContainer style={{ marginBottom: 10 }}>
         {sortChanged ? (
           <>
-            <PdgButton variant='outlined' color='secondary' startIcon='Replay' onClick={() => loadMenuList()}>
+            <PButton variant='outlined' color='secondary' startIcon='Replay' onClick={() => loadMenuList()}>
               순서 초기화
-            </PdgButton>
-            <PdgButton variant='contained' color='secondary' startIcon='SaveAlt' onClick={saveSeq}>
+            </PButton>
+            <PButton variant='contained' color='secondary' startIcon='SaveAlt' onClick={saveSeq}>
               순서 저장
-            </PdgButton>
+            </PButton>
           </>
         ) : (
-          <PdgButton variant='contained' startIcon='Add' onClick={() => addSubMenu()}>
+          <PButton variant='contained' startIcon='Add' onClick={() => addSubMenu()}>
             새 메인 메뉴
-          </PdgButton>
+          </PButton>
         )}
       </AdminMenuButtonsContainer>
 

@@ -4,17 +4,17 @@
 
 import React from 'react';
 import {
-  Form,
-  FormRow,
-  FormCol,
-  FormText,
-  FormButton,
-  FormCommands,
-  FormBody,
-  FormFooter,
-  FormAutocompleteItems,
-  FormAutocompleteItem,
-  FormAutocomplete,
+  PForm,
+  PFormRow,
+  PFormCol,
+  PFormText,
+  PFormButton,
+  PFormCommands,
+  PFormBody,
+  PFormFooter,
+  PFormAutocompleteItems,
+  PFormAutocompleteItem,
+  PFormAutocomplete,
 } from '@pdg/react-form';
 import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
 import { Admin, AdminGroupInfoData, AdminGroupMenuListData, AdminGroupMenuListDataItemBase } from '@const';
@@ -22,7 +22,7 @@ import { useConfirmDialog } from '@pdg/react-dialog';
 import app from '@app';
 import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
-import { PdgButton, PdgIconText } from '@pdg/react-component';
+import { PButton, PIconText } from '@pdg/react-component';
 
 const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
@@ -35,7 +35,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * Ref
    * ******************************************************************************************************************/
 
-  const formRef = useRef<FormCommands>(null);
+  const formRef = useRef<PFormCommands>(null);
 
   /********************************************************************************************************************
    * State
@@ -96,12 +96,12 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
     const { data } = await Admin.User.allList();
     return data.map((info) =>
       lv(`(${info.name}) ${info.email}`, info.id, { groupName: info.admin_group_name })
-    ) as FormAutocompleteItems<number>;
+    ) as PFormAutocompleteItems<number>;
   }, []);
 
   /** 그룹에 사용자 추가 - FormAutocomplete.onAddItem */
   const handleUsersAddItem = useCallback(
-    (item: FormAutocompleteItem<number>) => {
+    (item: PFormAutocompleteItem<number>) => {
       if (notEmpty(item.groupName)) {
         return new Promise<boolean>((resolve) => {
           confirmDialog({
@@ -188,22 +188,22 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * ******************************************************************************************************************/
 
   return !id || info ? (
-    <Form ref={formRef} disabled={!editable} onSubmit={handleSubmit} onValueChangeByUser={onValueChange}>
-      <FormBody>
-        <FormRow>
-          <FormCol>
-            <FormText
+    <PForm ref={formRef} disabled={!editable} onSubmit={handleSubmit} onValueChangeByUser={onValueChange}>
+      <PFormBody>
+        <PFormRow>
+          <PFormCol>
+            <PFormText
               name='name'
               label='그룹 이름'
               readOnly={info?.info?.id === SUPER_ADMIN_GROUP_ID}
               required
               value={info?.info.name}
             />
-          </FormCol>
-        </FormRow>
-        <FormRow>
-          <FormCol>
-            <FormAutocomplete
+          </PFormCol>
+        </PFormRow>
+        <PFormRow>
+          <PFormCol>
+            <PFormAutocomplete
               name='users'
               label='사용자'
               multiple
@@ -218,16 +218,16 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
               onLoadItems={handleUsersLoadItems}
               onAddItem={handleUsersAddItem}
             />
-          </FormCol>
-        </FormRow>
+          </PFormCol>
+        </PFormRow>
         {menu && (
-          <FormRow line label='권한 설정' icon='LibraryAddCheck'>
-            <FormCol>
+          <PFormRow line label='권한 설정' icon='LibraryAddCheck'>
+            <PFormCol>
               <div style={{ width: '100%', textAlign: 'right', marginTop: -38, zIndex: 2 }}>
                 <span style={{ backgroundColor: '#fff', paddingLeft: 10 }}>
-                  <PdgButton size='small' startIcon='Download'>
+                  <PButton size='small' startIcon='Download'>
                     다른 그룹에서 권한 가져오기
-                  </PdgButton>
+                  </PButton>
                 </span>
               </div>
               <Table
@@ -274,7 +274,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                   ))}
                   <TableRow>
                     <TableCell>
-                      <PdgIconText icon='person'>개인정보</PdgIconText>
+                      <PIconText icon='person'>개인정보</PIconText>
                     </TableCell>
                     <TableCell />
                     <AdminGroupFormRoleTableCells
@@ -287,27 +287,27 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                   </TableRow>
                 </TableBody>
               </Table>
-            </FormCol>
-          </FormRow>
+            </PFormCol>
+          </PFormRow>
         )}
-      </FormBody>
+      </PFormBody>
       {editable && (
-        <FormFooter>
-          <FormRow>
-            <FormCol>
-              <FormButton startIcon='close' onClick={cancel}>
+        <PFormFooter>
+          <PFormRow>
+            <PFormCol>
+              <PFormButton startIcon='close' onClick={cancel}>
                 취소
-              </FormButton>
-            </FormCol>
-            <FormCol>
-              <FormButton type='submit' startIcon='save_alt'>
+              </PFormButton>
+            </PFormCol>
+            <PFormCol>
+              <PFormButton type='submit' startIcon='save_alt'>
                 {id ? '수정' : '등록'}
-              </FormButton>
-            </FormCol>
-          </FormRow>
-        </FormFooter>
+              </PFormButton>
+            </PFormCol>
+          </PFormRow>
+        </PFormFooter>
       )}
-    </Form>
+    </PForm>
   ) : null;
 };
 

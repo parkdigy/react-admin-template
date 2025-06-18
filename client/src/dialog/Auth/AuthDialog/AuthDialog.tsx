@@ -7,15 +7,15 @@ import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { Grid } from '@mui/material';
 import {
-  Form,
-  FormRow,
-  FormCol,
-  FormEmail,
-  FormPassword,
-  FormButton,
-  FormValueMap,
-  FormBody,
-  FormFooter,
+  PForm,
+  PFormRow,
+  PFormCol,
+  PFormEmail,
+  PFormPassword,
+  PFormButton,
+  PFormValueMap,
+  PFormBody,
+  PFormFooter,
 } from '@pdg/react-form';
 import { AuthDialogProps } from './AuthDialog.types';
 import api from '@api';
@@ -41,7 +41,7 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, 
 
   /** 계정 인증 - Form.onSubmit */
   const handleSubmit = useCallback(
-    (data: FormValueMap) => {
+    (data: PFormValueMap) => {
       api.notAuthPost('my.permission', data).then(() => {
         successRef.current = true;
         ref.current?.close();
@@ -78,29 +78,29 @@ const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, 
         <Grid container spacing={2} direction='column' sx={{ mt: 0.5, minWidth: 300 }}>
           <Grid style={{ textAlign: 'center' }}>{intro}</Grid>
           <Grid>
-            <Form sx={{ mt: 2 }} color={color} onSubmit={handleSubmit}>
-              <FormBody>
-                <FormRow>
-                  <FormCol>
-                    <FormEmail name='email' label='이메일' disabled value={auth?.email} />
-                  </FormCol>
-                </FormRow>
-                <FormRow>
-                  <FormCol>
-                    <FormPassword name='password' label='비밀번호' required />
-                  </FormCol>
-                </FormRow>
-              </FormBody>
-              <FormFooter>
-                <FormRow>
-                  <FormCol>
-                    <FormButton type='submit' sx={{ height: 40 }}>
+            <PForm sx={{ mt: 2 }} color={color} onSubmit={handleSubmit}>
+              <PFormBody>
+                <PFormRow>
+                  <PFormCol>
+                    <PFormEmail name='email' label='이메일' disabled value={auth?.email} />
+                  </PFormCol>
+                </PFormRow>
+                <PFormRow>
+                  <PFormCol>
+                    <PFormPassword name='password' label='비밀번호' required />
+                  </PFormCol>
+                </PFormRow>
+              </PFormBody>
+              <PFormFooter>
+                <PFormRow>
+                  <PFormCol>
+                    <PFormButton type='submit' sx={{ height: 40 }}>
                       확인
-                    </FormButton>
-                  </FormCol>
-                </FormRow>
-              </FormFooter>
-            </Form>
+                    </PFormButton>
+                  </PFormCol>
+                </PFormRow>
+              </PFormFooter>
+            </PForm>
           </Grid>
         </Grid>
       }

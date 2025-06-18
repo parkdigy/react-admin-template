@@ -4,16 +4,16 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { SearchTable, SearchTableCommands, TableItem } from '@pdg/react-table';
+import { PSearchTable, PSearchTableCommands, PTableItem } from '@pdg/react-table';
 import { HashSearchTableProps as Props } from './HashSearchTable.types';
 import './HashSearchTable.scss';
 
-interface WithForwardRefType<T = TableItem> extends React.FC<Props<T>> {
-  <T = TableItem>(props: Props<T> & React.RefAttributes<SearchTableCommands<T>>): ReturnType<React.FC<Props<T>>>;
+interface WithForwardRefType<T = PTableItem> extends React.FC<Props<T>> {
+  <T = PTableItem>(props: Props<T> & React.RefAttributes<PSearchTableCommands<T>>): ReturnType<React.FC<Props<T>>>;
 }
 
 const HashSearchTableBase: WithForwardRefType = React.forwardRef<
-  SearchTableCommands,
+  PSearchTableCommands,
   Omit<Props, 'onRequestHashChange'>
 >(({ size, stickyHeader: initStickyHeader, className, ...props }, ref) => {
   /********************************************************************************************************************
@@ -54,7 +54,7 @@ const HashSearchTableBase: WithForwardRefType = React.forwardRef<
    * ******************************************************************************************************************/
 
   return (
-    <SearchTable
+    <PSearchTable
       ref={ref}
       stickyHeader={stickyHeader}
       className={classnames(className, 'HashSearchTable', sizeClassName)}

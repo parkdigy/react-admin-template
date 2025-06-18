@@ -3,10 +3,19 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { Form, FormRow, FormCol, FormText, FormButton, FormCommands, FormBody, FormFooter } from '@pdg/react-form';
+import {
+  PForm,
+  PFormRow,
+  PFormCol,
+  PFormText,
+  PFormButton,
+  PFormCommands,
+  PFormBody,
+  PFormFooter,
+} from '@pdg/react-form';
 import { AdminMenuFormProps as Props } from './AdminMenuForm.types';
 import { Admin, AdminMenuInfoData } from '@const';
-import { PdgIcon } from '@pdg/react-component';
+import { PIcon } from '@pdg/react-component';
 
 const AdminMenuForm: React.FC<Props> = ({
   parentMenu: initParentMenu,
@@ -19,7 +28,7 @@ const AdminMenuForm: React.FC<Props> = ({
    * Ref
    * ******************************************************************************************************************/
 
-  const formRef = useRef<FormCommands>(null);
+  const formRef = useRef<PFormCommands>(null);
 
   /********************************************************************************************************************
    * State
@@ -109,18 +118,18 @@ const AdminMenuForm: React.FC<Props> = ({
    * ******************************************************************************************************************/
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmit} onValueChangeByUser={onValueChange}>
-      <FormBody>
+    <PForm ref={formRef} onSubmit={handleSubmit} onValueChangeByUser={onValueChange}>
+      <PFormBody>
         {parentMenu && (
-          <FormRow>
-            <FormCol>
-              <FormText name='parent' exceptValue label='부모 메뉴' value={parentMenu.name} disabled />
-            </FormCol>
-          </FormRow>
+          <PFormRow>
+            <PFormCol>
+              <PFormText name='parent' exceptValue label='부모 메뉴' value={parentMenu.name} disabled />
+            </PFormCol>
+          </PFormRow>
         )}
-        <FormRow>
-          <FormCol>
-            <FormText
+        <PFormRow>
+          <PFormCol>
+            <PFormText
               name={initId ? 'new_id' : 'id'}
               label='ID'
               required
@@ -130,48 +139,48 @@ const AdminMenuForm: React.FC<Props> = ({
               startAdornment={parentMenu ? `${parentMenu?.id}/` : undefined}
               helperText={idHelperText}
             />
-          </FormCol>
-        </FormRow>
-        <FormRow>
-          <FormCol>
-            <FormText name='name' label='이름' value={info?.name} required />
-          </FormCol>
-        </FormRow>
+          </PFormCol>
+        </PFormRow>
+        <PFormRow>
+          <PFormCol>
+            <PFormText name='name' label='이름' value={info?.name} required />
+          </PFormCol>
+        </PFormRow>
         {!parentMenu && (
-          <FormRow>
-            <FormCol>
-              <FormText
+          <PFormRow>
+            <PFormCol>
+              <PFormText
                 name='icon'
                 label='아이콘'
                 value={icon}
                 required
                 onChange={setIcon}
-                endAdornment={icon ? <PdgIcon color='primary'>{icon}</PdgIcon> : undefined}
+                endAdornment={icon ? <PIcon color='primary'>{icon}</PIcon> : undefined}
               />
-            </FormCol>
-          </FormRow>
+            </PFormCol>
+          </PFormRow>
         )}
-        <FormRow>
-          <FormCol>
-            <FormText name='uri' label='URL 경로' exceptValue value={uri} disabled />
-          </FormCol>
-        </FormRow>
-      </FormBody>
-      <FormFooter>
-        <FormRow>
-          <FormCol>
-            <FormButton startIcon='close' onClick={cancel}>
+        <PFormRow>
+          <PFormCol>
+            <PFormText name='uri' label='URL 경로' exceptValue value={uri} disabled />
+          </PFormCol>
+        </PFormRow>
+      </PFormBody>
+      <PFormFooter>
+        <PFormRow>
+          <PFormCol>
+            <PFormButton startIcon='close' onClick={cancel}>
               취소
-            </FormButton>
-          </FormCol>
-          <FormCol>
-            <FormButton type='submit' startIcon='save_alt'>
+            </PFormButton>
+          </PFormCol>
+          <PFormCol>
+            <PFormButton type='submit' startIcon='save_alt'>
               {initId ? '수정' : '등록'}
-            </FormButton>
-          </FormCol>
-        </FormRow>
-      </FormFooter>
-    </Form>
+            </PFormButton>
+          </PFormCol>
+        </PFormRow>
+      </PFormFooter>
+    </PForm>
   );
 };
 

@@ -3,8 +3,8 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { SearchTable, SearchTableCommands, SearchTableData, TableColumns, TableItem } from '@pdg/react-table';
-import { FormValueMap, SearchGroup } from '@pdg/react-form';
+import { PSearchTable, PSearchTableCommands, PSearchTableData, PTableColumns, PTableItem } from '@pdg/react-table';
+import { PFormValueMap, PSearchGroup } from '@pdg/react-form';
 import { Admin, AdminGroupListDataItem } from '@const';
 import { Typography } from '@mui/material';
 import { useDialog } from '@pdg/react-dialog';
@@ -18,7 +18,7 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<SearchTableCommands<AdminGroupListDataItem>>(null);
+  const searchTableRef = useRef<PSearchTableCommands<AdminGroupListDataItem>>(null);
 
   /********************************************************************************************************************
    * Dialog
@@ -45,8 +45,8 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   );
 
   /** 그룹 목록 불러오기 */
-  const getData = useCallback((data: FormValueMap) => {
-    return new Promise<SearchTableData<AdminGroupListDataItem>>((resolve) => {
+  const getData = useCallback((data: PFormValueMap) => {
+    return new Promise<PSearchTableData<AdminGroupListDataItem>>((resolve) => {
       Admin.Group.list(data).then(({ data: items }) => {
         resolve({ items });
       });
@@ -55,7 +55,7 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
 
   /** 그룹 추가/수정 */
   const showFormDialog = useCallback(
-    (item?: TableItem) => {
+    (item?: PTableItem) => {
       formDialog({ id: item?.id, onSuccess: () => reloadList(item ? undefined : 1) });
     },
     [formDialog, reloadList]
@@ -69,9 +69,9 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   const searchGroups = useMemo(
     () =>
       hasWriteRole && (
-        <SearchGroup max align='right'>
+        <PSearchGroup max align='right'>
           <SearchAddButton onClick={() => showFormDialog()}>새 그룹</SearchAddButton>
-        </SearchGroup>
+        </PSearchGroup>
       ),
     [hasWriteRole, showFormDialog]
   );
@@ -94,7 +94,7 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
           minWidth: 70,
           onRender: (item) => (item.is_lock ? <Typography color='error'>제한</Typography> : '정상'),
         },
-      ] as TableColumns<AdminGroupListDataItem>,
+      ] as PTableColumns<AdminGroupListDataItem>,
     []
   );
 
@@ -103,7 +103,7 @@ const AdminGroupList: React.FC<Props> = ({ noHash }) => {
    * ******************************************************************************************************************/
 
   return (
-    <SearchTable<AdminGroupListDataItem>
+    <PSearchTable<AdminGroupListDataItem>
       ref={searchTableRef}
       hash={!noHash}
       onGetData={getData}

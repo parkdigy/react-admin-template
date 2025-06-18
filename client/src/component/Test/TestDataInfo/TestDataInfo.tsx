@@ -1,6 +1,6 @@
 import React from 'react';
 import { TestDataInfoProps as Props } from './TestDataInfo.types';
-import { InfoTable } from '@pdg/react-table';
+import { PInfoTable } from '@pdg/react-table';
 import { PrivacyAccess, Test, TestDataInfoData } from '@const';
 import { PrivacyBusinessNoText, PrivacyPersonalNoText, PrivacyTelText, PrivacyText } from '@ccomp';
 
@@ -26,7 +26,7 @@ const TestDataInfo: React.FC<Props> = ({ id }) => {
    * ******************************************************************************************************************/
 
   return info ? (
-    <InfoTable<TestDataInfoData>
+    <PInfoTable<TestDataInfoData>
       cols={1}
       info={info}
       items={[

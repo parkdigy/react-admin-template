@@ -1,21 +1,21 @@
-.Table {
+.PTable {
   .MuiTable-root.MuiTable-stickyHeader {
   }
   .MuiTable-root {
     > .MuiTableHead-root > .MuiTableRow-root > .MuiTableCell-root {
       background-color: #f8f8f8;
     }
-    > .MuiTableHead-root > .MuiTableRow-root.TableTopHeadCaptionRow > .MuiTableCell-root {
+    > .MuiTableHead-root > .MuiTableRow-root.PTableTopHeadCaptionRow > .MuiTableCell-root {
       background-color: #efefef;
     }
 
-    .TableButton {
+    .PTableButton {
       padding-left: 10px;
       padding-right: 10px;
     }
   }
 
-  .FormSelect {
+  .PFormSelect {
     width: 100%;
 
     .MuiInputBase-root {
@@ -34,15 +34,15 @@
   }
 }
 
-.Form.Search {
-  .FormRadioGroup {
+.PForm.Search {
+  .PFormRadioGroup {
     .MuiButtonBase-root.MuiRadio-root {
       padding-right: 5px !important;
     }
   }
 }
 
-.TableMenuButton-Popper {
+.PTableMenuButton-Popper {
   ul.MuiList-root > li {
     font-size: 13px;
     .material-icons {
