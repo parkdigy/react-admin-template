@@ -61,7 +61,8 @@ type DefaultPickKeys =
   | 'endAdornment'
   | 'helperText'
   | 'onKeyDown'
-  | 'placeholder';
+  | 'placeholder'
+  | 'slotProps';
 
 export type InputDialogTextInputProps = Pick<PFormTextProps, DefaultPickKeys | 'maxLength'>;
 
