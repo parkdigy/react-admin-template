@@ -50,7 +50,7 @@
     "@pdg/react-dialog": "^1.0.31",
     "@pdg/react-form": "^1.1.0",
     "@pdg/react-hook": "^1.0.30",
-    "@pdg/react-table": "^1.1.0",
+    "@pdg/react-table": "^1.1.1",
     "@pdg/types": "^1.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
