@@ -78,13 +78,12 @@ const _useScreenSize = () => {
   }, [isXxs, isXs, isSm, isMd, isLg, isMax]);
 };
 
+/* eslint-disable no-var */
 declare global {
-  // eslint-disable-next-line no-var
   var mediaQuery: typeof _mediaQuery;
-
-  // eslint-disable-next-line no-var
   var useScreenSize: typeof _useScreenSize;
 }
+/* eslint-enable no-var */
 
 globalThis.mediaQuery = _mediaQuery;
 globalThis.useScreenSize = _useScreenSize;

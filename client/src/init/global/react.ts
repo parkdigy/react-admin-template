@@ -17,28 +17,22 @@ const _withStaticProps = <Props, T>(
   staticProps: T
 ) => Object.assign(forwarded, staticProps);
 
+/* eslint-disable no-var */
 declare global {
   type ReactNode = _ReactNode;
   type ReactElement = _ReactElement;
 
-  // eslint-disable-next-line no-var
   var withStaticProps: typeof _withStaticProps;
 
-  // eslint-disable-next-line no-var
   var useId: typeof _useId;
-  // eslint-disable-next-line no-var
   var useRef: typeof _useRef;
-  // eslint-disable-next-line no-var
   var useState: typeof _useState;
-  // eslint-disable-next-line no-var
   var useLayoutEffect: typeof _useLayoutEffect;
-  // eslint-disable-next-line no-var
   var useEffect: typeof _useEffect;
-  // eslint-disable-next-line no-var
   var useCallback: typeof _useCallback;
-  // eslint-disable-next-line no-var
   var useMemo: typeof _useMemo;
 }
+/* eslint-enable no-var */
 
 globalThis.withStaticProps = _withStaticProps;
 

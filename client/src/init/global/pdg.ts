@@ -28,7 +28,7 @@ import {
 import { now as _now, nowJs as _nowJs, nowTime as _nowTime } from '@pdg/date-time';
 import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/data';
 
-/* eslint-disable */
+/* eslint-disable no-var */
 declare global {
   /** types */
   type ValueOf<T> = _ValueOf<T>;
@@ -82,7 +82,7 @@ declare global {
   /** delay */
   var nextTick: (callback: () => void, delay?: number) => NodeJS.Timeout;
 }
-/* eslint-enable */
+/* eslint-enable no-var */
 
 /** compare */
 globalThis.empty = _empty;

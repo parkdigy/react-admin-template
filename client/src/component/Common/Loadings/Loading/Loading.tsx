@@ -5,6 +5,7 @@
 import React from 'react';
 import { LoadingCommands, LoadingProps } from './Loading.types';
 import './Loading.scss';
+import { useForwardRef } from '@pdg/react-hook';
 
 const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => {
   /********************************************************************************************************************
@@ -77,29 +78,16 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
    * Commands
    * ******************************************************************************************************************/
 
-  useLayoutEffect(() => {
-    if (ref) {
-      const commands: LoadingCommands = {
+  useForwardRef(
+    ref,
+    useMemo<LoadingCommands>(
+      () => ({
         show: increaseShowCount,
         hide: decreaseShowCount,
-      };
-
-      if (typeof ref === 'function') {
-        ref(commands);
-      } else {
-        ref.current = commands;
-      }
-
-      return () => {
-        if (typeof ref === 'function') {
-          ref(null);
-        } else {
-          ref.current = null;
-        }
-      };
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref]);
+      }),
+      [decreaseShowCount, increaseShowCount]
+    )
+  );
 
   /********************************************************************************************************************
    * Render

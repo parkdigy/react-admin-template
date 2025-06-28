@@ -1,5 +1,5 @@
+/* eslint-disable no-var */
 declare global {
-  // eslint-disable-next-line
   var color: {
     primary: string;
     primaryLight: string;
@@ -43,6 +43,7 @@ declare global {
     gray900: string;
   };
 }
+/* eslint-enable no-var */
 
 globalThis.color = {
   primary: '#1976d2',
