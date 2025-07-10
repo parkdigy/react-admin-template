@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox, TableCell } from '@mui/material';
-import { useAutoUpdateLayoutState } from '@pdg/react-hook';
+import { useAutoUpdateState } from '@pdg/react-hook';
 
 const AdminGroupFormRoleTableCells: React.FC<{
   item: {
@@ -18,9 +18,9 @@ const AdminGroupFormRoleTableCells: React.FC<{
    * State
    * ******************************************************************************************************************/
 
-  const [r, setR] = useAutoUpdateLayoutState(!!item?.new_read);
-  const [w, setW] = useAutoUpdateLayoutState(!!item?.new_write);
-  const [e, setE] = useAutoUpdateLayoutState(!!item?.new_export);
+  const [r, setR] = useAutoUpdateState(!!item?.new_read);
+  const [w, setW] = useAutoUpdateState(!!item?.new_write);
+  const [e, setE] = useAutoUpdateState(!!item?.new_export);
 
   /********************************************************************************************************************
    * Function
