@@ -1,6 +1,4 @@
-import { PIconButtonProps } from '@pdg/react-component';
-
-export interface CopyToClipboardIconButtonProps extends Omit<PIconButtonProps, 'children'> {
+export interface CopyToClipboardIconButtonProps extends Omit<IconButtonProps, 'children'> {
   text: string;
   icon?: string;
   tooltip?: string;

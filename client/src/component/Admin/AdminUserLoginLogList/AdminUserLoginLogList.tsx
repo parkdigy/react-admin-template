@@ -3,18 +3,18 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import {
-  PSearchTableCommands,
-  PSearchTableData,
-  PSearchTableSearchProps,
-  PSearchTableTableProps,
-  PTableColumns,
-} from '@pdg/react-table';
-import { PSearchGroup, PFormText, PFormValueMap, PFormDateRangePicker, PFormSelect } from '@pdg/react-form';
 import { AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.types';
 import { Admin, AdminUserLoginLogListDataItem } from '@const';
 import dayjs from 'dayjs';
-import { SearchExportButton, HashSearchTable } from '@ccomp';
+import {
+  SearchExportButton,
+  HashSearchTable,
+  SearchTableCommands,
+  SearchTableData,
+  TableColumns,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+} from '@ccomp';
 import { useAppState } from '@context';
 import app from '@app';
 
@@ -29,7 +29,7 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<PSearchTableCommands<AdminUserLoginLogListDataItem>>(null);
+  const searchTableRef = useRef<SearchTableCommands<AdminUserLoginLogListDataItem>>(null);
 
   /********************************************************************************************************************
    * Memo
@@ -43,9 +43,9 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
 
   /** 로그인 로그 목록 불러오기 */
   const getData = useCallback(
-    (data: PFormValueMap) => {
+    (data: Dict) => {
       onRequestScrollToTop?.();
-      return new Promise<PSearchTableData<AdminUserLoginLogListDataItem>>((resolve) => {
+      return new Promise<SearchTableData<AdminUserLoginLogListDataItem>>((resolve) => {
         Admin.User.LoginLog.list({ ...data, limit }).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
@@ -73,23 +73,23 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
 
     return (
       <>
-        <PSearchGroup max>
-          <PFormSelect
+        <SearchGroup max>
+          <FormSelect
             name='keyword_option'
             label='검색영역'
             items={keywordOptionItems}
             value={email ? 'email' : 'all'}
           />
-          <PFormText name='keyword' label='검색어' placeholder='검색어' value={email} />
-          <PFormDateRangePicker
+          <FormText name='keyword' label='검색어' placeholder='검색어' value={email} />
+          <FormDateRangePicker
             name='login_date'
             value={[dayjs().subtract(1, 'month').add(1, 'day'), dayjs()]}
             fromLabel='검색기간'
             toLabel='검색기간'
             disableFuture
           />
-        </PSearchGroup>
-        <PSearchGroup align='right'>{hasExportRole && <SearchExportButton onClick={exportData} />}</PSearchGroup>
+        </SearchGroup>
+        <SearchGroup align='right'>{hasExportRole && <SearchExportButton onClick={exportData} />}</SearchGroup>
       </>
     );
   }, [auth?.is_super, email, exportData, hasExportRole]);
@@ -110,12 +110,12 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
             return item.ip_country === 'Unknown' ? 'Unknown' : `${item.ip_city}, ${item.ip_country}`;
           },
         },
-      ] as PTableColumns<AdminUserLoginLogListDataItem>,
+      ] as TableColumns<AdminUserLoginLogListDataItem>,
     []
   );
 
   const search = useMemo(
-    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as PSearchTableSearchProps,
+    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as SearchTableSearchProps,
     [searchGroups]
   );
 
@@ -125,7 +125,7 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
         showEvenColor: true,
         defaultAlign: 'center',
         columns: tableColumns,
-      }) as PSearchTableTableProps<AdminUserLoginLogListDataItem>,
+      }) as SearchTableTableProps<AdminUserLoginLogListDataItem>,
     [tableColumns]
   );
 

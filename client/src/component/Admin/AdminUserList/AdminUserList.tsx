@@ -4,22 +4,22 @@
 
 import React from 'react';
 import {
-  PSearchTableCommands,
-  PSearchTableData,
-  PSearchTableSearchProps,
-  PSearchTableTableProps,
-  PTableButton,
-  PTableColumn,
-  PTableColumns,
-} from '@pdg/react-table';
-import { SearchExportButton, HashSearchTable, SearchAddButton } from '@ccomp';
-import { PSearchGroup, PFormValueMap, PFormSelectCommands, PFormSelect, PFormSearch } from '@pdg/react-form';
+  SearchExportButton,
+  HashSearchTable,
+  SearchAddButton,
+  SearchTableCommands,
+  SearchTableData,
+  TableColumn,
+  TableColumns,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  FormSelectCommands,
+} from '@ccomp';
 import { AdminUserListProps as Props } from './AdminUserList.types';
 import { Admin, AdminUserListDataItem } from '@const';
 import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog } from '@dialog';
 import { useDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
-import { PText } from '@pdg/react-component';
 import { useAppState } from '@context';
 import app from '@app';
 
@@ -42,7 +42,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<PSearchTableCommands<AdminUserListDataItem>>(null);
+  const searchTableRef = useRef<SearchTableCommands<AdminUserListDataItem>>(null);
 
   /********************************************************************************************************************
    * Memo
@@ -70,7 +70,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
     Admin.Group.list().then(({ data }) => {
       const items = data.map((info) => lv(info.name, info.id));
       items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<PFormSelectCommands<number>>('admin_group_id')?.setItems(items);
+      searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<number>>('admin_group_id')?.setItems(items);
     });
   }, [searchTableRef]);
 
@@ -101,9 +101,9 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
         });
       } else {
         Admin.User.lock(
-          <PText size='inherit' color='error'>
+          <T size='inherit' color='error'>
             사용자 "{item.name}"의 사용을 제한 하시겠습니까?
-          </PText>,
+          </T>,
           item.id
         ).then(() => {
           reloadList();
@@ -141,9 +141,9 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
 
   /** 사용자 목록 불러오기 */
   const getData = useCallback(
-    (data: PFormValueMap) => {
+    (data: Dict) => {
       onRequestScrollToTop?.();
-      return new Promise<PSearchTableData<AdminUserListDataItem>>((resolve) => {
+      return new Promise<SearchTableData<AdminUserListDataItem>>((resolve) => {
         Admin.User.list(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
@@ -159,7 +159,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   }, [searchTableRef]);
 
   /** 사용자 제한/해제 스타일 */
-  const getLockStyle = useCallback((item: AdminUserListDataItem): PTableColumn['style'] => {
+  const getLockStyle = useCallback((item: AdminUserListDataItem): TableColumn['style'] => {
     return item.is_lock ? { opacity: 0.5 } : undefined;
   }, []);
 
@@ -171,21 +171,21 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   const searchGroups = useMemo(
     () => (
       <>
-        <PSearchGroup max>
-          <PFormSelect
+        <SearchGroup max>
+          <FormSelect
             name='keyword_option'
             label='검색옵션'
             items={[lv('이메일', 'email'), lv('ID', 'id'), lv('이름', 'name')]}
             value='name'
           />
-          <PFormSearch name='keyword' label='검색어' placeholder='검색어' />
-          <PFormSelect name='is_lock' label='계정상태' items={[lv('전체', ''), lv('정상', 0), lv('제한', 1)]} />
-          <PFormSelect name='admin_group_id' label='그룹' placeholder='전체' />
-        </PSearchGroup>
-        <PSearchGroup align='right'>
+          <FormSearch name='keyword' label='검색어' placeholder='검색어' />
+          <FormSelect name='is_lock' label='계정상태' items={[lv('전체', ''), lv('정상', 0), lv('제한', 1)]} />
+          <FormSelect name='admin_group_id' label='그룹' placeholder='전체' />
+        </SearchGroup>
+        <SearchGroup align='right'>
           {hasExportRole && <SearchExportButton onClick={() => exportData()} />}
           {hasWriteRole && <SearchAddButton onClick={() => showFormDialog()}>새 사용자</SearchAddButton>}
-        </PSearchGroup>
+        </SearchGroup>
       </>
     ),
     [exportData, hasExportRole, hasWriteRole, showFormDialog]
@@ -237,9 +237,9 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
               item.admin_group_name && (
                 <>
                   {hasReadRoleGroup ? (
-                    <PTableButton fullWidth onClick={() => showGroupFormDialog(item)}>
+                    <TableButton fullWidth onClick={() => showGroupFormDialog(item)}>
                       {item.admin_group_name}
-                    </PTableButton>
+                    </TableButton>
                   ) : (
                     item.admin_group_name
                   )}
@@ -271,7 +271,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           width: 90,
           minWidth: 90,
           onRender(item) {
-            return <PTableButton onClick={() => showLoginLogDialog(item)}>보기</PTableButton>;
+            return <TableButton onClick={() => showLoginLogDialog(item)}>보기</TableButton>;
           },
         },
         {
@@ -282,9 +282,9 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           onRender(item) {
             return (
               !item.must_password_change && (
-                <PTableButton disabled={!item.editable || !hasWriteRole} onClick={() => passwordReset(item)}>
+                <TableButton disabled={!item.editable || !hasWriteRole} onClick={() => passwordReset(item)}>
                   초기화
-                </PTableButton>
+                </TableButton>
               )
             );
           },
@@ -297,17 +297,17 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           onRender(item) {
             const disabled = !item.editable || !hasWriteRole;
             return item.is_lock ? (
-              <PTableButton disabled={disabled} onClick={() => toggleLock(item)}>
+              <TableButton disabled={disabled} onClick={() => toggleLock(item)}>
                 해제
-              </PTableButton>
+              </TableButton>
             ) : (
-              <PTableButton disabled={disabled} color='error' onClick={() => toggleLock(item)}>
+              <TableButton disabled={disabled} color='error' onClick={() => toggleLock(item)}>
                 제한
-              </PTableButton>
+              </TableButton>
             );
           },
         },
-      ] as PTableColumns<AdminUserListDataItem>,
+      ] as TableColumns<AdminUserListDataItem>,
     [
       auth?.is_super,
       getLockStyle,
@@ -321,7 +321,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   );
 
   const search = useMemo(
-    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as PSearchTableSearchProps,
+    () => ({ sx: { pt: 2.5 }, labelShrink: true, searchGroups }) as SearchTableSearchProps,
     [searchGroups]
   );
 
@@ -332,7 +332,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
         defaultAlign: 'center',
         columns: tableColumns,
         onClick: showFormDialog,
-      }) as PSearchTableTableProps<AdminUserListDataItem>,
+      }) as SearchTableTableProps<AdminUserListDataItem>,
     [showFormDialog, tableColumns]
   );
 

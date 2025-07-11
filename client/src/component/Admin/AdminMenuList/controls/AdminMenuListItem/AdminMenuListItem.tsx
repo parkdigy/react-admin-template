@@ -8,7 +8,6 @@ import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Admin } from '@const';
-import { PButton, PIcon } from '@pdg/react-component';
 import { useFirstSkipEffect } from '@pdg/react-hook';
 import { styled } from '@mui/material';
 
@@ -119,19 +118,19 @@ export const AdminMenuListItem: React.FC<Props> = ({
       <AdminMenuListItemMenuContainer>
         <AdminMenuListItemMenuTitle>
           {menu.id !== 'admin' && (
-            <PIcon
+            <Icon
               ref={menu.id !== 'admin' ? setNodeRef : undefined}
               color='primary'
               {...listeners}
               style={{ cursor: 'pointer' }}
             >
               Reorder
-            </PIcon>
+            </Icon>
           )}
           {menu.icon && (
-            <PIcon size='small' style={{ color: '#999999' }}>
+            <Icon size='small' style={{ color: '#999999' }}>
               {menu.icon}
-            </PIcon>
+            </Icon>
           )}
           <span>{menu.name}</span>
           <span className='opacity-50 font-weight-400'>({menu.id})</span>
@@ -251,7 +250,7 @@ const AdminMenuListItemMenuTitle = styled('div')`
 
 const AdminMenuListItemMenuButtonContainer = styled('div')``;
 
-const AdminMenuListItemMenuButton = styled(PButton)`
+const AdminMenuListItemMenuButton = styled(Button)`
   margin-left: 10px;
   font-weight: 600;
 

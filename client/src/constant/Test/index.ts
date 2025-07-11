@@ -5,3 +5,5 @@ export default Test;
 export { Test };
 
 export * from './Test.types';
+
+export * from './TestDataStatus';

@@ -1,6 +1,4 @@
-import { PButtonProps } from '@pdg/react-component';
-
-export interface CopyToClipboardButtonProps extends PButtonProps {
+export interface CopyToClipboardButtonProps extends ButtonProps {
   text: string;
   successMsg?: string;
 }

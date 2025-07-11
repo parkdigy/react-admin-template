@@ -3,27 +3,13 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import {
-  PForm,
-  PFormRow,
-  PFormCol,
-  PFormEmail,
-  PFormText,
-  PFormMobile,
-  PFormSelect,
-  PFormButton,
-  PFormSelectItem,
-  PFormValueMap,
-  PFormBody,
-  PFormFooter,
-  PFormSelectItems,
-} from '@pdg/react-form';
 import { AdminUserFormProps } from './AdminUserForm.types';
 import { Admin, AdminUserInfoData } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import app from '@app';
 import { useAppState } from '@context';
+import { FormSelectItem, FormSelectItems } from '@ccomp';
 
 const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, onCancel }) => {
   /********************************************************************************************************************
@@ -43,7 +29,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
    * ******************************************************************************************************************/
 
   const [info, setInfo] = useState<AdminUserInfoData>();
-  const [groupItems, setGroupItems] = useState<PFormSelectItems<number>>();
+  const [groupItems, setGroupItems] = useState<FormSelectItems<number>>();
 
   /********************************************************************************************************************
    * Memo
@@ -71,7 +57,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
   /** 그룹 목록 불러오기 */
   const loadGroupList = useCallback(() => {
     Admin.Group.list().then(({ data: list }) => {
-      const items = list.map<PFormSelectItem<number>>((info) =>
+      const items = list.map<FormSelectItem<number>>((info) =>
         lv(info.name, info.id, { disabled: info.id === SUPER_ADMIN_GROUP_ID && !auth?.is_super })
       );
       items.unshift(lv('없음', ''));
@@ -110,7 +96,7 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
 
   /** 저장 - Form.onSubmit */
   const handleSubmit = useCallback(
-    (data: PFormValueMap) => {
+    (data: Dict) => {
       if (id) {
         Admin.User.edit('사용자 정보를 수정하시겠습니까?', id, data).then(() => {
           onSuccess?.();
@@ -129,26 +115,26 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
    * ******************************************************************************************************************/
 
   return (
-    <PForm disabled={!editable} onSubmit={handleSubmit} onValueChangeByUser={() => onChange?.()}>
-      <PFormBody>
-        <PFormRow>
-          <PFormCol>
-            <PFormEmail name='email' label='이메일' value={info?.email} disabled={!!id} required={!id} />
-          </PFormCol>
-        </PFormRow>
-        <PFormRow>
-          <PFormCol>
-            <PFormText name='name' label='이름' value={info?.name} required />
-          </PFormCol>
-        </PFormRow>
-        <PFormRow>
-          <PFormCol>
-            <PFormMobile name='tel' label='휴대폰번호' value={info?.tel} required />
-          </PFormCol>
-        </PFormRow>
-        <PFormRow>
-          <PFormCol>
-            <PFormSelect
+    <Form disabled={!editable} onSubmit={handleSubmit} onValueChangeByUser={() => onChange?.()}>
+      <FormBody>
+        <FormRow>
+          <FormCol>
+            <FormEmail name='email' label='이메일' value={info?.email} disabled={!!id} required={!id} />
+          </FormCol>
+        </FormRow>
+        <FormRow>
+          <FormCol>
+            <FormText name='name' label='이름' value={info?.name} required />
+          </FormCol>
+        </FormRow>
+        <FormRow>
+          <FormCol>
+            <FormMobile name='tel' label='휴대폰번호' value={info?.tel} required />
+          </FormCol>
+        </FormRow>
+        <FormRow>
+          <FormCol>
+            <FormSelect
               name='admin_group_id'
               label='그룹'
               placeholder='그룹 선택'
@@ -156,32 +142,32 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
               value={ifNullOrUndefined(info?.admin_group_id, undefined)}
               endAdornment={
                 editable && hasWriteRoleGroup ? (
-                  <PFormButton sx={{ mr: 2 }} startIcon='add' startIconMarginLeft='-0.3em' onClick={addGroup}>
+                  <FormButton sx={{ mr: 2 }} startIcon='add' startIconMarginLeft='-0.3em' onClick={addGroup}>
                     그룹 등록
-                  </PFormButton>
+                  </FormButton>
                 ) : undefined
               }
             />
-          </PFormCol>
-        </PFormRow>
-      </PFormBody>
+          </FormCol>
+        </FormRow>
+      </FormBody>
       {editable && (
-        <PFormFooter>
-          <PFormRow>
-            <PFormCol>
-              <PFormButton startIcon='close' onClick={cancel}>
+        <FormFooter>
+          <FormRow>
+            <FormCol>
+              <FormButton startIcon='close' onClick={cancel}>
                 취소
-              </PFormButton>
-            </PFormCol>
-            <PFormCol>
-              <PFormButton type='submit' startIcon='save_alt'>
+              </FormButton>
+            </FormCol>
+            <FormCol>
+              <FormButton type='submit' startIcon='save_alt'>
                 {id ? '수정' : '등록'}
-              </PFormButton>
-            </PFormCol>
-          </PFormRow>
-        </PFormFooter>
+              </FormButton>
+            </FormCol>
+          </FormRow>
+        </FormFooter>
       )}
-    </PForm>
+    </Form>
   );
 };
 

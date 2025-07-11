@@ -1,20 +1,14 @@
 import React from 'react';
 import {
-  PSearchTableCommands,
-  PSearchTableData,
-  PSearchTableSearchProps,
-  PSearchTableTableProps,
-  PTableColumns,
-} from '@pdg/react-table';
-import { HashSearchTable, SearchExportButton } from '@ccomp';
-import {
-  PSearchGroup,
-  PFormValueMap,
-  PFormSelectCommands,
-  PFormSelect,
-  PFormDateRangePicker,
-  PFormDateRangePickerProps,
-} from '@pdg/react-form';
+  FormSelectCommands,
+  HashSearchTable,
+  SearchExportButton,
+  SearchTableCommands,
+  SearchTableData,
+  SearchTableSearchProps,
+  SearchTableTableProps,
+  TableColumns,
+} from '@ccomp';
 import { AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
 import { Admin, AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
@@ -25,7 +19,7 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
    * Ref
    * ******************************************************************************************************************/
 
-  const searchTableRef = useRef<PSearchTableCommands<AdminPrivacyAccessLogListDataItem>>(null);
+  const searchTableRef = useRef<SearchTableCommands<AdminPrivacyAccessLogListDataItem>>(null);
 
   /********************************************************************************************************************
    * Variable
@@ -37,7 +31,7 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
    * Memo
    * ******************************************************************************************************************/
 
-  const initSearchDate: PFormDateRangePickerProps['value'] = useMemo(() => [dayjs().subtract(29, 'days'), dayjs()], []);
+  const initSearchDate: FormDateRangePickerProps['value'] = useMemo(() => [dayjs().subtract(29, 'days'), dayjs()], []);
 
   /********************************************************************************************************************
    * Effect
@@ -57,15 +51,15 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
     Admin.PrivacyAccessLog.typeList().then(({ data }) => {
       const items = data.map((item) => lv(item.name, item.type));
       items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<PFormSelectCommands<string>>('type')?.setItems(items);
+      searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<string>>('type')?.setItems(items);
     });
   }, []);
 
   /** 목록 불러오기 */
   const getData = useCallback(
-    (data: PFormValueMap) => {
+    (data: Dict) => {
       onRequestScrollToTop?.();
-      return new Promise<PSearchTableData<AdminPrivacyAccessLogListDataItem>>((resolve) => {
+      return new Promise<SearchTableData<AdminPrivacyAccessLogListDataItem>>((resolve) => {
         Admin.PrivacyAccessLog.list(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
@@ -91,17 +85,17 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
   const searchGroups = useMemo(
     () => (
       <>
-        <PSearchGroup max>
-          <PFormSelect name='type' label='구분' value='' width={300} />
-          <PFormDateRangePicker
+        <SearchGroup max>
+          <FormSelect name='type' label='구분' value='' width={300} />
+          <FormDateRangePicker
             name='search_date'
             fromLabel='조회기간'
             toLabel='조회기간'
             required
             value={initSearchDate}
           />
-        </PSearchGroup>
-        <PSearchGroup align='right'>{hasExportRole && <SearchExportButton onClick={handleExportClick} />}</PSearchGroup>
+        </SearchGroup>
+        <SearchGroup align='right'>{hasExportRole && <SearchExportButton onClick={handleExportClick} />}</SearchGroup>
       </>
     ),
     [handleExportClick, hasExportRole, initSearchDate]
@@ -117,11 +111,11 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
         { label: '사유', name: 'reason', align: 'left', onGetTooltip: (info) => <pre>{info.reason}</pre> },
         { label: '참조 ID', name: 'parent_id', width: 100, onHide: (info) => info.parent_id === 0 },
         { label: '조회일자', type: 'datetime', name: 'create_date', width: 150, minWidth: 100 },
-      ] as PTableColumns<AdminPrivacyAccessLogListDataItem>,
+      ] as TableColumns<AdminPrivacyAccessLogListDataItem>,
     []
   );
 
-  const search = useMemo(() => ({ searchGroups }) as PSearchTableSearchProps, [searchGroups]);
+  const search = useMemo(() => ({ searchGroups }) as SearchTableSearchProps, [searchGroups]);
 
   const table = useMemo(
     () =>
@@ -129,7 +123,7 @@ const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToT
         showEvenColor: true,
         defaultAlign: 'center',
         columns: tableColumns,
-      }) as PSearchTableTableProps<AdminPrivacyAccessLogListDataItem>,
+      }) as SearchTableTableProps<AdminPrivacyAccessLogListDataItem>,
     [tableColumns]
   );
 

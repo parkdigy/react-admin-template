@@ -3,10 +3,8 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { PSearchButton } from '@pdg/react-form';
 import { SearchExportButtonProps } from './SearchExportButton.types';
 import { MenuItem as BaseMenuItem, menuItemClasses, styled, Typography, Menu } from '@mui/material';
-import { PIcon } from '@pdg/react-component';
 
 const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyle, items, ...props }) => {
   /********************************************************************************************************************
@@ -46,7 +44,7 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
 
   return items ? (
     <div ref={containerRef}>
-      <PSearchButton
+      <SearchButton
         {...props}
         style={style}
         startIcon='download'
@@ -65,9 +63,9 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
             }}
           >
             {info.icon && (
-              <PIcon className='opacity-50' color={info.color}>
+              <Icon className='opacity-50' color={info.color}>
                 {info.icon}
-              </PIcon>
+              </Icon>
             )}
             <Typography color={info.color}>{info.label}</Typography>
           </MenuItem>
@@ -75,7 +73,7 @@ const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyl
       </Menu>
     </div>
   ) : (
-    <PSearchButton {...props} style={style} startIcon='download' />
+    <SearchButton {...props} style={style} startIcon='download' />
   );
 };
 
