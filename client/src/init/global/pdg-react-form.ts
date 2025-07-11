@@ -105,7 +105,7 @@ import {
   type FormToggleButtonGroupSingleValue,
   type FormSelectSingleValue,
   type FormTextFieldValue,
-} from '@ccomp';
+} from '../../component/Common/@pdg';
 
 /* eslint-disable no-var */
 declare global {

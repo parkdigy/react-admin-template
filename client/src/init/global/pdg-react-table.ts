@@ -44,7 +44,7 @@ import {
   // Types for Generic
   type InfoTableInfo,
   TableItem,
-} from '@ccomp';
+} from '../../component/Common/@pdg';
 
 /* eslint-disable no-var */
 declare global {

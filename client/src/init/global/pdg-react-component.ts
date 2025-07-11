@@ -40,7 +40,7 @@ import {
   type TextProps as _TextProps,
   WonText as _WonText,
   type WonTextProps as _WonTextProps,
-} from '@ccomp';
+} from '../../component/Common/@pdg';
 
 /* eslint-disable no-var */
 declare global {
