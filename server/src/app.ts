@@ -5,7 +5,6 @@ import session from 'express-session';
 import RedisStore from 'connect-redis';
 import { createClient } from 'redis';
 import cookieParser from 'cookie-parser';
-import csrf from 'csurf';
 import helmet from 'helmet';
 import ejs from 'ejs';
 import path from 'path';
@@ -21,7 +20,6 @@ import { ContentSecurityPolicy, CsrfErrorHandler } from './middlewares';
 import { Version, Deploy } from './controllers';
 
 const isSecure = process.env.APP_SECURE === 'true';
-const csrfProtection = csrf({ cookie: true });
 const keepaliveAgent = new HttpAgent({
   timeout: Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) * 1000,
   freeSocketTimeout: (Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) + 1) * 1000,
@@ -143,16 +141,7 @@ if (process.env.API_URL) {
     proxyOptions.agent = keepaliveAgent;
   }
 
-  app.use(
-    '/api',
-    (req, res, next) => {
-      if (['POST', 'DELETE', 'PATCH'].includes(req.method)) {
-        return csrfProtection(req, res, next);
-      }
-      next();
-    },
-    createProxyMiddleware(proxyOptions)
-  );
+  app.use('/api', createProxyMiddleware(proxyOptions));
   app.use('/api', CsrfErrorHandler);
 }
 
@@ -170,8 +159,7 @@ app.use(
   })
 );
 
-app.get('*', csrfProtection, (req, res) => {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
+app.get('*', (req, res) => {
   res.render('index', {
     title: process.env.APP_NAME,
     appEnv: process.env.APP_ENV,
