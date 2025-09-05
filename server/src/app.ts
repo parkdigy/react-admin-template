@@ -15,13 +15,17 @@ import axios from 'axios';
 import http from 'http';
 import https from 'https';
 import fs from 'fs';
-import AgentKeepAlive from 'agentkeepalive';
+import { HttpAgent } from 'agentkeepalive';
 import { createProxyMiddleware, Options as CreateProxyMiddlewareOptions } from 'http-proxy-middleware';
 import { ContentSecurityPolicy, CsrfErrorHandler } from './middlewares';
 import { Version, Deploy } from './controllers';
 
 const isSecure = process.env.APP_SECURE === 'true';
 const csrfProtection = csrf({ cookie: true });
+const keepaliveAgent = new HttpAgent({
+  timeout: Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) * 1000,
+  freeSocketTimeout: (Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) + 1) * 1000,
+});
 
 const app = express();
 
@@ -136,10 +140,7 @@ if (process.env.API_URL) {
     pathRewrite: { '^/api': '/' },
   };
   if (process.env.API_KEEP_ALIVE === 'true') {
-    proxyOptions.agent = new AgentKeepAlive({
-      timeout: Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) * 1000,
-      freeSocketTimeout: (Number(process.env.API_KEEP_ALIVE_TIMEOUT_SECONDS) + 1) * 1000,
-    });
+    proxyOptions.agent = keepaliveAgent;
   }
 
   app.use(

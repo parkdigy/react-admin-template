@@ -18,6 +18,7 @@
     "reinstall": "npm run reinstall:module",
     "reinstall:module": "rm -rf node_modules && rm -f package-lock.json && npm i",
     "lint": "eslint src",
+    "tsc": "npx tsc --noEmit",
     "publish:development": "cd .. && npm run publish:development",
     "publish:staging": "cd .. && npm run publish:staging",
     "publish:production": "cd .. && npm run publish:production",
