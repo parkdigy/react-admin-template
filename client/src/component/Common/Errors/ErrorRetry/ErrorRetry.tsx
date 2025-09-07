@@ -5,7 +5,6 @@
 import React from 'react';
 import { ErrorRetryProps as Props } from './ErrorRetry.types';
 import { Alert, Box, Button, Icon, Typography } from '@mui/material';
-import './ErrorRetry.scss';
 
 const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
   /********************************************************************************************************************
@@ -19,7 +18,7 @@ const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
    * ******************************************************************************************************************/
 
   return (
-    <div className='ErrorRetry'>
+    <Container>
       <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
         <div>
           <Icon
@@ -46,8 +45,23 @@ const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
           </Button>
         )}
       </Box>
-    </div>
+    </Container>
   );
 };
 
 export default ErrorRetry;
+
+/********************************************************************************************************************
+ * Style
+ * ******************************************************************************************************************/
+
+const Container = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+`;

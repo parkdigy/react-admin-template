@@ -8,3 +8,4 @@ import './admin';
 import './log';
 import './classnames';
 import './color';
+import './styled-components';
