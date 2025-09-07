@@ -245,7 +245,7 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
       flags
     );
   }
-  function textdecode(encoding: string, $value: string): string {
+  function textDecode(encoding: string, $value: string): string {
     let value = $value;
     if (encoding) {
       try {
@@ -262,9 +262,9 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
   function fixupEncoding($value: string): string {
     let value = $value;
     if (needsEncodingFixup && /[\x80-\xff]/.test(value)) {
-      value = textdecode('utf-8', value);
+      value = textDecode('utf-8', value);
       if (needsEncodingFixup) {
-        value = textdecode('iso-8859-1', value);
+        value = textDecode('iso-8859-1', value);
       }
     }
     return value;
@@ -285,15 +285,15 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
     }
     return value;
   }
-  function rfc5987decode(extvalue: string) {
-    const encodingend = extvalue.indexOf("'");
-    if (encodingend === -1) return extvalue;
-    const encoding = extvalue.slice(0, encodingend);
-    const langvalue = extvalue.slice(encodingend + 1);
-    const value = langvalue.replace(/^[^']*'/, '');
-    return textdecode(encoding, value);
+  function rfc5987decode(extValue: string) {
+    const encodingEnd = extValue.indexOf("'");
+    if (encodingEnd === -1) return extValue;
+    const encoding = extValue.slice(0, encodingEnd);
+    const langValue = extValue.slice(encodingEnd + 1);
+    const value = langValue.replace(/^[^']*'/, '');
+    return textDecode(encoding, value);
   }
-  function rfc2231getparam($contentDisposition: string): string {
+  function rfc2231GetParam($contentDisposition: string): string {
     const matches = [];
     const iter = toParamRegExp('filename\\*((?!0\\d)\\d+)(\\*?)', 'ig');
     let match = iter.exec($contentDisposition);
@@ -315,7 +315,7 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
       const [quot, part] = matches[n];
       let part2 = rfc2616unquote(part);
       if (quot) {
-        part2 = unescape(part2);
+        part2 = decodeURIComponent(part2.replace(/\+/g, '%20'));
         if (n === 0) {
           part2 = rfc5987decode(part2);
         }
@@ -334,12 +334,12 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
       if (encoding === 'q' || encoding === 'Q') {
         newText = newText.replace(/_/g, ' ');
         newText = newText.replace(/=([0-9a-fA-F]{2})/g, (_2, hex) => String.fromCharCode(parseInt(hex, 16)));
-        return textdecode(charset, newText);
+        return textDecode(charset, newText);
       }
       try {
         newText = atob(newText);
       } catch {} //eslint-disable-line no-empty
-      return textdecode(charset, newText);
+      return textDecode(charset, newText);
     });
   }
 
@@ -347,13 +347,13 @@ function getFilenameFromContentDispositionHeader(contentDisposition: string) {
   if (exps) {
     const exp = exps[1];
     let filename = rfc2616unquote(exp);
-    filename = unescape(filename);
+    filename = decodeURIComponent(filename.replace(/\+/g, '%20'));
     filename = rfc5987decode(filename);
     filename = rfc2047decode(filename);
     return fixupEncoding(filename);
   }
 
-  const rfc = rfc2231getparam(contentDisposition);
+  const rfc = rfc2231GetParam(contentDisposition);
   if (rfc) {
     const filename = rfc2047decode(rfc);
     return fixupEncoding(filename);
