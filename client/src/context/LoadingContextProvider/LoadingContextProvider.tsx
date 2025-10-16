@@ -5,11 +5,18 @@
 import React from 'react';
 import { LoadingContextProviderProps as Props } from './LoadingContextProvider.types';
 import LoadingContext from '../LoadingContext';
-import './LoadingContextProvider.scss';
+import { useLocation } from 'react-router';
 import app from '@app';
+import './LoadingContextProvider.scss';
 
 /** LoadingContext 를 제공하는 Context Provider */
 const LoadingContextProvider: React.FC<Props> = ({ children }) => {
+  /********************************************************************************************************************
+   * Use
+   * ******************************************************************************************************************/
+
+  const location = useLocation();
+
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/
@@ -23,6 +30,18 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
 
   const [isUse, setIsUse] = useState(false);
   const [isShow, setIsShow] = useState(false);
+
+  /********************************************************************************************************************
+   * Effect
+   * ******************************************************************************************************************/
+
+  useEffect(() => {
+    return () => {
+      showCountRef.current = 0;
+      setIsUse(false);
+      setIsShow(false);
+    };
+  }, [location.pathname]);
 
   /********************************************************************************************************************
    * Function
@@ -60,6 +79,10 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
     }
   }, []);
 
+  /********************************************************************************************************************
+   * Context Value
+   * ******************************************************************************************************************/
+
   /** 로딩 표시 */
   const showLoading = useCallback(() => {
     increaseShowCount();
@@ -75,8 +98,7 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
-    app.setShowLoading(showLoading);
-    app.setHideLoading(hideLoading);
+    app._setLoading(showLoading, hideLoading);
   }, [showLoading, hideLoading]);
 
   /********************************************************************************************************************

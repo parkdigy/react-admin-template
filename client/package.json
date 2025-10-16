@@ -52,7 +52,7 @@
     "@pdg/react-form": "^1.1.5",
     "@pdg/react-hook": "^1.0.33",
     "@pdg/react-table": "^1.1.7",
-    "@pdg/types": "^1.0.2",
+    "@pdg/types": "^1.0.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.0",
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@types/jest": "^29.5.14",

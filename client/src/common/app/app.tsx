@@ -10,8 +10,8 @@ let _menuRoles: MenuRoles = {};
 let _authDialog: AuthDialogType | undefined;
 let _enqueueSnackbar: EnqueueSnackbarType | undefined;
 let _closeSnackbar: CloseSnackbarType | undefined;
-let _showLoading: () => void | undefined;
-let _hideLoading: () => void | undefined;
+let _showLoading: (() => void) | undefined;
+let _hideLoading: (() => void) | undefined;
 
 const app = {
   /********************************************************************************************************************
@@ -54,6 +54,39 @@ const app = {
    */
   getNavigateScrollTopPos() {
     return _navigateScrollTopPos;
+  },
+
+  /********************************************************************************************************************
+   * Browser ID
+   * ******************************************************************************************************************/
+  getBrowserId() {
+    let id = localStorage.getItem('browserId');
+    if (!id) {
+      id = crypto.randomUUID().replace(/-/g, '');
+      localStorage.setItem('browserId', id);
+    }
+    return id;
+  },
+
+  /********************************************************************************************************************
+   * Loading
+   * ******************************************************************************************************************/
+
+  _setLoading(showLoading: () => void, hideLoading: () => void) {
+    _showLoading = showLoading;
+    _hideLoading = hideLoading;
+  },
+
+  showLoading() {
+    if (_showLoading) {
+      _showLoading();
+    }
+  },
+
+  hideLoading() {
+    if (_hideLoading) {
+      _hideLoading();
+    }
   },
 
   /********************************************************************************************************************
@@ -224,44 +257,6 @@ const app = {
       _closeSnackbar(key);
     } else {
       throw new Error('app.closeSnackbar not set.');
-    }
-  },
-
-  /********************************************************************************************************************
-   * Loading
-   * ******************************************************************************************************************/
-
-  /**
-   * 로딩 표시 함수 설정
-   * @param showLoadingFunc 로딩 표시 함수
-   */
-  setShowLoading(showLoadingFunc: () => void) {
-    _showLoading = showLoadingFunc;
-  },
-
-  /**
-   * 로딩 숨김 함수 설정
-   * @param hideLoadingFunc 로딩 숨김 함수
-   */
-  setHideLoading(hideLoadingFunc: () => void) {
-    _hideLoading = hideLoadingFunc;
-  },
-
-  /**
-   * 로딩 표시
-   */
-  showLoading() {
-    if (_showLoading) {
-      _showLoading();
-    }
-  },
-
-  /**
-   * 로딩 숨김
-   */
-  hideLoading() {
-    if (_hideLoading) {
-      _hideLoading();
     }
   },
 };
