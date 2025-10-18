@@ -6,7 +6,6 @@ import React from 'react';
 import { LoadingContextProviderProps as Props } from './LoadingContextProvider.types';
 import LoadingContext from '../LoadingContext';
 import { useLocation } from 'react-router';
-import app from '@app';
 import './LoadingContextProvider.scss';
 
 /** LoadingContext 를 제공하는 Context Provider */
@@ -98,7 +97,7 @@ const LoadingContextProvider: React.FC<Props> = ({ children }) => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
-    app._setLoading(showLoading, hideLoading);
+    __setLoading(showLoading, hideLoading);
   }, [showLoading, hideLoading]);
 
   /********************************************************************************************************************

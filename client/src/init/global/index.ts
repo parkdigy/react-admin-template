@@ -1,6 +1,8 @@
 import './styled-components';
 import './react';
 import './mediaQuery';
+import './navigate';
+import './loading';
 import './pdg';
 import './pdg-react-component';
 import './pdg-react-form';

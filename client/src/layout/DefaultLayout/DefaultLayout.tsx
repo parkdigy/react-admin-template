@@ -32,8 +32,8 @@ const DefaultLayout = () => {
   }, []);
 
   useEffect(() => {
-    window.scrollTo({ top: app.getNavigateScrollTopPos() });
-    app.setNavigateScrollTopPos(0);
+    window.scrollTo({ top: __getNavigateScrollTopPos() });
+    __setNavigateScrollTopPos(0);
   }, [location.pathname, location.hash]);
 
   /********************************************************************************************************************

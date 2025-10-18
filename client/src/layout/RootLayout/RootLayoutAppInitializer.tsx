@@ -19,7 +19,7 @@ export const RootLayoutAppInitializer = () => {
   }, [enqueueSnackbar, closeSnackbar]);
 
   useLayoutEffect(() => {
-    app.setNavigate(navigate);
+    __setNavigate(navigate);
   }, [navigate]);
 
   return null;
