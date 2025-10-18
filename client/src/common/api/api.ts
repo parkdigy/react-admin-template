@@ -209,7 +209,7 @@ export default {
     const option: ApiOption = {
       ...defaultOption,
       async onResponse(res: AxiosResponse) {
-        app.hideLoading();
+        __hideLoading();
 
         const contentDisposition = res.headers['content-disposition'];
         if (contentDisposition) {
