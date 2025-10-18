@@ -4,16 +4,24 @@
 
 import React from 'react';
 import { LoadingCommands, LoadingProps } from './Loading.types';
-import './Loading.scss';
 import { useForwardRef } from '@pdg/react-hook';
+import { useLocation } from 'react-router';
+import './Loading.scss';
 
 const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => {
+  /********************************************************************************************************************
+   * Use
+   * ******************************************************************************************************************/
+
+  const location = useLocation();
+
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/
 
   const showCountRef = useRef(0);
   const notUseTimerRef = useRef<NodeJS.Timeout>(undefined);
+  const lastHideTimeRef = useRef(new Date().getTime());
 
   /********************************************************************************************************************
    * State
@@ -25,6 +33,18 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
   /********************************************************************************************************************
    * Effect
    * ******************************************************************************************************************/
+
+  /********************************************************************************************************************
+   * Effect
+   * ******************************************************************************************************************/
+
+  useEffect(() => {
+    return () => {
+      showCountRef.current = 0;
+      setUse(false);
+      setShow(false);
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     showCountRef.current = 0;
@@ -60,6 +80,7 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
       showCountRef.current -= 1;
       if (showCountRef.current === 0) {
         setShow(false);
+        lastHideTimeRef.current = new Date().getTime();
 
         if (notUseTimerRef.current) {
           clearTimeout(notUseTimerRef.current);
@@ -82,8 +103,10 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
     ref,
     useMemo<LoadingCommands>(
       () => ({
+        isShow: () => showCountRef.current > 0,
         show: increaseShowCount,
         hide: decreaseShowCount,
+        getLastHideTime: () => lastHideTimeRef.current,
       }),
       [decreaseShowCount, increaseShowCount]
     )
