@@ -1,4 +1,4 @@
-.LoadingContextProvider-Loading {
+.RootLoading {
   @keyframes spin {
     to {
       transform: rotate(360deg);
@@ -38,17 +38,17 @@
     user-select: none;
   }
 
-  &.LoadingContextProvider-show {
+  &.RootLoading-show {
     display: block;
     animation: fadein 0.3s linear forwards;
   }
 
-  &.LoadingContextProvider-hide {
+  &.RootLoading-hide {
     display: block;
     animation: fadeout 0.3s linear forwards;
   }
 
-  .LoadingContextProvider-LoadingContent {
+  .RootLoading__Content {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -57,7 +57,7 @@
     border-radius: 50%;
     padding: 5px;
 
-    .LoadingContextProvider-LoadingText {
+    .RootLoading__Text {
       width: 30px;
       height: 30px;
       border: 4px solid #fff;

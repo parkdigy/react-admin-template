@@ -12,15 +12,16 @@ import { ApiError } from '@pdg/api';
 import { AuthSignInResponseData } from '@const';
 import { DialogContextProvider } from '@pdg/react-dialog';
 import { Box, Button, Icon, Typography } from '@mui/material';
-import { AxiosLoading, ErrorBoundary, ErrorRetry, Loading, LoadingCommands } from '@ccomp';
+import { ErrorBoundary, ErrorRetry, Loading, LoadingCommands } from '@ccomp';
 import { SnackbarProvider } from 'notistack';
-import { AppAuthInfo, AppContextProvider, LoadingContextProvider } from '@context';
+import { AppAuthInfo, AppContextProvider } from '@context';
 import { ThemeBase } from '../../theme';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
 import { loadable } from '@common';
 import RootLayoutAppInitializer from './RootLayoutAppInitializer';
 import CardLayout from '../CardLayout';
 import DefaultLayout from '../DefaultLayout';
+import { RootLoading } from './RootLoading';
 import '../../sass/index.scss';
 
 const RootLayout = withErrorBoundary(() => {
@@ -195,65 +196,60 @@ const RootLayout = withErrorBoundary(() => {
     <BrowserRouter>
       <ThemeBase>
         <AppContextProvider value={{ auth, setAuth, clearAuth, showHtmlLoading, hideHtmlLoading, removeHtmlLoading }}>
-          <LoadingContextProvider>
-            <DialogContextProvider>
-              <SnackbarProvider>
-                <RootLayoutAppInitializer />
+          <DialogContextProvider>
+            <SnackbarProvider>
+              <RootLoading />
+              <RootLayoutAppInitializer />
 
-                {error ? (
-                  <Box
-                    style={{
-                      position: 'fixed',
-                      display: 'flex',
-                      width: '100%',
-                      height: '100%',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
-                      <div>
-                        <Icon fontSize='large' color='error' style={{ cursor: 'pointer' }}>
-                          error
-                        </Icon>
-                      </div>
-                      <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
-                      <p>잠시 후 재시도 해주세요.</p>
-                      <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={() => setError(false)}>
-                        <Typography fontSize='inherit'>재시도</Typography>
-                      </Button>
-                    </Box>
+              {error ? (
+                <Box
+                  style={{
+                    position: 'fixed',
+                    display: 'flex',
+                    width: '100%',
+                    height: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
+                    <div>
+                      <Icon fontSize='large' color='error' style={{ cursor: 'pointer' }}>
+                        error
+                      </Icon>
+                    </div>
+                    <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
+                    <p>잠시 후 재시도 해주세요.</p>
+                    <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={() => setError(false)}>
+                      <Typography fontSize='inherit'>재시도</Typography>
+                    </Button>
                   </Box>
-                ) : boundaryError ? (
-                  <>
-                    {errorName === 'ChunkLoadError' ? (
-                      <Loading
-                        ref={(commands: LoadingCommands) => {
-                          if (commands) {
-                            commands.show();
-                          }
-                        }}
-                      />
-                    ) : (
-                      <ErrorRetry error={boundaryError as Error} onRetry={() => window.location.reload()} />
-                    )}
-                  </>
-                ) : initialized ? (
-                  <>
-                    <AxiosLoading />
-
-                    <ErrorBoundary>
-                      <Routes>
-                        {!auth && <Route path='/auth/*' element={<CardLayout />} />}
-                        {auth && <Route path='/*' element={<DefaultLayout />} />}
-                        <Route path='*' element={<Navigate to='/' />} />
-                      </Routes>
-                    </ErrorBoundary>
-                  </>
-                ) : null}
-              </SnackbarProvider>
-            </DialogContextProvider>
-          </LoadingContextProvider>
+                </Box>
+              ) : boundaryError ? (
+                <>
+                  {errorName === 'ChunkLoadError' ? (
+                    <Loading
+                      ref={(commands: LoadingCommands) => {
+                        if (commands) {
+                          commands.show();
+                        }
+                      }}
+                    />
+                  ) : (
+                    <ErrorRetry error={boundaryError as Error} onRetry={() => window.location.reload()} />
+                  )}
+                </>
+              ) : initialized ? (
+                <ErrorBoundary>
+                  <Routes>
+                    {!auth && <Route path='/auth/*' element={<CardLayout />} />}
+                    {auth && <Route path='/*' element={<DefaultLayout />} />}
+                    <Route path='*' element={<Navigate to='/' />} />
+                  </Routes>
+                </ErrorBoundary>
+              ) : null}
+            </SnackbarProvider>
+          </DialogContextProvider>
         </AppContextProvider>
       </ThemeBase>
     </BrowserRouter>
