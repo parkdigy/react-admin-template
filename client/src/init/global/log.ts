@@ -10,7 +10,7 @@ declare global {
 }
 
 globalThis.ll = function (message?: any, ...optionalParams: any[]) {
-  if (contains(['local', 'development'], config.env)) {
+  if (config.isLocal || config.isDevelopment) {
     console.log(`[${config.env}]`, message, ...optionalParams);
   }
 };
