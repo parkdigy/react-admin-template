@@ -191,6 +191,18 @@ const app = {
       throw new Error('app.closeSnackbar not set.');
     }
   },
+
+  /********************************************************************************************************************
+   * 스크롤
+   * ******************************************************************************************************************/
+
+  getScrollTop() {
+    return window.scrollY || document.documentElement.scrollTop;
+  },
+
+  scrollToTop(top = 0, smooth = false) {
+    window.scrollTo({ left: 0, top, behavior: smooth ? 'smooth' : 'instant' });
+  },
 };
 
 export default app;

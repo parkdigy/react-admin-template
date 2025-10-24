@@ -31,11 +31,6 @@ const DefaultLayout = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    window.scrollTo({ top: __getNavigateScrollTopPos() });
-    __setNavigateScrollTopPos(0);
-  }, [location.pathname, location.hash]);
-
   /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
