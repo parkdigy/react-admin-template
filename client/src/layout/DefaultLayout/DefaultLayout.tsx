@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { useLocation } from 'react-router';
 import { Box, Button } from '@mui/material';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
@@ -14,7 +13,6 @@ import { config } from '@common';
 
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();
-  const location = useLocation();
 
   /********************************************************************************************************************
    * State
