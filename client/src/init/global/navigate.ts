@@ -1,9 +1,10 @@
-import { NavigateFunction } from 'react-router';
+import { Location, NavigateFunction } from 'react-router';
 
 /********************************************************************************************************************
  * Variable
  * ******************************************************************************************************************/
 
+let _location: Location<any> | undefined;
 let _navigate: NavigateFunction | undefined;
 let _navigateScrollTopPos = 0;
 
@@ -11,14 +12,23 @@ let _navigateScrollTopPos = 0;
  * Function
  * ******************************************************************************************************************/
 
+function setLocation(location: Location<any>) {
+  _location = location;
+}
+
 function setNavigate(navigate: NavigateFunction) {
   _navigate = navigate;
 }
 
-function navigate(path: string, scrollTopPos = 0) {
+function navigate(path: string, replace = false, scrollTopPos = 0) {
   if (_navigate) {
     _navigateScrollTopPos = scrollTopPos;
-    _navigate(path);
+    const currentPath = `${_location?.pathname}${_location?.search}${_location?.hash}`;
+    if (path === currentPath) {
+      window.scrollTo({ left: 0, top: 0 });
+    } else {
+      _navigate(path, { replace });
+    }
   } else {
     console.log('!Not set navigate.');
   }
@@ -38,6 +48,7 @@ function getNavigateScrollTopPos() {
 
 /* eslint-disable no-var */
 declare global {
+  var __setLocation: typeof setLocation;
   var __setNavigate: typeof setNavigate;
   var __setNavigateScrollTopPos: typeof setNavigateScrollTopPos;
   var __getNavigateScrollTopPos: typeof getNavigateScrollTopPos;
@@ -45,6 +56,7 @@ declare global {
 }
 /* eslint-enable no-var */
 
+globalThis.__setLocation = setLocation;
 globalThis.__setNavigate = setNavigate;
 globalThis.__setNavigateScrollTopPos = setNavigateScrollTopPos;
 globalThis.__getNavigateScrollTopPos = getNavigateScrollTopPos;

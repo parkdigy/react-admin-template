@@ -36,9 +36,13 @@ export const RootLayoutAppInitializer = () => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
+    __setLocation(location);
+  }, [location]);
+
+  useEffect(() => {
     app.scrollToTop(__getNavigateScrollTopPos());
     __setNavigateScrollTopPos(0);
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.search, location.hash]);
 
   /********************************************************************************************************************
    * Render
