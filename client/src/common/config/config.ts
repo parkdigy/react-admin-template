@@ -5,26 +5,26 @@ const myAppConfig: Dict<string> = (window as any).$$MyAppConfig || {};
 const version = ifUndefined(myAppConfig.version, '');
 const env = ifUndefined(myAppConfig.env, 'local') as 'local' | 'development' | 'staging' | 'production';
 const isLocal = env === 'local';
+const isNotLocal = env !== 'local';
 const isDevelopment = env === 'development';
+const isNotDevelopment = env !== 'development';
 const isStaging = env === 'staging';
+const isNotStaging = env !== 'staging';
 const isProduction = env === 'production';
+const isNotProduction = env !== 'production';
 const title = ifUndefined(myAppConfig.title, '');
 
-const config: {
-  version: string;
-  env: 'local' | 'development' | 'staging' | 'production';
-  isLocal: boolean;
-  isDevelopment: boolean;
-  isStaging: boolean;
-  isProduction: boolean;
-  title: string;
-} = {
+const config = {
   version,
   env,
   isLocal,
+  isNotLocal,
   isDevelopment,
+  isNotDevelopment,
   isStaging,
+  isNotStaging,
   isProduction,
+  isNotProduction,
   title,
 };
 
