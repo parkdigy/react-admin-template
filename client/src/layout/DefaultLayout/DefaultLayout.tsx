@@ -126,7 +126,7 @@ const DefaultLayout = () => {
       >
         <MainRouter />
       </AdminLayout.DefaultLayout>
-      {config.env === 'local' && (
+      {config.isLocal && (
         <div style={{ position: 'fixed', zIndex: 1201, left: 0, bottom: 0, display: 'flex' }}>
           <div style={{ height: 3, backgroundColor: '#9C27B0', width: 600 }}></div>
           <div style={{ height: 3, backgroundColor: '#1E88E5', width: 300 }}></div>
