@@ -1,7 +1,7 @@
 import { AuthDialogPropsParam } from '@dialog';
 import { AuthDialogType, EnqueueSnackbarType, CloseSnackbarType, MenuRoles } from './app.types';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
-import { SetURLSearchParams } from 'react-router';
+import { Location as RouterLocation, SetURLSearchParams } from 'react-router';
 import menu from './menu';
 
 let _menuRoles: MenuRoles = {};
@@ -209,7 +209,7 @@ const app = {
    * Hash
    * ******************************************************************************************************************/
 
-  deHash(location?: Location) {
+  deHash(location?: Location | RouterLocation) {
     const values: Dict<string> = {};
     const hash = ifUndefined(location, window.location).hash.substring(1);
     hash.replace(/([^=&]+)=([^&]*)/g, (substring, key, value) => {
