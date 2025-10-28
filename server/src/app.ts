@@ -18,6 +18,7 @@ import { HttpAgent } from 'agentkeepalive';
 import { createProxyMiddleware, Options as CreateProxyMiddlewareOptions } from 'http-proxy-middleware';
 import { ContentSecurityPolicy, CsrfErrorHandler } from './middlewares';
 import { Version, Deploy } from './controllers';
+import scheduler from './scheduler';
 
 const isSecure = process.env.APP_SECURE === 'true';
 const keepaliveAgent = new HttpAgent({
@@ -168,6 +169,8 @@ app.get('*', (req, res) => {
 
 function startServer() {
   const handleListen = () => {
+    scheduler.$start();
+
     if (typeof process.send === 'function') {
       process.send('ready');
     }
