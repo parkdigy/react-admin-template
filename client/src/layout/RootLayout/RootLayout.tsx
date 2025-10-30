@@ -10,7 +10,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { createApi, ApiResult } from '@api';
 import { ApiError } from '@pdg/api';
 import { AuthSignInResponseData } from '@const';
-import { DialogContextProvider } from '@pdg/react-dialog';
+import { Dialog, DialogContextProvider } from '@pdg/react-dialog';
 import { Box, Button, Icon, Typography } from '@mui/material';
 import { ErrorBoundary, ErrorRetry, Loading, LoadingCommands } from '@ccomp';
 import { SnackbarProvider } from 'notistack';
@@ -23,6 +23,14 @@ import CardLayout from '../CardLayout';
 import DefaultLayout from '../DefaultLayout';
 import { RootLoading } from './RootLoading';
 import '../../sass/index.scss';
+
+FormTextEditor.apiKey = '[your-api-key]';
+FormTextEditor.onOpenWindow = () => {
+  Dialog.setDisableEnforceFocus(true);
+};
+FormTextEditor.onOpenWindow = () => {
+  Dialog.setDisableEnforceFocus(false);
+};
 
 const RootLayout = withErrorBoundary(() => {
   /********************************************************************************************************************
