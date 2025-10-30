@@ -48,7 +48,7 @@
     "@pdg/formatting": "^1.0.5",
     "@pdg/react-admin-layout": "^1.0.47",
     "@pdg/react-component": "^1.1.2",
-    "@pdg/react-dialog": "^1.0.35",
+    "@pdg/react-dialog": "^1.0.36",
     "@pdg/react-form": "^1.1.10",
     "@pdg/react-hook": "^1.0.33",
     "@pdg/react-table": "^1.1.9",
