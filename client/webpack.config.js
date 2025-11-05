@@ -34,10 +34,10 @@ class MyHtmlPlugin {
         const htmls = data.html.split(splitText);
         const inject = `
           <title>${isProduction ? '<%= title %>' : env.APP_NAME}</title>
-          <script>window.$$AppConfig = {version: '${new Date().getTime()}'}</script>
+          <script>window.$$MyAppConfig = {version: '${new Date().getTime()}'}</script>
           <script>
-            window.$$AppConfig = {
-              version: window.$$AppConfig.version,
+            window.$$MyAppConfig = {
+              version: window.$$MyAppConfig.version,
               env: '${isProduction ? '<%= appEnv %>' : env.APP_ENV}',
               title: '${isProduction ? '<%= title %>' : env.APP_NAME}',
             };

@@ -1,4 +1,4 @@
-/** index.html 에 전역변수로 선언한 $$AppConfig 값을 config 에 설정 */
+/** index.html 에 전역변수로 선언한 $$MyAppConfig 값을 config 에 설정 */
 
 const myAppConfig: Dict<string> = (window as any).$$MyAppConfig || {};
 
