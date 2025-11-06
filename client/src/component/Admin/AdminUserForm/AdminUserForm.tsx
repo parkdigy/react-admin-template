@@ -7,7 +7,7 @@ import { AdminUserFormProps } from './AdminUserForm.types';
 import { Admin, AdminUserInfoData } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
-import app from '@app';
+import { app } from '@common';
 import { useAppState } from '@context';
 import { FormSelectItem, FormSelectItems } from '@ccomp';
 

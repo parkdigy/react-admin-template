@@ -7,7 +7,7 @@ import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { Grid } from '@mui/material';
 import { AuthDialogProps } from './AuthDialog.types';
-import api from '@api';
+import { api } from '@common';
 import { useAppState } from '@context';
 
 const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, onSuccess, onFail }) => {

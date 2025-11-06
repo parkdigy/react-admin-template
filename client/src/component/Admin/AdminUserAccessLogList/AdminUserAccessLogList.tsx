@@ -15,7 +15,7 @@ import {
 import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
 import { Admin, AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
 import dayjs from 'dayjs';
-import app from '@app';
+import { app } from '@common';
 
 const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
   /********************************************************************************************************************

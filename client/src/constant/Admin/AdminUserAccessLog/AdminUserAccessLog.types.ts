@@ -1,4 +1,4 @@
-import { ApiPageLimitRequestData, ApiPaging, ApiResult } from '@api';
+import { ApiPageLimitRequestData, ApiPaging, ApiResult } from '@common';
 
 export interface AdminUserAccessLogListRequestData extends ApiPageLimitRequestData {
   keyword_option?: 'user_id' | 'email';

@@ -1,4 +1,4 @@
-import api from '@api';
+import { api } from '@common';
 import { TestDataInfo, TestDataList, TestDataStatusList } from '@const';
 import TestDataStatus from './TestDataStatus';
 

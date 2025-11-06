@@ -6,7 +6,7 @@ import React from 'react';
 import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
 import { Admin, AdminGroupInfoData, AdminGroupMenuListData, AdminGroupMenuListDataItemBase } from '@const';
 import { useConfirmDialog } from '@pdg/react-dialog';
-import app from '@app';
+import { app } from '@common';
 import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
 import { Button, FormAutocompleteItem, FormAutocompleteItems, FormCommands, IconText } from '@ccomp';

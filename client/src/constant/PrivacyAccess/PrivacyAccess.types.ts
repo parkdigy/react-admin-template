@@ -1,4 +1,4 @@
-import { ApiResult } from '@api';
+import { ApiResult } from '@common';
 
 export interface PrivacyAccessInfoData {
   value: string;

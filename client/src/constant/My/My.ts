@@ -2,7 +2,7 @@
  * 내 정보 API
  * ******************************************************************************************************************/
 
-import api from '@api';
+import { api } from '@common';
 import { MyPasswordChangeRequestData } from '@const';
 
 export default {

@@ -2,7 +2,7 @@
  * 인증 API
  * ******************************************************************************************************************/
 
-import api from '@api';
+import { api } from '@common';
 import { ApiRequestData } from '@pdg/api';
 import { AuthSignInResponseData } from './Auth.types';
 

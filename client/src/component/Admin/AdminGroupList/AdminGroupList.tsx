@@ -9,7 +9,7 @@ import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { AdminGroupListProps as Props } from './AdminGroupList.type';
 import { SearchAddButton, SearchTableCommands, SearchTableData, TableColumns, TableItem } from '@ccomp';
-import app from '@app';
+import { app } from '@common';
 
 const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   /********************************************************************************************************************

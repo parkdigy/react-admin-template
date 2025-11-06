@@ -2,7 +2,7 @@
  * 어드민 회원 API
  * ******************************************************************************************************************/
 
-import api from '@api';
+import { api } from '@common';
 import { AdminUserInfo, AdminUserList, AdminUserMenuList, AdminUserAllList } from './AdminUser.types';
 
 import AdminUserLoginLog from './AdminUserLoginLog';

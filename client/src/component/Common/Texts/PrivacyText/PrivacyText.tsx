@@ -5,7 +5,7 @@ import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
 import { PrivacyAccess } from '@const';
 import { useFirstSkipEffect } from '@pdg/react-hook';
-import util from '@util';
+import { util } from '@common';
 
 export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textProps, type, parentId }) => {
   /********************************************************************************************************************

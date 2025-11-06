@@ -7,7 +7,7 @@ import '../../init';
 
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import { createApi, ApiResult } from '@api';
+import { createApi, ApiResult } from '@common';
 import { ApiError } from '@pdg/api';
 import { AuthSignInResponseData } from '@const';
 import { Dialog, DialogContextProvider } from '@pdg/react-dialog';

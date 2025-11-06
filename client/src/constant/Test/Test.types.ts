@@ -1,4 +1,4 @@
-import { ApiPaging, ApiResult } from '@api';
+import { ApiPaging, ApiResult } from '@common';
 import { DateString } from '@types';
 import TestDataStatus from './TestDataStatus';
 

@@ -1,4 +1,4 @@
-import api from '@api';
+import { api } from '@common';
 import { AdminPrivacyAccessLogList, AdminPrivacyAccessLogTypeList } from './AdminPrivacyAccessLog.types';
 import AdminPrivacyAccessLogType from './AdminPrivacyAccessLogType';
 

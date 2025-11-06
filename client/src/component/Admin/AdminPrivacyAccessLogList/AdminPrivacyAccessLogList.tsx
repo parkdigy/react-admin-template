@@ -12,7 +12,7 @@ import {
 import { AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
 import { Admin, AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
-import app from '@app';
+import { app } from '@common';
 
 const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /********************************************************************************************************************

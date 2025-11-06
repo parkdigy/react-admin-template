@@ -2,7 +2,7 @@
  * 어드민 그룹 API
  * ******************************************************************************************************************/
 
-import api, { ApiResult } from '@api';
+import { api, ApiResult } from '@common';
 import {
   AdminGroupInfo,
   AdminGroupList,
