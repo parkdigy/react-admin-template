@@ -32,7 +32,7 @@ const AccessLogger: React.FC<Props> = ({ path, element }) => {
     const url = `${pathname}${search}${hash}`;
 
     api
-      .notAuthPost<ApiResult & { data: string }>('admin.user_access_log', { id: path.substring(1), url })
+      .notAuthPost<ApiResult & { data: string }>('admin.user_access_log', { id: pathname.substring(1), url })
       .then(({ data }) => {
         switch (data) {
           case 'SUCCESS':
@@ -45,11 +45,11 @@ const AccessLogger: React.FC<Props> = ({ path, element }) => {
             break;
           case 'NOTFOUND':
             alertDialog({
-              content: <Typography color='red'>{path.substring(1)} Access log key not found!</Typography>,
+              content: <Typography color='red'>{pathname.substring(1)} Access log key not found!</Typography>,
             });
             break;
           default:
-            alertDialog({ content: <Typography color='red'>{path.substring(1)} Unhandled!</Typography> });
+            alertDialog({ content: <Typography color='red'>{pathname.substring(1)} Unhandled!</Typography> });
             break;
         }
       })
