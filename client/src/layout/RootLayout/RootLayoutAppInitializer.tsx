@@ -2,7 +2,7 @@ import { useDialog } from '@pdg/react-dialog';
 import { AuthDialog } from '@dialog';
 import { useSnackbar } from 'notistack';
 import { useLocation, useNavigate } from 'react-router';
-import app from '@app';
+import { app } from '@common';
 
 export const RootLayoutAppInitializer = () => {
   /********************************************************************************************************************

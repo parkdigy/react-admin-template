@@ -1,5 +1,5 @@
 import React from 'react';
-import api, { ApiResult } from '@api';
+import { api, ApiResult } from '../api';
 import config from '../config';
 import { useTimeoutRef } from '@pdg/react-hook';
 

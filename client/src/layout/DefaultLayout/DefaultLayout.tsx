@@ -8,8 +8,7 @@ import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
 import { Admin, AdminUserMenuInfo, Auth } from '@const';
 import { useAppState } from '@context';
-import app, { MenuRoles } from '@app';
-import { config } from '@common';
+import { app, MenuRoles, config } from '@common';
 
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();

@@ -65,9 +65,6 @@ const alias = {
   '@ccomp': path.resolve(__dirname, 'src/component/Common'),
   '@const': path.resolve(__dirname, 'src/constant'),
   '@context': path.resolve(__dirname, 'src/context'),
-  '@app': path.resolve(__dirname, 'src/common/app'),
-  '@api': path.resolve(__dirname, 'src/common/api'),
-  '@util': path.resolve(__dirname, 'src/common/util'),
   '@dialog': path.resolve(__dirname, 'src/dialog'),
 };
 
