@@ -43,7 +43,7 @@
     "@mui/x-date-pickers": "^7.29.4",
     "@pdg/api": "^1.0.23",
     "@pdg/compare": "^1.0.6",
-    "@pdg/data": "^1.0.2",
+    "@pdg/data": "^1.0.3",
     "@pdg/date-time": "^1.0.2",
     "@pdg/formatting": "^1.0.5",
     "@pdg/react-admin-layout": "^1.0.47",
