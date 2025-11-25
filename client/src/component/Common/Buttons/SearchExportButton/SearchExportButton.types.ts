@@ -2,7 +2,7 @@ export interface SearchExportButtonItem {
   label: string;
   icon?: IconProps['children'];
   color?: IconProps['color'];
-  onClick(): void;
+  onClick: () => void;
 }
 
 export type SearchExportButtonItems = SearchExportButtonItem[];
