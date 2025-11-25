@@ -1,5 +1,5 @@
 export interface TestDataInfoProps {
   id: number;
-  onChange?(): void;
-  onCancel?(): void;
+  onChange?: () => void;
+  onCancel?: () => void;
 }

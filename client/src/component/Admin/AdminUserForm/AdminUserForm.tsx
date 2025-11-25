@@ -9,7 +9,7 @@ import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { app } from '@common';
 import { useAppState } from '@context';
-import { FormSelectItem, FormSelectItems } from '@ccomp';
+import { FormSelectItems } from '@ccomp';
 
 const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, onCancel }) => {
   /********************************************************************************************************************
@@ -57,10 +57,12 @@ const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, 
   /** 그룹 목록 불러오기 */
   const loadGroupList = useCallback(() => {
     Admin.Group.list().then(({ data: list }) => {
-      const items = list.map<FormSelectItem<number>>((info) =>
-        lv(info.name, info.id, { disabled: info.id === SUPER_ADMIN_GROUP_ID && !auth?.is_super })
-      );
-      items.unshift(lv('없음', ''));
+      const items = [
+        lv('없음', ''),
+        ...list.map((info) =>
+          lv(info.name, info.id, { disabled: info.id === SUPER_ADMIN_GROUP_ID && !auth?.is_super })
+        ),
+      ];
       setGroupItems(items);
     });
   }, [auth?.is_super]);

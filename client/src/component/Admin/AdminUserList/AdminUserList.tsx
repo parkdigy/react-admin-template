@@ -174,11 +174,15 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
           <FormSelect
             name='keyword_option'
             label='검색옵션'
-            items={[lv('이메일', 'email'), lv('ID', 'id'), lv('이름', 'name')]}
+            onLoadItems={async () => [lv('이메일', 'email'), lv('ID', 'id'), lv('이름', 'name')]}
             value='name'
           />
           <FormSearch name='keyword' label='검색어' placeholder='검색어' />
-          <FormSelect name='is_lock' label='계정상태' items={[lv('전체', ''), lv('정상', 0), lv('제한', 1)]} />
+          <FormSelect
+            name='is_lock'
+            label='계정상태'
+            onLoadItems={async () => [lv('전체', ''), lv('정상', 0), lv('제한', 1)]}
+          />
           <FormSelect name='admin_group_id' label='그룹' placeholder='전체' />
         </SearchGroup>
         <SearchGroup align='right'>

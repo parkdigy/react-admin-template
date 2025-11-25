@@ -1,11 +1,8 @@
-import l from '@loadable/component';
-import { loadable } from '@common';
-
-const InputDialog = l(() => import('./InputDialog'), loadable.options);
-
-export { InputDialog };
+import InputDialog from './InputDialog';
 
 export default InputDialog;
+
+export { InputDialog };
 
 export * from './InputDialog.types';
 

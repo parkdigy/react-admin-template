@@ -29,7 +29,7 @@ export interface InputDialogProps<
               : T extends 'email'
                 ? InputDialogEmailInputProps
                 : InputDialogTextInputProps;
-  onConfirm?(dialog: DialogCommands, value: Value | ([Required] extends [true] ? never : undefined)): void;
+  onConfirm?: (dialog: DialogCommands, value: Value | ([Required] extends [true] ? never : undefined)) => void;
 }
 
 type DefaultPickKeys =

@@ -68,11 +68,15 @@ const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
           <FormSelect
             name='keyword_option'
             label='검색영역'
-            items={[lv('이메일', 'email'), lv('사용자 No.', 'user_id')]}
+            onLoadItems={async () => [lv('이메일', 'email'), lv('사용자 No.', 'user_id')]}
             value='email'
           />
           <FormText name='keyword' label='검색어' />
-          <FormSelect name='type' label='구분' items={[lv('전체', ''), lv('화면', 'VIEW'), lv('Export', 'EXPORT')]} />
+          <FormSelect
+            name='type'
+            label='구분'
+            onLoadItems={async () => [lv('전체', ''), lv('화면', 'VIEW'), lv('Export', 'EXPORT')]}
+          />
           <FormDateRangePicker
             name='search_date'
             fromLabel='검색기간'

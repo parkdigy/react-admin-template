@@ -66,21 +66,18 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
 
   /** 검색 영역 */
   const searchGroups = useMemo(() => {
-    let keywordOptionItems: Lv<string, 'all' | 'email' | 'ip' | 'location'>[];
-    if (auth?.is_super) {
-      keywordOptionItems = [lv('전체', 'all'), lv('이메일', 'email'), lv('IP', 'ip'), lv('Location', 'location')];
-    } else {
-      keywordOptionItems = [lv('전체', 'all'), lv('IP', 'ip'), lv('Location', 'location')];
-    }
-
     return (
       <>
         <SearchGroup max>
           <FormSelect
             name='keyword_option'
             label='검색영역'
-            items={keywordOptionItems}
             value={email ? 'email' : 'all'}
+            onLoadItems={async () =>
+              auth?.is_super
+                ? [lv('전체', 'all'), lv('이메일', 'email'), lv('IP', 'ip'), lv('Location', 'location')]
+                : [lv('전체', 'all'), lv('IP', 'ip'), lv('Location', 'location')]
+            }
           />
           <FormText name='keyword' label='검색어' placeholder='검색어' value={email} />
           <FormDateRangePicker
