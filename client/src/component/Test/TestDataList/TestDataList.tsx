@@ -57,9 +57,11 @@ const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /** 상태 불러오기 */
   const loadStatusList = useCallback(() => {
     Test.dataStatusList().then(({ data }) => {
-      const items = data.map((item) => lv(item.name, item.status));
-      items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<FormRadioGroupCommands<TestDataStatus>>('status')?.setItems(items);
+      const items = [lv('전체', ''), ...data.map((item) => lv(item.name, item.status))];
+      searchTableRef.current
+        ?.getSearch()
+        ?.getItem<FormRadioGroupCommands<'' | TestDataStatus>>('status')
+        ?.setItems(items);
     });
   }, []);
 

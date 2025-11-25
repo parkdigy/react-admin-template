@@ -102,6 +102,7 @@ import {
   // Types for Generic
   type FormAutocompleteSingleValue,
   type FormRadioGroupSingleValue,
+  type FormRadioGroupItems,
   type FormToggleButtonGroupSingleValue,
   type FormSelectSingleValue,
   type FormTextFieldValue,
@@ -140,7 +141,11 @@ declare global {
   var FormMonthRangePicker: typeof _FormMonthRangePicker;
   type FormMonthRangePickerProps = _FormMonthRangePickerProps;
   var FormRadioGroup: typeof _FormRadioGroup;
-  type FormRadioGroupProps<T extends FormRadioGroupSingleValue> = _FormRadioGroupProps<T>;
+  type FormRadioGroupProps<
+    BaseValue extends FormRadioGroupSingleValue,
+    Items extends FormRadioGroupItems<BaseValue>,
+    Value extends FormRadioGroupSingleValue = Items[number]['value'],
+  > = _FormRadioGroupProps<BaseValue, Items, Value>;
   var FormRating: typeof _FormRating;
   type FormRatingProps = _FormRatingProps;
   var FormSwitch: typeof _FormSwitch;

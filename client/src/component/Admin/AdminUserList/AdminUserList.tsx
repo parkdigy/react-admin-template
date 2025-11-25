@@ -68,9 +68,8 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /** 그룹 목록 불러오기 */
   const loadGroupList = useCallback(() => {
     Admin.Group.list().then(({ data }) => {
-      const items = data.map((info) => lv(info.name, info.id));
-      items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<number>>('admin_group_id')?.setItems(items);
+      const items = [lv('전체', ''), ...data.map((info) => lv(info.name, info.id))];
+      searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<'' | number>>('admin_group_id')?.setItems(items);
     });
   }, [searchTableRef]);
 

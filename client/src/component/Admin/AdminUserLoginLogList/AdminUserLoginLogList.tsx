@@ -66,9 +66,11 @@ const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onReques
 
   /** 검색 영역 */
   const searchGroups = useMemo(() => {
-    const keywordOptionItems = [lv('전체', 'all'), lv('IP', 'ip'), lv('Location', 'location')];
+    let keywordOptionItems: Lv<string, 'all' | 'email' | 'ip' | 'location'>[];
     if (auth?.is_super) {
-      keywordOptionItems.splice(1, 0, lv('이메일', 'email'));
+      keywordOptionItems = [lv('전체', 'all'), lv('이메일', 'email'), lv('IP', 'ip'), lv('Location', 'location')];
+    } else {
+      keywordOptionItems = [lv('전체', 'all'), lv('IP', 'ip'), lv('Location', 'location')];
     }
 
     return (
