@@ -12,5 +12,5 @@ module.exports = {
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
-  plugins: [!isProduction && require.resolve('react-refresh/babel')].filter(Boolean),
+  plugins: ['babel-plugin-react-compiler', !isProduction && require.resolve('react-refresh/babel')].filter(Boolean),
 };

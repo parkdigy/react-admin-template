@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface LoadingCommands {
   isShow: () => boolean;
   show: () => void;
@@ -5,4 +7,6 @@ export interface LoadingCommands {
   getLastHideTime: () => number;
 }
 
-export interface LoadingProps {}
+export interface LoadingProps {
+  ref?: React.Ref<LoadingCommands>;
+}

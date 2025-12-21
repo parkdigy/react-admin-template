@@ -3,12 +3,12 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { LoadingCommands, LoadingProps } from './Loading.types';
+import { LoadingCommands, LoadingProps as Props } from './Loading.types';
 import { useForwardRef } from '@pdg/react-hook';
 import { useLocation } from 'react-router';
 import './Loading.scss';
 
-const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => {
+const Loading = ({ ref }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/
@@ -101,8 +101,8 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
 
   useForwardRef(
     ref,
-    useMemo<LoadingCommands>(
-      () => ({
+    useMemo(
+      (): LoadingCommands => ({
         isShow: () => showCountRef.current > 0,
         show: increaseShowCount,
         hide: decreaseShowCount,
@@ -129,6 +129,6 @@ const Loading = React.forwardRef<LoadingCommands, LoadingProps>((props, ref) => 
       </div>
     </div>
   ) : null;
-});
+};
 
 export default Loading;

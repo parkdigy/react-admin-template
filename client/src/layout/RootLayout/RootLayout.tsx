@@ -125,7 +125,10 @@ const RootLayout = withErrorBoundary(() => {
       el.classList.remove('hide-complete');
       el.classList.add('show');
     }
-  }, [getHtmlLoading]);
+  }, [
+    // 불변
+    getHtmlLoading,
+  ]);
 
   const hideHtmlLoading = useCallback(() => {
     const el = getHtmlLoading();
@@ -144,7 +147,10 @@ const RootLayout = withErrorBoundary(() => {
         el.classList.add('hide-complete');
       }, 300);
     }
-  }, [getHtmlLoading]);
+  }, [
+    // 불변
+    getHtmlLoading,
+  ]);
 
   const removeHtmlLoading = useCallback(() => {
     const el = getHtmlLoading();
@@ -160,7 +166,10 @@ const RootLayout = withErrorBoundary(() => {
         el.parentNode?.removeChild(el);
       }, 300);
     }
-  }, [getHtmlLoading]);
+  }, [
+    // 불변
+    getHtmlLoading,
+  ]);
 
   /********************************************************************************************************************
    * Effect - 로그인 처리

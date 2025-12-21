@@ -211,13 +211,6 @@ const options = {
           {
             loader: 'babel-loader',
           },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              experimentalWatchApi: true,
-            },
-          },
         ],
       },
       {

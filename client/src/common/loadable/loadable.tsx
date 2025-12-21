@@ -31,8 +31,7 @@ const LoadableLoading = () => {
         __hideLoading();
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setShowLoadingTimeout]);
 
   /********************************************************************************************************************
    * Render

@@ -1,10 +1,7 @@
-import l from '@loadable/component';
-import { loadable } from '@common';
-
-const Loading = l(() => import('./Loading'), loadable.options);
-
-export { Loading };
+import Loading from './Loading';
 
 export default Loading;
+
+export { Loading };
 
 export * from './Loading.types';
