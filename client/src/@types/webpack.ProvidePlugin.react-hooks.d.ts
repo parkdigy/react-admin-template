@@ -14,6 +14,7 @@ declare const useImperativeHandle: typeof import('react').useImperativeHandle;
 
 // effect
 declare const useEffect: typeof import('react').useEffect;
+declare const useEffectEvent: typeof import('react').useEffectEvent;
 declare const useLayoutEffect: typeof import('react').useLayoutEffect;
 declare const useInsertionEffect: typeof import('react').useInsertionEffect;
 

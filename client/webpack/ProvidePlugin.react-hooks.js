@@ -11,6 +11,7 @@ module.exports = {
   useImperativeHandle: ['react', 'useImperativeHandle'],
   // effect
   useEffect: ['react', 'useEffect'],
+  useEffectEvent: ['react', 'useEffectEvent'],
   useLayoutEffect: ['react', 'useLayoutEffect'],
   useInsertionEffect: ['react', 'useInsertionEffect'],
   // performance
