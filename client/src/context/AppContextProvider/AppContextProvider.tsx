@@ -8,7 +8,7 @@ import { AppContextProviderProps as Props } from './AppContextProvider.types';
 import AppContext from '../AppContext';
 
 /** 앱 전역 상태를 관리하는 Context Provider */
-const AppContextProvider: React.FC<Props> = ({ children, value }) => {
+const AppContextProvider = ({ children, value }: Props) => {
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 

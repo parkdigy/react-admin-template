@@ -6,7 +6,7 @@ import React from 'react';
 import { ErrorRetryProps as Props } from './ErrorRetry.types';
 import { Alert, Box, Button, Icon, Typography } from '@mui/material';
 
-const ErrorRetry: React.FC<Props> = ({ error, onRetry }) => {
+const ErrorRetry = ({ error, onRetry }: Props) => {
   /********************************************************************************************************************
    * State
    * ******************************************************************************************************************/

@@ -37,7 +37,7 @@ const ErrorCatcher = withErrorBoundary(({ children }: { children: ReactElement }
   );
 });
 
-const ErrorBoundary: React.FC<Props> = ({ children }) => {
+const ErrorBoundary = ({ children }: Props) => {
   return <ErrorCatcher>{children}</ErrorCatcher>;
 };
 
