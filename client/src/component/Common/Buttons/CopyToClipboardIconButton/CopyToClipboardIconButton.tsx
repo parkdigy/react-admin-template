@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
-import { app } from '@common';
 import { Tooltip } from '@mui/material';
 
 const CopyToClipboardIconButton: React.FC<Props> = ({ text, tooltip, icon, size, successMsg, ...props }) => {

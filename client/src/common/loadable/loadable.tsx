@@ -1,7 +1,4 @@
 import React from 'react';
-import { api, ApiResult } from '../api';
-import config from '../config';
-import { useTimeoutRef } from '@pdg/react-hook';
 
 interface VersionApp extends ApiResult {
   data: { v: string };
@@ -23,12 +20,12 @@ const LoadableLoading = () => {
 
     setShowLoadingTimeout(() => {
       isShow = true;
-      __showLoading();
+      g.loading.show();
     }, 100);
 
     return () => {
       if (isShow) {
-        __hideLoading();
+        g.loading.hide();
       }
     };
   }, [setShowLoadingTimeout]);
@@ -53,7 +50,7 @@ export default {
    */
   checkUpdate() {
     api.get<VersionApp>('version.app').then(({ data: { v } }) => {
-      if (v !== config.version) {
+      if (v !== env.version) {
         window.location.reload();
       }
     });

@@ -1,10 +1,10 @@
-import l from '@loadable/component';
-import { loadable } from '@common';
-
-const ErrorRetry = l(() => import('./ErrorRetry'), loadable.options);
-
-export { ErrorRetry };
+import ErrorRetry from './ErrorRetry';
 
 export default ErrorRetry;
 
+export { ErrorRetry };
+
+export type TErrorRetry = typeof ErrorRetry;
+
+export * from './ErrorRetry';
 export * from './ErrorRetry.types';

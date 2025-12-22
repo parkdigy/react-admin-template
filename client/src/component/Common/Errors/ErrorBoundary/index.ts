@@ -1,10 +1,10 @@
-import l from '@loadable/component';
-import { loadable } from '@common';
-
-const ErrorBoundary = l(() => import('./ErrorBoundary'), loadable.options);
-
-export { ErrorBoundary };
+import ErrorBoundary from './ErrorBoundary';
 
 export default ErrorBoundary;
 
+export { ErrorBoundary };
+
+export type TErrorBoundary = typeof ErrorBoundary;
+
+export * from './ErrorBoundary';
 export * from './ErrorBoundary.types';

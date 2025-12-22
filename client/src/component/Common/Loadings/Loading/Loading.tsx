@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { LoadingCommands, LoadingProps as Props } from './Loading.types';
-import { useForwardRef } from '@pdg/react-hook';
 import { useLocation } from 'react-router';
 import './Loading.scss';
 

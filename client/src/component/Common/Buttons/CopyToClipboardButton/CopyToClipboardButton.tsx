@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { CopyToClipboardButtonProps as Props } from './CopyToClipboardButton.types';
-import { app } from '@common';
 
 const CopyToClipboardButton: React.FC<Props> = ({ text, successMsg, ...props }) => {
   return (

@@ -44,6 +44,7 @@
     "@pdg/data": "^1.0.5",
     "@pdg/date-time": "^1.0.4",
     "@pdg/formatting": "^1.0.8",
+    "@pdg/korean": "^1.0.4",
     "@pdg/react-admin-layout": "^1.0.55",
     "@pdg/react-component": "^1.1.10",
     "@pdg/react-dialog": "^1.0.45",

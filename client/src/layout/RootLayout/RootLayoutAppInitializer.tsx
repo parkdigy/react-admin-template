@@ -2,7 +2,6 @@ import { useDialog } from '@pdg/react-dialog';
 import { AuthDialog } from '@dialog';
 import { useSnackbar } from 'notistack';
 import { useLocation, useNavigate } from 'react-router';
-import { app } from '@common';
 
 export const RootLayoutAppInitializer = () => {
   /********************************************************************************************************************
@@ -28,7 +27,7 @@ export const RootLayoutAppInitializer = () => {
   }, [enqueueSnackbar, closeSnackbar]);
 
   useLayoutEffect(() => {
-    __setNavigate(navigate);
+    g.nav.setNavigate(navigate);
   }, [navigate]);
 
   /********************************************************************************************************************
@@ -36,12 +35,12 @@ export const RootLayoutAppInitializer = () => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
-    __setLocation(location);
+    g.nav.setLocation(location);
   }, [location]);
 
   useEffect(() => {
-    app.scrollToTop(__getNavigateScrollTopPos());
-    __setNavigateScrollTopPos(0);
+    app.scrollToTop(g.nav.getScrollTopPos());
+    g.nav.setScrollTopPos(0);
   }, [location.pathname, location.search, location.hash]);
 
   /********************************************************************************************************************

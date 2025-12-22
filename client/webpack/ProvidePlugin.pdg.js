@@ -1,0 +1,96 @@
+module.exports = {
+  // types - ObjectArray
+  ValueOf: ['@pdg/types', 'ValueOf'],
+  Dict: ['@pdg/types', 'Dict'],
+  Arr: ['@pdg/types', 'Arr'],
+  IsObject: ['@pdg/types', 'IsObject'],
+  IsArray: ['@pdg/types', 'IsArray'],
+  ObjectMerge: ['@pdg/types', 'ObjectMerge'],
+  ArrayMerge: ['@pdg/types', 'ArrayMerge'],
+  MutableArray: ['@pdg/types', 'MutableArray'],
+  FlattenArray: ['@pdg/types', 'FlattenArray'],
+  // types - Function
+  Func: ['@pdg/types', 'Func'],
+  // types - Data
+  Lv: ['@pdg/types', 'Lv'],
+  Vl: ['@pdg/types', 'Vl'],
+  // types - Letter
+  FirstLetter: ['@pdg/types', 'FirstLetter'],
+  UpperLetter: ['@pdg/types', 'UpperLetter'],
+  LowerLetter: ['@pdg/types', 'LowerLetter'],
+  // types - Null
+  NullableKeys: ['@pdg/types', 'NullableKeys'],
+  NotNullableKeys: ['@pdg/types', 'NotNullableKeys'],
+  NullableProperties: ['@pdg/types', 'NullableProperties'],
+  NotNullableProperties: ['@pdg/types', 'NotNullableProperties'],
+  // types - PickOmit
+  PartialPick: ['@pdg/types', 'PartialPick'],
+  PartialOmit: ['@pdg/types', 'PartialOmit'],
+  RequiredPick: ['@pdg/types', 'RequiredPick'],
+  RequiredOmit: ['@pdg/types', 'RequiredOmit'],
+  // types - Spread
+  Spread: ['@pdg/types', 'Spread'],
+  // types - Compare
+  InValue: ['@pdg/types', 'InValue'],
+  IsEmpty: ['@pdg/types', 'IsEmpty'],
+  IsUnionInclude: ['@pdg/types', 'IsUnionInclude'],
+  IsStringLiteralUnion: ['@pdg/types', 'IsStringLiteralUnion'],
+
+  // compare
+  ifEmpty: ['@pdg/compare', 'ifEmpty'],
+  ifNotEmpty: ['@pdg/compare', 'ifNotEmpty'],
+  isEmpty: ['@pdg/compare', 'isEmpty'],
+  isNotEmpty: ['@pdg/compare', 'isNotEmpty'],
+  empty: ['@pdg/compare', 'empty'],
+  notEmpty: ['@pdg/compare', 'notEmpty'],
+  ifNotNull: ['@pdg/compare', 'ifNotNull'],
+  ifNull: ['@pdg/compare', 'ifNull'],
+  isNotNull: ['@pdg/compare', 'isNotNull'],
+  isNull: ['@pdg/compare', 'isNull'],
+  ifNotUndefined: ['@pdg/compare', 'ifNotUndefined'],
+  ifUndefined: ['@pdg/compare', 'ifNotUndefined'],
+  isNotUndefined: ['@pdg/compare', 'isNotUndefined'],
+  isUndefined: ['@pdg/compare', 'isNotUndefined'],
+  ifNotNullAndUndefined: ['@pdg/compare', 'ifNotNullAndUndefined'],
+  ifNullOrUndefined: ['@pdg/compare', 'ifNotNullOrUndefined'],
+  isNotNullAndUndefined: ['@pdg/compare', 'isNotNullAndUndefined'],
+  isNullOrUndefined: ['@pdg/compare', 'isNotNullOrUndefined'],
+  isContains: ['@pdg/compare', 'isContains'],
+  contains: ['@pdg/compare', 'contains'],
+  isEqual: ['@pdg/compare', 'isEqual'],
+  equal: ['@pdg/compare', 'equal'],
+  isBusinessNo: ['@pdg/compare', 'isBusinessNo'],
+  isEmail: ['@pdg/compare', 'isEmail'],
+  isInteger: ['@pdg/compare', 'isInteger'],
+  isMobileNo: ['@pdg/compare', 'isMobileNo'],
+  isNumericText: ['@pdg/compare', 'isNumericText'],
+  isPersonalNo: ['@pdg/compare', 'isPersonalNo'],
+  isTelNo: ['@pdg/compare', 'isTelNo'],
+  isUrl: ['@pdg/compare', 'isUrl'],
+
+  // date-time
+  beginDateOfDay: ['@pdg/date-time', 'beginDateOfDay'],
+  beginDateOfMonth: ['@pdg/date-time', 'beginDateOfMonth'],
+  endDateOfDay: ['@pdg/date-time', 'endDateOfDay'],
+  endDateOfMonth: ['@pdg/date-time', 'endDateOfMonth'],
+  extractDate: ['@pdg/date-time', 'extractDate'],
+  now: ['@pdg/date-time', 'now'],
+  nowJs: ['@pdg/date-time', 'nowJs'],
+  nowTime: ['@pdg/date-time', 'nowTime'],
+  weekdayText: ['@pdg/date-time', 'weekdayText'],
+
+  // data
+  lv: ['@pdg/data', 'lv'],
+  vl: ['@pdg/data', 'vl'],
+  copy: ['@pdg/data', 'copy'],
+
+  // react-hook
+  useChanged: ['@pdg/react-hook', 'useChanged'],
+  useForwardRef: ['@pdg/react-hook', 'useForwardRef'],
+  useMountedRef: ['@pdg/react-hook', 'useMountedRef'],
+  useAutoUpdateRef: ['@pdg/react-hook', 'useAutoUpdateRef'],
+  useTimeoutRef: ['@pdg/react-hook', 'useTimeoutRef'],
+  clearTimeoutRef: ['@pdg/react-hook', 'clearTimeoutRef'],
+  useIntervalRef: ['@pdg/react-hook', 'useIntervalRef'],
+  clearIntervalRef: ['@pdg/react-hook', 'clearIntervalRef'],
+};

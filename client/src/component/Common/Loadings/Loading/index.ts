@@ -4,4 +4,7 @@ export default Loading;
 
 export { Loading };
 
+export type TLoading = typeof Loading;
+
+export * from './Loading';
 export * from './Loading.types';

@@ -13,19 +13,19 @@ export const RootLoading = ({}: Props) => {
    * Function
    * ******************************************************************************************************************/
 
-  const isShowLoading = useCallback(() => {
+  const isShow = useCallback(() => {
     return loadingRef.current?.isShow() || false;
   }, []);
 
-  const showLoading = useCallback(() => {
+  const show = useCallback(() => {
     loadingRef.current?.show();
   }, []);
 
-  const hideLoading = useCallback(() => {
+  const hide = useCallback(() => {
     loadingRef.current?.hide();
   }, []);
 
-  const getLastHideLoadingTime = useCallback(() => {
+  const getLastHideTime = useCallback(() => {
     return loadingRef.current?.getLastHideTime() || 0;
   }, []);
 
@@ -34,8 +34,8 @@ export const RootLoading = ({}: Props) => {
    * ******************************************************************************************************************/
 
   useLayoutEffect(() => {
-    __setLoading({ showLoading, hideLoading, isShowLoading, getLastHideLoadingTime });
-  }, [showLoading, hideLoading, isShowLoading, getLastHideLoadingTime]);
+    g.loading.set({ show, hide, isShow, getLastHideTime });
+  }, [show, hide, isShow, getLastHideTime]);
 
   /********************************************************************************************************************
    * Render
