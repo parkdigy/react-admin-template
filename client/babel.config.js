@@ -9,8 +9,11 @@ module.exports = {
         corejs: { version: 3, proposals: true },
       },
     ],
-    '@babel/preset-react',
+    ['@babel/preset-react', { runtime: 'automatic' }],
     '@babel/preset-typescript',
   ],
-  plugins: ['babel-plugin-react-compiler', !isProduction && require.resolve('react-refresh/babel')].filter(Boolean),
+  plugins: [
+    ['babel-plugin-react-compiler', { panicThreshold: 'all_errors' }],
+    !isProduction && require.resolve('react-refresh/babel'),
+  ].filter(Boolean),
 };
