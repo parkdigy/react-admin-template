@@ -1,4 +1,3 @@
-import { ApiPageLimitRequestData, ApiPaging, ApiResult } from '@common';
 import { DateString } from '@types';
 
 export interface AdminUserLoginLogListRequestData extends ApiPageLimitRequestData {

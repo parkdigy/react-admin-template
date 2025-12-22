@@ -7,7 +7,6 @@ import '../../init';
 
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
-import { createApi, ApiResult } from '@common';
 import { ApiError } from '@pdg/api';
 import { AuthSignInResponseData } from '@const';
 import { Dialog, DialogContextProvider } from '@pdg/react-dialog';
@@ -183,7 +182,7 @@ const RootLayout = withErrorBoundary(() => {
         // 로그인 확인
         createApi<AuthSignInResponseData>({
           onError(err: ApiError<ApiResult>) {
-            __hideLoading();
+            g.loading.hide();
 
             if (err.response?.data?.result?.c === 99997) {
               clearAuth();

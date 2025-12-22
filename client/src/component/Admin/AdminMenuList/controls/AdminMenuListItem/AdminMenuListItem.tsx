@@ -8,7 +8,6 @@ import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Admin } from '@const';
-import { useFirstSkipEffect } from '@pdg/react-hook';
 import { styled } from '@mui/material';
 
 export const AdminMenuListItem: React.FC<Props> = ({

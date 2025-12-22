@@ -8,7 +8,6 @@ import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
 import { Admin, AdminUserMenuInfo, Auth } from '@const';
 import { useAppState } from '@context';
-import { app, MenuRoles, config } from '@common';
 
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();
@@ -104,9 +103,7 @@ const DefaultLayout = () => {
   const logo = useMemo(
     () => (
       <div>
-        <span style={{ color: config.env === 'staging' ? 'magenta' : config.env === 'production' ? undefined : 'red' }}>
-          {config.title}
-        </span>
+        <span style={{ color: env.isStaging ? 'magenta' : env.isProduction ? undefined : 'red' }}>{env.title}</span>
       </div>
     ),
     []
@@ -127,7 +124,7 @@ const DefaultLayout = () => {
       >
         <MainRouter />
       </AdminLayout.DefaultLayout>
-      {config.isLocal && (
+      {env.isLocal && (
         <div style={{ position: 'fixed', zIndex: 1201, left: 0, bottom: 0, display: 'flex' }}>
           <div style={{ height: 3, backgroundColor: '#9C27B0', width: 600 }}></div>
           <div style={{ height: 3, backgroundColor: '#1E88E5', width: 300 }}></div>

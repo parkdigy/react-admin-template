@@ -7,13 +7,19 @@ module.exports = {
   ll: [path.resolve(__dirname, '../src/global/ll/index.ts'), 'default'],
   g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
   color: [path.resolve(__dirname, '../src/global/color/index.ts'), 'default'],
-  app: [path.resolve(__dirname, '../src/global/app/index.ts'), 'default'],
   util: [path.resolve(__dirname, '../src/global/util/index.ts'), 'default'],
+  // app
+  app: [path.resolve(__dirname, '../src/global/app/index.ts'), 'default'],
+  AuthDialogType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'AuthDialogType'],
+  EnqueueSnackbarType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'EnqueueSnackbarType'],
+  CloseSnackbarType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'CloseSnackbarType'],
+  MenuRoles: [path.resolve(__dirname, '../src/global/app/index.ts'), 'MenuRoles'],
   // api
   api: [path.resolve(__dirname, '../src/global/api/index.ts'), 'default'],
   ApiResult: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiResult'],
   ApiPaging: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiPaging'],
   ApiPageLimitRequestData: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiPageLimitRequestData'],
+  createApi: [path.resolve(__dirname, '../src/global/api/index.ts'), 'createApi'],
   // mediaQuery
   mediaQuery: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'default'],
   useScreenSize: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'useScreenSize'],

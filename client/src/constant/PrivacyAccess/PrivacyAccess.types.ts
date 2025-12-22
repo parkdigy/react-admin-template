@@ -1,5 +1,3 @@
-import { ApiResult } from '@common';
-
 export interface PrivacyAccessInfoData {
   value: string;
 }

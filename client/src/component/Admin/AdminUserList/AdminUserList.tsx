@@ -21,7 +21,6 @@ import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog 
 import { useDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
 import { useAppState } from '@context';
-import { app } from '@common';
 
 const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /********************************************************************************************************************

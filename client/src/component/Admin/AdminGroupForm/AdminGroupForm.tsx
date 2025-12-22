@@ -6,10 +6,8 @@ import React from 'react';
 import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
 import { Admin, AdminGroupInfoData, AdminGroupMenuListData, AdminGroupMenuListDataItemBase } from '@const';
 import { useConfirmDialog } from '@pdg/react-dialog';
-import { app } from '@common';
 import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
-import { Button, FormAutocompleteItem, FormAutocompleteItems, FormCommands, IconText } from '@ccomp';
 
 const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
@@ -95,7 +93,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
             title: '사용자 그룹 변경',
             content: (
               <div>
-                <div>"{item.groupName}" 그룹에 소속된 사용자입니다.</div>
+                <div>&quot;{item.groupName}&quot; 그룹에 소속된 사용자입니다.</div>
                 <div>현재 그룹으로 변경하시겠습니까?</div>
               </div>
             ),

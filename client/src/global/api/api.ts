@@ -228,6 +228,8 @@ export function createApi<T>(option: Partial<ApiOption>) {
   return new Api<T>({ ...defaultOption, ...option });
 }
 
+export type CreateApi = typeof createApi;
+
 /********************************************************************************************************************
  * getFilenameFromContentDispositionHeader
  * ******************************************************************************************************************/

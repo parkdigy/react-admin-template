@@ -14,7 +14,6 @@ import {
 } from '@ccomp';
 import { TestDataListProps as Props } from './TestDataList.types';
 import { Test, TestDataListDataItem, TestDataStatus } from '@const';
-import { util } from '@common';
 import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { DialogCommands, useDialog } from '@pdg/react-dialog';

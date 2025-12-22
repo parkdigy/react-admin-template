@@ -1,4 +1,3 @@
-import { api } from '@common';
 import { PrivacyAccessInfo } from '@const';
 import { AdminPrivacyAccessLogType } from '../Admin';
 

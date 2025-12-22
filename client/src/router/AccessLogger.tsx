@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { AccessLoggerProps as Props } from './AccessLogger.types';
-import { api, ApiResult } from '@common';
 import { useAlertDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
 

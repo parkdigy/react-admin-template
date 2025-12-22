@@ -1,6 +1,5 @@
 import React from 'react';
 import { Checkbox, TableCell } from '@mui/material';
-import { useAutoUpdateState } from '@pdg/react-hook';
 
 const AdminGroupFormRoleTableCells: React.FC<{
   item: {

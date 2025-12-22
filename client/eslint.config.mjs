@@ -6,6 +6,9 @@ import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import WebpackProviderPluginCommonComponent from './webpack/ProvidePlugin.common-component.js';
 import WebpackProviderPluginPdgReactComponent from './webpack/ProvidePlugin.pdg-react-component.js';
+import WebpackProviderPluginPdgReactForm from './webpack/ProvidePlugin.pdg-react-form.js';
+import WebpackProviderPluginPdgReactTable from './webpack/ProvidePlugin.pdg-react-table.js';
+import WebpackProviderPluginPdgReactDialog from './webpack/ProvidePlugin.pdg-react-dialog.js';
 
 export default defineConfig([
   ...tseslint.config(eslint.configs.recommended, tseslint.configs.recommended),
@@ -27,15 +30,16 @@ export default defineConfig([
         module: 'readonly',
         process: 'readonly',
         __dirname: 'readonly',
-        ...Object.keys({ ...WebpackProviderPluginCommonComponent, ...WebpackProviderPluginPdgReactComponent }).reduce(
-          (acc, key) => {
-            if (!key.endsWith('Props')) {
-              acc[key] = 'readonly';
-            }
-            return acc;
-          },
-          {}
-        ),
+        ...Object.keys({
+          ...WebpackProviderPluginCommonComponent,
+          ...WebpackProviderPluginPdgReactComponent,
+          ...WebpackProviderPluginPdgReactForm,
+          ...WebpackProviderPluginPdgReactTable,
+          ...WebpackProviderPluginPdgReactDialog,
+        }).reduce((acc, key) => {
+          acc[key] = 'readonly';
+          return acc;
+        }, {}),
       },
     },
     plugins: {},
