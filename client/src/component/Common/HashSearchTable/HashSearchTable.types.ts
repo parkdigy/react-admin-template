@@ -1,5 +1,6 @@
-import { TableItem } from '../@pdg/react-table';
-
-export interface HashSearchTableProps<T = TableItem> extends SearchTableProps<T> {
+export interface HashSearchTableProps<T extends TableItem = TableItem> extends Omit<
+  SearchTableProps<T>,
+  'onRequestHashChange'
+> {
   size?: 'medium' | 'small';
 }

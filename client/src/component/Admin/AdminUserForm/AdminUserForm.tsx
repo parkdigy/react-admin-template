@@ -8,7 +8,6 @@ import { Admin, AdminUserInfoData } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { useAppState } from '@context';
-import { FormSelectItems } from '@ccomp';
 
 const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, onCancel }) => {
   /********************************************************************************************************************

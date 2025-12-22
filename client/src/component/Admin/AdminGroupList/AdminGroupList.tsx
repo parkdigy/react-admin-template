@@ -8,7 +8,6 @@ import { Typography } from '@mui/material';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { AdminGroupListProps as Props } from './AdminGroupList.type';
-import { SearchAddButton, SearchTableCommands, SearchTableData, TableColumns, TableItem } from '@ccomp';
 
 const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   /********************************************************************************************************************

@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-  FormSelectCommands,
-  HashSearchTable,
-  SearchExportButton,
-  SearchTableCommands,
-  SearchTableData,
-  SearchTableSearchProps,
-  SearchTableTableProps,
-  TableColumns,
-} from '@ccomp';
 import { AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
 import { Admin, AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
+import { HashSearchTable } from '@ccomp';
 
 const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   /********************************************************************************************************************

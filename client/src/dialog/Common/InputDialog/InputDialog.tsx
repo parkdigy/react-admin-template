@@ -6,7 +6,6 @@ import React, { KeyboardEvent } from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { InputDialogProps, InputDialogInputType } from './InputDialog.types';
 import { Box } from '@mui/material';
-import { FormCommands, FormTagValue } from '@ccomp';
 
 function InputDialog<
   T extends InputDialogInputType,

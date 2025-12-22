@@ -1,4 +1,3 @@
-export * from './@pdg';
 export * from './Errors';
 export * from './Loadings';
 export * from './HashSearchTable';

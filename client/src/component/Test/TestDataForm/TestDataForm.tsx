@@ -4,7 +4,6 @@ import { Test, TestDataInfoData } from '@const';
 import dayjs, { Dayjs } from 'dayjs';
 import TestDataStatus from '../../../constant/Test/TestDataStatus';
 import { usePrivacyAccessReasonDialog } from '@dialog';
-import { FormCommands, FormRadioGroupCommands } from '@ccomp';
 
 const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel }) => {
   /********************************************************************************************************************

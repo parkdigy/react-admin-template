@@ -1,23 +1,11 @@
 import React from 'react';
-import {
-  CopyToClipboardButton,
-  FormRadioGroupCommands,
-  HashSearchTable,
-  SearchAddButton,
-  SearchExportButton,
-  SearchTableCommands,
-  SearchTableData,
-  SearchTableSearchProps,
-  SearchTableTableProps,
-  TableColumn,
-  TableColumns,
-} from '@ccomp';
 import { TestDataListProps as Props } from './TestDataList.types';
 import { Test, TestDataListDataItem, TestDataStatus } from '@const';
 import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { DialogCommands, useDialog } from '@pdg/react-dialog';
 import { TestDataFormDialog, TestDataInfoDialog, usePrivacyAccessReasonDialog } from '@dialog';
+import { HashSearchTable } from '@ccomp';
 
 const Menu = {
   edit: 'edit',

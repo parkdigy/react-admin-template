@@ -1,6 +1,5 @@
 import { DialogProps, DialogCommands, DialogRequireProps } from '@pdg/react-dialog';
 import { ReactNode } from 'react';
-import { FormTagValue } from '@ccomp';
 
 export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag';
 
@@ -8,8 +7,8 @@ export interface InputDialogProps<
   T extends InputDialogInputType = 'text',
   Required extends boolean | undefined = undefined,
   Value extends string | FormTagValue | number = T extends 'number' ? number : T extends 'tag' ? FormTagValue : string,
-> extends DialogRequireProps,
-    Pick<DialogProps, 'titleIcon' | 'title' | 'color' | 'maxWidth'> {
+>
+  extends DialogRequireProps, Pick<DialogProps, 'titleIcon' | 'title' | 'color' | 'maxWidth'> {
   inputType?: InputDialogInputType;
   intro?: ReactNode;
   initValue?: Value;

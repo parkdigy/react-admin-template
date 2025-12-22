@@ -17,16 +17,16 @@ export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textPro
    * ******************************************************************************************************************/
 
   const [isPrivacyAccess, setIsPrivacyAccess] = useState(false);
-  const [text, setText] = useState(initText);
 
   /********************************************************************************************************************
-   * Effect
+   * State - text
    * ******************************************************************************************************************/
 
-  useFirstSkipEffect(() => {
+  const [text, setText] = useState(initText);
+  if (useChanged(initText)) {
     setText(initText);
     setIsPrivacyAccess(false);
-  }, [initText]);
+  }
 
   /********************************************************************************************************************
    * Event Handler

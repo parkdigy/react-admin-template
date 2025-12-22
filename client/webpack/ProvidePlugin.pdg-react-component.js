@@ -37,6 +37,8 @@ module.exports = {
   TelTextProps: ['@pdg/react-component', 'PTelTextProps'],
   Text: ['@pdg/react-component', 'PText'],
   TextProps: ['@pdg/react-component', 'PTextProps'],
+  T: ['@pdg/react-component', 'PText'],
+  TProps: ['@pdg/react-component', 'PTextProps'],
   WonText: ['@pdg/react-component', 'PWonText'],
   WonTextProps: ['@pdg/react-component', 'PWonTextProps'],
 };

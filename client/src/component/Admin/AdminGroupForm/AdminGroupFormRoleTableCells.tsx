@@ -17,9 +17,14 @@ const AdminGroupFormRoleTableCells: React.FC<{
    * State
    * ******************************************************************************************************************/
 
-  const [r, setR] = useAutoUpdateState(!!item?.new_read);
-  const [w, setW] = useAutoUpdateState(!!item?.new_write);
-  const [e, setE] = useAutoUpdateState(!!item?.new_export);
+  const [r, setR] = useState(!!item?.new_read);
+  useChanged(!!item?.new_read) && setR(!!item?.new_read);
+
+  const [w, setW] = useState(!!item?.new_write);
+  useChanged(!!item?.new_write) && setW(!!item?.new_write);
+
+  const [e, setE] = useState(!!item?.new_export);
+  useChanged(!!item?.new_export) && setE(!!item?.new_export);
 
   /********************************************************************************************************************
    * Function
