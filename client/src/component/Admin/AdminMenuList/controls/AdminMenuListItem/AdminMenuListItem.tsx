@@ -27,12 +27,6 @@ export const AdminMenuListItem: React.FC<Props> = ({
   });
 
   /********************************************************************************************************************
-   * State
-   * ******************************************************************************************************************/
-
-  const [, setUpdateKey] = useState(0);
-
-  /********************************************************************************************************************
    * State - menu
    * ******************************************************************************************************************/
 
@@ -46,14 +40,6 @@ export const AdminMenuListItem: React.FC<Props> = ({
   const style = useMemo(() => ({ transform: CSS.Translate.toString(transform), transition }), [transform, transition]);
 
   /********************************************************************************************************************
-   * Function
-   * ******************************************************************************************************************/
-
-  const forceUpdate = useCallback(() => {
-    setUpdateKey((old) => old + 1);
-  }, []);
-
-  /********************************************************************************************************************
    * Event Handler
    * ******************************************************************************************************************/
 
@@ -62,8 +48,7 @@ export const AdminMenuListItem: React.FC<Props> = ({
     const oldValue = menu.is_super_admin_menu;
     const newValue = !oldValue;
 
-    menu.is_super_admin_menu = newValue;
-    forceUpdate();
+    setMenu({ ...menu, is_super_admin_menu: newValue });
 
     Admin.Menu.editSuper(menu.id, newValue)
       .then(() => {
@@ -74,18 +59,16 @@ export const AdminMenuListItem: React.FC<Props> = ({
         }));
       })
       .catch(() => {
-        menu.is_super_admin_menu = oldValue;
-        forceUpdate();
+        setMenu({ ...menu, is_super_admin_menu: oldValue });
       });
-  }, [forceUpdate, menu]);
+  }, [menu]);
 
   /** ALL 버튼 클릭 - 모든 관리자 접근 가능 여부 설정 */
   const handleAllClick = useCallback(() => {
     const oldValue = menu.is_all_user_menu;
     const newValue = !oldValue;
 
-    menu.is_all_user_menu = newValue;
-    forceUpdate();
+    setMenu({ ...menu, is_all_user_menu: newValue });
 
     Admin.Menu.editAll(menu.id, newValue)
       .then(() => {
@@ -96,10 +79,9 @@ export const AdminMenuListItem: React.FC<Props> = ({
         }));
       })
       .catch(() => {
-        menu.is_all_user_menu = oldValue;
-        forceUpdate();
+        setMenu({ ...menu, is_all_user_menu: oldValue });
       });
-  }, [forceUpdate, menu]);
+  }, [menu]);
 
   /********************************************************************************************************************
    * Render

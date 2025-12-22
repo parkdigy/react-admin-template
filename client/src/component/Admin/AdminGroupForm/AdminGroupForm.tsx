@@ -4,7 +4,13 @@
 
 import React from 'react';
 import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
-import { Admin, AdminGroupInfoData, AdminGroupMenuListData, AdminGroupMenuListDataItemBase } from '@const';
+import {
+  Admin,
+  AdminGroupInfoData,
+  AdminGroupMenuListData,
+  AdminGroupMenuListDataItem,
+  AdminGroupMenuListDataItemBase,
+} from '@const';
 import { useConfirmDialog } from '@pdg/react-dialog';
 import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
@@ -169,6 +175,58 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   const editable = app.hasMenuWriteRole(app.Menu.Admin.Group) && (!info || !info.info || info.info.editable);
 
   /********************************************************************************************************************
+   * Event Handler
+   * ******************************************************************************************************************/
+
+  const handleRoleChange = useCallback(
+    (
+      item: AdminGroupMenuListDataItem | 'privacy',
+      newRole: { new_read?: boolean; new_write?: boolean; new_export?: boolean }
+    ) => {
+      if (item === 'privacy') {
+        setPrivacyAccess((prev) => {
+          const newValue = { ...prev };
+          if (newRole.new_read !== undefined) newValue.new_read = newRole.new_read;
+          return prev;
+        });
+      } else if (menu) {
+        setMenu(
+          menu.map((info) => {
+            if (info.id === item.id) {
+              return {
+                ...info,
+                new_read: newRole.new_read ?? info.new_read,
+                new_write: newRole.new_write ?? info.new_write,
+                new_export: newRole.new_export ?? info.new_export,
+              };
+            } else if (info.items) {
+              return {
+                ...info,
+                items: info.items.map((subInfo) => {
+                  if (subInfo.id === item.id) {
+                    return {
+                      ...subInfo,
+                      new_read: newRole.new_read ?? subInfo.new_read,
+                      new_write: newRole.new_write ?? subInfo.new_write,
+                      new_export: newRole.new_export ?? subInfo.new_export,
+                    };
+                  } else {
+                    return subInfo;
+                  }
+                }),
+              };
+            } else {
+              return info;
+            }
+          })
+        );
+      }
+      onValueChange?.();
+    },
+    [menu, onValueChange]
+  );
+
+  /********************************************************************************************************************
    * Render
    * ******************************************************************************************************************/
 
@@ -245,14 +303,22 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                         {info.items?.length === 0 && (
                           <>
                             <TableCell />
-                            <AdminGroupFormRoleTableCells item={info} disabled={!editable} onChange={onValueChange} />
+                            <AdminGroupFormRoleTableCells
+                              info={info}
+                              disabled={!editable}
+                              onChange={(v) => handleRoleChange(info, v)}
+                            />
                           </>
                         )}
                       </TableRow>
                       {info.items?.map((subInfo) => (
                         <TableRow key={subInfo.id}>
                           <TableCell>{subInfo.name}</TableCell>
-                          <AdminGroupFormRoleTableCells item={subInfo} disabled={!editable} onChange={onValueChange} />
+                          <AdminGroupFormRoleTableCells
+                            info={subInfo}
+                            disabled={!editable}
+                            onChange={(v) => handleRoleChange(subInfo, v)}
+                          />
                         </TableRow>
                       ))}
                     </React.Fragment>
@@ -263,11 +329,11 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                     </TableCell>
                     <TableCell />
                     <AdminGroupFormRoleTableCells
-                      item={privacyAccess}
+                      info={privacyAccess}
                       noWrite
                       noExport
                       disabled={!editable}
-                      onChange={onValueChange}
+                      onChange={(v) => handleRoleChange('privacy', v)}
                     />
                   </TableRow>
                 </TableBody>

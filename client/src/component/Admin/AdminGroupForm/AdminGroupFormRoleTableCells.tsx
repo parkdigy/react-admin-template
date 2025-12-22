@@ -1,38 +1,45 @@
 import React from 'react';
 import { Checkbox, TableCell } from '@mui/material';
 
-const AdminGroupFormRoleTableCells: React.FC<{
-  item: {
-    new_read?: boolean;
-    new_write?: boolean;
-    new_export?: boolean;
-  };
+interface Info {
+  new_read?: boolean;
+  new_write?: boolean;
+  new_export?: boolean;
+}
+
+interface Props {
+  info: Info;
   noRead?: boolean;
   noWrite?: boolean;
   noExport?: boolean;
   disabled?: boolean;
-  onChange?: () => void;
-}> = ({ item, noRead, noWrite, noExport, disabled, onChange }) => {
+  onChange?: (newInfo: Info) => void;
+}
+
+const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disabled, onChange }: Props) => {
   /********************************************************************************************************************
    * State
    * ******************************************************************************************************************/
 
-  const [r, setR] = useState(!!item?.new_read);
-  useChanged(!!item?.new_read) && setR(!!item?.new_read);
+  const [r, setR] = useState(!!info?.new_read);
+  useChanged(!!info?.new_read) && setR(!!info?.new_read);
 
-  const [w, setW] = useState(!!item?.new_write);
-  useChanged(!!item?.new_write) && setW(!!item?.new_write);
+  const [w, setW] = useState(!!info?.new_write);
+  useChanged(!!info?.new_write) && setW(!!info?.new_write);
 
-  const [e, setE] = useState(!!item?.new_export);
-  useChanged(!!item?.new_export) && setE(!!item?.new_export);
+  const [e, setE] = useState(!!info?.new_export);
+  useChanged(!!info?.new_export) && setE(!!info?.new_export);
 
   /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
 
-  const fireChange = useCallback(() => {
-    onChange?.();
-  }, [onChange]);
+  const fireChange = useCallback(
+    (newInfo: Info) => {
+      onChange?.(newInfo);
+    },
+    [onChange]
+  );
 
   /********************************************************************************************************************
    * Render
@@ -46,22 +53,25 @@ const AdminGroupFormRoleTableCells: React.FC<{
             disabled={disabled}
             checked={r}
             onChange={(e) => {
-              item.new_read = e.target.checked;
-              setR(item.new_read);
+              const newRead = e.target.checked;
+              let newWrite = info.new_write;
+              let newExport = info.new_export;
 
-              if (!item.new_read) {
-                if (item.new_write) {
-                  item.new_write = false;
-                  setW(false);
+              setR(newRead);
+
+              if (!newRead) {
+                if (info.new_write) {
+                  newWrite = false;
+                  setW(newWrite);
                 }
 
-                if (item.new_export) {
-                  item.new_export = false;
-                  setE(false);
+                if (info.new_export) {
+                  newExport = false;
+                  setE(newExport);
                 }
               }
 
-              fireChange();
+              fireChange({ ...info, new_read: newRead, new_write: newWrite, new_export: newExport });
             }}
           />
         )}
@@ -72,15 +82,19 @@ const AdminGroupFormRoleTableCells: React.FC<{
             disabled={disabled}
             checked={w}
             onChange={(e) => {
-              item.new_write = e.target.checked;
-              setW(item.new_write);
+              const newWrite = e.target.checked;
+              let newRead = info.new_read;
 
-              if (item.new_write) {
-                item.new_read = true;
-                setR(true);
+              setW(newWrite);
+
+              if (newWrite) {
+                if (!info.new_read) {
+                  newRead = true;
+                  setR(newRead);
+                }
               }
 
-              fireChange();
+              fireChange({ ...info, new_read: newRead, new_write: newWrite });
             }}
           />
         )}
@@ -91,15 +105,19 @@ const AdminGroupFormRoleTableCells: React.FC<{
             disabled={disabled}
             checked={e}
             onChange={(e) => {
-              item.new_export = e.target.checked;
-              setE(item.new_export);
+              const newExport = e.target.checked;
+              let newRead = info.new_read;
 
-              if (item.new_export) {
-                item.new_read = true;
-                setR(true);
+              setE(newExport);
+
+              if (newExport) {
+                if (!info.new_read) {
+                  newRead = true;
+                  setR(newRead);
+                }
               }
 
-              fireChange();
+              fireChange({ ...info, new_read: newRead, new_export: newExport });
             }}
           />
         )}

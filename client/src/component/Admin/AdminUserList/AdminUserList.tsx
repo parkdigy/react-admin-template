@@ -89,7 +89,7 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
       } else {
         Admin.User.lock(
           <T size='inherit' color='error'>
-            사용자 "{item.name}"의 사용을 제한 하시겠습니까?
+            사용자 &quot;{item.name}&quot;의 사용을 제한 하시겠습니까?
           </T>,
           item.id
         ).then(() => {
