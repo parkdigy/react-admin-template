@@ -8,6 +8,8 @@ module.exports = {
   g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
   color: [path.resolve(__dirname, '../src/global/color/index.ts'), 'default'],
   util: [path.resolve(__dirname, '../src/global/util/index.ts'), 'default'],
+  // delay
+  nextTick: [path.resolve(__dirname, '../src/global/delay/index.ts'), 'nextTick'],
   // app
   app: [path.resolve(__dirname, '../src/global/app/index.ts'), 'default'],
   AuthDialogType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'AuthDialogType'],

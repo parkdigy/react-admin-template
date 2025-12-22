@@ -4,6 +4,9 @@ declare const g: import('../global/g/index.ts').G;
 declare const color: import('../global/color/index.ts').Color;
 declare const util: import('../global/util/index.ts').Util;
 
+// delay
+declare const nextTick: import('../global/delay/index.ts').NextTick;
+
 // app
 declare const app: import('../global/app/index.ts').App;
 declare type AuthDialogType = import('../global/app/index.ts').AuthDialogType;
