@@ -32,50 +32,50 @@ module.exports = {
   TableColumns: ['@pdg/react-table', 'PTableColumns'],
 
   // TableBodyCell
-  TableBodyCell: ['@pdg/react-table', 'TableBodyCell'],
-  TableBodyCellProps: ['@pdg/react-table', 'TableBodyCellProps'],
+  TableBodyCell: ['@pdg/react-table', 'PTableBodyCell'],
+  TableBodyCellProps: ['@pdg/react-table', 'PTableBodyCellProps'],
   TableBodyCellCommands: ['@pdg/react-table', 'PTableBodyCellCommands'],
 
   // TableBodyRow
-  TableBodyRow: ['@pdg/react-table', 'TableBodyRow'],
-  TableBodyRowProps: ['@pdg/react-table', 'TableBodyRowProps'],
+  TableBodyRow: ['@pdg/react-table', 'PTableBodyRow'],
+  TableBodyRowProps: ['@pdg/react-table', 'PTableBodyRowProps'],
 
   // TableButton
-  TableButton: ['@pdg/react-table', 'TableButton'],
-  TableButtonProps: ['@pdg/react-table', 'TableButtonProps'],
+  TableButton: ['@pdg/react-table', 'PTableButton'],
+  TableButtonProps: ['@pdg/react-table', 'PTableButtonProps'],
 
   // TableCommonCell
-  TableCommonCell: ['@pdg/react-table', 'TableCommonCell'],
-  TableCommonCellProps: ['@pdg/react-table', 'TableCommonCellProps'],
+  TableCommonCell: ['@pdg/react-table', 'PTableCommonCell'],
+  TableCommonCellProps: ['@pdg/react-table', 'PTableCommonCellProps'],
 
   // TableFooterCell
-  TableFooterCell: ['@pdg/react-table', 'TableFooterCell'],
-  TableFooterCellProps: ['@pdg/react-table', 'TableFooterCellProps'],
+  TableFooterCell: ['@pdg/react-table', 'PTableFooterCell'],
+  TableFooterCellProps: ['@pdg/react-table', 'PTableFooterCellProps'],
 
   // TableHeadCell
-  TableHeadCell: ['@pdg/react-table', 'TableHeadCell'],
-  TableHeadCellProps: ['@pdg/react-table', 'TableHeadCellProps'],
+  TableHeadCell: ['@pdg/react-table', 'PTableHeadCell'],
+  TableHeadCellProps: ['@pdg/react-table', 'PTableHeadCellProps'],
 
   // TableMenuButton
-  TableMenuButton: ['@pdg/react-table', 'TableMenuButton'],
-  TableMenuButtonProps: ['@pdg/react-table', 'TableMenuButtonProps'],
+  TableMenuButton: ['@pdg/react-table', 'PTableMenuButton'],
+  TableMenuButtonProps: ['@pdg/react-table', 'PTableMenuButtonProps'],
 
   // TablePagination
-  TablePagination: ['@pdg/react-table', 'TablePagination'],
-  TablePaginationProps: ['@pdg/react-table', 'TablePaginationProps'],
+  TablePagination: ['@pdg/react-table', 'PTablePagination'],
+  TablePaginationProps: ['@pdg/react-table', 'PTablePaginationProps'],
   TablePaging: ['@pdg/react-table', 'PTablePaging'],
 
   // TableSortableBody
-  TableSortableBody: ['@pdg/react-table', 'TableSortableBody'],
-  TableSortableBodyProps: ['@pdg/react-table', 'TableSortableBodyProps'],
+  TableSortableBody: ['@pdg/react-table', 'PTableSortableBody'],
+  TableSortableBodyProps: ['@pdg/react-table', 'PTableSortableBodyProps'],
 
   // TableSortableBodyBlock
-  TableSortableBodyBlock: ['@pdg/react-table', 'TableSortableBodyBlock'],
-  TableSortableBodyBlockProps: ['@pdg/react-table', 'TableSortableBodyBlockProps'],
+  TableSortableBodyBlock: ['@pdg/react-table', 'PTableSortableBodyBlock'],
+  TableSortableBodyBlockProps: ['@pdg/react-table', 'PTableSortableBodyBlockProps'],
 
   // TableTopHead
-  TableTopHead: ['@pdg/react-table', 'TableTopHead'],
-  TableTopHeadProps: ['@pdg/react-table', 'TableTopHeadProps'],
+  TableTopHead: ['@pdg/react-table', 'PTableTopHead'],
+  TableTopHeadProps: ['@pdg/react-table', 'PTableTopHeadProps'],
   TableTopHeadRowColumn: ['@pdg/react-table', 'PTableTopHeadRowColumn'],
   TableTopHeadRowColumnValue: ['@pdg/react-table', 'PTableTopHeadRowColumnValue'],
 };
