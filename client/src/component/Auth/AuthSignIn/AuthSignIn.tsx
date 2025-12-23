@@ -1,13 +1,9 @@
-/********************************************************************************************************************
- * 로그인 화면 컴포넌트
- * ******************************************************************************************************************/
-
 import React from 'react';
-import { CardHeader, CardContent, CardActions, Grid, Button, Alert, Card } from '@mui/material';
-import { ApiError, ApiRequestData } from '@pdg/api';
+import { AuthSignInProps as Props } from './AuthSignIn.types';
 import { Auth } from '@const';
+import { Alert, Card, CardActions, CardContent, CardHeader, Grid } from '@mui/material';
 
-const SignIn: React.FC = () => {
+export const AuthSignIn = ({}: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/
@@ -25,12 +21,12 @@ const SignIn: React.FC = () => {
    * ******************************************************************************************************************/
 
   /** 로그인 - Form.onSubmit */
-  const handleSubmit = useCallback((data: ApiRequestData) => {
+  const handleSubmit = useCallback((data: Dict) => {
     Auth.signIn(data, false)
       .then(({ result }) => {
         location.href = result.r || '/';
       })
-      .catch((err: ApiError) => {
+      .catch((err) => {
         if (err.response?.data?.result?.m) {
           setErrorText(err.response.data.result.m);
         } else {
@@ -103,4 +99,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default AuthSignIn;

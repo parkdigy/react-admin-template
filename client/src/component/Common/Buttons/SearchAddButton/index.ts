@@ -1,5 +1,4 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
 const SearchAddButton = l(
   () => import(/* webpackChunkName: "common-search-add-button" */ './SearchAddButton'),

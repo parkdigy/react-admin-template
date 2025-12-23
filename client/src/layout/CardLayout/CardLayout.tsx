@@ -5,7 +5,7 @@
 import React from 'react';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import { Routes, Route, Navigate } from 'react-router';
-import { SignIn } from '@comp';
+import { AuthSignIn } from '@comp';
 import { Box } from '@mui/material';
 import { useAppState } from '@context';
 
@@ -37,7 +37,7 @@ const CardLayout = () => {
     <AdminLayout.CardLayout>
       <Box sx={{ p: 2 }}>
         <Routes>
-          <Route path='signin' element={<SignIn />} />
+          <Route path='signin' element={<AuthSignIn />} />
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </Box>

@@ -1,7 +1,9 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const PrivacyTelText = l(() => import('./PrivacyTelText'), loadable.options);
+const PrivacyTelText = l(
+  () => import(/* webpackChunkName: "privacy-tel-text" */ './PrivacyTelText'),
+  loadable.options
+) as unknown as typeof import('./PrivacyTelText').default;
 
 export { PrivacyTelText };
 

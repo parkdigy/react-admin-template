@@ -1,5 +1,4 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
 const SearchExportButton = l(
   () => import(/* webpackChunkName: "common-search-export-button" */ './SearchExportButton'),

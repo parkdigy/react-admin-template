@@ -1,8 +1,12 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const TestDataInfo = l(() => import('./TestDataInfo'), loadable.options);
+const TestDataInfo = l(
+  () => import(/* webpackChunkName: "test-data-info" */ './TestDataInfo'),
+  loadable.options
+) as unknown as typeof import('./TestDataInfo').default;
 
 export { TestDataInfo };
+
+export default TestDataInfo;
 
 export * from './TestDataInfo.types';

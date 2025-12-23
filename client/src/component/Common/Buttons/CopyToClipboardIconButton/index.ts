@@ -1,5 +1,4 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
 const CopyToClipboardIconButton = l(
   () => import(/* webpackChunkName: "common-copy-to-clipboard-icon-button" */ './CopyToClipboardIconButton'),

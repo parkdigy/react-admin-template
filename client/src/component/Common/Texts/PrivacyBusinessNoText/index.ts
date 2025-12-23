@@ -1,7 +1,9 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const PrivacyBusinessNoText = l(() => import('./PrivacyBusinessNoText'), loadable.options);
+const PrivacyBusinessNoText = l(
+  () => import(/* webpackChunkName: "privacy-business-no-text" */ './PrivacyBusinessNoText'),
+  loadable.options
+) as unknown as typeof import('./PrivacyBusinessNoText').default;
 
 export { PrivacyBusinessNoText };
 
