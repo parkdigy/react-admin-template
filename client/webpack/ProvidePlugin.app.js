@@ -3,15 +3,21 @@ const path = require('path');
 /* eslint-enable */
 
 module.exports = {
-  env: [path.resolve(__dirname, '../src/global/env/index.ts'), 'default'],
-  ll: [path.resolve(__dirname, '../src/global/ll/index.ts'), 'default'],
-  g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
-  color: [path.resolve(__dirname, '../src/global/color/index.ts'), 'default'],
-  util: [path.resolve(__dirname, '../src/global/util/index.ts'), 'default'],
-  loadable: [path.resolve(__dirname, '../src/global/loadable/index.ts'), 'default'],
+  // base
+  objectKeys: [path.resolve(__dirname, '../src/global/base/index.ts'), 'objectKeys'],
+  nextTick: [path.resolve(__dirname, '../src/global/base/index.ts'), 'nextTick'],
 
-  // delay
-  nextTick: [path.resolve(__dirname, '../src/global/delay/index.ts'), 'nextTick'],
+  // env
+  env: [path.resolve(__dirname, '../src/global/env/index.ts'), 'default'],
+
+  // ll
+  ll: [path.resolve(__dirname, '../src/global/ll/index.ts'), 'default'],
+
+  // g
+  g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
+
+  // loadable
+  loadable: [path.resolve(__dirname, '../src/global/loadable/index.ts'), 'default'],
 
   // app
   app: [path.resolve(__dirname, '../src/global/app/index.ts'), 'default'],

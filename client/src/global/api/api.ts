@@ -2,7 +2,6 @@ import fileDownload from 'js-file-download';
 import { AxiosResponse } from 'axios';
 import { ApiOption, Api, ApiError, ApiRequestData, ApiRequestOption } from '@pdg/api';
 import { ApiAuth, ApiAuthObject, ApiResult } from './api.types';
-import app from '../app';
 
 const defaultOption: ApiOption = {
   baseUrl: '/api',
