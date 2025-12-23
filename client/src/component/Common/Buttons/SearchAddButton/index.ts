@@ -8,5 +8,3 @@ const SearchAddButton = l(
 export { SearchAddButton };
 
 export default SearchAddButton;
-
-export type TSearchAddButton = typeof SearchAddButton;

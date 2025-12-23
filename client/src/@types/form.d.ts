@@ -1,1 +1,1 @@
-export type FormValidType = true | 'error' | 'warning';
+declare type FormValidType = true | 'error' | 'warning';

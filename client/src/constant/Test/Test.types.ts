@@ -1,4 +1,3 @@
-import { DateString } from '@types';
 import TestDataStatus from './TestDataStatus';
 
 /********************************************************************************************************************

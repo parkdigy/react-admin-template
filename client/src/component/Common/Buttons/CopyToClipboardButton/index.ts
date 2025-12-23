@@ -9,6 +9,4 @@ export { CopyToClipboardButton };
 
 export default CopyToClipboardButton;
 
-export type TCopyToClipboardButton = typeof CopyToClipboardButton;
-
 export * from './CopyToClipboardButton.types';

@@ -67,6 +67,4 @@ const HashSearchTable = Object.assign(HashSearchTableBase, {
   },
 } as { defaults: { size: 'small' | 'medium'; stickyHeader: boolean } });
 
-export type THashSearchTable = typeof HashSearchTable;
-
 export default HashSearchTable;

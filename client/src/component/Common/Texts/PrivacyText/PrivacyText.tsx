@@ -68,6 +68,4 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
   );
 };
 
-export type TPrivacyText = typeof PrivacyText;
-
 export default PrivacyText;

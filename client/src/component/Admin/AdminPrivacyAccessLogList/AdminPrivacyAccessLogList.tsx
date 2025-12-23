@@ -138,6 +138,4 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
   );
 };
 
-export type TAdminPrivacyAccessLogList = typeof AdminPrivacyAccessLogList;
-
 export default AdminPrivacyAccessLogList;

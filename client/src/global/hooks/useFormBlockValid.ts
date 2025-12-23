@@ -1,5 +1,4 @@
 import { DependencyList } from 'react';
-import { FormValidType } from '@types';
 
 /**
  * 폼 블록 유효성 처리 훅

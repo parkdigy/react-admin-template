@@ -1,5 +1,3 @@
-import { DateString } from '@types';
-
 export interface AdminUserLoginLogListRequestData extends ApiPageLimitRequestData {
   keyword_option?: 'all' | 'email' | 'ip' | 'location';
   keyword?: string;

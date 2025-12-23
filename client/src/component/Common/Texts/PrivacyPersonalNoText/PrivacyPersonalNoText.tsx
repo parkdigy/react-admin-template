@@ -6,6 +6,4 @@ export const PrivacyPersonalNoText = (props: Props) => {
   return <PrivacyText textType='business_no' {...props} />;
 };
 
-export type TPrivacyPersonalNoText = typeof PrivacyPersonalNoText;
-
 export default PrivacyPersonalNoText;

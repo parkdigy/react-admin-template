@@ -6,6 +6,4 @@ export const PrivacyTelText = (props: Props) => {
   return <PrivacyText textType='tel' {...props} />;
 };
 
-export type TPrivacyTelText = typeof PrivacyTelText;
-
 export default PrivacyTelText;
