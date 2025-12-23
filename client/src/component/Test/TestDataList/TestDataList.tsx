@@ -219,8 +219,8 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
           width: 120,
           onRender: (item) => (
             <>
-              <p>{util.format.businessNo(item.business_no)}</p>
-              <p>{util.format.personalNo(item.personal_no)}</p>
+              <p>{g.format.businessNo(item.business_no)}</p>
+              <p>{g.format.personalNo(item.personal_no)}</p>
             </>
           ),
         },

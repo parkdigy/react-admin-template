@@ -2,14 +2,14 @@ import format from '@pdg/formatting';
 import korean from '@pdg/korean';
 import loading from './loading';
 import nav from './navigate';
-import color from './color';
+import mui from './mui';
 
 const g = {
   format,
   korean,
   loading,
   nav,
-  color,
+  mui,
 };
 
 export default g;

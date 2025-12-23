@@ -52,11 +52,11 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
     <Box display='inline-flex' flexDirection='row' alignItems='center'>
       <Typography {...textProps}>
         {textType === 'tel'
-          ? util.format.telNo(text)
+          ? g.format.telNo(text)
           : textType === 'business_no'
-            ? util.format.businessNo(text)
+            ? g.format.businessNo(text)
             : textType === 'personal_no'
-              ? util.format.personalNo(text)
+              ? g.format.personalNo(text)
               : text}
       </Typography>
       {!isPrivacyAccess && (
