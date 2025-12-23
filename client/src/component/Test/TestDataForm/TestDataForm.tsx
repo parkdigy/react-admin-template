@@ -27,20 +27,6 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
   const [datetime, setDatetime] = useState<Dayjs>();
 
   /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    loadStatusList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    loadInfo(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-  /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
 
@@ -86,6 +72,28 @@ const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel 
   const cancel = useCallback(() => {
     onCancel?.();
   }, [onCancel]);
+
+  /********************************************************************************************************************
+   * Effect
+   * ******************************************************************************************************************/
+
+  {
+    const effectEvent = useEffectEvent(() => {
+      loadStatusList();
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, []);
+  }
+
+  {
+    const effectEvent = useEffectEvent(() => {
+      loadInfo(id);
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [id]);
+  }
 
   /********************************************************************************************************************
    * Event Handler

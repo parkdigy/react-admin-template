@@ -28,10 +28,14 @@ const useFormBlockValid = (
     };
   }, []);
 
-  useEffect(() => {
-    onValidChange(valid);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valid]);
+  {
+    const effectEvent = useEffectEvent(() => {
+      onValidChange(valid);
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [valid]);
+  }
 
   const proc = useCallback(() => {
     if (timerRef.current) {
@@ -48,15 +52,14 @@ const useFormBlockValid = (
     );
   }, [callback, delay]);
 
-  useEffect(() => {
-    proc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-
-  useEffect(() => {
-    proc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [delay]);
+  {
+    const effectEvent = useEffectEvent(() => {
+      proc();
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [deps, delay]);
+  }
 
   return valid;
 };

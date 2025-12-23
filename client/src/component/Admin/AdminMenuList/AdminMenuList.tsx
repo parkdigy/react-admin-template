@@ -35,43 +35,46 @@ export const AdminMenuList: React.FC<Props> = () => {
   const [sortChanged, setSortChanged] = useState(false);
 
   /********************************************************************************************************************
-   * Memo
+   * State - listIdMap
    * ******************************************************************************************************************/
 
-  /** list 를 id 로 찾을 수 있도록 변환 */
-  const listIdMap = useMemo(() => {
+  const getListIdMap = useCallback((l: AdminMenuListData | undefined) => {
     const newListIdMap: Dict<AdminMenuListDataItem> = {};
-    if (list) {
+    if (l) {
       const makeListIdMap = (items: AdminMenuListDataItem[]) => {
         items.map((info) => {
           newListIdMap[info.id] = info;
           makeListIdMap(info.items);
         });
       };
-      makeListIdMap(list);
+      makeListIdMap(l);
     }
     return newListIdMap;
-  }, [list]);
-
-  /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    loadMenuList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [listIdMap, setListIdMap] = useState<Dict<AdminMenuListDataItem>>(getListIdMap(list));
+  useChanged(list) && setListIdMap(getListIdMap(list));
+
+  /********************************************************************************************************************
+   * Memo
+   * ******************************************************************************************************************/
+
   /** '어드민 관리' 메뉴와 기타 메뉴 분리하여 저장 */
-  useEffect(() => {
-    if (list) {
-      setAdminList(list.filter((info) => info.id === 'admin'));
-      setOtherList(list.filter((info) => info.id !== 'admin'));
-    } else {
-      setAdminList(undefined);
-      setOtherList(undefined);
-    }
-  }, [list]);
+
+  {
+    const effectEvent = useEffectEvent(() => {
+      if (list) {
+        setAdminList(list.filter((info) => info.id === 'admin'));
+        setOtherList(list.filter((info) => info.id !== 'admin'));
+      } else {
+        setAdminList(undefined);
+        setOtherList(undefined);
+      }
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [list]);
+  }
 
   /********************************************************************************************************************
    * Function
@@ -144,6 +147,17 @@ export const AdminMenuList: React.FC<Props> = () => {
   }, [list, loadMenuList]);
 
   /********************************************************************************************************************
+   * 최초 메뉴 목록 로드
+   * ******************************************************************************************************************/
+
+  {
+    const loadMenuListEffectEvent = useEffectEvent(() => loadMenuList());
+    useEffect(() => {
+      loadMenuListEffectEvent();
+    }, []);
+  }
+
+  /********************************************************************************************************************
    * Event Handler
    * ******************************************************************************************************************/
 
@@ -169,7 +183,11 @@ export const AdminMenuList: React.FC<Props> = () => {
               const oldIndex = parentMenu.items.indexOf(activeMenu);
               const newIndex = parentMenu.items.indexOf(overMenu);
 
-              parentMenu.items = arrayMove(parentMenu.items, oldIndex, newIndex);
+              setListIdMap((prev) => {
+                const newMap = { ...prev };
+                listIdMap[parentMenu.id].items = arrayMove(parentMenu.items, oldIndex, newIndex);
+                return newMap;
+              });
 
               setSortChanged(true);
               setList(copy(list));

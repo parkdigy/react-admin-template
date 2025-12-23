@@ -52,15 +52,14 @@ const useFormBlockData = <T, RT extends Required<T>>(
    * Effect
    * ******************************************************************************************************************/
 
-  useEffect(() => {
-    proc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-
-  useEffect(() => {
-    proc();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [delay]);
+  {
+    const effectEvent = useEffectEvent(() => {
+      proc();
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [deps, delay]);
+  }
 };
 
 export default useFormBlockData;

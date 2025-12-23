@@ -41,15 +41,6 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.User);
 
   /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    loadGroupList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
 
@@ -149,6 +140,17 @@ const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
   const getLockStyle = useCallback((item: AdminUserListDataItem): TableColumn['style'] => {
     return item.is_lock ? { opacity: 0.5 } : undefined;
   }, []);
+
+  /********************************************************************************************************************
+   * Effect
+   * ******************************************************************************************************************/
+
+  {
+    const effectEvent = useEffectEvent(() => loadGroupList());
+    useEffect(() => {
+      return effectEvent();
+    }, []);
+  }
 
   /********************************************************************************************************************
    * Table

@@ -61,46 +61,6 @@ const RootLayout = withErrorBoundary(() => {
   const [errorName, setErrorName] = useState<string | undefined>();
 
   /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    if (error) {
-      hideHtmlLoading();
-    } else {
-      showHtmlLoading();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
-
-  useEffect(() => {
-    if (!boundaryError) {
-      hideHtmlLoading();
-    } else {
-      showHtmlLoading();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [boundaryError]);
-
-  /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    if (error) {
-      const htmlLoadingEl = document.getElementById('___appLoading');
-      if (htmlLoadingEl) {
-        htmlLoadingEl.classList.remove('show');
-        htmlLoadingEl.classList.add('hide');
-
-        setTimeout(() => {
-          htmlLoadingEl.classList.add('hide-complete');
-        }, 300);
-      }
-    }
-  }, [error]);
-
-  /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
 
@@ -171,38 +131,69 @@ const RootLayout = withErrorBoundary(() => {
   ]);
 
   /********************************************************************************************************************
-   * Effect - 로그인 처리
+   * Effect
    * ******************************************************************************************************************/
 
-  useEffect(() => {
-    if (!error) {
-      if (window.location.pathname.startsWith('/auth/')) {
-        setInitialized(true);
+  {
+    const effectEvent = useEffectEvent(() => {
+      if (error) {
+        hideHtmlLoading();
       } else {
-        // 로그인 확인
-        createApi<AuthSignInResponseData>({
-          onError(err: ApiError<ApiResult>) {
-            g.loading.hide();
-
-            if (err.response?.data?.result?.c === 99997) {
-              clearAuth();
-              window.location.href = '/auth/signin';
-            } else {
-              setTimeout(() => {
-                setError(true);
-              }, 500);
-            }
-          },
-        })
-          .get('auth.signin')
-          .then(({ data }) => {
-            setAuth(data);
-            setInitialized(true);
-            setError(false);
-          });
+        showHtmlLoading();
       }
-    }
-  }, [error, setAuth, clearAuth]);
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [error]);
+  }
+
+  {
+    const effectEvent = useEffectEvent(() => {
+      if (!boundaryError) {
+        hideHtmlLoading();
+      } else {
+        showHtmlLoading();
+      }
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [boundaryError]);
+  }
+
+  {
+    const effectEvent = useEffectEvent(() => {
+      if (!error) {
+        if (window.location.pathname.startsWith('/auth/')) {
+          setInitialized(true);
+        } else {
+          // 로그인 확인
+          createApi<AuthSignInResponseData>({
+            onError(err: ApiError<ApiResult>) {
+              g.loading.hide();
+
+              if (err.response?.data?.result?.c === 99997) {
+                clearAuth();
+                window.location.href = '/auth/signin';
+              } else {
+                setTimeout(() => {
+                  setError(true);
+                }, 500);
+              }
+            },
+          })
+            .get('auth.signin')
+            .then(({ data }) => {
+              setAuth(data);
+              setInitialized(true);
+              setError(false);
+            });
+        }
+      }
+    });
+    useEffect(() => {
+      return effectEvent();
+    }, [error]);
+  }
 
   /********************************************************************************************************************
    * Render
