@@ -17,7 +17,7 @@
       "@types": ["src/@types"],
       "@styles": ["src/@styles"],
       "@comp": ["src/component"],
-      "@ccomp": ["src/component/Common"],
+      "@ccomp": ["src/component/@Common"],
       "@const": ["src/constant"],
       "@context": ["src/context"],
       "@dialog": ["src/dialog"]
