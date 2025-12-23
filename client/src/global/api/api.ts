@@ -2,16 +2,8 @@ import { ReactNode } from 'react';
 import fileDownload from 'js-file-download';
 import { AxiosResponse } from 'axios';
 import { ApiOption, Api, ApiError, ApiRequestData, ApiRequestOption } from '@pdg/api';
-import { DialogProps } from '@pdg/react-dialog';
-import { ApiResult } from './api.types';
+import { ApiAuth, ApiAuthObject, ApiResult } from './api.types';
 import app from '../app';
-
-type ApiAuthObject = {
-  intro: ReactNode;
-  color?: DialogProps['color'];
-};
-
-export type ApiAuth = ReactNode | ApiAuthObject;
 
 const defaultOption: ApiOption = {
   baseUrl: '/api',

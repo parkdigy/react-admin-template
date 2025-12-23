@@ -20,6 +20,8 @@ declare const createApi: import('../global/api/index.ts').CreateApi;
 declare type ApiResult = import('../global/api/index.ts').ApiResult;
 declare type ApiPaging = import('../global/api/index.ts').ApiPaging;
 declare type ApiPageLimitRequestData = import('../global/api/index.ts').ApiPageLimitRequestData;
+declare type ApiAuthObject = import('../global/api/index.ts').ApiAuthObject;
+declare type ApiAuth = import('../global/api/index.ts').ApiAuth;
 
 // mediaQuery
 declare const mediaQuery: import('../global/mediaQuery/index.ts').MediaQuery;

@@ -30,23 +30,23 @@ export default {
     return api.get<AdminUserInfo>(`admin.user.${id}`);
   },
   // 회원 등록
-  add(authIntro: ReactNode, data: Dict) {
-    return api.post(authIntro, 'admin.user', data);
+  add(auth: ApiAuth, data: Dict) {
+    return api.post(auth, 'admin.user', data);
   },
   // 회원 수정
-  edit(authIntro: ReactNode, id: number, data: Dict) {
-    return api.patch(authIntro, `admin.user.${id}`, data);
+  edit(auth: ApiAuth, id: number, data: Dict) {
+    return api.patch(auth, `admin.user.${id}`, data);
   },
   // 회원 잠금
-  lock(authIntro: ReactNode, id: number) {
-    return api.patch(authIntro, `admin.user.${id}.lock`);
+  lock(auth: ApiAuth, id: number) {
+    return api.patch(auth, `admin.user.${id}.lock`);
   },
   // 회원 잠금 해제
-  unlock(authIntro: ReactNode, id: number) {
-    return api.patch(authIntro, `admin.user.${id}.unlock`);
+  unlock(auth: ApiAuth, id: number) {
+    return api.patch(auth, `admin.user.${id}.unlock`);
   },
   // 회원 비밀번호 초기화
-  passwordReset(authIntro: ReactNode, id: number) {
-    return api.patch(authIntro, `admin.user.${id}.password_reset`);
+  passwordReset(auth: ApiAuth, id: number) {
+    return api.patch(auth, `admin.user.${id}.password_reset`);
   },
 };

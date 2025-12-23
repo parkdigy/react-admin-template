@@ -14,11 +14,11 @@ export default {
     return api.get<AdminMenuInfo>(`admin.menu.${id.replace(/\//g, '_____')}`);
   },
   // 메뉴 등록
-  add(auth: ReactNode, data: Dict) {
+  add(auth: ApiAuth, data: Dict) {
     return api.post(auth, 'admin.menu', data);
   },
   // 메뉴 수정
-  edit(auth: ReactNode, id: string, data: Dict) {
+  edit(auth: ApiAuth, id: string, data: Dict) {
     return api.patch(auth, `admin.menu.${id.replace(/\//g, '_____')}`, data);
   },
   // 메뉴 SUPER 권한 수정
@@ -46,7 +46,7 @@ export default {
     return api.notAuthPatch('admin.menu.seq', { data });
   },
   // 메뉴 삭제
-  remove(auth: ReactNode, id: string) {
+  remove(auth: ApiAuth, id: string) {
     return api.delete(auth, `admin.menu.${id.replace(/\//g, '_____')}`);
   },
 };

@@ -22,3 +22,10 @@ export interface ApiPageLimitRequestData {
   page?: number;
   limit?: number;
 }
+
+export type ApiAuthObject = {
+  intro: ReactNode;
+  color?: DialogProps['color'];
+};
+
+export type ApiAuth = ReactNode | ApiAuthObject;

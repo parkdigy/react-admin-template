@@ -46,11 +46,11 @@ export default {
     return result;
   },
   // 그룹 등록
-  add(authIntro: ReactNode, data: Dict) {
-    return api.post<ApiResult>(authIntro, 'admin.group', data);
+  add(auth: ApiAuth, data: Dict) {
+    return api.post<ApiResult>(auth, 'admin.group', data);
   },
   // 그룹 수정
-  edit(authIntro: ReactNode, id: number, data: Dict) {
-    return api.patch<ApiResult>(authIntro, `admin.group.${id}`, data);
+  edit(auth: ApiAuth, id: number, data: Dict) {
+    return api.patch<ApiResult>(auth, `admin.group.${id}`, data);
   },
 };
