@@ -4,7 +4,7 @@ import { Admin, AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 import { HashSearchTable } from '@ccomp';
 
-const AdminPrivacyAccessLogList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
+const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

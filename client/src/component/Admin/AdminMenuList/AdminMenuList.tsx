@@ -13,7 +13,7 @@ import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 import { styled } from '@mui/material';
 
-export const AdminMenuList: React.FC<Props> = () => {
+export const AdminMenuList = ({}: Props) => {
   const id = useId();
 
   const { setNodeRef } = useDroppable({ id });

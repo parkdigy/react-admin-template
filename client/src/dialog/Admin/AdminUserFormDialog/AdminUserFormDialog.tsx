@@ -5,10 +5,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { ErrorBoundary } from '@ccomp';
-import { AdminUserFormDialogProps } from './AdminUserFormDialog.types';
+import { AdminUserFormDialogProps as Props } from './AdminUserFormDialog.types';
 import { AdminUserForm } from '@comp';
 
-const AdminUserFormDialog: React.FC<AdminUserFormDialogProps> = ({ id, onSuccess, onShow, onClose }) => {
+const AdminUserFormDialog = ({ id, onSuccess, onShow, onClose }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { ErrorBoundary } from '@ccomp';
-import { TestDataFormDialogProps } from './TestDataFormDialog.types';
+import { TestDataFormDialogProps as Props } from './TestDataFormDialog.types';
 import { TestDataForm } from '@comp';
 
-const TestDataFormDialog: React.FC<TestDataFormDialogProps> = ({ id, subTitle, onSuccess, onShow, onClose }) => {
+const TestDataFormDialog = ({ id, subTitle, onSuccess, onShow, onClose }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

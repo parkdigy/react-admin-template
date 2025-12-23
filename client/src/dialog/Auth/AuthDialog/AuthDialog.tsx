@@ -6,10 +6,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { Grid } from '@mui/material';
-import { AuthDialogProps } from './AuthDialog.types';
+import { AuthDialogProps as Props } from './AuthDialog.types';
 import { useAppState } from '@context';
 
-const AuthDialog: React.FC<AuthDialogProps> = ({ intro, color, onShow, onClose, onSuccess, onFail }) => {
+const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/

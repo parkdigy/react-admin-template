@@ -10,14 +10,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Admin } from '@const';
 import { styled } from '@mui/material';
 
-export const AdminMenuListItem: React.FC<Props> = ({
-  menu: initMenu,
-  dragging,
-  sortChanged,
-  onEdit,
-  onRemove,
-  onAddSubMenu,
-}) => {
+export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdit, onRemove, onAddSubMenu }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/

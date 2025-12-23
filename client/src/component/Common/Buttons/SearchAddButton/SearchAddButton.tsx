@@ -4,8 +4,9 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
+import { SearchAddButtonProps as Props } from './SearchAddButton.types';
 
-export const SearchAddButton: React.FC<Omit<SearchButtonProps, 'startIcon' | 'color' | 'variant'>> = (props) => {
+export const SearchAddButton = (props: Props) => {
   return <SearchButton startIcon='add' startIconMarginLeft='-0.3em' variant='contained' {...props} />;
 };
 

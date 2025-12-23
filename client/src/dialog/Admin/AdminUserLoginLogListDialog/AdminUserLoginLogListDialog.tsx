@@ -5,15 +5,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { ErrorBoundary } from '@ccomp';
-import { AdminUserLoginLogListDialogProps } from './AdminUserLoginLogListDialog.types';
+import { AdminUserLoginLogListDialogProps as Props } from './AdminUserLoginLogListDialog.types';
 import { AdminUserLoginLogList } from '@comp';
 
-const AdminUserLoginLogListDialog: React.FC<AdminUserLoginLogListDialogProps> = ({
-  email,
-  onChange,
-  onShow,
-  onClose,
-}) => {
+const AdminUserLoginLogListDialog = ({ email, onChange, onShow, onClose }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

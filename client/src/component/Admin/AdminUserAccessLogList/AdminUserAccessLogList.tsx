@@ -8,7 +8,7 @@ import { Admin, AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestDat
 import dayjs from 'dayjs';
 import { HashSearchTable } from '@ccomp';
 
-const AdminUserAccessLogList: React.FC<Props> = ({ noHash }) => {
+const AdminUserAccessLogList = ({ noHash }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

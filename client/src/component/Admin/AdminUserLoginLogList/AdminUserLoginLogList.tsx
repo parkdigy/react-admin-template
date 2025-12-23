@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import { useAppState } from '@context';
 import { HashSearchTable } from '@ccomp';
 
-const AdminUserLoginLogList: React.FC<Props> = ({ email, noHash, limit, onRequestScrollToTop }) => {
+const AdminUserLoginLogList = ({ email, noHash, limit, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/

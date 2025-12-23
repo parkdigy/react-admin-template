@@ -3,10 +3,10 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { SearchExportButtonProps } from './SearchExportButton.types';
+import { SearchExportButtonProps as Props } from './SearchExportButton.types';
 import { MenuItem as BaseMenuItem, menuItemClasses, styled, Typography, Menu } from '@mui/material';
 
-const SearchExportButton: React.FC<SearchExportButtonProps> = ({ style: initStyle, items, ...props }) => {
+const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

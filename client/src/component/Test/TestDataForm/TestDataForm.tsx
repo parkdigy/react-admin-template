@@ -5,7 +5,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import TestDataStatus from '../../../constant/Test/TestDataStatus';
 import { usePrivacyAccessReasonDialog } from '@dialog';
 
-const TestDataForm: React.FC<Props> = ({ id, onValueChange, onSuccess, onCancel }) => {
+const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
    * Dialog
    * ******************************************************************************************************************/

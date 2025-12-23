@@ -2,7 +2,7 @@ import React from 'react';
 import { PrivacyAccessReasonDialogProps as Props } from './PrivacyAccessReasonDialog.types';
 import InputDialog from '../InputDialog';
 
-export const PrivacyAccessReasonDialog: React.FC<Props> = (props) => {
+export const PrivacyAccessReasonDialog = (props: Props) => {
   return <InputDialog {...props} />;
 };
 

@@ -5,10 +5,10 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { ErrorBoundary } from '@ccomp';
-import { AdminMenuFormDialogProps } from './AdminMenuFormDialog.types';
+import { AdminMenuFormDialogProps as Props } from './AdminMenuFormDialog.types';
 import { AdminMenuForm } from '@comp';
 
-const AdminMenuFormDialog: React.FC<AdminMenuFormDialogProps> = ({ parentMenu, id, onSuccess, onShow, onClose }) => {
+const AdminMenuFormDialog = ({ parentMenu, id, onSuccess, onShow, onClose }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

@@ -6,13 +6,7 @@ import React from 'react';
 import { AdminMenuFormProps as Props } from './AdminMenuForm.types';
 import { Admin, AdminMenuInfoData } from '@const';
 
-const AdminMenuForm: React.FC<Props> = ({
-  parentMenu: initParentMenu,
-  id: initId,
-  onValueChange,
-  onSuccess,
-  onCancel,
-}) => {
+const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
    * Ref
    * ******************************************************************************************************************/

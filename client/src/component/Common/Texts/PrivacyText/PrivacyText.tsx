@@ -5,7 +5,7 @@ import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
 import { PrivacyAccess } from '@const';
 
-export const PrivacyText: React.FC<Props> = ({ textType, text: initText, textProps, type, parentId }) => {
+export const PrivacyText = ({ textType, text: initText, textProps, type, parentId }: Props) => {
   /********************************************************************************************************************
    * Dialog
    * ******************************************************************************************************************/

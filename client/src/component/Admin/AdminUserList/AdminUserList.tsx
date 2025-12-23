@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 import { useAppState } from '@context';
 import { HashSearchTable } from '@ccomp';
 
-const AdminUserList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
+const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/

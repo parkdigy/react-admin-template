@@ -6,7 +6,7 @@ import React from 'react';
 import { CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
 import { Tooltip } from '@mui/material';
 
-const CopyToClipboardIconButton: React.FC<Props> = ({ text, tooltip, icon, size, successMsg, ...props }) => {
+const CopyToClipboardIconButton = ({ text, tooltip, icon, size, successMsg, ...props }: Props) => {
   const content = useMemo(
     () => (
       <IconButton size={size} {...props}>

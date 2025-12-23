@@ -3,7 +3,7 @@ import { TestDataInfoProps as Props } from './TestDataInfo.types';
 import { PrivacyAccess, Test, TestDataInfoData } from '@const';
 import { PrivacyBusinessNoText, PrivacyPersonalNoText, PrivacyTelText, PrivacyText } from '@ccomp';
 
-const TestDataInfo: React.FC<Props> = ({ id }) => {
+const TestDataInfo = ({ id }: Props) => {
   /********************************************************************************************************************
    * State
    * ******************************************************************************************************************/

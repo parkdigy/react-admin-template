@@ -3,13 +3,13 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { AdminUserFormProps } from './AdminUserForm.types';
+import { AdminUserFormProps as Props } from './AdminUserForm.types';
 import { Admin, AdminUserInfoData } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { useAppState } from '@context';
 
-const AdminUserForm: React.FC<AdminUserFormProps> = ({ id, onChange, onSuccess, onCancel }) => {
+const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
    * Use
    * ******************************************************************************************************************/

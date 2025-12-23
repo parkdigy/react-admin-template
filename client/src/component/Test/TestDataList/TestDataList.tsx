@@ -13,7 +13,7 @@ const Menu = {
 } as const;
 type Menu = ValueOf<typeof Menu>;
 
-const TestDataList: React.FC<Props> = ({ noHash, onRequestScrollToTop }) => {
+const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************
    * Dialog
    * ******************************************************************************************************************/

@@ -5,7 +5,7 @@
 import React from 'react';
 import { CopyToClipboardButtonProps as Props } from './CopyToClipboardButton.types';
 
-const CopyToClipboardButton: React.FC<Props> = ({ text, successMsg, ...props }) => {
+const CopyToClipboardButton = ({ text, successMsg, ...props }: Props) => {
   return (
     <CopyToClipboard
       text={text}
