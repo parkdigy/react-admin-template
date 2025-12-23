@@ -67,6 +67,14 @@ export default defineConfig([
       'no-plusplus': 'error',
       'prefer-template': 'error',
       'jsx-quotes': ['error', 'prefer-single'],
+      'no-restricted-properties': [
+        'error',
+        {
+          object: 'React',
+          property: 'memo',
+          message: 'React.memo 사용이 금지되었습니다. 제거해 주세요.',
+        },
+      ],
       'react/prop-types': [
         'error',
         { ignore: ['history', 'location', 'match', 'name', 'className', 'style', 'children'] },
