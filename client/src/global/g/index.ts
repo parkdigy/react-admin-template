@@ -7,5 +7,3 @@ const g = {
 };
 
 export default g;
-
-export type G = typeof g;

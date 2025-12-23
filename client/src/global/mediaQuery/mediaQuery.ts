@@ -72,4 +72,3 @@ export const useScreenSize = () => {
     };
   }, [isXxs, isXs, isSm, isMd, isLg, isMax]);
 };
-export type UseScreenSize = typeof useScreenSize;

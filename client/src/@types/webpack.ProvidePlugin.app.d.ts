@@ -1,36 +1,36 @@
-declare const env: import('../global/env/index.ts').Env;
-declare const ll: import('../global/ll/index.ts').Ll;
-declare const g: import('../global/g/index.ts').G;
-declare const color: import('../global/color/index.ts').Color;
-declare const util: import('../global/util/index.ts').Util;
-declare const loadable: import('../global/loadable/index.ts').Loadable;
+declare const env: typeof import('../global/env/index.ts').env;
+declare const ll: typeof import('../global/ll/index.ts').ll;
+declare const g: typeof import('../global/g/index.ts').g;
+declare const color: typeof import('../global/color/index.ts').color;
+declare const util: typeof import('../global/util/index.ts').util;
+declare const loadable: typeof import('../global/loadable/index.ts').loadable;
 
 // delay
-declare const nextTick: import('../global/delay/index.ts').NextTick;
+declare const nextTick: typeof import('../global/delay/index.ts').nextTick;
 
 // app
-declare const app: import('../global/app/index.ts').App;
-declare type AuthDialogType = import('../global/app/index.ts').AuthDialogType;
-declare type EnqueueSnackbarType = import('../global/app/index.ts').EnqueueSnackbarType;
-declare type CloseSnackbarType = import('../global/app/index.ts').CloseSnackbarType;
-declare type MenuRoles = import('../global/app/index.ts').MenuRoles;
+declare const app: typeof import('../global/app/index.ts').app;
+declare type AuthDialogType = import('../global/app/index.ts').authDialogType;
+declare type EnqueueSnackbarType = import('../global/app/index.ts').enqueueSnackbarType;
+declare type CloseSnackbarType = import('../global/app/index.ts').closeSnackbarType;
+declare type MenuRoles = import('../global/app/index.ts').menuRoles;
 
 // api
-declare const api: import('../global/api/index.ts').Api;
-declare const createApi: import('../global/api/index.ts').CreateApi;
-declare type ApiResult = import('../global/api/index.ts').ApiResult;
-declare type ApiPaging = import('../global/api/index.ts').ApiPaging;
-declare type ApiPageLimitRequestData = import('../global/api/index.ts').ApiPageLimitRequestData;
-declare type ApiAuthObject = import('../global/api/index.ts').ApiAuthObject;
-declare type ApiAuth = import('../global/api/index.ts').ApiAuth;
+declare const api: typeof import('../global/api/index.ts').api;
+declare const createApi: typeof import('../global/api/index.ts').createApi;
+declare type ApiResult = import('../global/api/index.ts').apiResult;
+declare type ApiPaging = import('../global/api/index.ts').apiPaging;
+declare type ApiPageLimitRequestData = import('../global/api/index.ts').apiPageLimitRequestData;
+declare type ApiAuthObject = import('../global/api/index.ts').apiAuthObject;
+declare type ApiAuth = import('../global/api/index.ts').apiAuth;
 
 // mediaQuery
-declare const mediaQuery: import('../global/mediaQuery/index.ts').MediaQuery;
-declare const useScreenSize: import('../global/mediaQuery/index.ts').UseScreenSize;
+declare const mediaQuery: typeof import('../global/mediaQuery/index.ts').mediaQuery;
+declare const useScreenSize: typeof import('../global/mediaQuery/index.ts').useScreenSize;
 
 // hooks
-declare const useFormBlockData: import('../global/hooks/index.ts').UseFormBlockData;
-declare const useFormBlockValid: import('../global/hooks/index.ts').UseFormBlockValid;
+declare const useFormBlockData: typeof import('../global/hooks/index.ts').useFormBlockData;
+declare const useFormBlockValid: typeof import('../global/hooks/index.ts').useFormBlockValid;
 
 // admin
 declare const SUPER_ADMIN_GROUP_ID: number;
