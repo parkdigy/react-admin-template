@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface LoadingCommands {
   isShow: () => boolean;
   show: () => void;
@@ -8,5 +6,5 @@ export interface LoadingCommands {
 }
 
 export interface LoadingProps {
-  ref?: React.Ref<LoadingCommands>;
+  ref?: Ref<LoadingCommands>;
 }
