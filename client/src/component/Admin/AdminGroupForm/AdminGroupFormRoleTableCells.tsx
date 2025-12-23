@@ -126,4 +126,4 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
   );
 };
 
-export default React.memo(AdminGroupFormRoleTableCells);
+export default AdminGroupFormRoleTableCells;
