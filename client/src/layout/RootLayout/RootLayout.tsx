@@ -16,7 +16,6 @@ import { SnackbarProvider } from 'notistack';
 import { AppAuthInfo, AppContextProvider } from '@context';
 import { ThemeBase } from '../../theme';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
-import { loadable } from '@common';
 import RootLayoutAppInitializer from './RootLayoutAppInitializer';
 import CardLayout from '../CardLayout';
 import DefaultLayout from '../DefaultLayout';

@@ -6,7 +6,6 @@
 import React from 'react';
 import { ErrorBoundaryProps as Props } from './ErrorBoundary.types';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
-import { loadable } from '@common';
 import ErrorRetry from '../ErrorRetry';
 
 const ErrorCatcher = withErrorBoundary(({ children }: { children: ReactElement }) => {
