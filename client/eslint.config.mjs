@@ -67,14 +67,6 @@ export default defineConfig([
       'no-plusplus': 'error',
       'prefer-template': 'error',
       'jsx-quotes': ['error', 'prefer-single'],
-      'no-restricted-properties': [
-        'error',
-        {
-          object: 'React',
-          property: 'memo',
-          message: 'React.memo 사용이 금지되었습니다. 제거해 주세요.',
-        },
-      ],
       'react/prop-types': [
         'error',
         { ignore: ['history', 'location', 'match', 'name', 'className', 'style', 'children'] },
@@ -101,51 +93,22 @@ export default defineConfig([
           defaultProps: 'static public field',
         },
       ],
-      'react/sort-comp': [
+      'no-restricted-syntax': [
         'error',
         {
-          order: [
-            'proptypes',
-            'static-variables',
-            'static-methods',
-            'instance-variables',
-            'lifecycle',
-            'init',
-            'everything-else',
-            'instance-methods',
-            'rendering',
-          ],
-          groups: {
-            proptypes: ['propTypes', 'defaultProps'],
-            init: ['init'],
-            lifecycle: [
-              'displayName',
-              'contextTypes',
-              'childContextTypes',
-              'mixins',
-              'statics',
-              'constructor',
-              'getDefaultProps',
-              'getInitialState',
-              'state',
-              'getChildContext',
-              'getDerivedStateFromProps',
-              'componentWillMount',
-              'UNSAFE_componentWillMount',
-              'componentDidMount',
-              'componentWillReceiveProps',
-              'UNSAFE_componentWillReceiveProps',
-              'shouldComponentUpdate',
-              'componentWillUpdate',
-              'UNSAFE_componentWillUpdate',
-              'getSnapshotBeforeUpdate',
-              'componentDidUpdate',
-              'componentDidCatch',
-              'componentWillUnmount',
-              'componentDidCatch',
-            ],
-            rendering: ['/^render.+$/', 'render'],
-          },
+          selector:
+            "TSTypeReference[typeName.left.name='React'][typeName.right.name='FC'], TSTypeReference[typeName.name='FC']",
+          message: 'React.FC 사용이 금지되었습니다.',
+        },
+        {
+          selector:
+            "CallExpression[callee.object.name='React'][callee.property.name='memo'], CallExpression[callee.name='memo']",
+          message: 'React.memo 사용이 금지되었습니다.',
+        },
+        {
+          selector:
+            "CallExpression[callee.object.name='React'][callee.property.name='forwardRef'], CallExpression[callee.name='forwardRef']",
+          message: 'React.forwardRef 사용이 금지되었습니다.',
         },
       ],
     },
