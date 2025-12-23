@@ -1,5 +1,4 @@
 import { DialogProps, DialogCommands, DialogRequireProps } from '@pdg/react-dialog';
-import { ReactNode } from 'react';
 
 export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag';
 
