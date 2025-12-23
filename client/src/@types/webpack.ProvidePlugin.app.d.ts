@@ -30,7 +30,7 @@ declare const useScreenSize: import('../global/mediaQuery/index.ts').UseScreenSi
 
 // hooks
 declare const useFormBlockData: import('../global/hooks/index.ts').UseFormBlockData;
-declare const UseFormBlockValid: import('../global/hooks/index.ts').UseFormBlockValid;
+declare const useFormBlockValid: import('../global/hooks/index.ts').UseFormBlockValid;
 
 // admin
 declare const SUPER_ADMIN_GROUP_ID: number;
