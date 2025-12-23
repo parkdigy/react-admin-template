@@ -1,7 +1,9 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const AdminPrivacyAccessLogList = l(() => import('./AdminPrivacyAccessLogList'), loadable.options);
+const AdminPrivacyAccessLogList = l(
+  () => import(/* webpackChunkName: "admin-privacy-access-log-list" */ './AdminPrivacyAccessLogList'),
+  loadable.options
+) as unknown as typeof import('./AdminPrivacyAccessLogList').default;
 
 export { AdminPrivacyAccessLogList };
 

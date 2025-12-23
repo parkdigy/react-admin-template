@@ -1,7 +1,9 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const AdminMenuFormDialog = l(() => import('./AdminMenuFormDialog'), loadable.options);
+const AdminMenuFormDialog = l(
+  () => import(/* webpackChunkName: "admin-menu-form-dialog" */ './AdminMenuFormDialog'),
+  loadable.options
+) as unknown as typeof import('./AdminMenuFormDialog').default;
 
 export { AdminMenuFormDialog };
 

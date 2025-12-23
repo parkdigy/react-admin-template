@@ -1,7 +1,9 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const PrivacyAccessReasonDialog = l(() => import('./PrivacyAccessReasonDialog'), loadable.options);
+const PrivacyAccessReasonDialog = l(
+  () => import(/* webpackChunkName: "privacy-access-reason-dialog" */ './PrivacyAccessReasonDialog'),
+  loadable.options
+) as unknown as typeof import('./PrivacyAccessReasonDialog').default;
 
 export { PrivacyAccessReasonDialog };
 

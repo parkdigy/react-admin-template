@@ -7,7 +7,7 @@ import { Admin, AdminGroupListDataItem } from '@const';
 import { Typography } from '@mui/material';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
-import { AdminGroupListProps as Props } from './AdminGroupList.type';
+import { AdminGroupListProps as Props } from './AdminGroupList.types';
 
 const AdminGroupList: React.FC<Props> = ({ noHash }) => {
   /********************************************************************************************************************

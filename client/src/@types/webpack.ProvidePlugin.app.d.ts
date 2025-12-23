@@ -3,6 +3,7 @@ declare const ll: import('../global/ll/index.ts').Ll;
 declare const g: import('../global/g/index.ts').G;
 declare const color: import('../global/color/index.ts').Color;
 declare const util: import('../global/util/index.ts').Util;
+declare const loadable: import('../global/loadable/index.ts').Loadable;
 
 // delay
 declare const nextTick: import('../global/delay/index.ts').NextTick;

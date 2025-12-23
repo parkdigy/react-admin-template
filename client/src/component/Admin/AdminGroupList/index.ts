@@ -1,9 +1,12 @@
 import l from '@loadable/component';
 
-const AdminGroupList = l(() => import('./AdminGroupList'));
-
-export default AdminGroupList;
+const AdminGroupList = l(
+  () => import(/* webpackChunkName: "admin-group-list" */ './AdminGroupList'),
+  loadable.options
+) as unknown as typeof import('./AdminGroupList').default;
 
 export { AdminGroupList };
 
-export * from './AdminGroupList.type';
+export default AdminGroupList;
+
+export * from './AdminGroupList.types';

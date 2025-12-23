@@ -1,8 +1,12 @@
 import l from '@loadable/component';
-import { loadable } from '@common';
 
-const AdminMenuListItem = l(() => import('./AdminMenuListItem'), loadable.options);
+const AdminMenuListItem = l(
+  () => import(/* webpackChunkName: "admin-menu-list-item" */ './AdminMenuListItem'),
+  loadable.options
+) as unknown as typeof import('./AdminMenuListItem').default;
 
 export { AdminMenuListItem };
+
+export default AdminMenuListItem;
 
 export * from './AdminMenuListItem.types';
