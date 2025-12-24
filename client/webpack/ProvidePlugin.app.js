@@ -15,6 +15,8 @@ module.exports = {
 
   // g
   g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
+  gFormat: ['@pdg/formatting', 'default'],
+  gKorean: ['@pdg/korean', 'default'],
   gBrowser: [path.resolve(__dirname, '../src/global/g/browser.ts'), 'default'],
   gColor: [path.resolve(__dirname, '../src/global/g/color.ts'), 'default'],
   gDate: [path.resolve(__dirname, '../src/global/g/date.ts'), 'default'],

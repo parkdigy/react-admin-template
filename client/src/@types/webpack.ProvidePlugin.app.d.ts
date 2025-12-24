@@ -10,6 +10,8 @@ declare const ll: typeof import('../global/ll/index.ts').default;
 
 // g
 declare const g: typeof import('../global/g/index.ts').default;
+declare const gFormat: typeof import('@pdg/formatting').default;
+declare const gKorean: typeof import('@pdg/korean').default;
 declare const gBrowser: typeof import('../global/g/browser.ts').default;
 declare const gColor: typeof import('../global/g/color.ts').default;
 declare const gDate: typeof import('../global/g/date.ts').default;
