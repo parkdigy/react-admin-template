@@ -36,9 +36,9 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.User);
-  const hasReadRoleGroup = app.hasMenuReadRole(app.Menu.Admin.Group);
-  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.User);
+  const hasWriteRole = g.menu.hasWriteRole(g.menu.Admin.User);
+  const hasReadRoleGroup = g.menu.hasReadRole(g.menu.Admin.Group);
+  const hasExportRole = g.menu.hasExportRole(g.menu.Admin.User);
 
   /********************************************************************************************************************
    * Function

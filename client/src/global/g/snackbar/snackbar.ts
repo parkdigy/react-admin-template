@@ -1,37 +1,35 @@
-import { CloseSnackbarType, EnqueueSnackbarType } from '../app';
+import { SnackbarCloseType, SnackbarEnqueueType } from './snackbar.types';
 import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
 
+let _enqueue: SnackbarEnqueueType | undefined;
+let _close: SnackbarCloseType | undefined;
+
 const snackbar = {
-  /**
-   * Snackbar 표시 함수 설정
-   * @param enqueueSnackbar Snackbar 표시 함수
-   */
-  setEnqueueSnackbar(enqueueSnackbar: EnqueueSnackbarType): void {
-    _enqueueSnackbar = enqueueSnackbar;
+  /********************************************************************************************************************
+   * 표시 함수 설정
+   * ******************************************************************************************************************/
+  setEnqueue(enqueueSnackbar: SnackbarEnqueueType): void {
+    _enqueue = enqueueSnackbar;
   },
 
-  /**
-   * Snackbar 자동 숨김 시간 반환
-   * @param message 메시지
-   * @returns Snackbar 자동 숨김 시간
-   */
-  getSnackbarAutoHideDuration(message: string) {
+  /********************************************************************************************************************
+   * 자동 숨김 시간 반환
+   * ******************************************************************************************************************/
+  getAutoHideDuration(message: string) {
     const duration = message.replace(/\W/g, '').length * 100 + message.replace(/[^ㄱ-ㅎ가-힣]/g, '').length * 200;
     return Math.min(Math.max(duration, 1500), 5000);
   },
 
-  /**
-   * Snackbar 표시
-   * @param message 메시지
-   * @param options 옵션
-   */
-  showSnackbar(message: SnackbarMessage, options?: OptionsObject): void {
-    if (_enqueueSnackbar) {
-      const key = _enqueueSnackbar(message, {
-        autoHideDuration: typeof message === 'string' ? this.getSnackbarAutoHideDuration(message) : undefined,
+  /********************************************************************************************************************
+   * 기본 표시
+   * ******************************************************************************************************************/
+  show(message: SnackbarMessage, options?: OptionsObject): void {
+    if (_enqueue) {
+      const key = _enqueue(message, {
+        autoHideDuration: typeof message === 'string' ? this.getAutoHideDuration(message) : undefined,
         anchorOrigin: { horizontal: 'right', vertical: 'top' },
         SnackbarProps: {
-          onClick: () => this.closeSnackbar(key),
+          onClick: () => this.close(key),
         },
         ...options,
       });
@@ -40,59 +38,51 @@ const snackbar = {
     }
   },
 
-  /**
-   * 성공 Snackbar 표시
-   * @param message 메시지
-   * @param options 옵션
-   */
-  showSuccessSnackbar(message: SnackbarMessage, options?: OptionsObject): void {
-    this.showSnackbar(message, { ...options, variant: 'success' });
+  /********************************************************************************************************************
+   * 성공 표시
+   * ******************************************************************************************************************/
+  showSuccess(message: SnackbarMessage, options?: OptionsObject): void {
+    this.show(message, { ...options, variant: 'success' });
   },
 
-  /**
-   * 정보 Snackbar 표시
-   * @param message 메시지
-   * @param options 옵션
-   */
-  showInfoSnackbar(message: SnackbarMessage, options?: OptionsObject): void {
-    this.showSnackbar(message, { ...options, variant: 'info' });
+  /********************************************************************************************************************
+   * 정보 표시
+   * ******************************************************************************************************************/
+  showInfo(message: SnackbarMessage, options?: OptionsObject): void {
+    this.show(message, { ...options, variant: 'info' });
   },
 
-  /**
-   * 에러 Snackbar 표시
-   * @param message 메시지
-   * @param options 옵션
-   */
-  showErrorSnackbar(message: SnackbarMessage, options?: OptionsObject): void {
-    this.showSnackbar(message, { ...options, variant: 'error' });
+  /********************************************************************************************************************
+   * 오류 표시
+   * ******************************************************************************************************************/
+  showError(message: SnackbarMessage, options?: OptionsObject): void {
+    this.show(message, { ...options, variant: 'error' });
   },
 
-  /**
-   * 경고 Snackbar 표시
-   * @param message 메시지
-   * @param options 옵션
-   */
-  showWarningSnackbar(message: SnackbarMessage, options?: OptionsObject): void {
-    this.showSnackbar(message, { ...options, variant: 'warning' });
+  /********************************************************************************************************************
+   * 경고 표시
+   * ******************************************************************************************************************/
+  showWarning(message: SnackbarMessage, options?: OptionsObject): void {
+    this.show(message, { ...options, variant: 'warning' });
   },
 
-  /**
-   * Snackbar 닫기 함수 설정
-   * @param closeSnackbar Snackbar 닫기 함수
-   */
-  setCloseSnackbar(closeSnackbar: CloseSnackbarType): void {
-    _closeSnackbar = closeSnackbar;
+  /********************************************************************************************************************
+   * 닫기 함수 설정
+   * ******************************************************************************************************************/
+  setClose(closeSnackbar: SnackbarCloseType): void {
+    _close = closeSnackbar;
   },
 
-  /**
-   * Snackbar 닫기
-   * @param key Snackbar 키
-   */
-  closeSnackbar(key?: SnackbarKey): void {
-    if (_closeSnackbar) {
-      _closeSnackbar(key);
+  /********************************************************************************************************************
+   * 닫기
+   * ******************************************************************************************************************/
+  close(key?: SnackbarKey): void {
+    if (_close) {
+      _close(key);
     } else {
       throw new Error('app.closeSnackbar not set.');
     }
   },
 };
+
+export default snackbar;

@@ -176,7 +176,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * Variable
    * ******************************************************************************************************************/
 
-  const editable = app.hasMenuWriteRole(app.Menu.Admin.Group) && (!info || !info.info || info.info.editable);
+  const editable = g.menu.hasWriteRole(g.menu.Admin.Group) && (!info || !info.info || info.info.editable);
 
   /********************************************************************************************************************
    * Event Handler

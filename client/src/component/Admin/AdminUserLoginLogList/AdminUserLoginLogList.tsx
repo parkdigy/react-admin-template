@@ -26,7 +26,7 @@ const AdminUserLoginLogList = ({ email, noHash, limit, onRequestScrollToTop }: P
    * Memo
    * ******************************************************************************************************************/
 
-  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.LoginLog);
+  const hasExportRole = g.menu.hasExportRole(g.menu.Admin.LoginLog);
 
   /********************************************************************************************************************
    * Function

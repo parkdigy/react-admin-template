@@ -15,7 +15,7 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
    * Variable
    * ******************************************************************************************************************/
 
-  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.PrivacyAccessLog);
+  const hasExportRole = g.menu.hasExportRole(g.menu.Admin.PrivacyAccessLog);
 
   /********************************************************************************************************************
    * Memo

@@ -26,7 +26,7 @@ const AdminGroupList = ({ noHash }: Props) => {
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.Group);
+  const hasWriteRole = g.menu.hasWriteRole(g.menu.Admin.Group);
 
   /********************************************************************************************************************
    * Function

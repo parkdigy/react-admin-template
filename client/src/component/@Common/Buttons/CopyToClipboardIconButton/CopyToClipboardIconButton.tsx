@@ -19,7 +19,7 @@ const CopyToClipboardIconButton = ({ text, tooltip, icon, size, successMsg, ...p
   return (
     <CopyToClipboard
       text={text}
-      onCopy={() => app.showSuccessSnackbar(ifUndefined(successMsg, '클립보드에 복사되었습니다.'))}
+      onCopy={() => g.snackbar.showSuccess(ifUndefined(successMsg, '클립보드에 복사되었습니다.'))}
     >
       {tooltip === undefined ? content : <Tooltip title={tooltip}>{content}</Tooltip>}
     </CopyToClipboard>

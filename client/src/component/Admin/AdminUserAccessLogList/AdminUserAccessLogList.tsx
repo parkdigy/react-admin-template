@@ -19,7 +19,7 @@ const AdminUserAccessLogList = ({ noHash }: Props) => {
    * Variable
    * ******************************************************************************************************************/
 
-  const hasExportRole = app.hasMenuExportRole(app.Menu.Admin.AccessLog);
+  const hasExportRole = g.menu.hasExportRole(g.menu.Admin.AccessLog);
 
   /********************************************************************************************************************
    * State

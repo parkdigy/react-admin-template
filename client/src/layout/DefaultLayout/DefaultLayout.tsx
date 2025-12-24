@@ -36,7 +36,7 @@ const DefaultLayout = () => {
         }
       };
 
-      app.setMenuRoles(
+      g.menu.setRoles(
         items.reduce((res, info) => {
           makeMenuRoles(res, info);
           return res;

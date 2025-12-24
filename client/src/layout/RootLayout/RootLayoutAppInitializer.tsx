@@ -18,12 +18,12 @@ export const RootLayoutAppInitializer = () => {
    * ******************************************************************************************************************/
 
   useLayoutEffect(() => {
-    app.setAuthDialog(authDialog);
+    g.auth.setDialog(authDialog);
   }, [authDialog]);
 
   useLayoutEffect(() => {
-    app.setEnqueueSnackbar(enqueueSnackbar);
-    app.setCloseSnackbar(closeSnackbar);
+    g.snackbar.setEnqueue(enqueueSnackbar);
+    g.snackbar.setClose(closeSnackbar);
   }, [enqueueSnackbar, closeSnackbar]);
 
   useLayoutEffect(() => {

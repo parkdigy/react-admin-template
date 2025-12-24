@@ -33,8 +33,8 @@ const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
    * Memo
    * ******************************************************************************************************************/
 
-  const hasWriteRole = app.hasMenuWriteRole(app.Menu.Admin.User);
-  const hasWriteRoleGroup = app.hasMenuWriteRole(app.Menu.Admin.Group);
+  const hasWriteRole = g.menu.hasWriteRole(g.menu.Admin.User);
+  const hasWriteRoleGroup = g.menu.hasWriteRole(g.menu.Admin.Group);
   const editable = hasWriteRole && (!info || info.editable);
 
   /********************************************************************************************************************
