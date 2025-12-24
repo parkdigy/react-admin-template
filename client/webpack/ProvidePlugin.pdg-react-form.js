@@ -93,10 +93,6 @@ module.exports = {
   FormImageFileCommands: ['@pdg/react-form', 'PFormImageFileCommands'],
   FormImageFileImageSize: ['@pdg/react-form', 'PFormImageFileImageSize'],
 
-  // FormItemCustom - FormItemBase
-  FormItemBase: ['@pdg/react-form', 'PFormItemBase'],
-  FormItemBaseProps: ['@pdg/react-form', 'PFormItemBaseProps'],
-
   // FormItemCustom - FormMonthPicker
   FormMonthPicker: ['@pdg/react-form', 'PFormMonthPicker'],
   FormMonthPickerProps: ['@pdg/react-form', 'PFormMonthPickerProps'],

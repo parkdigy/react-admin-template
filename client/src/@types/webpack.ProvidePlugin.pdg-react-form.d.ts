@@ -132,10 +132,6 @@ declare type FormImageFileProps = import('@pdg/react-form').PFormImageFileProps;
 declare type FormImageFileCommands = import('@pdg/react-form').PFormImageFileCommands;
 declare type FormImageFileImageSize = import('@pdg/react-form').PFormImageFileImageSize;
 
-// FormItemCustom - FormItemBase
-declare const FormItemBase: typeof import('@pdg/react-form').PFormItemBase;
-declare type FormItemBaseProps = import('@pdg/react-form').PFormItemBaseProps;
-
 // FormItemCustom - FormMonthPicker
 declare const FormMonthPicker: typeof import('@pdg/react-form').PFormMonthPicker;
 declare type FormMonthPickerProps = import('@pdg/react-form').PFormMonthPickerProps;
@@ -148,7 +144,7 @@ declare const FormMonthRangePicker: typeof import('@pdg/react-form').PFormMonthR
 declare type FormMonthRangePickerProps = import('@pdg/react-form').PFormMonthRangePickerProps;
 declare type FormMonthRangePickerCommands = import('@pdg/react-form').PFormMonthRangePickerCommands;
 declare type FormMonthRangePickerBaseValue = import('@pdg/react-form').PFormMonthRangePickerBaseValue;
-declare type FormMonthRangePickerValue = import('@pdg/react-form').PFormMonthPickerValue;
+declare type FormMonthRangePickerValue = import('@pdg/react-form').FormMonthRangePickerValue;
 
 // FormItemCustom - FormRadioGroup
 declare const FormRadioGroup: typeof import('@pdg/react-form').PFormRadioGroup;
