@@ -20,12 +20,12 @@ const LoadableLoading = () => {
 
     setShowLoadingTimeout(() => {
       isShow = true;
-      g.loading.show();
+      gLoading.show();
     }, 100);
 
     return () => {
       if (isShow) {
-        g.loading.hide();
+        gLoading.hide();
       }
     };
   }, [setShowLoadingTimeout]);

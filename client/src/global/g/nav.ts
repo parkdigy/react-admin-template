@@ -1,57 +1,66 @@
-import { Location, NavigateFunction } from 'react-router';
+import { NavigateFunction } from 'react-router';
+import location from './location';
 
-/********************************************************************************************************************
- * Variable
- * ******************************************************************************************************************/
-
-let _location: Location<any> | undefined;
 let _navigate: NavigateFunction | undefined;
-let _navigateScrollTopPos = 0;
-
-/********************************************************************************************************************
- * Function
- * ******************************************************************************************************************/
-
-function setLocation(location: Location<any>) {
-  _location = location;
-}
-
-function setNavigate(navigate: NavigateFunction) {
-  _navigate = navigate;
-}
-
-function go(path: string, replace = false, scrollTopPos = 0) {
-  if (_navigate) {
-    _navigateScrollTopPos = scrollTopPos;
-    const currentPath = `${_location?.pathname}${_location?.search}${_location?.hash}`;
-    if (path === currentPath) {
-      window.scrollTo({ left: 0, top: 0 });
-    } else {
-      _navigate(path, { replace });
-    }
-  } else {
-    console.log('!Not set navigate.');
-  }
-}
-
-function setScrollTopPos(topPos: number) {
-  _navigateScrollTopPos = topPos;
-}
-
-function getScrollTopPos() {
-  return _navigateScrollTopPos;
-}
-
-/********************************************************************************************************************
- * Global
- * ******************************************************************************************************************/
+let _scrollTopPos = 0;
 
 const nav = {
-  setLocation,
-  setNavigate,
-  setScrollTopPos,
-  getScrollTopPos,
-  go,
+  /********************************************************************************************************************
+   * get
+   * ******************************************************************************************************************/
+  get() {
+    return _navigate;
+  },
+
+  /********************************************************************************************************************
+   * set
+   * ******************************************************************************************************************/
+  set(navigate: NavigateFunction) {
+    _navigate = navigate;
+  },
+
+  /********************************************************************************************************************
+   * setScrollTopPos
+   * ******************************************************************************************************************/
+  setScrollTopPos(topPos: number) {
+    _scrollTopPos = topPos;
+  },
+
+  /********************************************************************************************************************
+   * getScrollTopPos
+   * ******************************************************************************************************************/
+  getScrollTopPos() {
+    return _scrollTopPos;
+  },
+
+  /********************************************************************************************************************
+   * go
+   * ******************************************************************************************************************/
+  go(path: string, replace = false, scrollTopPos = 0) {
+    if (_navigate) {
+      _scrollTopPos = scrollTopPos;
+      const currentPath = `${location.get()?.pathname}${location.get()?.search}${location.get()?.hash}`;
+      if (path === currentPath) {
+        window.scrollTo({ left: 0, top: 0 });
+      } else {
+        _navigate(path, { replace });
+      }
+    } else {
+      console.log('!Not set navigate.');
+    }
+  },
+
+  /********************************************************************************************************************
+   * back
+   * ******************************************************************************************************************/
+  back(path: string) {
+    const pathname = path.split('?')[0].split('#')[0];
+    if (location.get()?.state === pathname) {
+      window.history.back();
+    } else {
+      this.go(path);
+    }
+  },
 };
 
 export default nav;

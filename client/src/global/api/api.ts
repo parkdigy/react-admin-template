@@ -2,6 +2,7 @@ import fileDownload from 'js-file-download';
 import { AxiosResponse } from 'axios';
 import { ApiOption, Api, ApiError, ApiRequestData, ApiRequestOption } from '@pdg/api';
 import { ApiAuth, ApiAuthObject, ApiResult } from './api.types';
+import error from './error';
 
 const defaultOption: ApiOption = {
   baseUrl: '/api',
@@ -9,14 +10,14 @@ const defaultOption: ApiOption = {
   async onRequest(config, baseUrl, path, requestData, requestOption) {
     if (!requestOption?.silent) {
       // 로딩 표시
-      g.loading.show();
+      gLoading.show();
     }
     return config;
   },
   async onResponse(res, config, baseUrl, path, requestData, requestOption) {
     if (!requestOption?.silent) {
       // 로딩 숨김
-      g.loading.hide();
+      gLoading.hide();
     }
     const responseData = res.data;
     if (!requestOption?.raw) {
@@ -24,7 +25,7 @@ const defaultOption: ApiOption = {
         throw new ApiError('예샹치 못한 오류가 발생했습니다.', 'API_ERR_NO_RESULT');
       if (responseData.result.r) {
         // redirect
-        g.nav.go(responseData.result.r);
+        gNav.go(responseData.result.r);
       }
       if (responseData.result.ro) {
         // redirect 새창으로 열기
@@ -35,7 +36,7 @@ const defaultOption: ApiOption = {
       } else {
         if (!requestOption?.silent && notEmpty(responseData.result.m)) {
           // 성공 메시지 표시
-          g.snackbar.showSuccess(responseData.result.m);
+          gSnackbar.showSuccess(responseData.result.m);
         }
       }
     }
@@ -45,7 +46,7 @@ const defaultOption: ApiOption = {
     const { silent } = err.requestOption || {};
     if (!silent) {
       // 로딩 숨김
-      g.loading.hide();
+      gLoading.hide();
     }
 
     const data = err.response?.data;
@@ -55,13 +56,13 @@ const defaultOption: ApiOption = {
         window.location.href = '/auth/signin';
       } else if (!silent) {
         // 에러 메시지 표시
-        g.snackbar.showError(
+        gSnackbar.showError(
           `(${data.result.c}) ${notEmpty(data.result.m) ? data.result.m : '예상치 못한 오류가 발생했습니다.'}`
         );
       }
     } else if (!silent) {
       // 에러 메시지 표시
-      g.snackbar.showError(`(${err.code}) ${err.message}`);
+      gSnackbar.showError(`(${err.code}) ${err.message}`);
     }
   },
 };
@@ -76,6 +77,8 @@ function showAuthDialog(auth: ApiAuth, onSuccess: () => void, onFail: () => void
 }
 
 export default {
+  error,
+
   /**
    * GET 요청
    * @param path API 경로
