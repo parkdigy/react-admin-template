@@ -70,9 +70,9 @@ const defaultOption: ApiOption = {
 /** 인증 Dialog 표시 */
 function showAuthDialog(auth: ApiAuth, onSuccess: () => void, onFail: () => void) {
   if (auth && typeof auth === 'object' && (auth as Dict)['intro']) {
-    g.auth.showDialog({ ...(auth as ApiAuthObject), onSuccess, onFail });
+    gAuth.showDialog({ ...(auth as ApiAuthObject), onSuccess, onFail });
   } else {
-    g.auth.showDialog({ intro: auth as ReactNode, onSuccess, onFail });
+    gAuth.showDialog({ intro: auth as ReactNode, onSuccess, onFail });
   }
 }
 
@@ -202,7 +202,7 @@ export default {
     const option: ApiOption = {
       ...defaultOption,
       async onResponse(res: AxiosResponse) {
-        g.loading.hide();
+        gLoading.hide();
 
         const contentDisposition = res.headers['content-disposition'];
         if (contentDisposition) {
