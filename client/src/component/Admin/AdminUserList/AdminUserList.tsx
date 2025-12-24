@@ -147,9 +147,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
 
   {
     const effectEvent = useEffectEvent(() => loadGroupList());
-    useEffect(() => {
-      return effectEvent();
-    }, []);
+    useEffect(() => effectEvent(), []);
   }
 
   /********************************************************************************************************************

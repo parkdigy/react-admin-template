@@ -24,9 +24,7 @@ const CardLayout = () => {
     const effectEvent = useEffectEvent(() => {
       removeHtmlLoading();
     });
-    useEffect(() => {
-      return effectEvent();
-    }, []);
+    useEffect(() => effectEvent(), []);
   }
 
   /********************************************************************************************************************

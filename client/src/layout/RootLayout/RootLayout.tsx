@@ -141,9 +141,7 @@ const RootLayout = withErrorBoundary(() => {
         showHtmlLoading();
       }
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [error]);
+    useEffect(() => effectEvent(), [error]);
   }
 
   {
@@ -154,9 +152,7 @@ const RootLayout = withErrorBoundary(() => {
         showHtmlLoading();
       }
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [boundaryError]);
+    useEffect(() => effectEvent(), [boundaryError]);
   }
 
   {
@@ -189,9 +185,7 @@ const RootLayout = withErrorBoundary(() => {
         }
       }
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [error]);
+    useEffect(() => effectEvent(), [error]);
   }
 
   /********************************************************************************************************************

@@ -72,9 +72,7 @@ const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, 
     const effectEvent = useEffectEvent(() => {
       loadInfo(initId);
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [initId]);
+    useEffect(() => effectEvent(), [initId]);
   }
 
   /********************************************************************************************************************

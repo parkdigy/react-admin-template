@@ -71,9 +71,7 @@ export const AdminMenuList = ({}: Props) => {
         setOtherList(undefined);
       }
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [list]);
+    useEffect(() => effectEvent(), [list]);
   }
 
   /********************************************************************************************************************

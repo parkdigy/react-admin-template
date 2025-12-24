@@ -57,9 +57,7 @@ const AccessLogger = ({ path, element }: Props) => {
           window.location.href = '/';
         });
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [path]);
+    useEffect(() => effectEvent(), [path]);
   }
 
   /********************************************************************************************************************

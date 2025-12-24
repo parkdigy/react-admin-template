@@ -31,9 +31,7 @@ const useFormBlockValid = (
     const effectEvent = useEffectEvent(() => {
       onValidChange(valid);
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [valid]);
+    useEffect(() => effectEvent(), [valid]);
   }
 
   const proc = useCallback(() => {
@@ -55,9 +53,7 @@ const useFormBlockValid = (
     const effectEvent = useEffectEvent(() => {
       proc();
     });
-    useEffect(() => {
-      return effectEvent();
-    }, [deps, delay]);
+    useEffect(() => effectEvent(), [deps, delay]);
   }
 
   return valid;
