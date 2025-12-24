@@ -76,6 +76,7 @@ declare const isInteger: typeof import('@pdg/compare').isInteger;
 declare const isMobileNo: typeof import('@pdg/compare').isMobileNo;
 declare const isNumericText: typeof import('@pdg/compare').isNumericText;
 declare const isPersonalNo: typeof import('@pdg/compare').isPersonalNo;
+declare const isTelNo: typeof import('@pdg/compare').isTelNo;
 declare const isUrl: typeof import('@pdg/compare').isUrl;
 
 // date

@@ -1,5 +1,4 @@
 import { NavigateFunction } from 'react-router';
-import location from './location';
 
 let _navigate: NavigateFunction | undefined;
 let _scrollTopPos = 0;
@@ -39,7 +38,7 @@ const nav = {
   go(path: string, replace = false, scrollTopPos = 0) {
     if (_navigate) {
       _scrollTopPos = scrollTopPos;
-      const currentPath = `${location.get()?.pathname}${location.get()?.search}${location.get()?.hash}`;
+      const currentPath = `${gLocation.get()?.pathname}${gLocation.get()?.search}${gLocation.get()?.hash}`;
       if (path === currentPath) {
         window.scrollTo({ left: 0, top: 0 });
       } else {
@@ -55,7 +54,7 @@ const nav = {
    * ******************************************************************************************************************/
   back(path: string) {
     const pathname = path.split('?')[0].split('#')[0];
-    if (location.get()?.state === pathname) {
+    if (gLocation.get()?.state === pathname) {
       window.history.back();
     } else {
       this.go(path);

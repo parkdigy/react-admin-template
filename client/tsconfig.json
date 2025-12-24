@@ -14,6 +14,7 @@
     "baseUrl": "./",
     "paths": {
       "@sass": ["src/sass"],
+      "@sass/*": ["src/sass/*"],
       "@types": ["src/@types"],
       "@styles": ["src/@styles"],
       "@gg": ["src/global/g"],
