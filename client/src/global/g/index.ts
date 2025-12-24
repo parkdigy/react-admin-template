@@ -4,7 +4,6 @@ import browser from './browser';
 import loading from './loading';
 import location from './location';
 import nav from './nav';
-import scroll from './scroll';
 import auth from './auth';
 import menu from './menu';
 import snackbar from './snackbar';
@@ -17,7 +16,6 @@ const g = {
   loading,
   location,
   nav,
-  scroll,
   auth,
   menu,
   snackbar,

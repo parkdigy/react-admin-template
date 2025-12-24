@@ -39,7 +39,7 @@ export const RootLayoutAppInitializer = () => {
   }, [location]);
 
   useEffect(() => {
-    g.scroll.toTop(g.nav.getScrollTopPos());
+    g.browser.scrollToTop(g.nav.getScrollTopPos());
     g.nav.setScrollTopPos(0);
   }, [location.pathname, location.search, location.hash]);
 
