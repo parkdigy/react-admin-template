@@ -1,6 +1,7 @@
 import format from '@pdg/formatting';
 import korean from '@pdg/korean';
 import browser from './browser';
+import date from './date';
 import loading from './loading';
 import location from './location';
 import nav from './nav';
@@ -13,6 +14,7 @@ const g = {
   format,
   korean,
   browser,
+  date,
   loading,
   location,
   nav,
