@@ -35,7 +35,7 @@ const defaultOption: ApiOption = {
       } else {
         if (!requestOption?.silent && notEmpty(responseData.result.m)) {
           // 성공 메시지 표시
-          app.showSuccessSnackbar(responseData.result.m);
+          g.snackbar.showSuccess(responseData.result.m);
         }
       }
     }
@@ -55,13 +55,13 @@ const defaultOption: ApiOption = {
         window.location.href = '/auth/signin';
       } else if (!silent) {
         // 에러 메시지 표시
-        app.showErrorSnackbar(
+        g.snackbar.showError(
           `(${data.result.c}) ${notEmpty(data.result.m) ? data.result.m : '예상치 못한 오류가 발생했습니다.'}`
         );
       }
     } else if (!silent) {
       // 에러 메시지 표시
-      app.showErrorSnackbar(`(${err.code}) ${err.message}`);
+      g.snackbar.showError(`(${err.code}) ${err.message}`);
     }
   },
 };
@@ -69,9 +69,9 @@ const defaultOption: ApiOption = {
 /** 인증 Dialog 표시 */
 function showAuthDialog(auth: ApiAuth, onSuccess: () => void, onFail: () => void) {
   if (auth && typeof auth === 'object' && (auth as Dict)['intro']) {
-    app.showAuthDialog({ ...(auth as ApiAuthObject), onSuccess, onFail });
+    g.auth.showDialog({ ...(auth as ApiAuthObject), onSuccess, onFail });
   } else {
-    app.showAuthDialog({ intro: auth as ReactNode, onSuccess, onFail });
+    g.auth.showDialog({ intro: auth as ReactNode, onSuccess, onFail });
   }
 }
 

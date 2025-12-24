@@ -10,16 +10,13 @@ declare const ll: typeof import('../global/ll/index.ts').ll;
 
 // g
 declare const g: typeof import('../global/g/index.ts').g;
+declare type AuthDialogType = import('../global/g/index.ts').AuthDialogType;
+declare type SnackbarEnqueueType = import('../global/g/index.ts').SnackbarEnqueueType;
+declare type SnackbarCloseType = import('../global/g/index.ts').SnackbarCloseType;
+declare type MenuRoles = import('../global/g/index.ts').MenuRoles;
 
 // loadable
 declare const loadable: typeof import('../global/loadable/index.ts').loadable;
-
-// app
-declare const app: typeof import('../global/app/index.ts').app;
-declare type AuthDialogType = import('../global/app/index.ts').AuthDialogType;
-declare type EnqueueSnackbarType = import('../global/app/index.ts').EnqueueSnackbarType;
-declare type CloseSnackbarType = import('../global/app/index.ts').CloseSnackbarType;
-declare type MenuRoles = import('../global/app/index.ts').MenuRoles;
 
 // api
 declare const api: typeof import('../global/api/index.ts').api;

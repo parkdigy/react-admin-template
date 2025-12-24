@@ -15,16 +15,13 @@ module.exports = {
 
   // g
   g: [path.resolve(__dirname, '../src/global/g/index.ts'), 'default'],
+  AuthDialogType: [path.resolve(__dirname, '../src/global/g/auth/auth.types.ts'), 'AuthDialogType'],
+  MenuRoles: [path.resolve(__dirname, '../src/global/g/menu/menu.types.ts'), 'MenuRoles'],
+  SnackbarEnqueueType: [path.resolve(__dirname, '../src/global/g/snackbar/snackbar.types.ts'), 'SnackbarEnqueueType'],
+  SnackbarCloseType: [path.resolve(__dirname, '../src/global/g/snackbar/snackbar.types.ts'), 'SnackbarCloseType'],
 
   // loadable
   loadable: [path.resolve(__dirname, '../src/global/loadable/index.ts'), 'default'],
-
-  // app
-  app: [path.resolve(__dirname, '../src/global/app/index.ts'), 'default'],
-  AuthDialogType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'AuthDialogType'],
-  EnqueueSnackbarType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'EnqueueSnackbarType'],
-  CloseSnackbarType: [path.resolve(__dirname, '../src/global/app/index.ts'), 'CloseSnackbarType'],
-  MenuRoles: [path.resolve(__dirname, '../src/global/app/index.ts'), 'MenuRoles'],
 
   // api
   api: [path.resolve(__dirname, '../src/global/api/index.ts'), 'default'],
