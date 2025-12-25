@@ -4,13 +4,12 @@ export * from './PrivacyAccess';
 export * from './My';
 export * from './Test';
 
+import Error from './Error';
 import Admin from './Admin';
 import Auth from './Auth';
 import PrivacyAccess from './PrivacyAccess';
 import My from './My';
 import Test from './Test';
-
-import Error from './Error';
 
 export const Const = {
   Error,
