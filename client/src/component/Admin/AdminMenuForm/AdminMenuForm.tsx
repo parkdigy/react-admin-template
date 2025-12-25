@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminMenuFormProps as Props } from './AdminMenuForm.types';
-import { Admin, AdminMenuInfoData } from '@const';
+import { AdminMenuInfoData } from '@const';
 
 const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
@@ -46,7 +46,7 @@ const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, 
     if (id == null) {
       setInfo(undefined);
     } else {
-      Admin.Menu.info(id).then(({ data }) => {
+      Const.Admin.Menu.info(id).then(({ data }) => {
         setInfo(data);
 
         if (data.parent) {
@@ -83,14 +83,14 @@ const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, 
   const handleSubmit = useCallback(
     (data: Dict) => {
       if (initId) {
-        Admin.Menu.edit('정보를 수정하시겠습니까?', initId, data).then(() => {
+        Const.Admin.Menu.edit('정보를 수정하시겠습니까?', initId, data).then(() => {
           onSuccess?.();
         });
       } else {
         if (parentMenu) {
           data.parent_id = parentMenu.id;
         }
-        Admin.Menu.add('등록하시겠습니까?', data).then(() => {
+        Const.Admin.Menu.add('등록하시겠습니까?', data).then(() => {
           onSuccess?.();
         });
       }

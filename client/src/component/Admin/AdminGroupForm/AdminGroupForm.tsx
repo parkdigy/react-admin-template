@@ -5,7 +5,6 @@
 import React from 'react';
 import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
 import {
-  Admin,
   AdminGroupInfoData,
   AdminGroupMenuListData,
   AdminGroupMenuListDataItem,
@@ -45,7 +44,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
     if (id === 1) {
       setMenu(undefined);
     } else {
-      Admin.Group.menuList({ admin_group_id: id }).then(({ data }) => {
+      Const.Admin.Group.menuList({ admin_group_id: id }).then(({ data }) => {
         setMenu(data);
       });
     }
@@ -56,7 +55,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
     if (id == null) {
       setInfo(undefined);
     } else {
-      Admin.Group.info(id).then(({ data }) => {
+      Const.Admin.Group.info(id).then(({ data }) => {
         setInfo(data);
         setPrivacyAccess({ new_read: data.info.is_privacy_access });
       });
@@ -86,7 +85,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
 
   /** 전체 사용자 목록 불러오기 - FormAutocomplete.onLoadItems */
   const handleUsersLoadItems = useCallback(async () => {
-    const { data } = await Admin.User.allList();
+    const { data } = await Const.Admin.User.allList();
     return data.map((info) =>
       lv(`(${info.name}) ${info.email}`, info.id, { groupName: info.admin_group_name })
     ) as FormAutocompleteItems<number>;
@@ -158,11 +157,11 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
       }
 
       if (id) {
-        Admin.Group.edit('그룹 정보를 수정하시겠습니까?', id, data).then(() => {
+        Const.Admin.Group.edit('그룹 정보를 수정하시겠습니까?', id, data).then(() => {
           onSuccess?.();
         });
       } else {
-        Admin.Group.add('그룹을 등록하시겠습니까?', data).then(() => {
+        Const.Admin.Group.add('그룹을 등록하시겠습니까?', data).then(() => {
           onSuccess?.();
         });
       }

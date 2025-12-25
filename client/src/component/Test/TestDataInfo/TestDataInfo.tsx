@@ -1,6 +1,6 @@
 import React from 'react';
 import { TestDataInfoProps as Props } from './TestDataInfo.types';
-import { PrivacyAccess, Test, TestDataInfoData } from '@const';
+import { TestDataInfoData } from '@const';
 import { PrivacyBusinessNoText, PrivacyPersonalNoText, PrivacyTelText, PrivacyText } from '@ccomp';
 
 const TestDataInfo = ({ id }: Props) => {
@@ -15,7 +15,7 @@ const TestDataInfo = ({ id }: Props) => {
    * ******************************************************************************************************************/
 
   useEffect(() => {
-    Test.dataInfo(id).then(({ data }) => {
+    Const.Test.dataInfo(id).then(({ data }) => {
       setInfo(data);
     });
   }, [id]);
@@ -38,14 +38,18 @@ const TestDataInfo = ({ id }: Props) => {
           label: 'Email',
           xs: 12,
           md: 6,
-          onRender: (info) => <PrivacyText type={PrivacyAccess.Type.TestEmail} parentId={info.id} text={info.email} />,
+          onRender: (info) => (
+            <PrivacyText type={Const.PrivacyAccess.Type.TestEmail} parentId={info.id} text={info.email} />
+          ),
         },
         { label: 'Url', name: 'url', xs: 12, md: 6, clipboard: true, ellipsis: true },
         {
           label: 'Tel',
           xs: 12,
           md: 6,
-          onRender: (info) => <PrivacyTelText type={PrivacyAccess.Type.TestTel} parentId={info.id} text={info.tel} />,
+          onRender: (info) => (
+            <PrivacyTelText type={Const.PrivacyAccess.Type.TestTel} parentId={info.id} text={info.tel} />
+          ),
         },
         {
           label: 'Mobile',
@@ -53,7 +57,7 @@ const TestDataInfo = ({ id }: Props) => {
           xs: 12,
           md: 6,
           onRender: (info) => (
-            <PrivacyTelText type={PrivacyAccess.Type.TestMobile} parentId={info.id} text={info.mobile} />
+            <PrivacyTelText type={Const.PrivacyAccess.Type.TestMobile} parentId={info.id} text={info.mobile} />
           ),
         },
         {
@@ -63,7 +67,7 @@ const TestDataInfo = ({ id }: Props) => {
           md: 6,
           onRender: (info) => (
             <PrivacyBusinessNoText
-              type={PrivacyAccess.Type.TestPersonalNum}
+              type={Const.PrivacyAccess.Type.TestPersonalNum}
               parentId={info.id}
               text={info.business_no}
             />
@@ -75,7 +79,11 @@ const TestDataInfo = ({ id }: Props) => {
           xs: 12,
           md: 6,
           onRender: (info) => (
-            <PrivacyPersonalNoText type={PrivacyAccess.Type.TestMobile} parentId={info.id} text={info.personal_no} />
+            <PrivacyPersonalNoText
+              type={Const.PrivacyAccess.Type.TestMobile}
+              parentId={info.id}
+              text={info.personal_no}
+            />
           ),
         },
         { type: 'divider', icon: 'BlurOn', label: '추가 정보' },

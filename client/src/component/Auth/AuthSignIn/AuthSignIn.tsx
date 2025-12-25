@@ -1,6 +1,5 @@
 import React from 'react';
 import { AuthSignInProps as Props } from './AuthSignIn.types';
-import { Auth } from '@const';
 import { Alert, Card, CardActions, CardContent, CardHeader, Grid } from '@mui/material';
 
 export const AuthSignIn = ({}: Props) => {
@@ -22,7 +21,7 @@ export const AuthSignIn = ({}: Props) => {
 
   /** 로그인 - Form.onSubmit */
   const handleSubmit = useCallback((data: Dict) => {
-    Auth.signIn(data, false)
+    Const.Auth.signIn(data, false)
       .then(({ result }) => {
         location.href = result.r || '/';
       })

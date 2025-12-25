@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminUserListProps as Props } from './AdminUserList.types';
-import { Admin, AdminUserListDataItem } from '@const';
+import { AdminUserListDataItem } from '@const';
 import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog } from '@dialog';
 import { useDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
@@ -46,7 +46,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
 
   /** 그룹 목록 불러오기 */
   const loadGroupList = useCallback(() => {
-    Admin.Group.list().then(({ data }) => {
+    Const.Admin.Group.list().then(({ data }) => {
       const items = [lv('전체', ''), ...data.map((info) => lv(info.name, info.id))];
       searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<'' | number>>('admin_group_id')?.setItems(items);
     });
@@ -63,7 +63,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   /** 비밀번호 초기화 */
   const passwordReset = useCallback(
     (item: AdminUserListDataItem) => {
-      Admin.User.passwordReset(`사용자 "${item.name}"의 비밀번호를 초기화 하시겠습니까?`, item.id).then(() => {
+      Const.Admin.User.passwordReset(`사용자 "${item.name}"의 비밀번호를 초기화 하시겠습니까?`, item.id).then(() => {
         reloadList();
       });
     },
@@ -74,11 +74,11 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   const toggleLock = useCallback(
     (item: AdminUserListDataItem) => {
       if (item.is_lock) {
-        Admin.User.unlock(`사용자 "${item.name}"의 사용 제한을 해제하시겠습니까?`, item.id).then(() => {
+        Const.Admin.User.unlock(`사용자 "${item.name}"의 사용 제한을 해제하시겠습니까?`, item.id).then(() => {
           reloadList();
         });
       } else {
-        Admin.User.lock(
+        Const.Admin.User.lock(
           <T size='inherit' color='error'>
             사용자 &quot;{item.name}&quot;의 사용을 제한 하시겠습니까?
           </T>,
@@ -122,7 +122,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
     (data: Dict) => {
       onRequestScrollToTop?.();
       return new Promise<SearchTableData<AdminUserListDataItem>>((resolve) => {
-        Admin.User.list(data).then(({ data: items, paging }) => {
+        Const.Admin.User.list(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
       });
@@ -133,7 +133,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   /** 사용자 목록 엑셀 다운로드 */
   const exportData = useCallback(() => {
     const data = searchTableRef.current?.getLastLoadData();
-    if (data) Admin.User.exportList(data);
+    if (data) Const.Admin.User.exportList(data);
   }, [searchTableRef]);
 
   /** 사용자 제한/해제 스타일 */

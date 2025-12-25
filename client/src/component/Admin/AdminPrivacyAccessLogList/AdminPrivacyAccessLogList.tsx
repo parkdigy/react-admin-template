@@ -1,6 +1,6 @@
 import React from 'react';
 import { AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
-import { Admin, AdminPrivacyAccessLogListDataItem } from '@const';
+import { AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 import { HashSearchTable } from '@ccomp';
 
@@ -29,7 +29,7 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
 
   /** 구분 목록 불러오기 */
   const loadTypeList = useCallback(() => {
-    Admin.PrivacyAccessLog.typeList().then(({ data }) => {
+    Const.Admin.PrivacyAccessLog.typeList().then(({ data }) => {
       const items = data.map((item) => lv(item.name, item.type));
       items.unshift(lv('전체', ''));
       searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<string>>('type')?.setItems(items);
@@ -41,7 +41,7 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
     (data: Dict) => {
       onRequestScrollToTop?.();
       return new Promise<SearchTableData<AdminPrivacyAccessLogListDataItem>>((resolve) => {
-        Admin.PrivacyAccessLog.list(data).then(({ data: items, paging }) => {
+        Const.Admin.PrivacyAccessLog.list(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
       });
@@ -66,7 +66,7 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
 
   const handleExportClick = useCallback(() => {
     const data = searchTableRef.current?.getLastLoadData();
-    if (data) Admin.PrivacyAccessLog.exportList(data);
+    if (data) Const.Admin.PrivacyAccessLog.exportList(data);
   }, []);
 
   /********************************************************************************************************************

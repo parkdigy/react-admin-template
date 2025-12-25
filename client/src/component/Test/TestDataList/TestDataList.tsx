@@ -1,6 +1,6 @@
 import React from 'react';
 import { TestDataListProps as Props } from './TestDataList.types';
-import { Test, TestDataListDataItem, TestDataStatus } from '@const';
+import { TestDataListDataItem, TestDataStatus } from '@const';
 import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { DialogCommands, useDialog } from '@pdg/react-dialog';
@@ -34,7 +34,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
 
   /** 상태 불러오기 */
   const loadStatusList = useCallback(() => {
-    Test.dataStatusList().then(({ data }) => {
+    Const.Test.dataStatusList().then(({ data }) => {
       const items = [lv('전체', ''), ...data.map((item) => lv(item.name, item.status))];
       searchTableRef.current
         ?.getSearch()
@@ -56,7 +56,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
     (data: Dict) => {
       onRequestScrollToTop?.();
       return new Promise<SearchTableData<TestDataListDataItem>>((resolve) => {
-        Test.dataList(data).then(({ data: items, paging }) => {
+        Const.Test.dataList(data).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
       });
@@ -91,7 +91,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
   /** export 버튼 클릭 */
   const handleExportClick = useCallback(() => {
     const data = searchTableRef.current?.getLastLoadData();
-    if (data) Test.exportDataList(data);
+    if (data) Const.Test.exportDataList(data);
   }, []);
 
   /** export 버튼 (마스킹 해제) 클릭 */
@@ -101,7 +101,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
         dialog.close();
         const data = searchTableRef.current?.getLastLoadData();
         if (data) {
-          Test.exportDataList({ ...data, privacy_access: true, privacy_access_reason: value });
+          Const.Test.exportDataList({ ...data, privacy_access: true, privacy_access_reason: value });
         }
       },
     });
@@ -143,7 +143,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
           });
           break;
         case Menu.remove:
-          Test.dataRemove('삭제하시겠습니까?', item.id).then(() => {
+          Const.Test.dataRemove('삭제하시겠습니까?', item.id).then(() => {
             reloadList();
           });
           break;

@@ -7,7 +7,6 @@ import { AdminMenuListItemProps as Props } from './AdminMenuListItem.types';
 import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Admin } from '@const';
 import { styled } from '@mui/material';
 
 export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdit, onRemove, onAddSubMenu }: Props) => {
@@ -43,7 +42,7 @@ export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdi
 
     setMenu({ ...menu, is_super_admin_menu: newValue });
 
-    Admin.Menu.editSuper(menu.id, newValue)
+    Const.Admin.Menu.editSuper(menu.id, newValue)
       .then(() => {
         setMenu((old) => ({
           ...old,
@@ -63,7 +62,7 @@ export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdi
 
     setMenu({ ...menu, is_all_user_menu: newValue });
 
-    Admin.Menu.editAll(menu.id, newValue)
+    Const.Admin.Menu.editAll(menu.id, newValue)
       .then(() => {
         setMenu((old) => ({
           ...old,

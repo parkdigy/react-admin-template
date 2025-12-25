@@ -6,7 +6,7 @@ import React from 'react';
 import { Box, Button } from '@mui/material';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
-import { Admin, AdminUserMenuInfo, Auth } from '@const';
+import { AdminUserMenuInfo } from '@const';
 import { useAppState } from '@context';
 
 const DefaultLayout = () => {
@@ -24,7 +24,7 @@ const DefaultLayout = () => {
 
   /** 메뉴 목록 불러오기 */
   const loadMenuList = useCallback(() => {
-    Admin.User.menuList().then(({ data: items }) => {
+    Const.Admin.User.menuList().then(({ data: items }) => {
       const makeMenuRoles = (menuRoles: MenuRoles, info: AdminUserMenuInfo) => {
         if (info.uri) {
           menuRoles[info.id] = { read: info.read, write: info.write, export: info.export };
@@ -80,7 +80,7 @@ const DefaultLayout = () => {
 
   /** 로그아웃 */
   const signOut = useCallback(() => {
-    Auth.signOut().then(() => {
+    Const.Auth.signOut().then(() => {
       window.location.href = '/auth/signin';
     });
   }, []);

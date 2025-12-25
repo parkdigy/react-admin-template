@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
-import { Admin, AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
+import { AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
 import dayjs from 'dayjs';
 import { HashSearchTable } from '@ccomp';
 
@@ -34,17 +34,19 @@ const AdminUserAccessLogList = ({ noHash }: Props) => {
   /** 사용 로그 목록 불러오기 */
   const getData = useCallback((data: Dict) => {
     return new Promise<SearchTableData<AdminUserAccessLogListDataItem>>((resolve) => {
-      Admin.UserAccessLog.list(data as unknown as AdminUserAccessLogListRequestData).then(({ data: items, paging }) => {
-        setPaging(paging);
-        resolve({ items, paging });
-      });
+      Const.Admin.UserAccessLog.list(data as unknown as AdminUserAccessLogListRequestData).then(
+        ({ data: items, paging }) => {
+          setPaging(paging);
+          resolve({ items, paging });
+        }
+      );
     });
   }, []);
 
   /** 사용 로그 목록 액셀 다운로드 */
   const exportData = useCallback(() => {
     const data = searchTableRef.current?.getLastLoadData();
-    if (data) Admin.UserAccessLog.exportList(data as unknown as AdminUserAccessLogListRequestData);
+    if (data) Const.Admin.UserAccessLog.exportList(data as unknown as AdminUserAccessLogListRequestData);
   }, []);
 
   /********************************************************************************************************************

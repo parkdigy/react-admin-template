@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminMenuListProps as Props } from './AdminMenuList.types';
-import { Admin, AdminMenuListData, AdminMenuListDataItem } from '@const';
+import { AdminMenuListData, AdminMenuListDataItem } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminMenuFormDialog } from '@dialog';
 import { AdminMenuListItem } from './controls';
@@ -80,7 +80,7 @@ export const AdminMenuList = ({}: Props) => {
 
   /** 메뉴 목록 불러오기 */
   const loadMenuList = useCallback(() => {
-    Admin.Menu.list().then(({ data }) => {
+    Const.Admin.Menu.list().then(({ data }) => {
       setList(data);
       setSortChanged(false);
     });
@@ -115,7 +115,7 @@ export const AdminMenuList = ({}: Props) => {
   /** 메뉴 삭제 */
   const removeMenu = useCallback(
     (menu: AdminMenuListDataItem) => {
-      Admin.Menu.remove(`'${menu.name}' 메뉴를 삭제하시겠습니까?`, menu.id).then(() => {
+      Const.Admin.Menu.remove(`'${menu.name}' 메뉴를 삭제하시겠습니까?`, menu.id).then(() => {
         loadMenuList();
       });
     },
@@ -138,7 +138,7 @@ export const AdminMenuList = ({}: Props) => {
       };
       makeData(list);
 
-      Admin.Menu.editSeq(JSON.stringify(data)).then(() => {
+      Const.Admin.Menu.editSeq(JSON.stringify(data)).then(() => {
         loadMenuList();
       });
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TestDataFormProps as Props } from './TestDataForm.types';
-import { Test, TestDataInfoData } from '@const';
+import { TestDataInfoData } from '@const';
 import dayjs, { Dayjs } from 'dayjs';
 import TestDataStatus from '../../../constant/Test/TestDataStatus';
 import { usePrivacyAccessReasonDialog } from '@dialog';
@@ -32,7 +32,7 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
 
   /** 상태 목록 불러오기 */
   const loadStatusList = useCallback(() => {
-    Test.dataStatusList().then(({ data }) => {
+    Const.Test.dataStatusList().then(({ data }) => {
       const items = data.map((item) => lv(item.name, item.status));
       formRef.current?.getItem<FormRadioGroupCommands<TestDataStatus>>('status')?.setItems(items);
     });
@@ -49,7 +49,7 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
         let isConfirm = false;
         privacyAccessReasonDialog({
           onConfirm: (dialog, reason) => {
-            Test.dataInfo(id, { privacy_access: true, privacy_access_reason: reason }).then(({ data }) => {
+            Const.Test.dataInfo(id, { privacy_access: true, privacy_access_reason: reason }).then(({ data }) => {
               isConfirm = true;
               dialog.close();
               setInfo(data);
@@ -99,11 +99,11 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   const handleSubmit = useCallback(
     (data: Dict) => {
       if (id) {
-        Test.dataEdit('정보를 수정하시겠습니까?', id, data).then(() => {
+        Const.Test.dataEdit('정보를 수정하시겠습니까?', id, data).then(() => {
           onSuccess?.();
         });
       } else {
-        Test.dataAdd('등록하시겠습니까?', data).then(() => {
+        Const.Test.dataAdd('등록하시겠습니까?', data).then(() => {
           onSuccess?.();
         });
       }
@@ -123,7 +123,7 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
             <FormText name='text' label='Text' value={info?.text} required autoFocus />
           </FormCol>
           <FormCol xs={3}>
-            <FormRadioGroup name='status' label='Status' value={info?.status || Test.DataStatus.On} required />
+            <FormRadioGroup name='status' label='Status' value={info?.status || Const.Test.DataStatus.On} required />
           </FormCol>
         </FormRow>
         <FormRow>

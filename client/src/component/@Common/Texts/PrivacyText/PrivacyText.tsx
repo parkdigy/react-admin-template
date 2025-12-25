@@ -3,7 +3,6 @@ import { PrivacyTextProps as Props } from './PrivacyText.types';
 import { Box, Typography } from '@mui/material';
 import { usePrivacyAccessReasonDialog } from '@dialog';
 import { DialogCommands } from '@pdg/react-dialog';
-import { PrivacyAccess } from '@const';
 
 export const PrivacyText = ({ textType, text: initText, textProps, type, parentId }: Props) => {
   /********************************************************************************************************************
@@ -35,7 +34,7 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
   const handlePrivacyAccessClick = useCallback(() => {
     privacyAccessReasonDialog({
       onConfirm(dialog: DialogCommands, reason: string) {
-        PrivacyAccess.info({ type, parent_id: parentId, reason }).then(({ data }) => {
+        Const.PrivacyAccess.info({ type, parent_id: parentId, reason }).then(({ data }) => {
           setText(data.value);
           setIsPrivacyAccess(true);
           dialog.close();

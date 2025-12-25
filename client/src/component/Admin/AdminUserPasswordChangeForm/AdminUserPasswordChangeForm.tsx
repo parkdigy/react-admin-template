@@ -3,7 +3,7 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { My, MyPasswordChangeRequestData } from '@const';
+import { MyPasswordChangeRequestData } from '@const';
 import { Alert } from '@mui/material';
 
 const AdminUserPasswordChangeForm = () => {
@@ -31,7 +31,7 @@ const AdminUserPasswordChangeForm = () => {
 
   /** 비밀번호 변경 - Form.onSubmit */
   const handleSubmit = useCallback((data: Dict) => {
-    My.passwordChange('비밀번호를 변경하시겠습니까?', data as unknown as MyPasswordChangeRequestData).then(() => {
+    Const.My.passwordChange('비밀번호를 변경하시겠습니까?', data as unknown as MyPasswordChangeRequestData).then(() => {
       formRef.current?.resetAll();
     });
   }, []);

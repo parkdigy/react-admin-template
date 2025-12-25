@@ -3,7 +3,7 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { Admin, AdminGroupListDataItem } from '@const';
+import { AdminGroupListDataItem } from '@const';
 import { Typography } from '@mui/material';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
@@ -43,7 +43,7 @@ const AdminGroupList = ({ noHash }: Props) => {
   /** 그룹 목록 불러오기 */
   const getData = useCallback((data: Dict) => {
     return new Promise<SearchTableData<AdminGroupListDataItem>>((resolve) => {
-      Admin.Group.list(data).then(({ data: items }) => {
+      Const.Admin.Group.list(data).then(({ data: items }) => {
         resolve({ items });
       });
     });

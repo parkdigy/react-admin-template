@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.types';
-import { Admin, AdminUserLoginLogListDataItem } from '@const';
+import { AdminUserLoginLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 import { useAppState } from '@context';
 import { HashSearchTable } from '@ccomp';
@@ -37,7 +37,7 @@ const AdminUserLoginLogList = ({ email, noHash, limit, onRequestScrollToTop }: P
     (data: Dict) => {
       onRequestScrollToTop?.();
       return new Promise<SearchTableData<AdminUserLoginLogListDataItem>>((resolve) => {
-        Admin.User.LoginLog.list({ ...data, limit }).then(({ data: items, paging }) => {
+        Const.Admin.User.LoginLog.list({ ...data, limit }).then(({ data: items, paging }) => {
           resolve({ items, paging });
         });
       });
@@ -48,7 +48,7 @@ const AdminUserLoginLogList = ({ email, noHash, limit, onRequestScrollToTop }: P
   /** 로그인 로그 목록 액셀 다운로드 */
   const exportData = useCallback(() => {
     const data = searchTableRef.current?.getLastLoadData();
-    if (data) Admin.User.LoginLog.exportList(data);
+    if (data) Const.Admin.User.LoginLog.exportList(data);
   }, []);
 
   /********************************************************************************************************************

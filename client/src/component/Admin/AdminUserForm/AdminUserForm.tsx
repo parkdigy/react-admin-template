@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { AdminUserFormProps as Props } from './AdminUserForm.types';
-import { Admin, AdminUserInfoData } from '@const';
+import { AdminUserInfoData } from '@const';
 import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { useAppState } from '@context';
@@ -43,7 +43,7 @@ const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
 
   /** 그룹 목록 불러오기 */
   const loadGroupList = useCallback(() => {
-    Admin.Group.list().then(({ data: list }) => {
+    Const.Admin.Group.list().then(({ data: list }) => {
       const items = [
         lv('없음', ''),
         ...list.map((info) =>
@@ -59,7 +59,7 @@ const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
     if (id == null) {
       setInfo(undefined);
     } else {
-      Admin.User.info(id).then(({ data: info }) => {
+      Const.Admin.User.info(id).then(({ data: info }) => {
         setInfo(info);
       });
     }
@@ -87,11 +87,11 @@ const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
   const handleSubmit = useCallback(
     (data: Dict) => {
       if (id) {
-        Admin.User.edit('사용자 정보를 수정하시겠습니까?', id, data).then(() => {
+        Const.Admin.User.edit('사용자 정보를 수정하시겠습니까?', id, data).then(() => {
           onSuccess?.();
         });
       } else {
-        Admin.User.add('사용자를 등록하시겠습니까?', data).then(() => {
+        Const.Admin.User.add('사용자를 등록하시겠습니까?', data).then(() => {
           onSuccess?.();
         });
       }
