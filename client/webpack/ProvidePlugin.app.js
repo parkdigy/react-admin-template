@@ -42,6 +42,9 @@ module.exports = {
   ApiAuth: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiAuth'],
   createApi: [path.resolve(__dirname, '../src/global/api/index.ts'), 'createApi'],
 
+  // Const
+  Const: [path.resolve(__dirname, '../src/constant/index.ts'), 'default'],
+
   // mediaQuery
   mediaQuery: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'default'],
   useScreenSize: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'useScreenSize'],
