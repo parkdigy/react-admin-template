@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const TestDataInfo = l(
-  () => import(/* webpackChunkName: "test-data-info" */ './TestDataInfo'),
+  () => import('./TestDataInfo'),
   loadable.options
 ) as unknown as typeof import('./TestDataInfo').default;
 

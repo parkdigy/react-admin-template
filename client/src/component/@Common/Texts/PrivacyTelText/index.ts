@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const PrivacyTelText = l(
-  () => import(/* webpackChunkName: "privacy-tel-text" */ './PrivacyTelText'),
+  () => import('./PrivacyTelText'),
   loadable.options
 ) as unknown as typeof import('./PrivacyTelText').default;
 

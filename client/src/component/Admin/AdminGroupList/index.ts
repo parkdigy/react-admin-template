@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AdminGroupList = l(
-  () => import(/* webpackChunkName: "admin-group-list" */ './AdminGroupList'),
+  () => import('./AdminGroupList'),
   loadable.options
 ) as unknown as typeof import('./AdminGroupList').default;
 

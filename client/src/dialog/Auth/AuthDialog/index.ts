@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AuthDialog = l(
-  () => import(/* webpackChunkName: "auth-dialog" */ './AuthDialog'),
+  () => import('./AuthDialog'),
   loadable.options
 ) as unknown as typeof import('./AuthDialog').default;
 

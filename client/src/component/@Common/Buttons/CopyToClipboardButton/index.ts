@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const CopyToClipboardButton = l(
-  () => import(/* webpackChunkName: "copy-to-clipboard-button" */ './CopyToClipboardButton'),
+  () => import('./CopyToClipboardButton'),
   loadable.options
 ) as unknown as typeof import('./CopyToClipboardButton').default;
 

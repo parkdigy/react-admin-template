@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AdminUserAccessLogList = l(
-  () => import(/* webpackChunkName: "admin-user-access-log-list" */ './AdminUserAccessLogList'),
+  () => import('./AdminUserAccessLogList'),
   loadable.options
 ) as unknown as typeof import('./AdminUserAccessLogList').default;
 

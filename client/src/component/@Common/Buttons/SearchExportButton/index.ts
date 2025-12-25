@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const SearchExportButton = l(
-  () => import(/* webpackChunkName: "common-search-export-button" */ './SearchExportButton'),
+  () => import('./SearchExportButton'),
   loadable.options
 ) as unknown as typeof import('./SearchExportButton').default;
 

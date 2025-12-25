@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AdminUserForm = l(
-  () => import(/* webpackChunkName: "admin-user-form" */ './AdminUserForm'),
+  () => import('./AdminUserForm'),
   loadable.options
 ) as unknown as typeof import('./AdminUserForm').default;
 

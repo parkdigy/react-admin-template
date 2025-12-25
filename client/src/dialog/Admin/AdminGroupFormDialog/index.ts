@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AdminGroupFormDialog = l(
-  () => import(/* webpackChunkName: "admin-group-form-dialog" */ './AdminGroupFormDialog'),
+  () => import('./AdminGroupFormDialog'),
   loadable.options
 ) as unknown as typeof import('./AdminGroupFormDialog').default;
 

@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AdminUserLoginLogListDialog = l(
-  () => import(/* webpackChunkName: "admin-user-login-log-list-dialog" */ './AdminUserLoginLogListDialog'),
+  () => import('./AdminUserLoginLogListDialog'),
   loadable.options
 ) as unknown as typeof import('./AdminUserLoginLogListDialog').default;
 

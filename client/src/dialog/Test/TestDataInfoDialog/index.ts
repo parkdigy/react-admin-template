@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const TestDataInfoDialog = l(
-  () => import(/* webpackChunkName: "test-data-info-dialog" */ './TestDataInfoDialog'),
+  () => import('./TestDataInfoDialog'),
   loadable.options
 ) as unknown as typeof import('./TestDataInfoDialog').default;
 

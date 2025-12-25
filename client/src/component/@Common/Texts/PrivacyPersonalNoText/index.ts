@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const PrivacyPersonalNoText = l(
-  () => import(/* webpackChunkName: "privacy-personal-no-text" */ './PrivacyPersonalNoText'),
+  () => import('./PrivacyPersonalNoText'),
   loadable.options
 ) as unknown as typeof import('./PrivacyPersonalNoText').default;
 

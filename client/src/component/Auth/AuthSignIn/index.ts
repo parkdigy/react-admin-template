@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const AuthSignIn = l(
-  () => import(/* webpackChunkName: "auth-sign-in" */ './AuthSignIn'),
+  () => import('./AuthSignIn'),
   loadable.options
 ) as unknown as typeof import('./AuthSignIn').default;
 
