@@ -15,8 +15,8 @@ export default defineConfig([
   pluginReact.configs.flat.recommended,
   pluginReactHooks.configs.flat.recommended,
   {
+    files: ['src/**/*.{ts,tsx}'],
     ignores: ['node_modules/', 'dist/'],
-    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       parser: typescriptEslintParser,
       parserOptions: {
@@ -27,9 +27,6 @@ export default defineConfig([
         sourceType: 'module',
       },
       globals: {
-        module: 'readonly',
-        process: 'readonly',
-        __dirname: 'readonly',
         ...Object.keys({
           ...WebpackProviderPluginCommonComponent,
           ...WebpackProviderPluginPdgReactComponent,
@@ -111,6 +108,22 @@ export default defineConfig([
           message: 'React.forwardRef 사용이 금지되었습니다.',
         },
       ],
+    },
+  },
+  {
+    ignores: ['node_modules/', 'dist/'],
+    files: ['webpack/**/*.js', '*.js'],
+    languageOptions: {
+      globals: {
+        module: 'readonly',
+        process: 'readonly',
+        require: 'readonly',
+        __dirname: 'readonly',
+        console: 'readonly',
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
 ]);

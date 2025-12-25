@@ -1,7 +1,7 @@
 import l from '@loadable/component';
 
 const DefaultLayout = l(
-  () => import(/* webpackChunkName: "default-layout" */ './DefaultLayout'),
+  () => import('./DefaultLayout'),
   loadable.options
 ) as unknown as typeof import('./DefaultLayout').default;
 

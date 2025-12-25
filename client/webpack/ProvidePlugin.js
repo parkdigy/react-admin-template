@@ -1,4 +1,3 @@
-/* eslint-disable */
 const webpack = require('webpack');
 const app = require('./ProvidePlugin.app');
 const react = require('./ProvidePlugin.react');
@@ -10,7 +9,6 @@ const pdgReactForm = require('./ProvidePlugin.pdg-react-form');
 const pdgReactTable = require('./ProvidePlugin.pdg-react-table');
 const thirdParty = require('./ProvidePlugin.third-party');
 const reactComponents = require('./ProvidePlugin.common-component');
-/* eslint-enable */
 
 class MyProvidePlugin {
   apply(compiler) {

@@ -1,6 +1,6 @@
 import l from '@loadable/component';
 
-const RootLayout = l(() => import(/* webpackChunkName: "root-layout" */ './RootLayout'));
+const RootLayout = l(() => import('./RootLayout'));
 
 export { RootLayout };
 

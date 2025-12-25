@@ -1,6 +1,4 @@
-/* eslint-disable */
 const path = require('path');
-/* eslint-enable */
 
 module.exports = {
   // base

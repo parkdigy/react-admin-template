@@ -25,7 +25,8 @@
     "pub:dev": "cd .. && npm run pub:dev",
     "pub:staging": "cd .. && npm run pub:staging",
     "pub:prod": "cd .. && npm run pub:prod",
-    "pub:all": "cd .. && npm run pub:all"
+    "pub:all": "cd .. && npm run pub:all",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",
@@ -56,6 +57,7 @@
     "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "@tinymce/miniature": "^6.0.0",
     "@tinymce/tinymce-react": "^6.3.0",
+    "@svgr/webpack": "^8.1.0",
     "@types/jest": "^29.5.14",
     "@types/loadable__component": "^5.13.9",
     "@types/node": "^22.15.29",
@@ -69,7 +71,6 @@
     "browserslist-config-baseline": "^0.5.0",
     "circular-dependency-plugin": "^5.2.2",
     "classnames": "^2.5.1",
-    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "core-js": "^3.43.0",
     "cross-env": "^7.0.3",
@@ -88,7 +89,10 @@
     "html-webpack-plugin": "^5.6.3",
     "js-file-download": "^0.4.12",
     "notistack": "^3.0.2",
+    "mini-css-extract-plugin": "^2.9.4",
+    "patch-package": "^8.0.1",
     "path": "^0.12.7",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.5.3",
     "react-router": "^7.6.1",
     "react-use-error-boundary": "^3.0.0",
