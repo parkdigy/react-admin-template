@@ -60,6 +60,7 @@ export default defineConfig([
       'react/no-deprecated': 'error',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
+      'react/no-unescaped-entities': 'off',
       'react/jsx-no-undef': ['error', { allowGlobals: true }],
       'no-plusplus': 'error',
       'prefer-template': 'error',
