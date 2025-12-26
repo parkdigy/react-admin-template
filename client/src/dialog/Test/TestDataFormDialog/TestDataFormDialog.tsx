@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { ErrorBoundary } from '@ccomp';
 import { TestDataFormDialogProps as Props } from './TestDataFormDialog.types';
 import { TestDataForm } from '@comp';
 

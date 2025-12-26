@@ -1,6 +1,5 @@
 import React from 'react';
 import { RootLoadingProps as Props } from './RootLoading.types';
-import { Loading, LoadingCommands } from '@ccomp';
 
 export const RootLoading = ({}: Props) => {
   /********************************************************************************************************************

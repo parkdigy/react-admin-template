@@ -1,7 +1,6 @@
 import React from 'react';
 import { TestDataInfoProps as Props } from './TestDataInfo.types';
 import { TestDataInfoData } from '@const';
-import { PrivacyBusinessNoText, PrivacyPersonalNoText, PrivacyTelText, PrivacyText } from '@ccomp';
 
 const TestDataInfo = ({ id }: Props) => {
   /********************************************************************************************************************

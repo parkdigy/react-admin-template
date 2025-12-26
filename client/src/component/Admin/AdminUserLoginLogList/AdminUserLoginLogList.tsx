@@ -7,7 +7,6 @@ import { AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.typ
 import { AdminUserLoginLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 import { useAppState } from '@context';
-import { HashSearchTable } from '@ccomp';
 
 const AdminUserLoginLogList = ({ email, noHash, limit, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************

@@ -6,7 +6,6 @@ import React from 'react';
 import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
 import { AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
 import dayjs from 'dayjs';
-import { HashSearchTable } from '@ccomp';
 
 const AdminUserAccessLogList = ({ noHash }: Props) => {
   /********************************************************************************************************************

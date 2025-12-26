@@ -5,7 +5,6 @@ import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { DialogCommands, useDialog } from '@pdg/react-dialog';
 import { TestDataFormDialog, TestDataInfoDialog, usePrivacyAccessReasonDialog } from '@dialog';
-import { HashSearchTable } from '@ccomp';
 
 const Menu = {
   edit: 'edit',
