@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import React from 'react';
-import { useNavigate } from 'react-router';
 import { HashSearchTableProps as Props } from './HashSearchTable.types';
 import './HashSearchTable.scss';
 
