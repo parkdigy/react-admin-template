@@ -8,6 +8,7 @@ module.exports = {
   // react-router
   useNavigate: ['react-router', 'useNavigate'],
   useLocation: ['react-router', 'useLocation'],
+  useParams: ['react-router', 'useParams'],
   useSearchParams: ['react-router', 'useSearchParams'],
 
   // usehooks-ts
