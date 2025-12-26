@@ -15,6 +15,13 @@ export default defineConfig([
   pluginReact.configs.flat.recommended,
   pluginReactHooks.configs.flat.recommended,
   {
+    settings: {
+      react: {
+        version: 'detect', // Auto-detect React version
+      },
+    },
+  },
+  {
     files: ['src/**/*.{ts,tsx}'],
     ignores: ['node_modules/', 'dist/'],
     languageOptions: {
@@ -37,12 +44,6 @@ export default defineConfig([
           acc[key] = 'readonly';
           return acc;
         }, {}),
-      },
-    },
-    plugins: {},
-    settings: {
-      react: {
-        version: 'detect', // Auto-detect React version
       },
     },
     rules: {
