@@ -8,6 +8,12 @@ declare type SearchAddButtonProps = import('../component/@Common/index.ts').Sear
 declare const SearchExportButton: typeof import('../component/@Common/index.ts').SearchExportButton;
 declare type SearchExportButtonProps = import('../component/@Common/index.ts').SearchExportButtonProps;
 
+// Dividers
+declare const Divider: typeof import('../component/@Common/index.ts').Divider;
+declare type DividerProps = import('../component/@Common/index.ts').DividerProps;
+declare const VerticalDivider: typeof import('../component/@Common/index.ts').VerticalDivider;
+declare type VerticalDividerProps = import('../component/@Common/index.ts').VerticalDividerProps;
+
 // Errors
 declare const ErrorBoundary: typeof import('../component/@Common/index.ts').ErrorBoundary;
 declare type ErrorBoundaryProps = import('../component/@Common/index.ts').ErrorBoundaryProps;

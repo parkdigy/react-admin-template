@@ -32,6 +32,15 @@ module.exports = {
     'SearchExportButtonProps',
   ],
 
+  // Dividers
+  Divider: [path.resolve(__dirname, '../src/component/@Common/Dividers/Divider/index.ts'), 'default'],
+  DividerProps: [path.resolve(__dirname, '../src/component/@Common/Dividers/Divider/index.ts'), 'DividerProps'],
+  VerticalDivider: [path.resolve(__dirname, '../src/component/@Common/Dividers/VerticalDivider/index.ts'), 'default'],
+  VerticalDividerProps: [
+    path.resolve(__dirname, '../src/component/@Common/Dividers/VerticalDivider/index.ts'),
+    'VerticalDividerProps',
+  ],
+
   // Errors
   ErrorBoundary: [path.resolve(__dirname, '../src/component/@Common/Errors/ErrorBoundary/index.ts'), 'default'],
   ErrorBoundaryProps: [
