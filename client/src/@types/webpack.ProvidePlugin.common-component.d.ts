@@ -39,3 +39,5 @@ declare const PrivacyTelText: typeof import('../component/@Common/index.ts').Pri
 declare type PrivacyTelTextProps = import('../component/@Common/index.ts').PrivacyTelTextProps;
 declare const PrivacyText: typeof import('../component/@Common/index.ts').PrivacyText;
 declare type PrivacyTextProps = import('../component/@Common/index.ts').PrivacyTextProps;
+declare const StatusText: typeof import('../component/@Common/index.ts').StatusText;
+declare type StatusTextProps = import('../component/@Common/index.ts').StatusTextProps;

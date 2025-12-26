@@ -84,9 +84,6 @@ module.exports = {
     path.resolve(__dirname, '../src/component/@Common/Texts/PrivacyTelText/index.ts'),
     'PrivacyTelTextProps',
   ],
-  PrivacyText: [path.resolve(__dirname, '../src/component/@Common/Texts/PrivacyText/index.ts'), 'default'],
-  PrivacyTextProps: [
-    path.resolve(__dirname, '../src/component/@Common/Texts/PrivacyText/index.ts'),
-    'PrivacyTextProps',
-  ],
+  StatusText: [path.resolve(__dirname, '../src/component/@Common/Texts/StatusText/index.ts'), 'default'],
+  StatusTextProps: [path.resolve(__dirname, '../src/component/@Common/Texts/StatusText/index.ts'), 'StatusTextProps'],
 };
