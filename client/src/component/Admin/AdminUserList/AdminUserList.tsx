@@ -6,7 +6,6 @@ import React from 'react';
 import { AdminUserListProps as Props } from './AdminUserList.types';
 import { AdminUserListDataItem } from '@const';
 import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog } from '@dialog';
-import { useDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
 import { useAppState } from '@context';
 

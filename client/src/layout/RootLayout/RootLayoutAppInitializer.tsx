@@ -1,4 +1,3 @@
-import { useDialog } from '@pdg/react-dialog';
 import { AuthDialog } from '@dialog';
 import { useSnackbar } from 'notistack';
 import { useLocation, useNavigate } from 'react-router';

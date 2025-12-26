@@ -5,7 +5,6 @@
 import React from 'react';
 import { AdminUserFormProps as Props } from './AdminUserForm.types';
 import { AdminUserInfoData } from '@const';
-import { useDialog } from '@pdg/react-dialog';
 import { AdminGroupFormDialog } from '@dialog';
 import { useAppState } from '@context';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDialog } from '@pdg/react-dialog';
 import { PrivacyAccessReasonDialog } from './PrivacyAccessReasonDialog';
 import { PrivacyAccessReasonDialogProps } from './PrivacyAccessReasonDialog.types';
 import { Typography } from '@mui/material';

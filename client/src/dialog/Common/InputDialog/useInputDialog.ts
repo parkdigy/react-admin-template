@@ -1,4 +1,3 @@
-import { useDialog } from '@pdg/react-dialog';
 import InputDialog from './InputDialog';
 import { InputDialogInputType, InputDialogProps } from '@dialog';
 

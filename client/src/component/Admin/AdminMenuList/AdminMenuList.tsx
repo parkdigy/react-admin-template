@@ -5,7 +5,6 @@
 import React from 'react';
 import { AdminMenuListProps as Props } from './AdminMenuList.types';
 import { AdminMenuListData, AdminMenuListDataItem } from '@const';
-import { useDialog } from '@pdg/react-dialog';
 import { AdminMenuFormDialog } from '@dialog';
 import { AdminMenuListItem } from './controls';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
