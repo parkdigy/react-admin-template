@@ -9,6 +9,8 @@ module.exports = {
   ArrayMerge: ['@pdg/types', 'ArrayMerge'],
   MutableArray: ['@pdg/types', 'MutableArray'],
   FlattenArray: ['@pdg/types', 'FlattenArray'],
+  Prettify: ['@pdg/types', 'Prettify'],
+  Writable: ['@pdg/types', 'Writable'],
   // types - Function
   Func: ['@pdg/types', 'Func'],
   // types - Data

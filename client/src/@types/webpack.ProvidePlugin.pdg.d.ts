@@ -8,6 +8,8 @@ declare type ObjectMerge<T> = import('@pdg/types').ObjectMerge<T>;
 declare type ArrayMerge<A extends any[]> = import('@pdg/types').ArrayMerge<A>;
 declare type MutableArray<T> = import('@pdg/types').MutableArray<T>;
 declare type FlattenArray<T> = import('@pdg/types').FlattenArray<T>;
+declare type Prettify<T> = import('@pdg/types').Prettify<T>;
+declare type Writable<T> = import('@pdg/types').Writable<T>;
 // types - Function
 declare type Func = import('@pdg/types').Func;
 // types - Data
