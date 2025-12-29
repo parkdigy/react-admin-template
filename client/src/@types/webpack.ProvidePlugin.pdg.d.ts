@@ -99,6 +99,11 @@ declare const copy: typeof import('@pdg/data').copy;
 
 // react-hook
 declare const useChanged: typeof import('@pdg/react-hook').useChanged;
+declare const useFirstSkipChanged: typeof import('@pdg/react-hook').useFirstSkipChanged;
+declare const useEventEffect: typeof import('@pdg/react-hook').useEventEffect;
+declare const useEventLayoutEffect: typeof import('@pdg/react-hook').useEventLayoutEffect;
+declare const useFirstSkipEffect: typeof import('@pdg/react-hook').useFirstSkipEffect;
+declare const useFirstSkipLayoutEffect: typeof import('@pdg/react-hook').useFirstSkipLayoutEffect;
 declare const useForwardRef: typeof import('@pdg/react-hook').useForwardRef;
 declare const useMountedRef: typeof import('@pdg/react-hook').useMountedRef;
 declare const useAutoUpdateRef: typeof import('@pdg/react-hook').useAutoUpdateRef;

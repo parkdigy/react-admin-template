@@ -88,6 +88,11 @@ module.exports = {
 
   // react-hook
   useChanged: ['@pdg/react-hook', 'useChanged'],
+  useFirstSkipChanged: ['@pdg/react-hook', 'useFirstSkipChanged'],
+  useEventEffect: ['@pdg/react-hook', 'useEventEffect'],
+  useEventLayoutEffect: ['@pdg/react-hook', 'useEventLayoutEffect'],
+  useFirstSkipEffect: ['@pdg/react-hook', 'useFirstSkipEffect'],
+  useFirstSkipLayoutEffect: ['@pdg/react-hook', 'useFirstSkipLayoutEffect'],
   useForwardRef: ['@pdg/react-hook', 'useForwardRef'],
   useMountedRef: ['@pdg/react-hook', 'useMountedRef'],
   useAutoUpdateRef: ['@pdg/react-hook', 'useAutoUpdateRef'],
