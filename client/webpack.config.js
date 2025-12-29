@@ -161,12 +161,6 @@ const options = {
   plugins: [
     new MyProvidePlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new CircularDependencyPlugin({
-      exclude: /a\.js|node_modules/,
-      failOnError: true,
-      allowAsyncCycles: false,
-      cwd: process.cwd(),
-    }),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       failOnError: isProduction,
@@ -189,6 +183,12 @@ const options = {
     }),
     ...(isProduction
       ? [
+          new CircularDependencyPlugin({
+            exclude: /a\.js|node_modules/,
+            failOnError: true,
+            allowAsyncCycles: false,
+            cwd: process.cwd(),
+          }),
           new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash].css', // 추출된 CSS 파일명 설정
           }),
