@@ -67,12 +67,9 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
    * Effect
    * ******************************************************************************************************************/
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      loadStatusList();
-    });
-    useEffect(() => effectEvent(), []);
-  }
+  useEventEffect(() => {
+    loadStatusList();
+  }, []);
 
   /********************************************************************************************************************
    * Event Handler

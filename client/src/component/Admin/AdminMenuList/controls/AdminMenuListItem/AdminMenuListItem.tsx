@@ -23,7 +23,7 @@ export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdi
    * ******************************************************************************************************************/
 
   const [menu, setMenu] = useState(initMenu);
-  useChanged(initMenu) && setMenu(initMenu);
+  useFirstSkipChanged(() => setMenu(initMenu), [initMenu]);
 
   /********************************************************************************************************************
    * Memo

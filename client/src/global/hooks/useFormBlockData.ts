@@ -52,12 +52,9 @@ const useFormBlockData = <T, RT extends Required<T>>(
    * Effect
    * ******************************************************************************************************************/
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      proc();
-    });
-    useEffect(() => effectEvent(), [deps, delay]);
-  }
+  useEventEffect(() => {
+    proc();
+  }, [deps, delay]);
 };
 
 export default useFormBlockData;

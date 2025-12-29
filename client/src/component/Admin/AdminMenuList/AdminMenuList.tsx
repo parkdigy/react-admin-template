@@ -52,26 +52,22 @@ export const AdminMenuList = ({}: Props) => {
   }, []);
 
   const [listIdMap, setListIdMap] = useState<Dict<AdminMenuListDataItem>>(getListIdMap(list));
-  useChanged(list) && setListIdMap(getListIdMap(list));
+  useFirstSkipChanged(() => setListIdMap(getListIdMap(list)), [list]);
 
   /********************************************************************************************************************
-   * Memo
+   * Changed
    * ******************************************************************************************************************/
 
   /** '어드민 관리' 메뉴와 기타 메뉴 분리하여 저장 */
-
-  {
-    const effectEvent = useEffectEvent(() => {
-      if (list) {
-        setAdminList(list.filter((info) => info.id === 'admin'));
-        setOtherList(list.filter((info) => info.id !== 'admin'));
-      } else {
-        setAdminList(undefined);
-        setOtherList(undefined);
-      }
-    });
-    useEffect(() => effectEvent(), [list]);
-  }
+  useChanged(() => {
+    if (list) {
+      setAdminList(list.filter((info) => info.id === 'admin'));
+      setOtherList(list.filter((info) => info.id !== 'admin'));
+    } else {
+      setAdminList(undefined);
+      setOtherList(undefined);
+    }
+  }, [list]);
 
   /********************************************************************************************************************
    * Function
@@ -147,12 +143,9 @@ export const AdminMenuList = ({}: Props) => {
    * 최초 메뉴 목록 로드
    * ******************************************************************************************************************/
 
-  {
-    const loadMenuListEffectEvent = useEffectEvent(() => loadMenuList());
-    useEffect(() => {
-      loadMenuListEffectEvent();
-    }, []);
-  }
+  useEventEffect(() => {
+    loadMenuList();
+  }, []);
 
   /********************************************************************************************************************
    * Event Handler

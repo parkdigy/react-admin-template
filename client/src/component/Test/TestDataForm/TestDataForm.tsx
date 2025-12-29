@@ -77,19 +77,13 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * Effect
    * ******************************************************************************************************************/
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      loadStatusList();
-    });
-    useEffect(() => effectEvent(), []);
-  }
+  useEventEffect(() => {
+    loadStatusList();
+  }, []);
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      loadInfo(id);
-    });
-    useEffect(() => effectEvent(), [id]);
-  }
+  useEventEffect(() => {
+    loadInfo(id);
+  }, [id]);
 
   /********************************************************************************************************************
    * Event Handler

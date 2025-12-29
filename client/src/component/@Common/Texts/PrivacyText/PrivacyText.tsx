@@ -16,16 +16,16 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
    * ******************************************************************************************************************/
 
   const [isPrivacyAccess, setIsPrivacyAccess] = useState(false);
+  const [text, setText] = useState(initText);
 
   /********************************************************************************************************************
-   * State - text
+   * Changed
    * ******************************************************************************************************************/
 
-  const [text, setText] = useState(initText);
-  if (useChanged(initText)) {
+  useFirstSkipChanged(() => {
     setText(initText);
     setIsPrivacyAccess(false);
-  }
+  }, [initText]);
 
   /********************************************************************************************************************
    * Event Handler

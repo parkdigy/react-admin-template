@@ -71,13 +71,10 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * Effect
    * ******************************************************************************************************************/
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      loadMenuList();
-      loadInfo(id);
-    });
-    useEffect(() => effectEvent(), [id]);
-  }
+  useEventEffect(() => {
+    loadMenuList();
+    loadInfo(id);
+  }, [id]);
 
   /********************************************************************************************************************
    * Event Handler

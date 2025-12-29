@@ -132,60 +132,51 @@ const RootLayout = withErrorBoundary(() => {
    * Effect
    * ******************************************************************************************************************/
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      if (error) {
-        hideHtmlLoading();
+  useEventEffect(() => {
+    if (error) {
+      hideHtmlLoading();
+    } else {
+      showHtmlLoading();
+    }
+  }, [error]);
+
+  useEventEffect(() => {
+    if (!boundaryError) {
+      hideHtmlLoading();
+    } else {
+      showHtmlLoading();
+    }
+  }, [boundaryError]);
+
+  useEventEffect(() => {
+    if (!error) {
+      if (window.location.pathname.startsWith('/auth/')) {
+        setInitialized(true);
       } else {
-        showHtmlLoading();
-      }
-    });
-    useEffect(() => effectEvent(), [error]);
-  }
+        // 로그인 확인
+        createApi<AuthSignInResponseData>({
+          onError(err: ApiError<ApiResult>) {
+            g.loading.hide();
 
-  {
-    const effectEvent = useEffectEvent(() => {
-      if (!boundaryError) {
-        hideHtmlLoading();
-      } else {
-        showHtmlLoading();
+            if (err.response?.data?.result?.c === 99997) {
+              clearAuth();
+              window.location.href = '/auth/signin';
+            } else {
+              setTimeout(() => {
+                setError(true);
+              }, 500);
+            }
+          },
+        })
+          .get('auth.signin')
+          .then(({ data }) => {
+            setAuth(data);
+            setInitialized(true);
+            setError(false);
+          });
       }
-    });
-    useEffect(() => effectEvent(), [boundaryError]);
-  }
-
-  {
-    const effectEvent = useEffectEvent(() => {
-      if (!error) {
-        if (window.location.pathname.startsWith('/auth/')) {
-          setInitialized(true);
-        } else {
-          // 로그인 확인
-          createApi<AuthSignInResponseData>({
-            onError(err: ApiError<ApiResult>) {
-              g.loading.hide();
-
-              if (err.response?.data?.result?.c === 99997) {
-                clearAuth();
-                window.location.href = '/auth/signin';
-              } else {
-                setTimeout(() => {
-                  setError(true);
-                }, 500);
-              }
-            },
-          })
-            .get('auth.signin')
-            .then(({ data }) => {
-              setAuth(data);
-              setInitialized(true);
-              setError(false);
-            });
-        }
-      }
-    });
-    useEffect(() => effectEvent(), [error]);
-  }
+    }
+  }, [error]);
 
   /********************************************************************************************************************
    * Render

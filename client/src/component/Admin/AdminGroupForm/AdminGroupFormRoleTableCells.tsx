@@ -22,13 +22,13 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
    * ******************************************************************************************************************/
 
   const [r, setR] = useState(!!info?.new_read);
-  useChanged(!!info?.new_read) && setR(!!info?.new_read);
+  useFirstSkipEffect(() => setR(!!info?.new_read), [info?.new_read]);
 
   const [w, setW] = useState(!!info?.new_write);
-  useChanged(!!info?.new_write) && setW(!!info?.new_write);
+  useFirstSkipChanged(() => setW(!!info?.new_write), [info?.new_write]);
 
   const [e, setE] = useState(!!info?.new_export);
-  useChanged(!!info?.new_export) && setE(!!info?.new_export);
+  useFirstSkipChanged(() => setE(!!info?.new_export), [info?.new_export]);
 
   /********************************************************************************************************************
    * Function
