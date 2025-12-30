@@ -64,7 +64,7 @@ const menu = {
    * 메뉴 BadgeCount 갱신
    * ******************************************************************************************************************/
   reloadBadgeCount() {
-    _reloadBadgeCount && _reloadBadgeCount();
+    _reloadBadgeCount?.();
   },
 };
 
