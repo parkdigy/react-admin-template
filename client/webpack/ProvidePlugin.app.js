@@ -23,7 +23,7 @@ module.exports = {
   gNav: [path.resolve(__dirname, '../src/global/g/nav.ts'), 'default'],
   gAuth: [path.resolve(__dirname, '../src/global/g/auth/auth.ts'), 'default'],
   AuthDialogType: [path.resolve(__dirname, '../src/global/g/auth/auth.types.ts'), 'AuthDialogType'],
-  gMenu: [path.resolve(__dirname, '../src/global/g/menu/menu.ts'), 'Menu'],
+  gMenu: [path.resolve(__dirname, '../src/global/g/menu/menu.ts'), 'default'],
   MenuRoles: [path.resolve(__dirname, '../src/global/g/menu/menu.types.ts'), 'MenuRoles'],
   gSnackbar: [path.resolve(__dirname, '../src/global/g/snackbar/snackbar.ts'), 'default'],
   SnackbarEnqueueType: [path.resolve(__dirname, '../src/global/g/snackbar/snackbar.types.ts'), 'SnackbarEnqueueType'],
