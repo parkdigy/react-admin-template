@@ -34,8 +34,6 @@ declare const Stack: typeof import('@pdg/react-component').PStack;
 declare type StackProps = import('@pdg/react-component').PStackProps;
 declare const TelText: typeof import('@pdg/react-component').PTelText;
 declare type TelTextProps = import('@pdg/react-component').PTelTextProps;
-declare const Text: typeof import('@pdg/react-component').PText;
-declare type TextProps = import('@pdg/react-component').PTextProps;
 declare const T: typeof import('@pdg/react-component').PText;
 declare type TProps = import('@pdg/react-component').PTextProps;
 declare const WonText: typeof import('@pdg/react-component').PWonText;

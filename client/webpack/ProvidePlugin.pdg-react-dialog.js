@@ -6,7 +6,6 @@ module.exports = {
   // ConfirmDialog
   ConfirmDialogProps: ['@pdg/react-dialog', 'ConfirmDialogProps'],
   ConfirmDialogCommands: ['@pdg/react-dialog', 'PConfirmDialogCommands'],
-  ConfirmDialogCommandsRefFunction: ['@pdg/react-dialog', 'ConfirmDialogCommandsRefFunction'],
 
   // Dialog
   Dialog: ['@pdg/react-dialog', 'Dialog'],

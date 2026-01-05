@@ -1,4 +1,4 @@
-export * from './@Pdg';
+export * from './@pdg';
 export * from './Buttons';
 export * from './Dividers';
 export * from './Errors';

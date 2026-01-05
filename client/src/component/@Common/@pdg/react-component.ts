@@ -39,5 +39,5 @@ export const PersonalNoText = PPersonalNoText;
 export const ReactCode = PReactCode;
 export const Stack = PStack;
 export const TelText = PTelText;
-export const Text = PText;
+export const T = PText;
 export const WonText = PWonText;

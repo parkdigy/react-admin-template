@@ -5,7 +5,6 @@ declare type AlertDialogCommands = import('@pdg/react-dialog').AlertDialogComman
 // ConfirmDialog
 declare type ConfirmDialogProps = import('@pdg/react-dialog').ConfirmDialogProps;
 declare type ConfirmDialogCommands = import('@pdg/react-dialog').ConfirmDialogCommands;
-declare type ConfirmDialogCommandsRefFunction = import('@pdg/react-dialog').ConfirmDialogCommandsRefFunction;
 
 // Dialog
 declare const Dialog: typeof import('@pdg/react-dialog').Dialog;
