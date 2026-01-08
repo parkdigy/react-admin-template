@@ -4,7 +4,6 @@
 
 import { type AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
 import { type AdminUserAccessLogListDataItem, type AdminUserAccessLogListRequestData } from '@const';
-import dayjs from 'dayjs';
 
 const AdminUserAccessLogList = ({ noHash }: Props) => {
   /********************************************************************************************************************

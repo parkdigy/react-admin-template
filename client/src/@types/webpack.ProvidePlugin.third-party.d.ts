@@ -13,7 +13,8 @@ declare global {
 
   // dayjs
   const dayjs: typeof import('dayjs').default;
-  const DayJs: typeof import('dayjs').Dayjs;
+  const Dayjs: typeof import('dayjs').Dayjs;
+  type Dayjs = import('dayjs').Dayjs;
 
   // usehooks-ts
   const useWindowSize: typeof import('usehooks-ts').useWindowSize;
