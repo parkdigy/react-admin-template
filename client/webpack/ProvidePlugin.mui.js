@@ -3,6 +3,7 @@ module.exports = {
   useTheme: ['@mui/material', 'useTheme'],
 
   MuiBox: ['@mui/material', 'Box'],
+  MuiStack: ['@mui/material', 'Stack'],
   MuiIcon: ['@mui/material', 'Icon'],
   MuiButton: ['@mui/material', 'Button'],
   MuiTypography: ['@mui/material', 'Typography'],

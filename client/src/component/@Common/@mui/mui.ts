@@ -1,5 +1,6 @@
 import {
   Box,
+  Stack,
   Icon,
   Button,
   Typography,
@@ -24,6 +25,7 @@ import {
 } from '@mui/material';
 
 export const MuiBox = Box;
+export const MuiStack = Stack;
 export const MuiIcon = Icon;
 export const MuiButton = Button;
 export const MuiTypography = Typography;

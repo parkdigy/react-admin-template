@@ -13,6 +13,12 @@ declare global {
     AdditionalProps = {},
   > = Mui.BoxProps<RootComponent, AdditionalProps>;
 
+  const MuiStack: typeof Mui.Stack;
+  type MuiStackProps<
+    RootComponent extends React.ElementType = Mui.StackTypeMap['defaultComponent'],
+    AdditionalProps = {},
+  > = Mui.StackProps<RootComponent, AdditionalProps>;
+
   const MuiIcon: typeof Mui.Icon;
   type MuiIconProps<
     RootComponent extends React.ElementType = Mui.IconTypeMap['defaultComponent'],
