@@ -2,6 +2,7 @@ import * as PdgTypes from '@pdg/types';
 import * as PdgCompare from '@pdg/compare';
 import * as PdgDateTime from '@pdg/date-time';
 import * as PdgData from '@pdg/data';
+import * as PdgApi from '@pdg/api';
 import * as PdgReactHook from '@pdg/react-hook';
 
 declare global {
@@ -109,6 +110,7 @@ declare global {
   type ApiRequestOption = PdgApi.ApiRequestOption;
   type ApiOption<T = any, D = ApiRequestData> = PdgApi.ApiOption<T, D>;
   const ApiError: typeof PdgApi.ApiError;
+  type ApiError = PdgApi.ApiError;
 
   // react-hook
   const useChanged: typeof PdgReactHook.useChanged;

@@ -47,6 +47,9 @@ module.exports = {
   vl: ['@pdg/data', 'vl'],
   copy: ['@pdg/data', 'copy'],
 
+  // api
+  ApiError: ['@pdg/api', 'ApiError'],
+
   // react-hook
   useChanged: ['@pdg/react-hook', 'useChanged'],
   useFirstSkipChanged: ['@pdg/react-hook', 'useFirstSkipChanged'],
