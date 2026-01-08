@@ -1,4 +1,4 @@
-import { Checkbox, TableCell } from '@mui/material';
+import { Checkbox } from '@mui/material';
 
 interface Info {
   new_read?: boolean;
@@ -46,7 +46,7 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
 
   return (
     <>
-      <TableCell align='center'>
+      <MuiTableCell align='center'>
         {!noRead && (
           <Checkbox
             disabled={disabled}
@@ -74,8 +74,8 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
             }}
           />
         )}
-      </TableCell>
-      <TableCell align='center'>
+      </MuiTableCell>
+      <MuiTableCell align='center'>
         {!noWrite && (
           <Checkbox
             disabled={disabled}
@@ -97,8 +97,8 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
             }}
           />
         )}
-      </TableCell>
-      <TableCell align='center'>
+      </MuiTableCell>
+      <MuiTableCell align='center'>
         {!noExport && (
           <Checkbox
             disabled={disabled}
@@ -120,7 +120,7 @@ const AdminGroupFormRoleTableCells = ({ info, noRead, noWrite, noExport, disable
             }}
           />
         )}
-      </TableCell>
+      </MuiTableCell>
     </>
   );
 };

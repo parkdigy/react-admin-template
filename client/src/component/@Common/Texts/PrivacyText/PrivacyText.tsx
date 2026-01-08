@@ -46,7 +46,7 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
 
   return (
     <Box display='inline-flex' flexDirection='row' alignItems='center'>
-      <Typography {...textProps}>
+      <T {...textProps}>
         {textType === 'tel'
           ? g.format.telNo(text)
           : textType === 'business_no'
@@ -54,7 +54,7 @@ export const PrivacyText = ({ textType, text: initText, textProps, type, parentI
             : textType === 'personal_no'
               ? g.format.personalNo(text)
               : text}
-      </Typography>
+      </T>
       {!isPrivacyAccess && (
         <div style={{ marginLeft: 5, marginTop: -10, marginBottom: -10 }}>
           <IconButton onClick={handlePrivacyAccessClick}>Visibility</IconButton>

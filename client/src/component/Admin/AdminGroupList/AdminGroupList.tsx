@@ -85,7 +85,7 @@ const AdminGroupList = ({ noHash }: Props) => {
           label: '상태',
           width: 150,
           minWidth: 70,
-          onRender: (item) => (item.is_lock ? <Typography color='error'>제한</Typography> : '정상'),
+          onRender: (item) => (item.is_lock ? <T color='error'>제한</T> : '정상'),
         },
       ] as TableColumns<AdminGroupListDataItem>,
     []

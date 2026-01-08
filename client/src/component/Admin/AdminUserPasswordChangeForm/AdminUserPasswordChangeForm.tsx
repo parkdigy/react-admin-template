@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type MyPasswordChangeRequestData } from '@const';
-import { Alert } from '@mui/material';
 
 const AdminUserPasswordChangeForm = () => {
   /********************************************************************************************************************
@@ -41,9 +40,9 @@ const AdminUserPasswordChangeForm = () => {
 
   return (
     <div>
-      <Alert severity='info' sx={{ mb: 2 }}>
+      <MuiAlert severity='info' sx={{ mb: 2 }}>
         변경 할 비밀번호를 입력해 주세요.
-      </Alert>
+      </MuiAlert>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <FormBody>

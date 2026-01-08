@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type ErrorRetryProps as Props } from './ErrorRetry.types';
-import { Alert, Box, Button, Icon, Typography } from '@mui/material';
 
 const ErrorRetry = ({ error, onRetry }: Props) => {
   /********************************************************************************************************************
@@ -18,32 +17,32 @@ const ErrorRetry = ({ error, onRetry }: Props) => {
 
   return (
     <Container>
-      <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
+      <MuiBox sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
         <div>
-          <Icon
+          <MuiIcon
             fontSize='large'
             color='error'
             style={{ cursor: 'pointer' }}
             onClick={error ? () => setShowError(true) : undefined}
           >
             error
-          </Icon>
+          </MuiIcon>
         </div>
         {error && showError && (
-          <Alert severity='error' style={{ textAlign: 'left' }}>
+          <MuiAlert severity='error' style={{ textAlign: 'left' }}>
             <div>
               <pre style={{ margin: 0, padding: 0 }}>{error.stack}</pre>
             </div>
-          </Alert>
+          </MuiAlert>
         )}
         <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
         <p>잠시 후 재시도 해주세요.</p>
         {onRetry && (
-          <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={onRetry}>
-            <Typography fontSize='inherit'>재시도</Typography>
-          </Button>
+          <MuiButton variant='outlined' size='small' sx={{ mt: 1 }} onClick={onRetry}>
+            <MuiTypography fontSize='inherit'>재시도</MuiTypography>
+          </MuiButton>
         )}
-      </Box>
+      </MuiBox>
     </Container>
   );
 };

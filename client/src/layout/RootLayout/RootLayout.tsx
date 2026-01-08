@@ -9,7 +9,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { ApiError } from '@pdg/api';
 import { type AuthSignInResponseData } from '@const';
 import { Dialog, DialogContextProvider } from '@pdg/react-dialog';
-import { Box, Button, Icon, Typography } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
 import { type AppAuthInfo, AppContextProvider } from '@context';
 import { ThemeBase } from '../../theme';
@@ -191,7 +190,7 @@ const RootLayout = withErrorBoundary(() => {
               <RootLayoutAppInitializer />
 
               {error ? (
-                <Box
+                <MuiBox
                   style={{
                     position: 'fixed',
                     display: 'flex',
@@ -201,19 +200,19 @@ const RootLayout = withErrorBoundary(() => {
                     justifyContent: 'center',
                   }}
                 >
-                  <Box sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
+                  <MuiBox sx={{ color: 'text.secondary', fontSize: 'small', textAlign: 'center' }}>
                     <div>
-                      <Icon fontSize='large' color='error' style={{ cursor: 'pointer' }}>
+                      <MuiIcon fontSize='large' color='error' style={{ cursor: 'pointer' }}>
                         error
-                      </Icon>
+                      </MuiIcon>
                     </div>
                     <p style={{ marginTop: 10 }}>서버에 연결 중 오류가 발생했습니다.</p>
                     <p>잠시 후 재시도 해주세요.</p>
-                    <Button variant='outlined' size='small' sx={{ mt: 1 }} onClick={() => setError(false)}>
-                      <Typography fontSize='inherit'>재시도</Typography>
-                    </Button>
-                  </Box>
-                </Box>
+                    <MuiButton variant='outlined' size='small' sx={{ mt: 1 }} onClick={() => setError(false)}>
+                      <MuiTypography fontSize='inherit'>재시도</MuiTypography>
+                    </MuiButton>
+                  </MuiBox>
+                </MuiBox>
               ) : boundaryError ? (
                 <>
                   {errorName === 'ChunkLoadError' ? (

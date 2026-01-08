@@ -5,7 +5,6 @@
 import * as AdminLayout from '@pdg/react-admin-layout';
 import { Routes, Route, Navigate } from 'react-router';
 import { AuthSignIn } from '@comp';
-import { Box } from '@mui/material';
 
 const CardLayout = () => {
   /********************************************************************************************************************

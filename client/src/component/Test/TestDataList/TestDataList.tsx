@@ -1,6 +1,5 @@
 import { type TestDataListProps as Props } from './TestDataList.types';
 import { type TestDataListDataItem, TestDataStatus } from '@const';
-import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
 import { TestDataFormDialog, TestDataInfoDialog, usePrivacyAccessReasonDialog } from '@dialog';
 
@@ -246,13 +245,13 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
                 variant='text'
                 placement='left'
                 menuList={
-                  <MenuList>
-                    <MenuItem onClick={() => handleTableMenuClick(Menu.edit, item)}>
+                  <MuiMenuList>
+                    <MuiMenuItem onClick={() => handleTableMenuClick(Menu.edit, item)}>
                       <Icon>edit</Icon> 수정
-                    </MenuItem>
-                    <MenuItem color='danger' onClick={() => handleTableMenuClick(Menu.remove, item)}>
+                    </MuiMenuItem>
+                    <MuiMenuItem color='danger' onClick={() => handleTableMenuClick(Menu.remove, item)}>
                       <Icon>delete</Icon> 삭제
-                    </MenuItem>
+                    </MuiMenuItem>
                     <Divider />
                     <StyledTableMenuItemCopyToClipboard>
                       <CopyToClipboardButton
@@ -276,7 +275,7 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
                         Mobile 복사
                       </CopyToClipboardButton>
                     </StyledTableMenuItemCopyToClipboard>
-                  </MenuList>
+                  </MuiMenuList>
                 }
               />
             );

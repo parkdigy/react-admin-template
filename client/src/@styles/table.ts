@@ -1,6 +1,4 @@
-import { MenuItem } from '@mui/material';
-
-export const StyledTableMenuItemCopyToClipboard = styled(MenuItem)`
+export const StyledTableMenuItemCopyToClipboard = styled(MuiMenuItem)`
   padding: 0;
   .PButton {
     padding: 4px 16px !important;

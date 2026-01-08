@@ -1,4 +1,3 @@
-import { type SxProps, type TypographyProps } from '@mui/material';
 import { type Theme } from '@mui/material/styles';
 
 export const mui = {
@@ -20,7 +19,7 @@ export const mui = {
    * @param color - 텍스트 컬러
    * @returns sx 컬러
    * ******************************************************************************************************************/
-  typographyColorToSxColor(color: TypographyProps['color']) {
+  typographyColorToSxColor(color: MuiTypographyProps['color']) {
     if (typeof color === 'string') {
       if (['primary', 'secondary', 'info', 'warning', 'error', 'success'].includes(color)) {
         return `${color}.main`;

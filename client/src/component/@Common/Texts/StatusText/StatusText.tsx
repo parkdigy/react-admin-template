@@ -6,7 +6,7 @@ export const StatusText = ({ type, status, children }: Props) => {
    * ******************************************************************************************************************/
 
   const color = useMemo(() => {
-    let color: TypographyProps['color'] | undefined;
+    let color: TProps['color'] | undefined;
 
     switch (type) {
       case 'user':
@@ -32,9 +32,9 @@ export const StatusText = ({ type, status, children }: Props) => {
    * ******************************************************************************************************************/
 
   return (
-    <Typography color={color} fontWeight='bold'>
+    <T color={color} fontWeight='bold'>
       {children}
-    </Typography>
+    </T>
   );
 };
 

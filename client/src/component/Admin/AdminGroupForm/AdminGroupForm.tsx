@@ -9,7 +9,6 @@ import {
   type AdminGroupMenuListDataItem,
   type AdminGroupMenuListDataItemBase,
 } from '@const';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
 
 const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
@@ -251,7 +250,8 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
               disableClearable
               onRenderItem={(item) => (
                 <div>
-                  {item.label} {notEmpty(item.groupName) && <Chip label={item.groupName} size='small' sx={{ ml: 1 }} />}
+                  {item.label}{' '}
+                  {notEmpty(item.groupName) && <MuiChip label={item.groupName} size='small' sx={{ ml: 1 }} />}
                 </div>
               )}
               onLoadItems={handleUsersLoadItems}
@@ -276,29 +276,29 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                   },
                 }}
               >
-                <TableHead>
-                  <TableRow>
-                    <TableCell style={{ minWidth: 100 }}>대분류</TableCell>
-                    <TableCell style={{ minWidth: 100 }}>중분류</TableCell>
-                    <TableCell align='center' style={{ width: 100 }}>
+                <MuiTableHead>
+                  <MuiTableRow>
+                    <MuiTableCell style={{ minWidth: 100 }}>대분류</MuiTableCell>
+                    <MuiTableCell style={{ minWidth: 100 }}>중분류</MuiTableCell>
+                    <MuiTableCell align='center' style={{ width: 100 }}>
                       조회
-                    </TableCell>
-                    <TableCell align='center' style={{ width: 100 }}>
+                    </MuiTableCell>
+                    <MuiTableCell align='center' style={{ width: 100 }}>
                       수정
-                    </TableCell>
-                    <TableCell align='center' style={{ width: 100 }}>
+                    </MuiTableCell>
+                    <MuiTableCell align='center' style={{ width: 100 }}>
                       다운로드
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
+                    </MuiTableCell>
+                  </MuiTableRow>
+                </MuiTableHead>
+                <MuiTableBody>
                   {menu.map((info) => (
                     <React.Fragment key={info.id}>
-                      <TableRow>
-                        <TableCell rowSpan={(info.items?.length || 0) + 1}>{info.name}</TableCell>
+                      <MuiTableRow>
+                        <MuiTableCell rowSpan={(info.items?.length || 0) + 1}>{info.name}</MuiTableCell>
                         {info.items?.length === 0 && (
                           <>
-                            <TableCell />
+                            <MuiTableCell />
                             <AdminGroupFormRoleTableCells
                               info={info}
                               disabled={!editable}
@@ -306,24 +306,24 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                             />
                           </>
                         )}
-                      </TableRow>
+                      </MuiTableRow>
                       {info.items?.map((subInfo) => (
-                        <TableRow key={subInfo.id}>
-                          <TableCell>{subInfo.name}</TableCell>
+                        <MuiTableRow key={subInfo.id}>
+                          <MuiTableCell>{subInfo.name}</MuiTableCell>
                           <AdminGroupFormRoleTableCells
                             info={subInfo}
                             disabled={!editable}
                             onChange={(v) => handleRoleChange(subInfo, v)}
                           />
-                        </TableRow>
+                        </MuiTableRow>
                       ))}
                     </React.Fragment>
                   ))}
-                  <TableRow>
-                    <TableCell>
+                  <MuiTableRow>
+                    <MuiTableCell>
                       <IconText icon='person'>개인정보</IconText>
-                    </TableCell>
-                    <TableCell />
+                    </MuiTableCell>
+                    <MuiTableCell />
                     <AdminGroupFormRoleTableCells
                       info={privacyAccess}
                       noWrite
@@ -331,8 +331,8 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                       disabled={!editable}
                       onChange={(v) => handleRoleChange('privacy', v)}
                     />
-                  </TableRow>
-                </TableBody>
+                  </MuiTableRow>
+                </MuiTableBody>
               </Table>
             </FormCol>
           </FormRow>

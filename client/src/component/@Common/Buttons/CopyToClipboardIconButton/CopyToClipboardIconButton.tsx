@@ -19,7 +19,7 @@ const CopyToClipboardIconButton = ({ text, tooltip, icon, size, successMsg, ...p
       text={text}
       onCopy={() => g.snackbar.showSuccess(ifUndefined(successMsg, '클립보드에 복사되었습니다.'))}
     >
-      {tooltip === undefined ? content : <Tooltip title={tooltip}>{content}</Tooltip>}
+      {tooltip === undefined ? content : <MuiTooltip title={tooltip}>{content}</MuiTooltip>}
     </CopyToClipboard>
   );
 };

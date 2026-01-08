@@ -37,16 +37,16 @@ const AccessLogger = ({ path, element }: Props) => {
             break;
           case 'PASSWORD_RESET':
             alertDialog({
-              content: <Typography>비밀번호 변경 후 다른 메뉴를 사용할 수 있습니다.</Typography>,
+              content: <T>비밀번호 변경 후 다른 메뉴를 사용할 수 있습니다.</T>,
             });
             break;
           case 'NOTFOUND':
             alertDialog({
-              content: <Typography color='red'>{pathname.substring(1)} Access log key not found!</Typography>,
+              content: <T color='red'>{pathname.substring(1)} Access log key not found!</T>,
             });
             break;
           default:
-            alertDialog({ content: <Typography color='red'>{pathname.substring(1)} Unhandled!</Typography> });
+            alertDialog({ content: <T color='red'>{pathname.substring(1)} Unhandled!</T> });
             break;
         }
       })

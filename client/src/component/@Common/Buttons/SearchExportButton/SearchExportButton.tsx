@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type SearchExportButtonProps as Props } from './SearchExportButton.types';
-import { MenuItem as BaseMenuItem, menuItemClasses, Menu } from '@mui/material';
 
 const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
   /********************************************************************************************************************
@@ -51,7 +50,7 @@ const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
         aria-expanded={anchorEl ? 'true' : undefined}
         onClick={handleClick}
       />
-      <Menu open={!!anchorEl} anchorEl={anchorEl} onClose={handleClose}>
+      <MuiMenu open={!!anchorEl} anchorEl={anchorEl} onClose={handleClose}>
         {items.map((info, idx) => (
           <MenuItem
             key={idx}
@@ -66,10 +65,10 @@ const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
                 {info.icon}
               </Icon>
             )}
-            <Typography color={info.color}>{info.label}</Typography>
+            <T color={info.color}>{info.label}</T>
           </MenuItem>
         ))}
-      </Menu>
+      </MuiMenu>
     </div>
   ) : (
     <SearchButton {...props} style={style} startIcon='download' />
@@ -78,7 +77,7 @@ const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
 
 export default SearchExportButton;
 
-const MenuItem = styled(BaseMenuItem)`
+const MenuItem = styled(MuiMenuItem)`
   list-style: none;
   display: flex;
   gap: 5px;
@@ -97,17 +96,17 @@ const MenuItem = styled(BaseMenuItem)`
     border-bottom: none;
   }
 
-  &.${menuItemClasses.focusVisible} {
+  &.${MuiMenuItemClasses.focusVisible} {
     outline: 3px solid #99ccf3;
     background-color: #e5eaf2;
     color: #1c2025;
   }
 
-  &.${menuItemClasses.disabled} {
+  &.${MuiMenuItemClasses.disabled} {
     color: #b0b8c4;
   }
 
-  &:hover:not(.${menuItemClasses.disabled}) {
+  &:hover:not(.${MuiMenuItemClasses.disabled}) {
     background-color: #f0f7ff;
     color: #1c2025;
   }

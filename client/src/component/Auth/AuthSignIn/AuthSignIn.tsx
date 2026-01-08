@@ -1,5 +1,5 @@
 import { type AuthSignInProps as Props } from './AuthSignIn.types';
-import { Alert, Card, CardActions, CardContent, CardHeader, Grid } from '@mui/material';
+import { Card, CardActions, CardContent, CardHeader } from '@mui/material';
 
 export const AuthSignIn = ({}: Props) => {
   /********************************************************************************************************************
@@ -52,9 +52,9 @@ export const AuthSignIn = ({}: Props) => {
       <CardHeader title='Login' subheader='로그인' />
       <CardContent sx={{ width: 400 }}>
         {errorText && (
-          <Alert severity='error' sx={{ mb: 2 }}>
+          <MuiAlert severity='error' sx={{ mb: 2 }}>
             {errorText}
-          </Alert>
+          </MuiAlert>
         )}
         <Form ref={formRef} onSubmit={handleSubmit}>
           <FormBody>
@@ -83,15 +83,15 @@ export const AuthSignIn = ({}: Props) => {
         </Form>
       </CardContent>
       <CardActions disableSpacing sx={{ pt: 0 }}>
-        <Grid container>
-          <Grid>
+        <MuiGrid container>
+          <MuiGrid>
             <Button variant='text'>회원가입</Button>
-          </Grid>
-          <Grid sx={{ flex: 1, textAlign: 'right' }}>
+          </MuiGrid>
+          <MuiGrid sx={{ flex: 1, textAlign: 'right' }}>
             <Button variant='text'>아이디 찾기</Button>
             <Button variant='text'>비밀번호 찾기</Button>
-          </Grid>
-        </Grid>
+          </MuiGrid>
+        </MuiGrid>
       </CardActions>
     </Card>
   );

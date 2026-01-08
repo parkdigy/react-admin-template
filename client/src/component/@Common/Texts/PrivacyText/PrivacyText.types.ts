@@ -3,5 +3,5 @@ export interface PrivacyTextProps {
   text: string;
   type: string;
   parentId: number;
-  textProps?: Omit<TypographyProps, 'children'>;
+  textProps?: Omit<TProps, 'children'>;
 }

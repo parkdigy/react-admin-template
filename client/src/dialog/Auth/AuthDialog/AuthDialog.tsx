@@ -3,7 +3,6 @@
  * - post, patch, delete API 호출 시 비밀번호를 다시 입력받아 인증하는 용도
  * ******************************************************************************************************************/
 
-import { Grid } from '@mui/material';
 import { type AuthDialogProps as Props } from './AuthDialog.types';
 
 const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props) => {
@@ -60,9 +59,9 @@ const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props)
       titleIcon='lock'
       title='계정 인증'
       content={
-        <Grid container spacing={2} direction='column' sx={{ mt: 0.5, minWidth: 300 }}>
-          <Grid style={{ textAlign: 'center' }}>{intro}</Grid>
-          <Grid>
+        <MuiGrid container spacing={2} direction='column' sx={{ mt: 0.5, minWidth: 300 }}>
+          <MuiGrid style={{ textAlign: 'center' }}>{intro}</MuiGrid>
+          <MuiGrid>
             <Form sx={{ mt: 2 }} color={color} onSubmit={handleSubmit}>
               <FormBody>
                 <FormRow>
@@ -86,8 +85,8 @@ const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props)
                 </FormRow>
               </FormFooter>
             </Form>
-          </Grid>
-        </Grid>
+          </MuiGrid>
+        </MuiGrid>
       }
       onShow={onShow}
       onClose={handleClose}

@@ -239,7 +239,7 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
           minWidth: 70,
           onGetStyle: getLockStyle,
           onRender(item) {
-            return item.is_lock ? <Typography color='error'>제한</Typography> : '정상';
+            return item.is_lock ? <T color='error'>제한</T> : '정상';
           },
         },
         {
