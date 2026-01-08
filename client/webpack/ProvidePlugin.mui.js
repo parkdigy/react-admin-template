@@ -25,4 +25,5 @@ module.exports = {
   MuiTabs: ['@mui/material', 'Tabs'],
   MuiTab: ['@mui/material', 'Tab'],
   MuiBadge: ['@mui/material', 'Badge'],
+  MuiLink: ['@mui/material', 'Link'],
 };

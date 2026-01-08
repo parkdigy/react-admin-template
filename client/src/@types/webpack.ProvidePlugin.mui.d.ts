@@ -122,6 +122,12 @@ declare global {
     RootComponent extends React.ElementType = Mui.BadgeTypeMap['defaultComponent'],
     AdditionalProps = {},
   > = Mui.BadgeProps<RootComponent, AdditionalProps>;
+
+  const MuiLink: typeof Mui.Link;
+  type MuiLinkProps<
+    RootComponent extends React.ElementType = Mui.LinkTypeMap['defaultComponent'],
+    AdditionalProps = {},
+  > = Mui.LinkProps<RootComponent, AdditionalProps>;
 }
 
 export {};
