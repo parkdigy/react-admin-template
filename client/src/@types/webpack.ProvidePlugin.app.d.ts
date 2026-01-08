@@ -47,6 +47,9 @@ declare global {
   const mediaQuery: typeof import('../global/mediaQuery/index.ts').default;
   const useScreenSize: typeof import('../global/mediaQuery/index.ts').useScreenSize;
 
+  // Context
+  const useAppState: typeof import('../context/index.ts').useAppState;
+
   // hooks
   const useFormBlockData: typeof import('../global/hooks/index.ts').useFormBlockData;
   const useFormBlockValid: typeof import('../global/hooks/index.ts').useFormBlockValid;

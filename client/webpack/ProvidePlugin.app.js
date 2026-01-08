@@ -44,6 +44,9 @@ module.exports = {
   mediaQuery: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'default'],
   useScreenSize: [path.resolve(__dirname, '../src/global/mediaQuery/index.ts'), 'useScreenSize'],
 
+  // Context
+  useAppState: [path.resolve(__dirname, '../src/context/AppContext/useAppState.ts'), 'default'],
+
   // hooks
   useFormBlockData: [path.resolve(__dirname, '../src/global/hooks/index.ts'), 'useFormBlockData'],
   useFormBlockValid: [path.resolve(__dirname, '../src/global/hooks/index.ts'), 'useFormBlockValid'],
