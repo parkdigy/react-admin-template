@@ -3,9 +3,8 @@
  * - 기본 Context
  * ******************************************************************************************************************/
 
-import { createContext } from 'react';
 import { type AppContextValue } from './AppContext.types';
 
-const AppContext = createContext<AppContextValue>({} as any);
+const AppContext = React.createContext<AppContextValue>({} as AppContextValue);
 
 export default AppContext;
