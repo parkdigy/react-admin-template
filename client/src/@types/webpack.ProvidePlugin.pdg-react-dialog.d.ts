@@ -1,27 +1,33 @@
-// AlertDialog
-declare type AlertDialogProps = import('@pdg/react-dialog').AlertDialogProps;
-declare type AlertDialogCommands = import('@pdg/react-dialog').AlertDialogCommands;
+import * as PdgReactDialog from '@pdg/react-dialog';
 
-// ConfirmDialog
-declare type ConfirmDialogProps = import('@pdg/react-dialog').ConfirmDialogProps;
-declare type ConfirmDialogCommands = import('@pdg/react-dialog').ConfirmDialogCommands;
+declare global {
+  // AlertDialog
+  type AlertDialogProps = PdgReactDialog.AlertDialogProps;
+  type AlertDialogCommands = PdgReactDialog.AlertDialogCommands;
 
-// Dialog
-declare const Dialog: typeof import('@pdg/react-dialog').Dialog;
-declare type DialogProps = import('@pdg/react-dialog').DialogProps;
-declare type DialogCommands = import('@pdg/react-dialog').DialogCommands;
+  // ConfirmDialog
+  type ConfirmDialogProps = PdgReactDialog.ConfirmDialogProps;
+  type ConfirmDialogCommands = PdgReactDialog.ConfirmDialogCommands;
 
-// DialogActionButton
-declare const DialogActionButton: typeof import('@pdg/react-dialog').DialogActionButton;
-declare type DialogActionButtonProps = import('@pdg/react-dialog').DialogActionButtonProps;
+  // Dialog
+  const Dialog: typeof PdgReactDialog.Dialog;
+  type DialogProps = PdgReactDialog.DialogProps;
+  type DialogCommands = PdgReactDialog.DialogCommands;
 
-// DialogContext
-declare type DialogRequireProps = import('@pdg/react-dialog').DialogRequireProps;
+  // DialogActionButton
+  const DialogActionButton: typeof PdgReactDialog.DialogActionButton;
+  type DialogActionButtonProps = PdgReactDialog.DialogActionButtonProps;
 
-// uses
-declare type DialogDefault = import('@pdg/react-dialog').DialogDefault;
-declare const setDialogDefault: typeof import('@pdg/react-dialog').setDialogDefault;
-declare const getDialogDefault: typeof import('@pdg/react-dialog').getDialogDefault;
-declare const useAlertDialog: typeof import('@pdg/react-dialog').useAlertDialog;
-declare const useConfirmDialog: typeof import('@pdg/react-dialog').useConfirmDialog;
-declare const useDialog: typeof import('@pdg/react-dialog').useDialog;
+  // DialogContext
+  type DialogRequireProps = PdgReactDialog.DialogRequireProps;
+
+  // uses
+  type DialogDefault = PdgReactDialog.DialogDefault;
+  const setDialogDefault: typeof PdgReactDialog.setDialogDefault;
+  const getDialogDefault: typeof PdgReactDialog.getDialogDefault;
+  const useAlertDialog: typeof PdgReactDialog.useAlertDialog;
+  const useConfirmDialog: typeof PdgReactDialog.useConfirmDialog;
+  const useDialog: typeof PdgReactDialog.useDialog;
+}
+
+export {};

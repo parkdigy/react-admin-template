@@ -1,85 +1,85 @@
-// types
-declare type TableCommonProps = import('@pdg/react-table').PTableCommonProps;
-declare type TableCommonSxProps = import('@pdg/react-table').PTableCommonSxProps;
+import * as PdgReactTable from '@pdg/react-table';
 
-// InfoTable
-declare const InfoTable: typeof import('@pdg/react-table').PInfoTable;
-declare type InfoTableProps<T extends InfoTableInfo = InfoTableInfo> = import('@pdg/react-table').PInfoTableProps<T>;
-declare type InfoTableInfo = import('@pdg/react-table').PInfoTableInfo;
-declare type InfoTableItemType = import('@pdg/react-table').PInfoTableItemType;
-declare type InfoTableItem<T extends InfoTableInfo = InfoTableInfo> = import('@pdg/react-table').PInfoTableItem<T>;
-declare type InfoTableItems<T extends InfoTableInfo = InfoTableInfo> = import('@pdg/react-table').PInfoTableItems<T>;
-declare type InfoTableCols = import('@pdg/react-table').PInfoTableCols;
+declare global {
+  // types
+  type TableCommonProps = PdgReactTable.PTableCommonProps;
+  type TableCommonSxProps = PdgReactTable.PTableCommonSxProps;
 
-// SearchTable
-declare const SearchTable: typeof import('@pdg/react-table').PSearchTable;
-declare type SearchTableProps<T extends TableItem = TableItem> = import('@pdg/react-table').PSearchTableProps<T>;
-declare type SearchTableCommands<T extends TableItem = TableItem> = import('@pdg/react-table').PSearchTableCommands<T>;
-declare type SearchTableSearchInfo = import('@pdg/react-table').PSearchTableSearchInfo;
-declare type SearchTableTableInfo<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PSearchTableTableInfo<T>;
-declare type SearchTableData<T extends TableItem = TableItem> = import('@pdg/react-table').PSearchTableData<T>;
-declare type SearchTableSearchProps = import('@pdg/react-table').PSearchTableSearchProps;
-declare type SearchTableTableProps<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PSearchTableTableProps<T>;
+  // InfoTable
+  const InfoTable: typeof PdgReactTable.PInfoTable;
+  type InfoTableProps<T extends InfoTableInfo = InfoTableInfo> = PdgReactTable.PInfoTableProps<T>;
+  type InfoTableInfo = PdgReactTable.PInfoTableInfo;
+  type InfoTableItemType = PdgReactTable.PInfoTableItemType;
+  type InfoTableItem<T extends InfoTableInfo = InfoTableInfo> = PdgReactTable.PInfoTableItem<T>;
+  type InfoTableItems<T extends InfoTableInfo = InfoTableInfo> = PdgReactTable.PInfoTableItems<T>;
+  type InfoTableCols = PdgReactTable.PInfoTableCols;
 
-// Table
-declare const Table: typeof import('@pdg/react-table').PTable;
-declare type TableProps<T extends TableItem = TableItem> = import('@pdg/react-table').PTableProps<T>;
-declare type TableCommands<T extends TableItem = TableItem> = import('@pdg/react-table').PTableCommands<T>;
-declare type TableItem = import('@pdg/react-table').PTableItem;
-declare type TableProgressiveVisibleInfo = import('@pdg/react-table').PTableProgressiveVisibleInfo;
-declare type TableColumn<T extends TableItem = TableItem> = import('@pdg/react-table').PTableColumn<T>;
-declare type TableColumns<T extends TableItem = TableItem> = import('@pdg/react-table').PTableColumns<T>;
+  // SearchTable
+  const SearchTable: typeof PdgReactTable.PSearchTable;
+  type SearchTableProps<T extends TableItem = TableItem> = PdgReactTable.PSearchTableProps<T>;
+  type SearchTableCommands<T extends TableItem = TableItem> = PdgReactTable.PSearchTableCommands<T>;
+  type SearchTableSearchInfo = PdgReactTable.PSearchTableSearchInfo;
+  type SearchTableTableInfo<T extends TableItem = TableItem> = PdgReactTable.PSearchTableTableInfo<T>;
+  type SearchTableData<T extends TableItem = TableItem> = PdgReactTable.PSearchTableData<T>;
+  type SearchTableSearchProps = PdgReactTable.PSearchTableSearchProps;
+  type SearchTableTableProps<T extends TableItem = TableItem> = PdgReactTable.PSearchTableTableProps<T>;
 
-// TableBodyCell
-declare const TableBodyCell: typeof import('@pdg/react-table').PTableBodyCell;
-declare type TableBodyCellProps<T extends TableItem = TableItem> = import('@pdg/react-table').PTableBodyCellProps<T>;
-declare type TableBodyCellCommands = import('@pdg/react-table').PTableBodyCellCommands;
+  // Table
+  const Table: typeof PdgReactTable.PTable;
+  type TableProps<T extends TableItem = TableItem> = PdgReactTable.PTableProps<T>;
+  type TableCommands<T extends TableItem = TableItem> = PdgReactTable.PTableCommands<T>;
+  type TableItem = PdgReactTable.PTableItem;
+  type TableProgressiveVisibleInfo = PdgReactTable.PTableProgressiveVisibleInfo;
+  type TableColumn<T extends TableItem = TableItem> = PdgReactTable.PTableColumn<T>;
+  type TableColumns<T extends TableItem = TableItem> = PdgReactTable.PTableColumns<T>;
 
-// TableBodyRow
-declare const TableBodyRow: typeof import('@pdg/react-table').PTableBodyRow;
-declare type TableBodyRowProps<T extends TableItem = TableItem> = import('@pdg/react-table').PTableBodyRowProps<T>;
+  // TableBodyCell
+  const TableBodyCell: typeof PdgReactTable.PTableBodyCell;
+  type TableBodyCellProps<T extends TableItem = TableItem> = PdgReactTable.PTableBodyCellProps<T>;
+  type TableBodyCellCommands = PdgReactTable.PTableBodyCellCommands;
 
-// TableButton
-declare const TableButton: typeof import('@pdg/react-table').PTableButton;
-declare type TableButtonProps = import('@pdg/react-table').PTableButtonProps;
+  // TableBodyRow
+  const TableBodyRow: typeof PdgReactTable.PTableBodyRow;
+  type TableBodyRowProps<T extends TableItem = TableItem> = PdgReactTable.PTableBodyRowProps<T>;
 
-// TableCommonCell
-declare const TableCommonCell: typeof import('@pdg/react-table').PTableCommonCell;
-declare type TableCommonCellProps<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PTableCommonCellProps<T>;
+  // TableButton
+  const TableButton: typeof PdgReactTable.PTableButton;
+  type TableButtonProps = PdgReactTable.PTableButtonProps;
 
-// TableFooterCell
-declare const TableFooterCell: typeof import('@pdg/react-table').PTableFooterCell;
-declare type TableFooterCellProps<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PTableFooterCellProps<T>;
+  // TableCommonCell
+  const TableCommonCell: typeof PdgReactTable.PTableCommonCell;
+  type TableCommonCellProps<T extends TableItem = TableItem> = PdgReactTable.PTableCommonCellProps<T>;
 
-// TableHeadCell
-declare const TableHeadCell: typeof import('@pdg/react-table').PTableHeadCell;
-declare type TableHeadCellProps<T extends TableItem = TableItem> = import('@pdg/react-table').PTableHeadCellProps<T>;
+  // TableFooterCell
+  const TableFooterCell: typeof PdgReactTable.PTableFooterCell;
+  type TableFooterCellProps<T extends TableItem = TableItem> = PdgReactTable.PTableFooterCellProps<T>;
 
-// TableMenuButton
-declare const TableMenuButton: typeof import('@pdg/react-table').PTableMenuButton;
-declare type TableMenuButtonProps = import('@pdg/react-table').PTableMenuButtonProps;
+  // TableHeadCell
+  const TableHeadCell: typeof PdgReactTable.PTableHeadCell;
+  type TableHeadCellProps<T extends TableItem = TableItem> = PdgReactTable.PTableHeadCellProps<T>;
 
-// TablePagination
-declare const TablePagination: typeof import('@pdg/react-table').PTablePagination;
-declare type TablePaginationProps = import('@pdg/react-table').PTablePaginationProps;
-declare type TablePaging = import('@pdg/react-table').PTablePaging;
+  // TableMenuButton
+  const TableMenuButton: typeof PdgReactTable.PTableMenuButton;
+  type TableMenuButtonProps = PdgReactTable.PTableMenuButtonProps;
 
-// TableSortableBody
-declare const TableSortableBody: typeof import('@pdg/react-table').PTableSortableBody;
-declare type TableSortableBodyProps<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PTableSortableBodyProps<T>;
+  // TablePagination
+  const TablePagination: typeof PdgReactTable.PTablePagination;
+  type TablePaginationProps = PdgReactTable.PTablePaginationProps;
+  type TablePaging = PdgReactTable.PTablePaging;
 
-// TableSortableBodyBlock
-declare const TableSortableBodyBlock: typeof import('@pdg/react-table').PTableSortableBodyBlock;
-declare type TableSortableBodyBlockProps<T extends TableItem = TableItem> =
-  import('@pdg/react-table').PTableSortableBodyBlockProps<T>;
+  // TableSortableBody
+  const TableSortableBody: typeof PdgReactTable.PTableSortableBody;
+  type TableSortableBodyProps<T extends TableItem = TableItem> = PdgReactTable.PTableSortableBodyProps<T>;
 
-// TableTopHead
-declare const TableTopHead: typeof import('@pdg/react-table').PTableTopHead;
-declare type TableTopHeadProps<T extends TableItem = TableItem> = import('@pdg/react-table').PTableTopHeadProps<T>;
-declare type TableTopHeadRowColumn = import('@pdg/react-table').PTableTopHeadRowColumn;
-declare type TableTopHeadRowColumnValue = import('@pdg/react-table').PTableTopHeadRowColumnValue;
+  // TableSortableBodyBlock
+  const TableSortableBodyBlock: typeof PdgReactTable.PTableSortableBodyBlock;
+  type TableSortableBodyBlockProps<T extends TableItem = TableItem> = PdgReactTable.PTableSortableBodyBlockProps<T>;
+
+  // TableTopHead
+  const TableTopHead: typeof PdgReactTable.PTableTopHead;
+  type TableTopHeadProps<T extends TableItem = TableItem> = PdgReactTable.PTableTopHeadProps<T>;
+  type TableTopHeadRowColumn = PdgReactTable.PTableTopHeadRowColumn;
+  type TableTopHeadRowColumnValue = PdgReactTable.PTableTopHeadRowColumnValue;
+}
+
+export {};
