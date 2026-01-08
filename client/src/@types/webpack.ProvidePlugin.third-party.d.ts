@@ -3,7 +3,7 @@ declare global {
   const styled: typeof import('styled-components').default;
 
   // classnames
-  const classnames: typeof import('classnames').default;
+  const classnames: typeof import('classnames');
 
   // react-router
   const useNavigate: typeof import('react-router').useNavigate;
@@ -12,7 +12,7 @@ declare global {
   const useSearchParams: typeof import('react-router').useSearchParams;
 
   // dayjs
-  const dayjs: typeof import('dayjs').default;
+  const dayjs: typeof import('dayjs');
   const Dayjs: typeof import('dayjs').Dayjs;
   type Dayjs = import('dayjs').Dayjs;
 

@@ -12,7 +12,7 @@ module.exports = {
   useSearchParams: ['react-router', 'useSearchParams'],
 
   // dayjs
-  dayjs: ['dayjs', 'default'],
+  dayjs: 'dayjs',
   Dayjs: ['dayjs', 'Dayjs'],
 
   // usehooks-ts
