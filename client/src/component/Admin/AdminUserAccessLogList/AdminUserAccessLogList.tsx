@@ -2,9 +2,8 @@
  * 어드민 사용 로그 목록 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
-import { AdminUserAccessLogListDataItem, AdminUserAccessLogListRequestData } from '@const';
+import { type AdminUserAccessLogListProps as Props } from './AdminUserAccessLogList.types';
+import { type AdminUserAccessLogListDataItem, type AdminUserAccessLogListRequestData } from '@const';
 import dayjs from 'dayjs';
 
 const AdminUserAccessLogList = ({ noHash }: Props) => {

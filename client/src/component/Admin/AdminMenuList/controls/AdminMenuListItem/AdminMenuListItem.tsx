@@ -2,8 +2,7 @@
  * 어드민 메뉴 리스트 아이템 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminMenuListItemProps as Props } from './AdminMenuListItem.types';
+import { type AdminMenuListItemProps as Props } from './AdminMenuListItem.types';
 import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

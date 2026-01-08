@@ -2,9 +2,7 @@
  * 어드민 사용자 로그인 로그 목록 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { AdminUserLoginLogListDialogProps as Props } from './AdminUserLoginLogListDialog.types';
+import { type AdminUserLoginLogListDialogProps as Props } from './AdminUserLoginLogListDialog.types';
 import { AdminUserLoginLogList } from '@comp';
 
 const AdminUserLoginLogListDialog = ({ email, onChange, onShow, onClose }: Props) => {

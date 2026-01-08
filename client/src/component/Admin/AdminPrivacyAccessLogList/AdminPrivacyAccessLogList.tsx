@@ -1,6 +1,5 @@
-import React from 'react';
-import { AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
-import { AdminPrivacyAccessLogListDataItem } from '@const';
+import { type AdminPrivacyAccessLogListProps as Props } from './AdminPrivacyAccessLogList.types';
+import { type AdminPrivacyAccessLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 
 const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {

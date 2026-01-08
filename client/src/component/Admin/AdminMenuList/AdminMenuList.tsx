@@ -2,12 +2,11 @@
  * 어드민 메뉴 리스트 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminMenuListProps as Props } from './AdminMenuList.types';
-import { AdminMenuListData, AdminMenuListDataItem } from '@const';
+import { type AdminMenuListProps as Props } from './AdminMenuList.types';
+import { type AdminMenuListData, type AdminMenuListDataItem } from '@const';
 import { AdminMenuFormDialog } from '@dialog';
 import { AdminMenuListItem } from './controls';
-import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 import { styled } from '@mui/material';

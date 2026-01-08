@@ -1,6 +1,5 @@
-import React from 'react';
 import { PrivacyAccessReasonDialog } from './PrivacyAccessReasonDialog';
-import { PrivacyAccessReasonDialogProps } from './PrivacyAccessReasonDialog.types';
+import { type PrivacyAccessReasonDialogProps } from './PrivacyAccessReasonDialog.types';
 import { Typography } from '@mui/material';
 
 export function usePrivacyAccessReasonDialog(): (

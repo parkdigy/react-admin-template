@@ -1,5 +1,4 @@
-import React from 'react';
-import { ThemeProvider, CssBaseline, createTheme, LinkProps } from '@mui/material';
+import { ThemeProvider, CssBaseline, createTheme, type LinkProps } from '@mui/material';
 import LinkBehavior from './LinkBehavior';
 
 let theme = createTheme({

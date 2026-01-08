@@ -2,8 +2,7 @@
  * 세로 분리 Line 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { VerticalDividerProps as Props } from './VerticalDivider.types';
+import { type VerticalDividerProps as Props } from './VerticalDivider.types';
 import { styled } from '@mui/material';
 
 const VerticalDivider = ({}: Props) => {

@@ -2,7 +2,7 @@
  * 어드민 회원 로그인 로그 API
  * ******************************************************************************************************************/
 
-import { AdminUserLoginLogListData, AdminUserLoginLogListRequestData } from './AdminUserLoginLog.types';
+import { type AdminUserLoginLogListData, type AdminUserLoginLogListRequestData } from './AdminUserLoginLog.types';
 
 export default {
   // 로그인 로그 목록

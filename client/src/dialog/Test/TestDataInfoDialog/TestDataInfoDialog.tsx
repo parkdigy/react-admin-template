@@ -1,6 +1,4 @@
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { TestDataInfoDialogProps as Props } from './TestDataInfoDialog.types';
+import { type TestDataInfoDialogProps as Props } from './TestDataInfoDialog.types';
 import { TestDataInfo } from '@comp';
 
 const TestDataInfoDialog = ({ id, subTitle, onShow, onClose, onChange }: Props) => {

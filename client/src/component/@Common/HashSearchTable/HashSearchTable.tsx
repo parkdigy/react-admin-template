@@ -2,8 +2,7 @@
  * SearchTable 컴포넌트에 Hash 기능 추가한 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { HashSearchTableProps as Props } from './HashSearchTable.types';
+import { type HashSearchTableProps as Props } from './HashSearchTable.types';
 import './HashSearchTable.scss';
 
 function HashSearchTableBase<T extends TableItem = TableItem>({

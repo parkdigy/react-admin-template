@@ -1,4 +1,4 @@
-import { AdminPrivacyAccessLogList, AdminPrivacyAccessLogTypeList } from './AdminPrivacyAccessLog.types';
+import { type AdminPrivacyAccessLogList, type AdminPrivacyAccessLogTypeList } from './AdminPrivacyAccessLog.types';
 import AdminPrivacyAccessLogType from './AdminPrivacyAccessLogType';
 
 export default {

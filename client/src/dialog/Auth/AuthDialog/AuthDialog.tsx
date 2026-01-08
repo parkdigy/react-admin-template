@@ -3,10 +3,8 @@
  * - post, patch, delete API 호출 시 비밀번호를 다시 입력받아 인증하는 용도
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
 import { Grid } from '@mui/material';
-import { AuthDialogProps as Props } from './AuthDialog.types';
+import { type AuthDialogProps as Props } from './AuthDialog.types';
 import { useAppState } from '@context';
 
 const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props) => {

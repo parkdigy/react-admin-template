@@ -1,4 +1,4 @@
-import { TestDataInfo, TestDataList, TestDataStatusList } from '@const';
+import { type TestDataInfo, type TestDataList, type TestDataStatusList } from '@const';
 import TestDataStatus from './TestDataStatus';
 
 export default {

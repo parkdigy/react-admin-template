@@ -2,7 +2,7 @@
  * 내 정보 API
  * ******************************************************************************************************************/
 
-import { MyPasswordChangeRequestData } from '@const';
+import { type MyPasswordChangeRequestData } from '@const';
 
 export default {
   // 비밀번호 초기화

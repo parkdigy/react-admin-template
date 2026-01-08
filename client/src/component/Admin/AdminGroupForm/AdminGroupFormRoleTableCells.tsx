@@ -1,4 +1,3 @@
-import React from 'react';
 import { Checkbox, TableCell } from '@mui/material';
 
 interface Info {

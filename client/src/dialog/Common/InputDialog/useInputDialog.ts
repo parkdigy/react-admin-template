@@ -1,5 +1,5 @@
 import InputDialog from './InputDialog';
-import { InputDialogInputType, InputDialogProps } from '@dialog';
+import { type InputDialogInputType, type InputDialogProps } from '@dialog';
 
 export function useInputDialog<T extends InputDialogInputType, Optional extends boolean = false>(
   inputType: T,

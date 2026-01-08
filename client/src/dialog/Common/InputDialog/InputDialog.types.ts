@@ -1,5 +1,3 @@
-import { DialogProps, DialogCommands, DialogRequireProps } from '@pdg/react-dialog';
-
 export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag';
 
 export interface InputDialogProps<

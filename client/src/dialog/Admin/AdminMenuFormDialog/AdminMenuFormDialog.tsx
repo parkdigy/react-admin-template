@@ -2,9 +2,7 @@
  * 어드민 메뉴 등록/수정 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { AdminMenuFormDialogProps as Props } from './AdminMenuFormDialog.types';
+import { type AdminMenuFormDialogProps as Props } from './AdminMenuFormDialog.types';
 import { AdminMenuForm } from '@comp';
 
 const AdminMenuFormDialog = ({ parentMenu, id, onSuccess, onShow, onClose }: Props) => {

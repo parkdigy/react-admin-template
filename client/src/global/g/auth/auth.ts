@@ -1,5 +1,5 @@
-import { AuthDialogPropsParam } from '@dialog';
-import { AuthDialogType } from './auth.types';
+import { type AuthDialogPropsParam } from '@dialog';
+import { type AuthDialogType } from './auth.types';
 
 let _authDialog: AuthDialogType | undefined;
 

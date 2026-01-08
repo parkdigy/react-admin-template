@@ -1,5 +1,4 @@
-import React from 'react';
-import { AuthSignInProps as Props } from './AuthSignIn.types';
+import { type AuthSignInProps as Props } from './AuthSignIn.types';
 import { Alert, Card, CardActions, CardContent, CardHeader, Grid } from '@mui/material';
 
 export const AuthSignIn = ({}: Props) => {

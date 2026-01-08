@@ -2,9 +2,7 @@
  * 어드민 사용자 등록/수정 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { AdminUserFormDialogProps as Props } from './AdminUserFormDialog.types';
+import { type AdminUserFormDialogProps as Props } from './AdminUserFormDialog.types';
 import { AdminUserForm } from '@comp';
 
 const AdminUserFormDialog = ({ id, onSuccess, onShow, onClose }: Props) => {

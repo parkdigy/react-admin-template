@@ -1,4 +1,4 @@
-import { DependencyList } from 'react';
+import { type DependencyList } from 'react';
 
 /**
  * 폼 블록 데이터 처리 훅

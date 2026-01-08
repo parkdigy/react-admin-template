@@ -2,9 +2,8 @@
  * 어드민 사용자 목록 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminUserListProps as Props } from './AdminUserList.types';
-import { AdminUserListDataItem } from '@const';
+import { type AdminUserListProps as Props } from './AdminUserList.types';
+import { type AdminUserListDataItem } from '@const';
 import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog } from '@dialog';
 import { Typography } from '@mui/material';
 import { useAppState } from '@context';

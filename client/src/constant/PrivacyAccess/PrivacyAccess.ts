@@ -1,4 +1,4 @@
-import { PrivacyAccessInfo } from '@const';
+import { type PrivacyAccessInfo } from '@const';
 import { AdminPrivacyAccessLogType } from '../Admin';
 
 export default {

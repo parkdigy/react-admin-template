@@ -1,5 +1,4 @@
-import { DialogRequireProps } from '@pdg/react-dialog';
-import { AdminMenuListDataItem } from '@const';
+import { type AdminMenuListDataItem } from '@const';
 
 export interface AdminMenuFormDialogProps extends DialogRequireProps {
   parentMenu?: AdminMenuListDataItem;

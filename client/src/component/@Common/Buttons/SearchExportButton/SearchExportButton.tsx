@@ -2,8 +2,7 @@
  * 엑셀 다운로드 버튼 컴포넌트 - Search 컴포넌트에서 사용
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { SearchExportButtonProps as Props } from './SearchExportButton.types';
+import { type SearchExportButtonProps as Props } from './SearchExportButton.types';
 import { MenuItem as BaseMenuItem, menuItemClasses, styled, Typography, Menu } from '@mui/material';
 
 const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {

@@ -1,5 +1,5 @@
-import { SnackbarCloseType, SnackbarEnqueueType } from './snackbar.types';
-import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
+import { type SnackbarCloseType, type SnackbarEnqueueType } from './snackbar.types';
+import { type OptionsObject, type SnackbarKey, type SnackbarMessage } from 'notistack';
 
 let _enqueue: SnackbarEnqueueType | undefined;
 let _close: SnackbarCloseType | undefined;

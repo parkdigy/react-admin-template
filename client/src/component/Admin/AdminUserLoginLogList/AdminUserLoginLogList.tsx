@@ -2,9 +2,8 @@
  * 어드민 사용자 로그인 로그 목록 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.types';
-import { AdminUserLoginLogListDataItem } from '@const';
+import { type AdminUserLoginLogListProps as Props } from './AdminUserLoginLogList.types';
+import { type AdminUserLoginLogListDataItem } from '@const';
 import dayjs from 'dayjs';
 import { useAppState } from '@context';
 

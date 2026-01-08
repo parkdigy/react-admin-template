@@ -1,6 +1,5 @@
-import React from 'react';
-import { TestDataInfoProps as Props } from './TestDataInfo.types';
-import { TestDataInfoData } from '@const';
+import { type TestDataInfoProps as Props } from './TestDataInfo.types';
+import { type TestDataInfoData } from '@const';
 
 const TestDataInfo = ({ id }: Props) => {
   /********************************************************************************************************************

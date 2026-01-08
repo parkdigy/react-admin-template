@@ -2,15 +2,13 @@
  * 어드민 그룹 등록/수정 폼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminGroupFormProps as Props } from './AdminGroupForm.types';
+import { type AdminGroupFormProps as Props } from './AdminGroupForm.types';
 import {
-  AdminGroupInfoData,
-  AdminGroupMenuListData,
-  AdminGroupMenuListDataItem,
-  AdminGroupMenuListDataItemBase,
+  type AdminGroupInfoData,
+  type AdminGroupMenuListData,
+  type AdminGroupMenuListDataItem,
+  type AdminGroupMenuListDataItemBase,
 } from '@const';
-import { useConfirmDialog } from '@pdg/react-dialog';
 import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
 

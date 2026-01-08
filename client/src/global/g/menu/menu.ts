@@ -1,4 +1,4 @@
-import { MenuRoles } from './menu.types';
+import { type MenuRoles } from './menu.types';
 
 let _menuRoles: MenuRoles = {};
 let _reloadBadgeCount: (() => void) | undefined;

@@ -3,8 +3,7 @@
  * - Search 컴포넌트에서 사용
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { SearchAddButtonProps as Props } from './SearchAddButton.types';
+import { type SearchAddButtonProps as Props } from './SearchAddButton.types';
 
 export const SearchAddButton = (props: Props) => {
   return <SearchButton startIcon='add' startIconMarginLeft='-0.3em' variant='contained' {...props} />;

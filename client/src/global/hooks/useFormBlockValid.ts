@@ -1,4 +1,4 @@
-import { DependencyList } from 'react';
+import { type DependencyList } from 'react';
 
 /**
  * 폼 블록 유효성 처리 훅

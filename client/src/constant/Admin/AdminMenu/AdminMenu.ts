@@ -2,7 +2,7 @@
  * 어드민 메뉴 API
  * ******************************************************************************************************************/
 
-import { AdminMenuInfo, AdminMenuList } from './AdminMenu.types';
+import { type AdminMenuInfo, type AdminMenuList } from './AdminMenu.types';
 
 export default {
   // 메뉴 목록

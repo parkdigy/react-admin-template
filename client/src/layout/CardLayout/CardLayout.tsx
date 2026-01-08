@@ -2,7 +2,6 @@
  * 카드 레이아웃 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import { Routes, Route, Navigate } from 'react-router';
 import { AuthSignIn } from '@comp';

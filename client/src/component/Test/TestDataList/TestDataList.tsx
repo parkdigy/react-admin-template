@@ -1,9 +1,7 @@
-import React from 'react';
-import { TestDataListProps as Props } from './TestDataList.types';
-import { TestDataListDataItem, TestDataStatus } from '@const';
+import { type TestDataListProps as Props } from './TestDataList.types';
+import { type TestDataListDataItem, TestDataStatus } from '@const';
 import { Divider, Icon, MenuItem, MenuList } from '@mui/material';
 import { StyledTableMenuItemCopyToClipboard } from '@styles';
-import { DialogCommands, useDialog } from '@pdg/react-dialog';
 import { TestDataFormDialog, TestDataInfoDialog, usePrivacyAccessReasonDialog } from '@dialog';
 
 const Menu = {

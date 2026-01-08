@@ -1,4 +1,4 @@
-import { OptionsObject, SnackbarKey, SnackbarMessage } from 'notistack';
+import { type OptionsObject, type SnackbarKey, type SnackbarMessage } from 'notistack';
 
 export type SnackbarEnqueueType = (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
 

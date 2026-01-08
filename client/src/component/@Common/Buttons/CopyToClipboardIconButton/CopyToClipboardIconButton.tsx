@@ -2,8 +2,7 @@
  * 클립보드에 복사하는 아이콘 버튼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
+import { type CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
 import { Tooltip } from '@mui/material';
 
 const CopyToClipboardIconButton = ({ text, tooltip, icon, size, successMsg, ...props }: Props) => {

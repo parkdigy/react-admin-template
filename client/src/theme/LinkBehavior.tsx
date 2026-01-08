@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router';
+import { Link as RouterLink, type LinkProps as RouterLinkProps } from 'react-router';
 
 const LinkBehavior = ({
   href,

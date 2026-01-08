@@ -2,8 +2,7 @@
  * 접근 로그를 기록하는 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AccessLoggerProps as Props } from './AccessLogger.types';
+import { type AccessLoggerProps as Props } from './AccessLogger.types';
 import { useAlertDialog } from '@pdg/react-dialog';
 import { Typography } from '@mui/material';
 

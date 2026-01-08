@@ -1,4 +1,4 @@
-import { AdminMenuListDataItem } from '@const';
+import { type AdminMenuListDataItem } from '@const';
 
 export interface AdminMenuFormProps {
   parentMenu?: AdminMenuListDataItem;

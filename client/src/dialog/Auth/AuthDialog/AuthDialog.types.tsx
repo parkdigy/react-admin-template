@@ -1,5 +1,3 @@
-import { DialogProps, DialogRequireProps } from '@pdg/react-dialog';
-
 export interface AuthDialogProps extends DialogRequireProps, Pick<DialogProps, 'color'> {
   intro: ReactNode;
   onSuccess: () => void;

@@ -1,5 +1,4 @@
-import React from 'react';
-import { PrivacyPersonalNoTextProps as Props } from './PrivacyPersonalNoText.types';
+import { type PrivacyPersonalNoTextProps as Props } from './PrivacyPersonalNoText.types';
 import PrivacyText from '../PrivacyText';
 
 export const PrivacyPersonalNoText = (props: Props) => {

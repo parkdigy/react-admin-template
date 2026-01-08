@@ -1,5 +1,5 @@
-import { SxProps, TypographyProps } from '@mui/material';
-import { Theme } from '@mui/material/styles';
+import { type SxProps, type TypographyProps } from '@mui/material';
+import { type Theme } from '@mui/material/styles';
 
 export const mui = {
   /********************************************************************************************************************

@@ -2,8 +2,7 @@
  * 클립보드에 복사하는 버튼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { CopyToClipboardButtonProps as Props } from './CopyToClipboardButton.types';
+import { type CopyToClipboardButtonProps as Props } from './CopyToClipboardButton.types';
 
 const CopyToClipboardButton = ({ text, successMsg, ...props }: Props) => {
   return (

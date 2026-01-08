@@ -3,11 +3,11 @@
  * ******************************************************************************************************************/
 
 import {
-  AdminGroupInfo,
-  AdminGroupList,
-  AdminGroupListRequestData,
-  AdminGroupMenuList,
-  AdminGroupMenuListRequestData,
+  type AdminGroupInfo,
+  type AdminGroupList,
+  type AdminGroupListRequestData,
+  type AdminGroupMenuList,
+  type AdminGroupMenuListRequestData,
 } from './AdminGroup.types';
 
 export default {

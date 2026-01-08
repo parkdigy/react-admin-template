@@ -1,8 +1,6 @@
-import React from 'react';
-import { PrivacyTextProps as Props } from './PrivacyText.types';
+import { type PrivacyTextProps as Props } from './PrivacyText.types';
 import { Box, Typography } from '@mui/material';
 import { usePrivacyAccessReasonDialog } from '@dialog';
-import { DialogCommands } from '@pdg/react-dialog';
 
 export const PrivacyText = ({ textType, text: initText, textProps, type, parentId }: Props) => {
   /********************************************************************************************************************

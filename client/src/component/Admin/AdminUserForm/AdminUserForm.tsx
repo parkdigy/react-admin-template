@@ -2,9 +2,8 @@
  * 어드민 사용자 등록/수정 폼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminUserFormProps as Props } from './AdminUserForm.types';
-import { AdminUserInfoData } from '@const';
+import { type AdminUserFormProps as Props } from './AdminUserForm.types';
+import { type AdminUserInfoData } from '@const';
 import { AdminGroupFormDialog } from '@dialog';
 import { useAppState } from '@context';
 

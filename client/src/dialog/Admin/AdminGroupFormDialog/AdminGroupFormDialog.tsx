@@ -2,9 +2,7 @@
  * 어드민 그룹 등록/수정 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { AdminGroupFormDialogProps as Props } from './AdminGroupFormDialog.types';
+import { type AdminGroupFormDialogProps as Props } from './AdminGroupFormDialog.types';
 import { AdminGroupForm } from '@comp';
 
 const AdminGroupFormDialog = ({ id, subTitle, onSuccess, onShow, onClose }: Props) => {

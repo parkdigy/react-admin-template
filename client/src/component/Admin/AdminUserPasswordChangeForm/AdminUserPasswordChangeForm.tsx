@@ -2,8 +2,7 @@
  * 어드민 사용자 비밀번호 변경 폼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { MyPasswordChangeRequestData } from '@const';
+import { type MyPasswordChangeRequestData } from '@const';
 import { Alert } from '@mui/material';
 
 const AdminUserPasswordChangeForm = () => {

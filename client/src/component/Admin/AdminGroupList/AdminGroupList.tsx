@@ -2,11 +2,10 @@
  * 어드민 그룹 목록 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminGroupListDataItem } from '@const';
+import { type AdminGroupListDataItem } from '@const';
 import { Typography } from '@mui/material';
 import { AdminGroupFormDialog } from '@dialog';
-import { AdminGroupListProps as Props } from './AdminGroupList.types';
+import { type AdminGroupListProps as Props } from './AdminGroupList.types';
 
 const AdminGroupList = ({ noHash }: Props) => {
   /********************************************************************************************************************

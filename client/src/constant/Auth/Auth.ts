@@ -2,8 +2,7 @@
  * 인증 API
  * ******************************************************************************************************************/
 
-import { ApiRequestData } from '@pdg/api';
-import { AuthSignInResponseData } from './Auth.types';
+import { type AuthSignInResponseData } from './Auth.types';
 
 export default {
   // 로그인 정보

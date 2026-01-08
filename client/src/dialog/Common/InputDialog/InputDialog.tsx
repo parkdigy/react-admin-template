@@ -2,9 +2,8 @@
  * 입력 폼 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import React, { KeyboardEvent } from 'react';
-import { Dialog, DialogCommands } from '@pdg/react-dialog';
-import { InputDialogProps, InputDialogInputType } from './InputDialog.types';
+import { type KeyboardEvent } from 'react';
+import { type InputDialogProps, type InputDialogInputType } from './InputDialog.types';
 import { Box } from '@mui/material';
 
 function InputDialog<

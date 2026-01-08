@@ -2,9 +2,8 @@
  * 어드민 메뉴 등록/수정 폼 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { AdminMenuFormProps as Props } from './AdminMenuForm.types';
-import { AdminMenuInfoData } from '@const';
+import { type AdminMenuFormProps as Props } from './AdminMenuForm.types';
+import { type AdminMenuInfoData } from '@const';
 
 const AdminMenuForm = ({ parentMenu: initParentMenu, id: initId, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
