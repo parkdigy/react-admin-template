@@ -13,6 +13,7 @@ module.exports = {
 
   // dayjs
   dayjs: ['dayjs', 'default'],
+  Dayjs: ['dayjs', 'Dayjs'],
 
   // usehooks-ts
   useWindowSize: ['usehooks-ts', 'useWindowSize'],
