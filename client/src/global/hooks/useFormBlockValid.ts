@@ -1,5 +1,3 @@
-import { type DependencyList } from 'react';
-
 /**
  * 폼 블록 유효성 처리 훅
  * @pdg/react-form 컴포넌트의 FormBlock 분리 시 사용
@@ -10,7 +8,7 @@ import { type DependencyList } from 'react';
  */
 const useFormBlockValid = (
   callback: () => boolean,
-  deps: DependencyList,
+  deps: React.DependencyList,
   onValidChange: (valid: FormValidType) => void,
   delay?: boolean
 ) => {

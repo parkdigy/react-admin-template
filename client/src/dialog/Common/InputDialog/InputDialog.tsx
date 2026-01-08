@@ -2,7 +2,6 @@
  * 입력 폼 다이얼로그 컴포넌트
  * ******************************************************************************************************************/
 
-import { type KeyboardEvent } from 'react';
 import { type InputDialogProps, type InputDialogInputType } from './InputDialog.types';
 import { Box } from '@mui/material';
 
@@ -81,7 +80,7 @@ function InputDialog<
 
   /** KeyDown 이벤트 핸들러 */
   const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+    (e: React.KeyboardEvent) => {
       if (inputType !== 'textarea' && e.code === 'Enter') {
         formRef.current?.submit();
       }

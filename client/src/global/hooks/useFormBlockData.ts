@@ -1,5 +1,3 @@
-import { type DependencyList } from 'react';
-
 /**
  * 폼 블록 데이터 처리 훅
  * @pdg/react-form 컴포넌트의 FormBlock 분리 시 사용
@@ -10,7 +8,7 @@ import { type DependencyList } from 'react';
  */
 const useFormBlockData = <T, RT extends Required<T>>(
   callback: () => { [K in keyof RT]: RT[K] | undefined },
-  deps: DependencyList,
+  deps: React.DependencyList,
   onChange: (data: T) => void,
   delay?: boolean
 ) => {
