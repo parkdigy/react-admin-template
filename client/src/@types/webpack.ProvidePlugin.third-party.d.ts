@@ -11,6 +11,10 @@ declare global {
   const useParams: typeof import('react-router').useParams;
   const useSearchParams: typeof import('react-router').useSearchParams;
 
+  // dayjs
+  const dayjs: typeof import('dayjs').default;
+  const DayJs: typeof import('dayjs').Dayjs;
+
   // usehooks-ts
   const useWindowSize: typeof import('usehooks-ts').useWindowSize;
 }

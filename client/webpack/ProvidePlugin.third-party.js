@@ -11,6 +11,9 @@ module.exports = {
   useParams: ['react-router', 'useParams'],
   useSearchParams: ['react-router', 'useSearchParams'],
 
+  // dayjs
+  dayjs: ['dayjs', 'default'],
+
   // usehooks-ts
   useWindowSize: ['usehooks-ts', 'useWindowSize'],
 };
