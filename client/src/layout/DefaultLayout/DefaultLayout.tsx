@@ -6,7 +6,6 @@ import { Box, Button } from '@mui/material';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
 import { type AdminUserMenuInfo } from '@const';
-import { useAppState } from '@context';
 
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();

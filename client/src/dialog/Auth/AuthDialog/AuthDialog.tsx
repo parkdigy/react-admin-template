@@ -5,7 +5,6 @@
 
 import { Grid } from '@mui/material';
 import { type AuthDialogProps as Props } from './AuthDialog.types';
-import { useAppState } from '@context';
 
 const AuthDialog = ({ intro, color, onShow, onClose, onSuccess, onFail }: Props) => {
   /********************************************************************************************************************

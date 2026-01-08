@@ -5,7 +5,6 @@
 import { type AdminUserFormProps as Props } from './AdminUserForm.types';
 import { type AdminUserInfoData } from '@const';
 import { AdminGroupFormDialog } from '@dialog';
-import { useAppState } from '@context';
 
 const AdminUserForm = ({ id, onChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
