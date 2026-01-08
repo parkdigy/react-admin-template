@@ -6,7 +6,6 @@ import { type AdminMenuListItemProps as Props } from './AdminMenuListItem.types'
 import { SortableContext } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { styled } from '@mui/material';
 
 export const AdminMenuListItem = ({ menu: initMenu, dragging, sortChanged, onEdit, onRemove, onAddSubMenu }: Props) => {
   /********************************************************************************************************************

@@ -9,7 +9,7 @@ import {
   type AdminGroupMenuListDataItem,
   type AdminGroupMenuListDataItemBase,
 } from '@const';
-import { Chip, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import AdminGroupFormRoleTableCells from './AdminGroupFormRoleTableCells';
 
 const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {

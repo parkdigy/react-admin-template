@@ -1,5 +1,4 @@
 import { type StatusTextProps as Props } from './StatusText.types';
-import { Typography, type TypographyProps } from '@mui/material';
 
 export const StatusText = ({ type, status, children }: Props) => {
   /********************************************************************************************************************

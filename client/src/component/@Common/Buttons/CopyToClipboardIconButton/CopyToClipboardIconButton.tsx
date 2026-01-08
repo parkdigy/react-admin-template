@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type CopyToClipboardIconButtonProps as Props } from './CopyToClipboardIconButton.types';
-import { Tooltip } from '@mui/material';
 
 const CopyToClipboardIconButton = ({ text, tooltip, icon, size, successMsg, ...props }: Props) => {
   const content = useMemo(

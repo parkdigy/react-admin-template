@@ -1,6 +1,5 @@
 import { PrivacyAccessReasonDialog } from './PrivacyAccessReasonDialog';
 import { type PrivacyAccessReasonDialogProps } from './PrivacyAccessReasonDialog.types';
-import { Typography } from '@mui/material';
 
 export function usePrivacyAccessReasonDialog(): (
   props: PartialOmit<PrivacyAccessReasonDialogProps, 'inputType' | 'required' | 'title' | 'titleIcon' | 'color'>

@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type InputDialogProps, type InputDialogInputType } from './InputDialog.types';
-import { Box } from '@mui/material';
 
 function InputDialog<
   T extends InputDialogInputType,

@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type DividerProps as Props } from './Divider.types';
-import { styled, useTheme } from '@mui/material';
 
 const Divider = ({ color, icon, label }: Props) => {
   const theme = useTheme();

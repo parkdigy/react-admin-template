@@ -5,7 +5,6 @@
 import { type AdminUserListProps as Props } from './AdminUserList.types';
 import { type AdminUserListDataItem } from '@const';
 import { AdminGroupFormDialog, AdminUserFormDialog, AdminUserLoginLogListDialog } from '@dialog';
-import { Typography } from '@mui/material';
 
 const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   /********************************************************************************************************************

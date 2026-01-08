@@ -1,7 +1,4 @@
 declare global {
-  // styled-components
-  const styled: typeof import('styled-components').default;
-
   // classnames
   const classnames: typeof import('classnames');
 

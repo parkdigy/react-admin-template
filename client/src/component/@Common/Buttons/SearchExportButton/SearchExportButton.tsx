@@ -3,7 +3,7 @@
  * ******************************************************************************************************************/
 
 import { type SearchExportButtonProps as Props } from './SearchExportButton.types';
-import { MenuItem as BaseMenuItem, menuItemClasses, styled, Typography, Menu } from '@mui/material';
+import { MenuItem as BaseMenuItem, menuItemClasses, Menu } from '@mui/material';
 
 const SearchExportButton = ({ style: initStyle, items, ...props }: Props) => {
   /********************************************************************************************************************

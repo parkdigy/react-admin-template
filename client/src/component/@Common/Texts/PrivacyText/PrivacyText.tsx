@@ -1,5 +1,4 @@
 import { type PrivacyTextProps as Props } from './PrivacyText.types';
-import { Box, Typography } from '@mui/material';
 import { usePrivacyAccessReasonDialog } from '@dialog';
 
 export const PrivacyText = ({ textType, text: initText, textProps, type, parentId }: Props) => {

@@ -1,4 +1,4 @@
-import { MenuItem, styled } from '@mui/material';
+import { MenuItem } from '@mui/material';
 
 export const StyledTableMenuItemCopyToClipboard = styled(MenuItem)`
   padding: 0;

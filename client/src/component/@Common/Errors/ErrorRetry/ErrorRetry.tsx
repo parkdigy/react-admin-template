@@ -54,7 +54,7 @@ export default ErrorRetry;
  * Style
  * ******************************************************************************************************************/
 
-const Container = styled.div`
+const Container = styled('div')`
   position: absolute;
   width: 100%;
   height: 100%;

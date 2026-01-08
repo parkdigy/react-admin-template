@@ -4,7 +4,6 @@
 
 import { type AccessLoggerProps as Props } from './AccessLogger.types';
 import { useAlertDialog } from '@pdg/react-dialog';
-import { Typography } from '@mui/material';
 
 const AccessLogger = ({ path, element }: Props) => {
   /********************************************************************************************************************

@@ -1,7 +1,4 @@
 module.exports = {
-  // styled-components
-  styled: ['styled-components', 'default'],
-
   // classnames
   classnames: ['classnames', 'default'],
 

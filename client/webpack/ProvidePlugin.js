@@ -9,6 +9,7 @@ const pdgReactForm = require('./ProvidePlugin.pdg-react-form');
 const pdgReactTable = require('./ProvidePlugin.pdg-react-table');
 const thirdParty = require('./ProvidePlugin.third-party');
 const reactComponents = require('./ProvidePlugin.common-component');
+const mui = require('./ProvidePlugin.mui');
 
 class MyProvidePlugin {
   apply(compiler) {
@@ -23,6 +24,7 @@ class MyProvidePlugin {
       ...pdgReactTable,
       ...thirdParty,
       ...reactComponents,
+      ...mui,
     }).apply(compiler);
   }
 }

@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type AdminGroupListDataItem } from '@const';
-import { Typography } from '@mui/material';
 import { AdminGroupFormDialog } from '@dialog';
 import { type AdminGroupListProps as Props } from './AdminGroupList.types';
 

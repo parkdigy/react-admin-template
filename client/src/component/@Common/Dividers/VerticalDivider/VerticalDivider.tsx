@@ -3,7 +3,6 @@
  * ******************************************************************************************************************/
 
 import { type VerticalDividerProps as Props } from './VerticalDivider.types';
-import { styled } from '@mui/material';
 
 const VerticalDivider = ({}: Props) => {
   return <Container />;

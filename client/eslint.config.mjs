@@ -5,6 +5,7 @@ import typescriptEslintParser from '@typescript-eslint/parser';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginPdgReactHooks from '@pdg/react-hook/eslint-plugin';
+import WebpackProviderPluginMui from './webpack/ProvidePlugin.mui.js';
 import WebpackProviderPluginCommonComponent from './webpack/ProvidePlugin.common-component.js';
 import WebpackProviderPluginPdgReactComponent from './webpack/ProvidePlugin.pdg-react-component.js';
 import WebpackProviderPluginPdgReactForm from './webpack/ProvidePlugin.pdg-react-form.js';
@@ -39,6 +40,7 @@ export default defineConfig([
       globals: {
         React: 'writable',
         ...Object.keys({
+          ...WebpackProviderPluginMui,
           ...WebpackProviderPluginCommonComponent,
           ...WebpackProviderPluginPdgReactComponent,
           ...WebpackProviderPluginPdgReactForm,
