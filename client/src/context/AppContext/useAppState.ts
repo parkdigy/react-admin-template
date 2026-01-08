@@ -1,6 +1,5 @@
 import AppContext from './AppContext';
 import { type AppContextValue } from './AppContext.types';
-import { useContext } from 'react';
 
 export function useAppState(): AppContextValue {
   const value = useContext(AppContext);
