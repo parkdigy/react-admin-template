@@ -110,7 +110,7 @@ declare global {
   type ApiRequestOption = PdgApi.ApiRequestOption;
   type ApiOption<T = any, D = ApiRequestData> = PdgApi.ApiOption<T, D>;
   const ApiError: typeof PdgApi.ApiError;
-  type ApiError = PdgApi.ApiError;
+  type ApiError<T = any, D = ApiRequestData> = PdgApi.ApiError<T, D>;
 
   // react-hook
   const useChanged: typeof PdgReactHook.useChanged;
