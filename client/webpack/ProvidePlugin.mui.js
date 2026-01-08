@@ -24,4 +24,5 @@ module.exports = {
   MuiMenuItemClasses: ['@mui/material', 'menuItemClasses'],
   MuiTabs: ['@mui/material', 'Tabs'],
   MuiTab: ['@mui/material', 'Tab'],
+  MuiBadge: ['@mui/material', 'Badge'],
 };

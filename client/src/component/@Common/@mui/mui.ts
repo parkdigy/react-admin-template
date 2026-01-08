@@ -19,6 +19,7 @@ import {
   MenuItem,
   Tabs,
   Tab,
+  Badge,
 } from '@mui/material';
 
 export const MuiBox = Box;
@@ -41,3 +42,4 @@ export const MuiMenuList = MenuList;
 export const MuiMenuItem = MenuItem;
 export const MuiTabs = Tabs;
 export const MuiTab = Tab;
+export const MuiBadge = Badge;

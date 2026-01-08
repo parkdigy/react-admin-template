@@ -116,6 +116,12 @@ declare global {
     RootComponent extends React.ElementType = Mui.TabTypeMap['defaultComponent'],
     AdditionalProps = {},
   > = Mui.TabProps<RootComponent, AdditionalProps>;
+
+  const MuiBadge = typeof Mui.Badge;
+  type MuiBadgeProps<
+    RootComponent extends React.ElementType = Mui.BadgeTypeMap['defaultComponent'],
+    AdditionalProps = {},
+  > = Mui.BadgeProps<RootComponent, AdditionalProps>;
 }
 
 export {};
