@@ -1,4 +1,4 @@
-import { NavigateFunction } from 'react-router';
+import { type NavigateFunction } from 'react-router';
 
 let _navigate: NavigateFunction | undefined;
 let _scrollTopPos = 0;

@@ -2,11 +2,10 @@
  * 기본 레이아웃 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
 import { Box, Button } from '@mui/material';
 import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
-import { AdminUserMenuInfo } from '@const';
+import { type AdminUserMenuInfo } from '@const';
 import { useAppState } from '@context';
 
 const DefaultLayout = () => {

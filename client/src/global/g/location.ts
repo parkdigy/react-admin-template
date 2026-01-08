@@ -1,4 +1,4 @@
-import { Location as RouterLocation, SetURLSearchParams } from 'react-router';
+import { type Location as RouterLocation, type SetURLSearchParams } from 'react-router';
 
 let _location: RouterLocation<any> | undefined;
 

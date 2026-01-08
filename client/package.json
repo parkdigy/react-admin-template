@@ -67,6 +67,7 @@
     "axios": "^1.13.2",
     "babel-loader": "^10.0.0",
     "babel-plugin-react-compiler": "1.0.0",
+    "babel-plugin-styled-components": "^2.1.4",
     "baseline-browser-mapping": "^2.8.25",
     "browserslist-config-baseline": "^0.5.0",
     "circular-dependency-plugin": "^5.2.2",

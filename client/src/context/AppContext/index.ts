@@ -6,4 +6,4 @@ export { AppContext };
 
 export * from './AppContext.types';
 
-export { default as useAppState } from './useAppState';
+export * from './useAppState';

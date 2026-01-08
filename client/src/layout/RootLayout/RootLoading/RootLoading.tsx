@@ -1,5 +1,4 @@
-import React from 'react';
-import { RootLoadingProps as Props } from './RootLoading.types';
+import { type RootLoadingProps as Props } from './RootLoading.types';
 
 export const RootLoading = ({}: Props) => {
   /********************************************************************************************************************

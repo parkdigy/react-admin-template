@@ -33,11 +33,13 @@ class MyHtmlPlugin {
       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync('MyHtmlPlugin', (data, cb) => {
         const splitText = '</head>';
         const htmls = data.html.split(splitText);
+        const version = new Date().getTime();
         const inject = `
           <title>${isProduction ? '<%= title %>' : env.APP_NAME}</title>
-          <script>window.$$MyAppConfig = {version: '${new Date().getTime()}'}</script>
+          <script>window.$$MyAppConfig = {version: '${version}'}</script>
           <script>
             window.$$MyAppConfig = {
+              version: '${version}',
               env: '${isProduction ? '<%= appEnv %>' : env.APP_ENV}',
               title: '${isProduction ? '<%= title %>' : env.APP_NAME}',
             };
@@ -264,7 +266,7 @@ const options = {
       },
       {
         test: /\.(txt|md)$/i,
-        type: 'asset/resource',
+        type: 'asset/source',
       },
     ],
   },

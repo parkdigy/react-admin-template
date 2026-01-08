@@ -2,7 +2,6 @@
  * App 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
 import RootLayout from './layout/RootLayout';
 
 const App = () => {

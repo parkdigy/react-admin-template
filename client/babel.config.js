@@ -14,6 +14,7 @@ module.exports = {
   ],
   plugins: [
     ['babel-plugin-react-compiler', { panicThreshold: 'all_errors' }],
+    'babel-plugin-styled-components',
     !isProduction && require.resolve('react-refresh/babel'),
   ].filter(Boolean),
 };

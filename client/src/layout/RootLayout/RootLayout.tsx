@@ -5,14 +5,13 @@
 
 import '../../init';
 
-import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { ApiError } from '@pdg/api';
-import { AuthSignInResponseData } from '@const';
+import { type AuthSignInResponseData } from '@const';
 import { Dialog, DialogContextProvider } from '@pdg/react-dialog';
 import { Box, Button, Icon, Typography } from '@mui/material';
 import { SnackbarProvider } from 'notistack';
-import { AppAuthInfo, AppContextProvider } from '@context';
+import { type AppAuthInfo, AppContextProvider } from '@context';
 import { ThemeBase } from '../../theme';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
 import RootLayoutAppInitializer from './RootLayoutAppInitializer';

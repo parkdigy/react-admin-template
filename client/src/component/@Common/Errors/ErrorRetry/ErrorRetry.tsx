@@ -2,8 +2,7 @@
  * 에러 발생 시 재시도 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { ErrorRetryProps as Props } from './ErrorRetry.types';
+import { type ErrorRetryProps as Props } from './ErrorRetry.types';
 import { Alert, Box, Button, Icon, Typography } from '@mui/material';
 
 const ErrorRetry = ({ error, onRetry }: Props) => {

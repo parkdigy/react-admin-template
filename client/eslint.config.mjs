@@ -14,6 +14,7 @@ import WebpackProviderPluginPdgReactDialog from './webpack/ProvidePlugin.pdg-rea
 export default defineConfig([
   ...tseslint.config(eslint.configs.recommended, tseslint.configs.recommended),
   pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat['jsx-runtime'],
   pluginReactHooks.configs.flat.recommended,
   pluginPdgReactHooks.configs.flat.recommended,
   {
@@ -36,6 +37,7 @@ export default defineConfig([
         sourceType: 'module',
       },
       globals: {
+        React: 'writable',
         ...Object.keys({
           ...WebpackProviderPluginCommonComponent,
           ...WebpackProviderPluginPdgReactComponent,
@@ -63,6 +65,7 @@ export default defineConfig([
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
       'react/no-unescaped-entities': 'off',
+      'react/react-in-jsx-scope': 'off',
       'react/jsx-no-undef': ['error', { allowGlobals: true }],
       'no-plusplus': 'error',
       'prefer-template': 'error',

@@ -35,11 +35,6 @@ module.exports = {
 
   // api
   api: [path.resolve(__dirname, '../src/global/api/index.ts'), 'default'],
-  ApiResult: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiResult'],
-  ApiPaging: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiPaging'],
-  ApiPageLimitRequestData: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiPageLimitRequestData'],
-  ApiAuthObject: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiAuthObject'],
-  ApiAuth: [path.resolve(__dirname, '../src/global/api/index.ts'), 'ApiAuth'],
   createApi: [path.resolve(__dirname, '../src/global/api/index.ts'), 'createApi'],
 
   // Const

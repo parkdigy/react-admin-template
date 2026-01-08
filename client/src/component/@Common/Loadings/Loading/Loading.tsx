@@ -2,8 +2,7 @@
  * 로딩 표시 컴포넌트
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { LoadingCommands, LoadingProps as Props } from './Loading.types';
+import { type LoadingCommands, type LoadingProps as Props } from './Loading.types';
 import './Loading.scss';
 
 const Loading = ({ ref }: Props) => {

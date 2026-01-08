@@ -1,34 +1,40 @@
-// id
-declare const useId: typeof import('react').useId;
+import * as React from 'react';
 
-// state
-declare const useState: typeof import('react').useState;
-declare const useReducer: typeof import('react').useReducer;
+declare global {
+  // id
+  const useId: typeof React.useId;
 
-// context
-declare const useContext: typeof import('react').useContext;
+  // state
+  const useState: typeof React.useState;
+  const useReducer: typeof React.useReducer;
 
-// ref
-declare const useRef: typeof import('react').useRef;
-declare const useImperativeHandle: typeof import('react').useImperativeHandle;
+  // context
+  const useContext: typeof React.useContext;
 
-// effect
-declare const useEffect: typeof import('react').useEffect;
-declare const useEffectEvent: typeof import('react').useEffectEvent;
-declare const useLayoutEffect: typeof import('react').useLayoutEffect;
-declare const useInsertionEffect: typeof import('react').useInsertionEffect;
+  // ref
+  const useRef: typeof React.useRef;
+  const useImperativeHandle: typeof React.useImperativeHandle;
 
-// performance
-declare const useCallback: typeof import('react').useCallback;
-declare const useMemo: typeof import('react').useMemo;
-declare const useTransition: typeof import('react').useTransition;
-declare const useDeferredValue: typeof import('react').useDeferredValue;
+  // effect
+  const useEffect: typeof React.useEffect;
+  const useEffectEvent: typeof React.useEffectEvent;
+  const useLayoutEffect: typeof React.useLayoutEffect;
+  const useInsertionEffect: typeof React.useInsertionEffect;
 
-// form
-declare const useActionState: typeof import('react').useActionState;
+  // performance
+  const useCallback: typeof React.useCallback;
+  const useMemo: typeof React.useMemo;
+  const useTransition: typeof React.useTransition;
+  const useDeferredValue: typeof React.useDeferredValue;
 
-// debug
-declare const useDebugValue: typeof import('react').useDebugValue;
+  // form
+  const useActionState: typeof React.useActionState;
 
-// storage
-declare const useSyncExternalStore: typeof import('react').useSyncExternalStore;
+  // debug
+  const useDebugValue: typeof React.useDebugValue;
+
+  // storage
+  const useSyncExternalStore: typeof React.useSyncExternalStore;
+}
+
+export {};

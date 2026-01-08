@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface VersionApp extends ApiResult {
   data: { v: string };
 }

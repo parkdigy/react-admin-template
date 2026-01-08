@@ -1,43 +1,4 @@
 module.exports = {
-  // types - ObjectArray
-  ValueOf: ['@pdg/types', 'ValueOf'],
-  Dict: ['@pdg/types', 'Dict'],
-  Arr: ['@pdg/types', 'Arr'],
-  IsObject: ['@pdg/types', 'IsObject'],
-  IsArray: ['@pdg/types', 'IsArray'],
-  ObjectMerge: ['@pdg/types', 'ObjectMerge'],
-  ArrayMerge: ['@pdg/types', 'ArrayMerge'],
-  MutableArray: ['@pdg/types', 'MutableArray'],
-  FlattenArray: ['@pdg/types', 'FlattenArray'],
-  Prettify: ['@pdg/types', 'Prettify'],
-  Writable: ['@pdg/types', 'Writable'],
-  // types - Function
-  Func: ['@pdg/types', 'Func'],
-  // types - Data
-  Lv: ['@pdg/types', 'Lv'],
-  Vl: ['@pdg/types', 'Vl'],
-  // types - Letter
-  FirstLetter: ['@pdg/types', 'FirstLetter'],
-  UpperLetter: ['@pdg/types', 'UpperLetter'],
-  LowerLetter: ['@pdg/types', 'LowerLetter'],
-  // types - Null
-  NullableKeys: ['@pdg/types', 'NullableKeys'],
-  NotNullableKeys: ['@pdg/types', 'NotNullableKeys'],
-  NullableProperties: ['@pdg/types', 'NullableProperties'],
-  NotNullableProperties: ['@pdg/types', 'NotNullableProperties'],
-  // types - PickOmit
-  PartialPick: ['@pdg/types', 'PartialPick'],
-  PartialOmit: ['@pdg/types', 'PartialOmit'],
-  RequiredPick: ['@pdg/types', 'RequiredPick'],
-  RequiredOmit: ['@pdg/types', 'RequiredOmit'],
-  // types - Spread
-  Spread: ['@pdg/types', 'Spread'],
-  // types - Compare
-  InValue: ['@pdg/types', 'InValue'],
-  IsEmpty: ['@pdg/types', 'IsEmpty'],
-  IsUnionInclude: ['@pdg/types', 'IsUnionInclude'],
-  IsStringLiteralUnion: ['@pdg/types', 'IsStringLiteralUnion'],
-
   // compare
   ifEmpty: ['@pdg/compare', 'ifEmpty'],
   ifNotEmpty: ['@pdg/compare', 'ifNotEmpty'],

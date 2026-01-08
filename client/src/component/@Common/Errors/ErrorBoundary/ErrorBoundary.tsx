@@ -3,8 +3,7 @@
  * - CheckLoadError 발생 시 업데이트 체크 실행
  * ******************************************************************************************************************/
 
-import React from 'react';
-import { ErrorBoundaryProps as Props } from './ErrorBoundary.types';
+import { type ErrorBoundaryProps as Props } from './ErrorBoundary.types';
 import { useErrorBoundary, withErrorBoundary } from 'react-use-error-boundary';
 import ErrorRetry from '../ErrorRetry';
 
