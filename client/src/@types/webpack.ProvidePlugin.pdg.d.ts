@@ -104,6 +104,12 @@ declare global {
   const vl: typeof PdgData.vl;
   const copy: typeof PdgData.copy;
 
+  // api
+  type ApiRequestData = PdgApi.ApiRequestData;
+  type ApiRequestOption = PdgApi.ApiRequestOption;
+  type ApiOption<T = any, D = ApiRequestData> = PdgApi.ApiOption<T, D>;
+  const ApiError: typeof PdgApi.ApiError;
+
   // react-hook
   const useChanged: typeof PdgReactHook.useChanged;
   const useFirstSkipChanged: typeof PdgReactHook.useFirstSkipChanged;

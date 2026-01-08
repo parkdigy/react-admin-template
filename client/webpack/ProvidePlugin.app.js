@@ -35,7 +35,7 @@ module.exports = {
 
   // api
   api: [path.resolve(__dirname, '../src/global/api/index.ts'), 'default'],
-  createApi: [path.resolve(__dirname, '../src/global/api/index.ts'), 'createApi'],
+  createApi: [path.resolve(__dirname, '../src/global/api/createApi.ts'), 'default'],
 
   // Const
   Const: [path.resolve(__dirname, '../src/constant/index.ts'), 'default'],
