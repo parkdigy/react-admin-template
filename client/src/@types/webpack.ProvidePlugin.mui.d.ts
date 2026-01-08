@@ -117,7 +117,7 @@ declare global {
     AdditionalProps = {},
   > = Mui.TabProps<RootComponent, AdditionalProps>;
 
-  const MuiBadge = typeof Mui.Badge;
+  const MuiBadge: typeof Mui.Badge;
   type MuiBadgeProps<
     RootComponent extends React.ElementType = Mui.BadgeTypeMap['defaultComponent'],
     AdditionalProps = {},
