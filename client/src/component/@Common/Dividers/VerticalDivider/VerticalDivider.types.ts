@@ -1,1 +1,1 @@
-export interface VerticalDividerProps {}
+export interface VerticalDividerProps extends BoxProps {}

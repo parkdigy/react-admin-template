@@ -4,8 +4,8 @@
 
 import { type VerticalDividerProps as Props } from './VerticalDivider.types';
 
-const VerticalDivider = ({}: Props) => {
-  return <Container />;
+const VerticalDivider = (props: Props) => {
+  return <Container {...props} />;
 };
 
 export default VerticalDivider;
@@ -14,7 +14,7 @@ export default VerticalDivider;
  * Styled
  * ******************************************************************************************************************/
 
-const Container = styled('div')`
+const Container = styled(Box)`
   display: inline-block;
   &:before {
     content: '|';
