@@ -46,6 +46,7 @@ module.exports = {
   lv: ['@pdg/data', 'lv'],
   vl: ['@pdg/data', 'vl'],
   copy: ['@pdg/data', 'copy'],
+  makeConst: ['@pdg/data', 'makeConst'],
 
   // api
   ApiError: ['@pdg/api', 'ApiError'],

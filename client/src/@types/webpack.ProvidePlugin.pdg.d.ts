@@ -104,6 +104,7 @@ declare global {
   const lv: typeof PdgData.lv;
   const vl: typeof PdgData.vl;
   const copy: typeof PdgData.copy;
+  const makeConst: typeof PdgData.makeConst;
 
   // api
   type ApiRequestData = PdgApi.ApiRequestData;
