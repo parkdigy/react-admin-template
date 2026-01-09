@@ -28,17 +28,6 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
    * Function
    * ******************************************************************************************************************/
 
-  /** 상태 불러오기 */
-  const loadStatusList = useCallback(() => {
-    Const.Test.dataStatusList().then(({ data }) => {
-      const items = [lv('전체', ''), ...data.map((item) => lv(item.name, item.status))];
-      searchTableRef.current
-        ?.getSearch()
-        ?.getItem<FormRadioGroupCommands<'' | TestDataStatus>>('status')
-        ?.setItems(items);
-    });
-  }, []);
-
   /** 목록 다시 불러오기 */
   const reloadList = useCallback(
     (page?: number) => {
@@ -59,14 +48,6 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
     },
     [onRequestScrollToTop]
   );
-
-  /********************************************************************************************************************
-   * Effect
-   * ******************************************************************************************************************/
-
-  useEventEffect(() => {
-    loadStatusList();
-  }, []);
 
   /********************************************************************************************************************
    * Event Handler
@@ -151,7 +132,12 @@ const TestDataList = ({ noHash, onRequestScrollToTop }: Props) => {
       <>
         <SearchGroup max>
           <FormText name='keyword' label='검색어' />
-          <FormRadioGroup name='status' label='Status' value='' />
+          <FormRadioGroup
+            name='status'
+            label='Status'
+            value=''
+            onLoadItems={async () => TestDataStatus.getLvList([lv('전체', '')])}
+          />
         </SearchGroup>
         <SearchGroup align='right'>
           <SearchExportButton

@@ -1,13 +1,9 @@
-import { type AdminPrivacyAccessLogList, type AdminPrivacyAccessLogTypeList } from './AdminPrivacyAccessLog.types';
+import { type AdminPrivacyAccessLogList } from './AdminPrivacyAccessLog.types';
 import AdminPrivacyAccessLogType from './AdminPrivacyAccessLogType';
 
 export default {
   Type: AdminPrivacyAccessLogType,
 
-  // 구분 목록
-  typeList() {
-    return api.get<AdminPrivacyAccessLogTypeList>('admin.privacy_access_log.type');
-  },
   // 목록
   list(data: Dict) {
     return api.get<AdminPrivacyAccessLogList>('admin.privacy_access_log', data);

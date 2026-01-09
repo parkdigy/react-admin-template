@@ -1,21 +1,6 @@
 import TestDataStatus from './TestDataStatus';
 
 /********************************************************************************************************************
- * status list
- * ******************************************************************************************************************/
-
-export interface TestDataStatusListDataItem {
-  status: TestDataStatus;
-  name: string;
-}
-
-export type TestDataStatusListData = TestDataStatusListDataItem[];
-
-export interface TestDataStatusList extends ApiResult {
-  data: TestDataStatusListData;
-}
-
-/********************************************************************************************************************
  * data list
  * ******************************************************************************************************************/
 

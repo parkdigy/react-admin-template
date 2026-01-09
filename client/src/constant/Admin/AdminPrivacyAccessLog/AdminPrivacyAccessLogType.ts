@@ -1,12 +1,13 @@
-export const AdminPrivacyAccessLogType = {
-  TestExportList: 'TEST_EXPORT_LIST',
-  TestEmail: 'TEST_EMAIL',
-  TestTel: 'TEST_TEL',
-  TestMobile: 'TEST_MOBILE',
-  TestCompanyNum: 'TEST_COMPANY_NUM',
-  TestPersonalNum: 'TEST_PERSONAL_NUM',
-} as const;
+export const AdminPrivacyAccessLogType = makeConst([
+  ['TEST_EXPORT_LIST', 'Test List 액셀 다운로드'],
+  ['TEST_INFO', 'Test Info'],
+  ['TEST_EMAIL', 'Test Email'],
+  ['TEST_TEL', 'Test Tel'],
+  ['TEST_MOBILE', 'Test Mobile'],
+  ['TEST_BUSINESS_NO', 'Test Company Number'],
+  ['TEST_PERSONAL_NO', 'Test Personal Number'],
+]);
 
-export type AdminPrivacyAccessLogType = ValueOf<typeof AdminPrivacyAccessLogType>;
+export type AdminPrivacyAccessLogType = typeof AdminPrivacyAccessLogType.Type;
 
 export default AdminPrivacyAccessLogType;

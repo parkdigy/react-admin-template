@@ -1,13 +1,9 @@
-import { type TestDataInfo, type TestDataList, type TestDataStatusList } from '@const';
+import { type TestDataInfo, type TestDataList } from '@const';
 import TestDataStatus from './TestDataStatus';
 
 export default {
   DataStatus: TestDataStatus,
 
-  // 데이터 - 상태 목록
-  dataStatusList() {
-    return api.get<TestDataStatusList>('test/data/status');
-  },
   // 데이터 - 목록
   dataList(data: Dict) {
     return api.get<TestDataList>('test/data', data);

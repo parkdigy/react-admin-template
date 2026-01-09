@@ -1,6 +1,5 @@
 import { type TestDataFormProps as Props } from './TestDataForm.types';
 import { type TestDataInfoData } from '@const';
-import TestDataStatus from '../../../constant/Test/TestDataStatus';
 import { usePrivacyAccessReasonDialog } from '@dialog';
 
 const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
@@ -27,14 +26,6 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
   /********************************************************************************************************************
    * Function
    * ******************************************************************************************************************/
-
-  /** 상태 목록 불러오기 */
-  const loadStatusList = useCallback(() => {
-    Const.Test.dataStatusList().then(({ data }) => {
-      const items = data.map((item) => lv(item.name, item.status));
-      formRef.current?.getItem<FormRadioGroupCommands<TestDataStatus>>('status')?.setItems(items);
-    });
-  }, []);
 
   /** 정보 불러오기 */
   const loadInfo = useCallback(
@@ -76,10 +67,6 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
    * ******************************************************************************************************************/
 
   useEventEffect(() => {
-    loadStatusList();
-  }, []);
-
-  useEventEffect(() => {
     loadInfo(id);
   }, [id]);
 
@@ -115,7 +102,13 @@ const TestDataForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
             <FormText name='text' label='Text' value={info?.text} required autoFocus />
           </FormCol>
           <FormCol xs={3}>
-            <FormRadioGroup name='status' label='Status' value={info?.status || Const.Test.DataStatus.On} required />
+            <FormRadioGroup
+              name='status'
+              label='Status'
+              value={info?.status || Const.Test.DataStatus.On}
+              required
+              onLoadItems={async () => Const.Test.DataStatus.getLvList()}
+            />
           </FormCol>
         </FormRow>
         <FormRow>

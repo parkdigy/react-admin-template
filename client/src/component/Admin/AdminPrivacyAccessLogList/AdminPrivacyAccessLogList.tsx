@@ -24,15 +24,6 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
    * Function
    * ******************************************************************************************************************/
 
-  /** 구분 목록 불러오기 */
-  const loadTypeList = useCallback(() => {
-    Const.Admin.PrivacyAccessLog.typeList().then(({ data }) => {
-      const items = data.map((item) => lv(item.name, item.type));
-      items.unshift(lv('전체', ''));
-      searchTableRef.current?.getSearch()?.getItem<FormSelectCommands<string>>('type')?.setItems(items);
-    });
-  }, []);
-
   /** 목록 불러오기 */
   const getData = useCallback(
     (data: Dict) => {
@@ -45,17 +36,6 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
     },
     [onRequestScrollToTop]
   );
-
-  /********************************************************************************************************************
-   * 최초 로드 시 구분 목록 로드
-   * ******************************************************************************************************************/
-
-  useEffect(() => {
-    loadTypeList();
-  }, [
-    // 불변
-    loadTypeList,
-  ]);
 
   /********************************************************************************************************************
    * Event Handler
@@ -75,7 +55,13 @@ const AdminPrivacyAccessLogList = ({ noHash, onRequestScrollToTop }: Props) => {
     () => (
       <>
         <SearchGroup max>
-          <FormSelect name='type' label='구분' value='' width={300} />
+          <FormSelect
+            name='type'
+            label='구분'
+            value=''
+            width={300}
+            onLoadItems={async () => Const.Admin.PrivacyAccessLog.Type.getLvList([lv('전체', '')])}
+          />
           <FormDateRangePicker
             name='search_date'
             fromLabel='조회기간'

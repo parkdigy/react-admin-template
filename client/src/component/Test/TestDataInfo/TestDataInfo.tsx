@@ -65,7 +65,7 @@ const TestDataInfo = ({ id }: Props) => {
           md: 6,
           onRender: (info) => (
             <PrivacyBusinessNoText
-              type={Const.PrivacyAccess.Type.TestPersonalNum}
+              type={Const.PrivacyAccess.Type.TestPersonalNo}
               parentId={info.id}
               text={info.business_no}
             />

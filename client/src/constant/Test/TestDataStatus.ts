@@ -1,8 +1,8 @@
-export const TestDataStatus = {
-  On: 'ON',
-  Off: 'OFF',
-} as const;
+export const TestDataStatus = makeConst([
+  ['ON', '사용'],
+  ['OFF', '미사용'],
+]);
 
-export type TestDataStatus = ValueOf<typeof TestDataStatus>;
+export type TestDataStatus = typeof TestDataStatus.Type;
 
 export default TestDataStatus;

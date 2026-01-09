@@ -1,18 +1,4 @@
 /********************************************************************************************************************
- * 구분 목록
- * ******************************************************************************************************************/
-
-export interface AdminPrivacyAccessLogTypeListDataItem {
-  type: string;
-  name: string;
-}
-
-export type AdminPrivacyAccessLogTypeListData = AdminPrivacyAccessLogTypeListDataItem[];
-
-export interface AdminPrivacyAccessLogTypeList extends ApiResult {
-  data: AdminPrivacyAccessLogTypeListData;
-}
-/********************************************************************************************************************
  * 목록
  * ******************************************************************************************************************/
 
