@@ -13,7 +13,26 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    ['babel-plugin-react-compiler', { panicThreshold: 'all_errors' }],
+    [
+      'babel-plugin-react-compiler',
+      {
+        panicThreshold: 'all_errors',
+        logger: {
+          logEvent(filename, event) {
+            switch (event.kind) {
+              case 'CompileSuccess': {
+                // console.log(`✅ Compiled: ${filename}`);
+                break;
+              }
+              case 'CompileError': {
+                console.log(`❌ Skipped: ${filename}`);
+                break;
+              }
+            }
+          },
+        },
+      },
+    ],
     !isProduction && require.resolve('react-refresh/babel'),
   ].filter(Boolean),
 };
