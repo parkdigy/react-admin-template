@@ -1,3 +1,32 @@
+.PTable.size-small .MuiTable-root,
+.MuiTable-root.size-small {
+  > .MuiTableHead-root > .MuiTableRow-root > .MuiTableCell-root {
+    font-size: 11.5px;
+    line-height: 13px;
+    padding: 10px 5px;
+
+    > .MuiCheckbox-root {
+      margin-top: -10px;
+      margin-bottom: -10px;
+    }
+  }
+
+  > .MuiTableBody-root > .MuiTableRow-root > .MuiTableCell-root {
+    font-size: 11.5px;
+    padding: 10px 5px;
+
+    > .PTableBoxyCell-check-box > .MuiCheckbox-root {
+      margin-top: -10px;
+      margin-bottom: -10px;
+    }
+  }
+
+  > .MuiTableFooter-root > .MuiTableRow-root > .MuiTableCell-root {
+    font-size: 11.5px;
+    padding: 10px 5px;
+  }
+}
+
 .PTable {
   .MuiTable-root.MuiTable-stickyHeader {
   }
@@ -7,6 +36,10 @@
     }
     > .MuiTableHead-root > .MuiTableRow-root.PTableTopHeadCaptionRow > .MuiTableCell-root {
       background-color: #efefef;
+    }
+    > .MuiTableFooter-root > .MuiTableRow-root > .MuiTableCell-root {
+      background-color: #efefef;
+      font-weight: bold;
     }
 
     .PTableButton {
