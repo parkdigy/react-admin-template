@@ -62,6 +62,40 @@ export default {
   },
 
   /**
+   * PUT 요청 (인증 필요)
+   * @param auth 인증 Dialog 메시지
+   * @param path API 경로
+   * @param data 요청 데이터
+   * @param option API 옵션
+   */
+  put<T>(auth: ApiAuth, path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+    return new Promise<T>((resolve, reject) => {
+      showAuthDialog(
+        auth,
+        () => {
+          new Api<T>(defaultOption)
+            .put(path, data, option)
+            .then((data) => resolve(data))
+            .catch((err) => reject(err));
+        },
+        () => {
+          reject(new Error('API_AUTH_CANCEL'));
+        }
+      );
+    });
+  },
+
+  /**
+   * PUT 요청 (인증 없음)
+   * @param path API 경로
+   * @param data 요청 데이터
+   * @param option API 옵션
+   */
+  notAuthPut<T>(path: string, data?: ApiRequestData, option?: ApiRequestOption) {
+    return new Api<T>(defaultOption).put(path, data, option);
+  },
+
+  /**
    * PATCH 요청 (인증 필요)
    * @param auth 인증 Dialog 메시지
    * @param path API 경로
