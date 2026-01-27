@@ -4,6 +4,7 @@ import tseslint from 'typescript-eslint';
 import typescriptEslintParser from '@typescript-eslint/parser';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
+<<<<<<< HEAD
 import pluginPdgReactHooks from '@pdg/react-hook/eslint-plugin';
 import WebpackProviderPluginMui from './webpack/ProvidePlugin.mui.js';
 import WebpackProviderPluginCommonComponent from './webpack/ProvidePlugin.common-component.js';
@@ -11,6 +12,10 @@ import WebpackProviderPluginPdgReactComponent from './webpack/ProvidePlugin.pdg-
 import WebpackProviderPluginPdgReactForm from './webpack/ProvidePlugin.pdg-react-form.js';
 import WebpackProviderPluginPdgReactTable from './webpack/ProvidePlugin.pdg-react-table.js';
 import WebpackProviderPluginPdgReactDialog from './webpack/ProvidePlugin.pdg-react-dialog.js';
+=======
+import WebpackProviderPluginCommonComponent from './webpack/ProvidePlugin.common-component.js';
+import pluginPdgReactHooks from '@pdg/eslint-plugin-react-hook';
+>>>>>>> mirror/main
 
 export default defineConfig([
   ...tseslint.config(eslint.configs.recommended, tseslint.configs.recommended),
