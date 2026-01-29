@@ -269,7 +269,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                   </Button>
                 </span>
               </div>
-              <Table
+              <MuiTable
                 sx={{
                   '.MuiTableCell-root': {
                     padding: '0 10px',
@@ -333,7 +333,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
                     />
                   </MuiTableRow>
                 </MuiTableBody>
-              </Table>
+              </MuiTable>
             </FormCol>
           </FormRow>
         )}
