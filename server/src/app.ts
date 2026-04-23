@@ -103,6 +103,9 @@ if (
 
 /** version */
 let realVersion = Version;
+app.get('/api/version/app', function (req, res) {
+  realVersion.app(req, res);
+});
 app.get('/api/*/version/app', function (req, res) {
   realVersion.app(req, res);
 });
