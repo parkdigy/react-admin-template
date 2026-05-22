@@ -18,6 +18,10 @@ const options = {
   },
   externals: {
     express: 'commonjs express',
+    // redis 에서 참조하는 모듈로 빌드 시 warning 발생하여 externals 처리
+    '@opentelemetry/api': 'commonjs @opentelemetry/api',
+    // redis 에서 참조하는 모듈로 빌드 시 warning 발생하여 externals 처리
+    '@node-rs/xxhash': 'commonjs @node-rs/xxhash',
   },
   experiments: {
     topLevelAwait: true,
