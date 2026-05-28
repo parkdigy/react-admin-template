@@ -95,9 +95,21 @@ declare global {
   const endDateOfDay: typeof PdgDateTime.endDateOfDay;
   const endDateOfMonth: typeof PdgDateTime.endDateOfMonth;
   const extractDate: typeof PdgDateTime.extractDate;
+  const getY: typeof PdgDateTime.getY;
+  const getYm: typeof PdgDateTime.getYm;
+  const getYmd: typeof PdgDateTime.getYmd;
+  const getYmdh: typeof PdgDateTime.getYmdh;
+  const getYmdhm: typeof PdgDateTime.getYmdhm;
+  const getYmdhms: typeof PdgDateTime.getYmdhms;
   const now: typeof PdgDateTime.now;
   const nowJs: typeof PdgDateTime.nowJs;
   const nowTime: typeof PdgDateTime.nowTime;
+  const nowY: typeof PdgDateTime.nowY;
+  const nowYm: typeof PdgDateTime.nowYm;
+  const nowYmd: typeof PdgDateTime.nowYmd;
+  const nowYmdh: typeof PdgDateTime.nowYmdh;
+  const nowYmdhm: typeof PdgDateTime.nowYmdhm;
+  const nowYmdhms: typeof PdgDateTime.nowYmdhms;
   const weekdayText: typeof PdgDateTime.weekdayText;
 
   // data
