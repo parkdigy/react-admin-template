@@ -43,7 +43,7 @@
     "@pdg/api": "^1.0.27",
     "@pdg/compare": "^1.0.9",
     "@pdg/data": "^1.0.9",
-    "@pdg/date-time": "^1.0.5",
+    "@pdg/date-time": "^1.0.6",
     "@pdg/eslint-plugin-react-hook": "^1.0.4",
     "@pdg/formatting": "^1.0.9",
     "@pdg/korean": "^1.0.4",
