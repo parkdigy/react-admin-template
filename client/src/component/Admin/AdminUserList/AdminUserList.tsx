@@ -28,6 +28,12 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   const searchTableRef = useRef<SearchTableCommands<AdminUserListDataItem>>(null);
 
   /********************************************************************************************************************
+   * State
+   * ******************************************************************************************************************/
+
+  const [pendingReloadList, setPendingReloadList] = useState(false);
+
+  /********************************************************************************************************************
    * Memo
    * ******************************************************************************************************************/
 
@@ -56,35 +62,29 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   );
 
   /** 비밀번호 초기화 */
-  const passwordReset = useCallback(
-    (item: AdminUserListDataItem) => {
-      Const.Admin.User.passwordReset(`사용자 "${item.name}"의 비밀번호를 초기화 하시겠습니까?`, item.id).then(() => {
-        reloadList();
-      });
-    },
-    [reloadList]
-  );
+  const passwordReset = useCallback((item: AdminUserListDataItem) => {
+    Const.Admin.User.passwordReset(`사용자 "${item.name}"의 비밀번호를 초기화 하시겠습니까?`, item.id).then(() => {
+      setPendingReloadList(true);
+    });
+  }, []);
 
   /** 사용자 제한/해제 */
-  const toggleLock = useCallback(
-    (item: AdminUserListDataItem) => {
-      if (item.is_lock) {
-        Const.Admin.User.unlock(`사용자 "${item.name}"의 사용 제한을 해제하시겠습니까?`, item.id).then(() => {
-          reloadList();
-        });
-      } else {
-        Const.Admin.User.lock(
-          <T size='inherit' color='error'>
-            사용자 &quot;{item.name}&quot;의 사용을 제한 하시겠습니까?
-          </T>,
-          item.id
-        ).then(() => {
-          reloadList();
-        });
-      }
-    },
-    [reloadList]
-  );
+  const toggleLock = useCallback((item: AdminUserListDataItem) => {
+    if (item.is_lock) {
+      Const.Admin.User.unlock(`사용자 "${item.name}"의 사용 제한을 해제하시겠습니까?`, item.id).then(() => {
+        setPendingReloadList(true);
+      });
+    } else {
+      Const.Admin.User.lock(
+        <T size='inherit' color='error'>
+          사용자 &quot;{item.name}&quot;의 사용을 제한 하시겠습니까?
+        </T>,
+        item.id
+      ).then(() => {
+        setPendingReloadList(true);
+      });
+    }
+  }, []);
 
   /** 사용자 등록/수정 다이얼로그 열기 */
   const showFormDialog = useCallback(
@@ -98,10 +98,10 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   const showGroupFormDialog = useCallback(
     (item: AdminUserListDataItem) => {
       if (item.admin_group_id) {
-        groupFormDialog({ id: item.admin_group_id, onSuccess: () => reloadList() });
+        groupFormDialog({ id: item.admin_group_id, onSuccess: () => setPendingReloadList(true) });
       }
     },
-    [groupFormDialog, reloadList]
+    [groupFormDialog]
   );
 
   /** 로그인 내역 다이얼로그 열기 */
@@ -143,6 +143,12 @@ const AdminUserList = ({ noHash, onRequestScrollToTop }: Props) => {
   useEventEffect(() => {
     loadGroupList();
   }, []);
+
+  useEventEffect(() => {
+    if (!pendingReloadList) return;
+    reloadList();
+    setPendingReloadList(false);
+  }, [pendingReloadList]);
 
   /********************************************************************************************************************
    * Table
