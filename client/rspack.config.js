@@ -7,6 +7,8 @@ const env = {
   ...process.env,
 };
 const MyProvidePlugin = require('./rspack/ProvidePlugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const splitChunks = require('./rspack/splitChunks');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const appConfig = isProduction
@@ -50,7 +52,7 @@ class BuildStatsPlugin {
 module.exports = {
   context: __dirname,
   mode: isProduction ? 'production' : 'development',
-  devtool: isProduction ? false : 'eval-cheap-module-source-map',
+  devtool: isProduction ? false : 'source-map',
   target: 'browserslist',
   entry: './src',
   stats: 'errors-warnings',
@@ -71,7 +73,7 @@ module.exports = {
     port: Number(env.APP_PORT),
     hot: true,
     historyApiFallback: true,
-    client: { overlay: { errors: true, warnings: false, runtimeErrors: true } },
+    client: { overlay: { errors: false, warnings: false, runtimeErrors: false }, progress: false },
     proxy: env.API_URL
       ? [
           {
@@ -79,6 +81,7 @@ module.exports = {
             target: env.API_URL,
             changeOrigin: true,
             pathRewrite: { '^/api': '' },
+            logger: { info: () => {}, warn: console.warn, error: console.error },
           },
         ]
       : [],
@@ -91,7 +94,9 @@ module.exports = {
   optimization: {
     minimize: isProduction,
     runtimeChunk: true,
-    splitChunks: isProduction ? { chunks: 'all' } : false,
+    removeAvailableModules: isProduction,
+    removeEmptyChunks: isProduction,
+    splitChunks: isProduction ? splitChunks : {},
   },
   plugins: [
     new MyProvidePlugin(),
@@ -101,12 +106,21 @@ module.exports = {
     new rspack.CopyRspackPlugin({ patterns: [{ from: './public/robots.txt' }] }),
     new rspack.IgnorePlugin({ resourceRegExp: /^\.\/locale$/, contextRegExp: /moment$/ }),
     ...(isProduction
-      ? [new rspack.CircularCheckRspackPlugin({ exclude: /node_modules/, failOnError: true }), new BuildStatsPlugin()]
+      ? [
+          new rspack.CircularCheckRspackPlugin({ exclude: /a\.js|node_modules/, failOnError: true }),
+          new BuildStatsPlugin(),
+          new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+            reportFilename: '../build/report.html',
+          }),
+        ]
       : [new ReactRefreshRspackPlugin({ overlay: false })]),
   ],
   module: {
     rules: [
-      { test: /\.m?js$/, resolve: { fullySpecified: false } },
+      { test: /\.m?js$/, resolve: { fullySpecified: false }, extractSourceMap: true },
+      { test: /\.html$/i, loader: 'html-loader', options: { minimize: true } },
       {
         test: /\.[jt]sx?$/,
         include: path.resolve(__dirname, 'src'),
@@ -125,12 +139,39 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         type: 'javascript/auto',
-        use: [rspack.CssExtractRspackPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [
+          { loader: rspack.CssExtractRspackPlugin.loader, options: { publicPath: '../' } },
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/i,
+        test: /\.(png|jpe?g|gif)(\?\S*)?$/i,
         type: 'asset',
         parser: { dataUrlCondition: { maxSize: 100 * 1024 } },
+      },
+      {
+        test: /\.svg$/i,
+        oneOf: [
+          {
+            issuer: /\.[jt]sx?$/,
+            type: 'javascript/auto',
+            use: [
+              {
+                loader: 'builtin:swc-loader',
+                options: {
+                  jsc: {
+                    parser: { syntax: 'ecmascript', jsx: true },
+                    transform: { react: { runtime: 'automatic' } },
+                  },
+                },
+              },
+              { loader: '@svgr/webpack', options: { babel: false } },
+              { loader: 'url-loader', options: { limit: 100000, name: '[name].[ext]' } },
+            ],
+          },
+          { type: 'asset', parser: { dataUrlCondition: { maxSize: 100000 } } },
+        ],
       },
       { test: /\.(woff2?|eot|ttf|otf)$/i, type: 'asset/resource' },
       { test: /\.(txt|md)$/i, type: 'asset/source' },

@@ -21,10 +21,13 @@ Node 버전은 `.nvmrc`를 기준으로 맞추고 루트, `client`, `server`에�
 
 클라이언트와 서버 모두 `builtin:swc-loader`를 사용한다. React Compiler는 SWC에서 실행하며,
 전역 자동 주입 설정은 `client/rspack`, 대응 타입은 `client/src/@types/rspack.ProvidePlugin.*.d.ts`에 있다.
-기존 빌드 설정과 Babel 플러그인, 서버 개발용 `node-hot-loader`는 제거했다.
-`eslint-plugin-react-hooks`는 내부 분석용 Babel을 간접 의존성으로 사용하므로 설치 트리에 남지만 빌드에는 사용하지 않는다.
+기존 Webpack 빌드 설정, TSX용 Babel 설정과 서버 개발용 `node-hot-loader`는 제거했다.
+SVG 호환에는 `@svgr/webpack`과 URL 로더를 사용하며 생성된 JSX는 SWC로 변환한다(`babel: false`).
+SVGR 내부 변환과 ESLint는 Babel 패키지를 간접 사용하고, 일부 호환 로더의 peer dependency로 Webpack 패키지가 설치되지만 실제 빌드·개발 서버는 Rspack을 사용한다.
 
-번들 분석 데이터는 `client/build/stats.json`으로 생성한다. SVG는 이미지 URL 자산으로 처리한다.
+번들 분석은 `client/build/report.html`과 `client/build/stats.json`으로 생성한다.
+SVG는 기본 URL과 `{ ReactComponent }` import를 함께 지원하며 HTML import는 압축 및 자산 참조를 처리한다.
+[기존 Webpack 설정과의 대응표](docs/rspack-webpack-parity.md)에 보완 내용과 검증 결과를 기록했다.
 개발 서버와 Express 모두 `/api` 접두사를 제거해 `API_URL`로 전달한다.
 환경 변수는 루트 `.env`를 읽으며 실행 명령에 전달한 환경 변수가 우선한다.
 

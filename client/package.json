@@ -59,6 +59,7 @@
     "@rspack/core": "2.2.9",
     "@rspack/dev-server": "2.2.2",
     "@rspack/plugin-react-refresh": "2.0.2",
+    "@svgr/webpack": "^8.1.0",
     "@tinymce/miniature": "^6.0.0",
     "@tinymce/tinymce-react": "^6.3.0",
     "@types/jest": "^30.0.0",
@@ -83,6 +84,8 @@
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
+    "file-loader": "^6.2.0",
+    "html-loader": "^5.1.0",
     "js-file-download": "^0.4.12",
     "nodemon": "^3.1.14",
     "notistack": "^3.0.2",
@@ -98,6 +101,8 @@
     "styled-components": "^6.5.3",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.70.0",
-    "usehooks-ts": "^3.1.1"
+    "url-loader": "^4.1.1",
+    "usehooks-ts": "^3.1.1",
+    "webpack-bundle-analyzer": "^5.3.2"
   }
 }
