@@ -104,5 +104,10 @@
     "url-loader": "^4.1.1",
     "usehooks-ts": "^3.1.1",
     "webpack-bundle-analyzer": "^5.3.2"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "core-js@3.50.0": true,
+    "fsevents@2.3.3": true
   }
 }
