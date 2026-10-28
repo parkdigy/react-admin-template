@@ -50,7 +50,6 @@ import {
 } from '@pdg/date-time';
 import { lv as _lv, vl as _vl, copy as _copy } from '@pdg/data';
 
-/* eslint-disable */
 declare global {
   /** types */
   type ValueOf<T> = _ValueOf<T>;
@@ -107,7 +106,6 @@ declare global {
   var vl: typeof _vl;
   var copy: typeof _copy;
 }
-/* eslint-enable */
 
 /** compare */
 globalThis.empty = _empty;
