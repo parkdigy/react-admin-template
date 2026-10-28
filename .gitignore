@@ -6,18 +6,16 @@
 # 배포 시 publish/development, publish/staging, publish/production Branch 생성하고 모두 주석 해제
 #PUB#/.agents
 #PUB#/_workspace
-#PUB#/client/patches
 #PUB#/client/public
 #PUB#/client/src
-#PUB#/client/webpack
+#PUB#/client/rspack
 #PUB#/client/.prettierignore
 #PUB#/client/.prettierrc.mjs
-#PUB#/client/babel.config.js
 #PUB#/client/eslint.config.mjs
 #PUB#/client/package.json
 #PUB#/client/tsconfig.json
 #PUB#/client/tsconfig.tsbuildinfo
-#PUB#/client/webpack.config.js
+#PUB#/client/rspack.config.js
 #PUB#/docs
 #PUB#/server/src
 #PUB#/server/.prettierignore
@@ -25,7 +23,8 @@
 #PUB#/server/eslint.config.mjs
 #PUB#/server/tsconfig.json
 #PUB#/server/tsconfig.tsbuildinfo
-#PUB#/server/webpack.config.js
+#PUB#/server/rspack.config.js
+#PUB#/server/dev.js
 #PUB#.env.example
 #PUB#.git-commit.js
 #PUB#.git-merge.js
@@ -38,7 +37,7 @@
 #PUB#eslint.config.mjs
 #PUB#jest.config.ts
 #PUB#README.md
-#PUB#webpack.config.js
+#PUB#rspack.config.js
 
 # dotenv
 .env

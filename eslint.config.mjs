@@ -2,6 +2,6 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
-    ignores: ['node_modules/', '.publish.js', '.publish_make.js', 'webpack.config.js'],
+    ignores: ['node_modules/', '.publish.js', '.publish_make.js', 'rspack.config.js'],
   },
 ]);

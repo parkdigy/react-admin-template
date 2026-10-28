@@ -6,6 +6,17 @@ import * as AdminLayout from '@pdg/react-admin-layout';
 import MainRouter from '../../router';
 import { type AdminUserMenuInfo } from '@const';
 
+function makeMenuRoles(menuRoles: MenuRoles, info: AdminUserMenuInfo): void {
+  if (info.uri) {
+    menuRoles[info.id] = { read: info.read, write: info.write, export: info.export };
+  }
+  if (notEmpty(info.items)) {
+    info.items.map((subInfo) => {
+      makeMenuRoles(menuRoles, subInfo);
+    });
+  }
+}
+
 const DefaultLayout = () => {
   const { removeHtmlLoading } = useAppState();
 
@@ -22,17 +33,6 @@ const DefaultLayout = () => {
   /** 메뉴 목록 불러오기 */
   const loadMenuList = useCallback(() => {
     Const.Admin.User.menuList().then(({ data: items }) => {
-      const makeMenuRoles = (menuRoles: MenuRoles, info: AdminUserMenuInfo) => {
-        if (info.uri) {
-          menuRoles[info.id] = { read: info.read, write: info.write, export: info.export };
-        }
-        if (notEmpty(info.items)) {
-          info.items.map((subInfo) => {
-            makeMenuRoles(menuRoles, subInfo);
-          });
-        }
-      };
-
       g.menu.setRoles(
         items.reduce((res, info) => {
           makeMenuRoles(res, info);

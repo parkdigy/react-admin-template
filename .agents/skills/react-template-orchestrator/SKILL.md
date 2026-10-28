@@ -44,7 +44,7 @@ description: React Admin Template의 클라이언트, Express 서버, 환경, �
 - 자동 주입 전역: 실제 export → `ProvidePlugin*.js` → 대응 전역 `.d.ts` → ESLint globals → 소비 코드
 - API 호출: 요청·응답 타입 → `global/api`/`@pdg/api` 옵션 → Axios XSRF 설정 → 개발·운영 프록시 재작성
 - 서버 로컬 경로: 프록시 전 로컬 라우트 → 프록시 → body parser → 배포 훅 → 정적 파일 → SPA fallback
-- 환경·운영: `.env.example` → Webpack/Express 소비 코드 → HTTPS·세션·keep-alive·PM2 영향
+- 환경·운영: `.env.example` → Rspack/Express 소비 코드 → HTTPS·세션·keep-alive·PM2 영향
 - 빌드: 클라이언트 `dist`와 분석 보고서 → 서버 `dist/app.js` → EJS 렌더링·PM2 실행 경로
 
 ### 3. 구현
@@ -61,7 +61,7 @@ description: React Admin Template의 클라이언트, Express 서버, 환경, �
 
 1. 수정 파일의 import/export, 전역 타입, 라우트, 환경 키 참조를 `rg`로 교차 확인한다.
 2. 코드 변경은 루트에서 `npm run verify`를 실행한다. 이는 client/server lint와 TypeScript 검사이며 자동 테스트를 포함하지 않는다.
-3. Webpack, Babel, 환경 주입, 정적 자산, 서버 번들 또는 배포 경로 변경은 `npm run build`를 추가한다. 생성 디렉터리가 바뀔 수 있음을 먼저 확인한다.
+3. Rspack, SWC, 환경 주입, 정적 자산, 서버 번들 또는 배포 경로 변경은 `npm run build`를 추가한다. 생성 디렉터리가 바뀔 수 있음을 먼저 확인한다.
 4. UI 변경은 `npm run dev`에서 인증 유무, 메뉴 로딩, 대상 라우트, 로딩·빈 상태·오류·반응형 동작을 직접 확인한다.
 5. 서버 또는 프록시 변경은 가능한 경우 `npm run server:dev`와 실제 HTTP 요청으로 로컬 라우트 우선순위, 상태 코드, 본문과 `/api` 재작성을 확인한다.
 6. `git diff --check`, 변경 범위 diff, `git status --short`로 종료 상태를 확인한다.

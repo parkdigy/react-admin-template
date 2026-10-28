@@ -26,7 +26,7 @@
 ## 품질 게이트
 
 1. 모든 코드 변경: `npm run verify`
-2. Webpack·환경 주입·정적 자산·서버 번들 변경: `npm run build`
+2. Rspack·환경 주입·정적 자산·서버 번들 변경: `npm run build`
 3. UI 변경: 대상 화면을 브라우저에서 직접 확인
 4. 서버·프록시 변경: 실제 HTTP 경로, 상태 코드, 응답 본문 확인
 5. 종료 전: `git diff --check`, `git status --short`

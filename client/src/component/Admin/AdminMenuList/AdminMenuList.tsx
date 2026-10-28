@@ -10,6 +10,22 @@ import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 
+function makeListIdMap(items: AdminMenuListDataItem[], result: Dict<AdminMenuListDataItem>): void {
+  for (const info of items) {
+    result[info.id] = info;
+    makeListIdMap(info.items, result);
+  }
+}
+
+function makeSeqData(items: AdminMenuListDataItem[], result: { id: string; seq: number }[]): void {
+  let seq = 0;
+  for (const item of items) {
+    seq += 10;
+    result.push({ id: item.id, seq });
+    makeSeqData(item.items, result);
+  }
+}
+
 export const AdminMenuList = ({}: Props) => {
   const id = useId();
 
@@ -38,13 +54,7 @@ export const AdminMenuList = ({}: Props) => {
   const getListIdMap = useCallback((l: AdminMenuListData | undefined) => {
     const newListIdMap: Dict<AdminMenuListDataItem> = {};
     if (l) {
-      const makeListIdMap = (items: AdminMenuListDataItem[]) => {
-        items.map((info) => {
-          newListIdMap[info.id] = info;
-          makeListIdMap(info.items);
-        });
-      };
-      makeListIdMap(l);
+      makeListIdMap(l, newListIdMap);
     }
     return newListIdMap;
   }, []);
@@ -120,16 +130,7 @@ export const AdminMenuList = ({}: Props) => {
     if (list) {
       const data: { id: string; seq: number }[] = [];
 
-      const makeData = (items: AdminMenuListDataItem[]) => {
-        let seq = 0;
-        for (const item of items) {
-          seq += 10;
-          data.push({ id: item.id, seq });
-
-          makeData(item.items);
-        }
-      };
-      makeData(list);
+      makeSeqData(list, data);
 
       Const.Admin.Menu.editSeq(JSON.stringify(data)).then(() => {
         loadMenuList();

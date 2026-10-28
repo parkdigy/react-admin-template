@@ -102,7 +102,7 @@ if (
 }
 
 /** version */
-let realVersion = Version;
+const realVersion = Version;
 app.get('/api/version/app', function (req, res) {
   realVersion.app(req, res);
 });
@@ -152,7 +152,7 @@ if (process.env.API_URL) {
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
 
-let realDeploy = Deploy;
+const realDeploy = Deploy;
 app.post('/deploy/github', function (req, res) {
   realDeploy.github(req, res);
 });
@@ -163,7 +163,7 @@ app.use(
   })
 );
 
-+app.get(/./, (req, res) => {
+app.get(/./, (req, res) => {
   res.render('index', {
     title: process.env.APP_NAME,
     appEnv: process.env.APP_ENV,
@@ -259,20 +259,4 @@ function startServer() {
   return servers;
 }
 
-let servers = startServer();
-
-if (module.hot) {
-  module.hot.accept(['./init']);
-
-  module.hot.accept('./controllers', () => {
-    import('./controllers').then(({ Version, Deploy }) => {
-      realVersion = Version;
-      realDeploy = Deploy;
-    });
-
-    for (const server of servers) {
-      server.close();
-    }
-    servers = startServer();
-  });
-}
+const servers = startServer();
