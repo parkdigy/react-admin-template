@@ -16,7 +16,7 @@ export default defineConfig([
   ...tseslint.config(eslint.configs.recommended, tseslint.configs.recommended),
   pluginReact.configs.flat.recommended,
   pluginReact.configs.flat['jsx-runtime'],
-  pluginReactHooks.configs.flat.recommended,
+  pluginReactHooks.configs.flat['recommended-latest'],
   pluginPdgReactHooks.configs.flat.recommended,
   {
     settings: {
@@ -69,6 +69,8 @@ export default defineConfig([
       'react/no-unescaped-entities': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-no-undef': ['error', { allowGlobals: true }],
+      'react/jsx-key': 'warn',
+      'react-hooks/set-state-in-effect': 'warn',
       'no-plusplus': 'error',
       'prefer-template': 'error',
       'jsx-quotes': ['error', 'prefer-single'],
@@ -120,7 +122,7 @@ export default defineConfig([
   },
   {
     ignores: ['node_modules/', 'dist/'],
-    files: ['rspack/**/*.js', '*.js'],
+    files: ['rspack/**/*.js', '*.js', 'src/sw.js'],
     languageOptions: {
       globals: {
         module: 'readonly',
@@ -128,6 +130,8 @@ export default defineConfig([
         require: 'readonly',
         __dirname: 'readonly',
         console: 'readonly',
+        React: 'readonly',
+        self: 'readonly',
       },
     },
     rules: {
