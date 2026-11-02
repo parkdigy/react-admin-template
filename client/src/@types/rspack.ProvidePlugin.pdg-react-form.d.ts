@@ -178,7 +178,7 @@ declare global {
   type FormEmbedMonthRangePickerProps = PdgReactForm.PFormEmbedMonthRangePickerProps;
   type FormEmbedMonthRangePickerCommands = PdgReactForm.PFormEmbedMonthRangePickerCommands;
   type FormEmbedMonthRangePickerBaseValue = PdgReactForm.PFormEmbedMonthRangePickerBaseValue;
-  type FormEmbedMonthRangePickerValue = PdgReactForm.FormEmbedMonthRangePickerValue;
+  type FormEmbedMonthRangePickerValue = PdgReactForm.PFormEmbedMonthRangePickerValue;
 
   // FormItemCustom - FormRadioGroup
   const FormRadioGroup: typeof PdgReactForm.PFormRadioGroup;
