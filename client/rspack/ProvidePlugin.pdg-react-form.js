@@ -67,6 +67,12 @@ module.exports = {
   FormDatePickerCommands: ['@pdg/react-form', 'PFormDatePickerCommands'],
   FormDatePickerValue: ['@pdg/react-form', 'PFormDatePickerValue'],
 
+  // FormItemCustom - FormEmbedDatePicker
+  FormEmbedDatePicker: ['@pdg/react-form', 'PFormEmbedDatePicker'],
+  FormEmbedDatePickerProps: ['@pdg/react-form', 'PFormEmbedDatePickerProps'],
+  FormEmbedDatePickerCommands: ['@pdg/react-form', 'PFormEmbedDatePickerCommands'],
+  FormEmbedDatePickerValue: ['@pdg/react-form', 'PFormEmbedDatePickerValue'],
+
   // FormItemCustom - FormDateRangePicker
   FormDateRangePicker: ['@pdg/react-form', 'PFormDateRangePicker'],
   FormDateRangePickerProps: ['@pdg/react-form', 'PFormDateRangePickerProps'],
@@ -75,11 +81,25 @@ module.exports = {
   FormDateRangePickerValue: ['@pdg/react-form', 'PFormDateRangePickerValue'],
   FormDateRangePickerCalendarCount: ['@pdg/react-form', 'PFormDateRangePickerCalendarCount'],
 
+  // FormItemCustom - FormEmbedDateRangePicker
+  FormEmbedDateRangePicker: ['@pdg/react-form', 'PFormEmbedDateRangePicker'],
+  FormEmbedDateRangePickerProps: ['@pdg/react-form', 'PFormEmbedDateRangePickerProps'],
+  FormEmbedDateRangePickerCommands: ['@pdg/react-form', 'PFormEmbedDateRangePickerCommands'],
+  FormEmbedDateRangePickerDateValue: ['@pdg/react-form', 'PFormEmbedDateRangePickerDateValue'],
+  FormEmbedDateRangePickerValue: ['@pdg/react-form', 'PFormEmbedDateRangePickerValue'],
+  FormEmbedDateRangePickerCalendarCount: ['@pdg/react-form', 'PFormEmbedDateRangePickerCalendarCount'],
+
   // FormItemCustom - FormDateTimePicker
   FormDateTimePicker: ['@pdg/react-form', 'PFormDateTimePicker'],
   FormDateTimePickerProps: ['@pdg/react-form', 'PFormDateTimePickerProps'],
   FormDateTimePickerCommands: ['@pdg/react-form', 'PFormDateTimePickerCommands'],
   FormDateTimePickerValue: ['@pdg/react-form', 'PFormDateTimePickerValue'],
+
+  // FormItemCustom - FormEmbedDateTimePicker
+  FormEmbedDateTimePicker: ['@pdg/react-form', 'PFormEmbedDateTimePicker'],
+  FormEmbedDateTimePickerProps: ['@pdg/react-form', 'PFormEmbedDateTimePickerProps'],
+  FormEmbedDateTimePickerCommands: ['@pdg/react-form', 'PFormEmbedDateTimePickerCommands'],
+  FormEmbedDateTimePickerValue: ['@pdg/react-form', 'PFormEmbedDateTimePickerValue'],
 
   // FormItemCustom - FormFile
   FormFile: ['@pdg/react-form', 'PFormFile'],
@@ -100,12 +120,26 @@ module.exports = {
   FormMonthPickerBaseValue: ['@pdg/react-form', 'PFormMonthPickerBaseValue'],
   FormMonthPickerValue: ['@pdg/react-form', 'PFormMonthPickerValue'],
 
+  // FormItemCustom - FormEmbedMonthPicker
+  FormEmbedMonthPicker: ['@pdg/react-form', 'PFormEmbedMonthPicker'],
+  FormEmbedMonthPickerProps: ['@pdg/react-form', 'PFormEmbedMonthPickerProps'],
+  FormEmbedMonthPickerCommands: ['@pdg/react-form', 'PFormEmbedMonthPickerCommands'],
+  FormEmbedMonthPickerBaseValue: ['@pdg/react-form', 'PFormEmbedMonthPickerBaseValue'],
+  FormEmbedMonthPickerValue: ['@pdg/react-form', 'PFormEmbedMonthPickerValue'],
+
   // FormItemCustom - FormMonthRangePicker
   FormMonthRangePicker: ['@pdg/react-form', 'PFormMonthRangePicker'],
   FormMonthRangePickerProps: ['@pdg/react-form', 'PFormMonthRangePickerProps'],
   FormMonthRangePickerCommands: ['@pdg/react-form', 'PFormMonthRangePickerCommands'],
   FormMonthRangePickerBaseValue: ['@pdg/react-form', 'PFormMonthRangePickerBaseValue'],
   FormMonthRangePickerValue: ['@pdg/react-form', 'PFormMonthRangePickerValue'],
+
+  // FormItemCustom - FormEmbedMonthRangePicker
+  FormEmbedMonthRangePicker: ['@pdg/react-form', 'PFormEmbedMonthRangePicker'],
+  FormEmbedMonthRangePickerProps: ['@pdg/react-form', 'PFormEmbedMonthRangePickerProps'],
+  FormEmbedMonthRangePickerCommands: ['@pdg/react-form', 'PFormEmbedMonthRangePickerCommands'],
+  FormEmbedMonthRangePickerBaseValue: ['@pdg/react-form', 'PFormEmbedMonthRangePickerBaseValue'],
+  FormEmbedMonthRangePickerValue: ['@pdg/react-form', 'PFormEmbedMonthRangePickerValue'],
 
   // FormItemCustom - FormRadioGroup
   FormRadioGroup: ['@pdg/react-form', 'PFormRadioGroup'],
@@ -139,6 +173,12 @@ module.exports = {
   FormTimePickerCommands: ['@pdg/react-form', 'PFormTimePickerCommands'],
   FormTimePickerValue: ['@pdg/react-form', 'PFormTimePickerValue'],
 
+  // FormItemCustom - FormEmbedTimePicker
+  FormEmbedTimePicker: ['@pdg/react-form', 'PFormEmbedTimePicker'],
+  FormEmbedTimePickerProps: ['@pdg/react-form', 'PFormEmbedTimePickerProps'],
+  FormEmbedTimePickerCommands: ['@pdg/react-form', 'PFormEmbedTimePickerCommands'],
+  FormEmbedTimePickerValue: ['@pdg/react-form', 'PFormEmbedTimePickerValue'],
+
   // FormItemCustom - FormToggleButtonGroup
   FormToggleButtonGroup: ['@pdg/react-form', 'PFormToggleButtonGroup'],
   FormToggleButtonGroupProps: ['@pdg/react-form', 'PFormToggleButtonGroupProps'],
@@ -156,12 +196,26 @@ module.exports = {
   FormYearPickerBaseValue: ['@pdg/react-form', 'PFormYearPickerBaseValue'],
   FormYearPickerValue: ['@pdg/react-form', 'PFormYearPickerValue'],
 
+  // FormItemCustom - FormEmbedYearPicker
+  FormEmbedYearPicker: ['@pdg/react-form', 'PFormEmbedYearPicker'],
+  FormEmbedYearPickerProps: ['@pdg/react-form', 'PFormEmbedYearPickerProps'],
+  FormEmbedYearPickerCommands: ['@pdg/react-form', 'PFormEmbedYearPickerCommands'],
+  FormEmbedYearPickerBaseValue: ['@pdg/react-form', 'PFormEmbedYearPickerBaseValue'],
+  FormEmbedYearPickerValue: ['@pdg/react-form', 'PFormEmbedYearPickerValue'],
+
   // FormItemCustom - FormYearRangePicker
   FormYearRangePicker: ['@pdg/react-form', 'PFormYearRangePicker'],
   FormYearRangePickerProps: ['@pdg/react-form', 'PFormYearRangePickerProps'],
   FormYearRangePickerCommands: ['@pdg/react-form', 'PFormYearRangePickerCommands'],
   FormYearRangePickerBaseValue: ['@pdg/react-form', 'PFormYearRangePickerBaseValue'],
   FormYearRangePickerValue: ['@pdg/react-form', 'PFormYearRangePickerValue'],
+
+  // FormItemCustom - FormEmbedYearRangePicker
+  FormEmbedYearRangePicker: ['@pdg/react-form', 'PFormEmbedYearRangePicker'],
+  FormEmbedYearRangePickerProps: ['@pdg/react-form', 'PFormEmbedYearRangePickerProps'],
+  FormEmbedYearRangePickerCommands: ['@pdg/react-form', 'PFormEmbedYearRangePickerCommands'],
+  FormEmbedYearRangePickerBaseValue: ['@pdg/react-form', 'PFormEmbedYearRangePickerBaseValue'],
+  FormEmbedYearRangePickerValue: ['@pdg/react-form', 'PFormEmbedYearRangePickerValue'],
 
   // FormItemTextFieldBase - FormBusinessNo
   FormBusinessNo: ['@pdg/react-form', 'PFormBusinessNo'],
