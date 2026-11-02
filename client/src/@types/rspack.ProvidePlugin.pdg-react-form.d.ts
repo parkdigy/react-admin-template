@@ -106,6 +106,12 @@ declare global {
   type FormDatePickerCommands = PdgReactForm.PFormDatePickerCommands;
   type FormDatePickerValue = PdgReactForm.PFormDatePickerValue;
 
+  // FormItemCustom - FormEmbedDatePicker
+  const FormEmbedDatePicker: typeof PdgReactForm.PFormEmbedDatePicker;
+  type FormEmbedDatePickerProps = PdgReactForm.PFormEmbedDatePickerProps;
+  type FormEmbedDatePickerCommands = PdgReactForm.PFormEmbedDatePickerCommands;
+  type FormEmbedDatePickerValue = PdgReactForm.PFormEmbedDatePickerValue;
+
   // FormItemCustom - FormDateRangePicker
   const FormDateRangePicker: typeof PdgReactForm.PFormDateRangePicker;
   type FormDateRangePickerProps = PdgReactForm.PFormDateRangePickerProps;
@@ -114,11 +120,25 @@ declare global {
   type FormDateRangePickerValue = PdgReactForm.PFormDateRangePickerValue;
   type FormDateRangePickerCalendarCount = PdgReactForm.PFormDateRangePickerCalendarCount;
 
+  // FormItemCustom - FormEmbedDateRangePicker
+  const FormEmbedDateRangePicker: typeof PdgReactForm.PFormEmbedDateRangePicker;
+  type FormEmbedDateRangePickerProps = PdgReactForm.PFormEmbedDateRangePickerProps;
+  type FormEmbedDateRangePickerCommands = PdgReactForm.PFormEmbedDateRangePickerCommands;
+  type FormEmbedDateRangePickerDateValue = PdgReactForm.PFormEmbedDateRangePickerDateValue;
+  type FormEmbedDateRangePickerValue = PdgReactForm.PFormEmbedDateRangePickerValue;
+  type FormEmbedDateRangePickerCalendarCount = PdgReactForm.PFormEmbedDateRangePickerCalendarCount;
+
   // FormItemCustom - FormDateTimePicker
   const FormDateTimePicker: typeof PdgReactForm.PFormDateTimePicker;
   type FormDateTimePickerProps = PdgReactForm.PFormDateTimePickerProps;
   type FormDateTimePickerCommands = PdgReactForm.PFormDateTimePickerCommands;
   type FormDateTimePickerValue = PdgReactForm.PFormDateTimePickerValue;
+
+  // FormItemCustom - FormEmbedDateTimePicker
+  const FormEmbedDateTimePicker: typeof PdgReactForm.PFormEmbedDateTimePicker;
+  type FormEmbedDateTimePickerProps = PdgReactForm.PFormEmbedDateTimePickerProps;
+  type FormEmbedDateTimePickerCommands = PdgReactForm.PFormEmbedDateTimePickerCommands;
+  type FormEmbedDateTimePickerValue = PdgReactForm.PFormEmbedDateTimePickerValue;
 
   // FormItemCustom - FormFile
   const FormFile: typeof PdgReactForm.PFormFile;
@@ -139,12 +159,26 @@ declare global {
   type FormMonthPickerBaseValue = PdgReactForm.PFormMonthPickerBaseValue;
   type FormMonthPickerValue = PdgReactForm.PFormMonthPickerValue;
 
+  // FormItemCustom - FormEmbedMonthPicker
+  const FormEmbedMonthPicker: typeof PdgReactForm.PFormEmbedMonthPicker;
+  type FormEmbedMonthPickerProps = PdgReactForm.PFormEmbedMonthPickerProps;
+  type FormEmbedMonthPickerCommands = PdgReactForm.PFormEmbedMonthPickerCommands;
+  type FormEmbedMonthPickerBaseValue = PdgReactForm.PFormEmbedMonthPickerBaseValue;
+  type FormEmbedMonthPickerValue = PdgReactForm.PFormEmbedMonthPickerValue;
+
   // FormItemCustom - FormMonthRangePicker
   const FormMonthRangePicker: typeof PdgReactForm.PFormMonthRangePicker;
   type FormMonthRangePickerProps = PdgReactForm.PFormMonthRangePickerProps;
   type FormMonthRangePickerCommands = PdgReactForm.PFormMonthRangePickerCommands;
   type FormMonthRangePickerBaseValue = PdgReactForm.PFormMonthRangePickerBaseValue;
   type FormMonthRangePickerValue = PdgReactForm.FormMonthRangePickerValue;
+
+  // FormItemCustom - FormEmbedMonthRangePicker
+  const FormEmbedMonthRangePicker: typeof PdgReactForm.PFormEmbedMonthRangePicker;
+  type FormEmbedMonthRangePickerProps = PdgReactForm.PFormEmbedMonthRangePickerProps;
+  type FormEmbedMonthRangePickerCommands = PdgReactForm.PFormEmbedMonthRangePickerCommands;
+  type FormEmbedMonthRangePickerBaseValue = PdgReactForm.PFormEmbedMonthRangePickerBaseValue;
+  type FormEmbedMonthRangePickerValue = PdgReactForm.FormEmbedMonthRangePickerValue;
 
   // FormItemCustom - FormRadioGroup
   const FormRadioGroup: typeof PdgReactForm.PFormRadioGroup;
@@ -182,6 +216,12 @@ declare global {
   type FormTimePickerCommands = PdgReactForm.PFormTimePickerCommands;
   type FormTimePickerValue = PdgReactForm.PFormTimePickerValue;
 
+  // FormItemCustom - FormEmbedTimePicker
+  const FormEmbedTimePicker: typeof PdgReactForm.PFormEmbedTimePicker;
+  type FormEmbedTimePickerProps = PdgReactForm.PFormEmbedTimePickerProps;
+  type FormEmbedTimePickerCommands = PdgReactForm.PFormEmbedTimePickerCommands;
+  type FormEmbedTimePickerValue = PdgReactForm.PFormEmbedTimePickerValue;
+
   // FormItemCustom - FormToggleButtonGroup
   const FormToggleButtonGroup: typeof PdgReactForm.PFormToggleButtonGroup;
   type FormToggleButtonGroupProps<
@@ -214,12 +254,26 @@ declare global {
   type FormYearPickerBaseValue = PdgReactForm.PFormYearPickerBaseValue;
   type FormYearPickerValue = PdgReactForm.PFormYearPickerValue;
 
+  // FormItemCustom - FormEmbedYearPicker
+  const FormEmbedYearPicker: typeof PdgReactForm.PFormEmbedYearPicker;
+  type FormEmbedYearPickerProps = PdgReactForm.PFormEmbedYearPickerProps;
+  type FormEmbedYearPickerCommands = PdgReactForm.PFormEmbedYearPickerCommands;
+  type FormEmbedYearPickerBaseValue = PdgReactForm.PFormEmbedYearPickerBaseValue;
+  type FormEmbedYearPickerValue = PdgReactForm.PFormEmbedYearPickerValue;
+
   // FormItemCustom - FormYearRangePicker
   const FormYearRangePicker: typeof PdgReactForm.PFormYearRangePicker;
   type FormYearRangePickerProps = PdgReactForm.PFormYearRangePickerProps;
   type FormYearRangePickerCommands = PdgReactForm.PFormYearRangePickerCommands;
   type FormYearRangePickerBaseValue = PdgReactForm.PFormYearRangePickerBaseValue;
   type FormYearRangePickerValue = PdgReactForm.PFormYearRangePickerValue;
+
+  // FormItemCustom - FormEmbedYearRangePicker
+  const FormEmbedYearRangePicker: typeof PdgReactForm.PFormEmbedYearRangePicker;
+  type FormEmbedYearRangePickerProps = PdgReactForm.PFormEmbedYearRangePickerProps;
+  type FormEmbedYearRangePickerCommands = PdgReactForm.PFormEmbedYearRangePickerCommands;
+  type FormEmbedYearRangePickerBaseValue = PdgReactForm.PFormEmbedYearRangePickerBaseValue;
+  type FormEmbedYearRangePickerValue = PdgReactForm.PFormEmbedYearRangePickerValue;
 
   // FormItemTextFieldBase - FormBusinessNo
   const FormBusinessNo: typeof PdgReactForm.PFormBusinessNo;
