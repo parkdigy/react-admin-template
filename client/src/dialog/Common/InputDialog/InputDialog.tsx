@@ -32,7 +32,10 @@ function InputDialog<
    * ******************************************************************************************************************/
 
   const inputType = useMemo(() => ifUndefined(initInputType, 'text'), [initInputType]);
-  const maxWidth = useMemo(() => ifUndefined(initMaxWidth, 'sm'), [initMaxWidth]);
+  const maxWidth = useMemo(
+    () => ifUndefined(initMaxWidth, inputType === 'month' ? 'xs' : 'sm'),
+    [initMaxWidth, inputType]
+  );
 
   /********************************************************************************************************************
    * Effect
@@ -59,7 +62,7 @@ function InputDialog<
 
   /** Form 제출 - Form.onSubmit */
   const handleSubmit = useCallback(
-    (data: { input: any }) => {
+    (data: { input: any; input_year?: number; input_month?: number }) => {
       if (dialogRef.current) {
         let value = data.input;
         if (inputType === 'number') {
@@ -67,6 +70,14 @@ function InputDialog<
             value = undefined;
           } else {
             value = Number(value);
+          }
+        } else if (inputType === 'month') {
+          const year = data.input_year;
+          const month = data.input_month;
+          if (empty(year) || empty(month)) {
+            value = undefined;
+          } else {
+            value = { year, month };
           }
         } else {
           value = empty(value) ? '' : value;
@@ -99,7 +110,7 @@ function InputDialog<
           <FormBody>
             <FormRow>
               <FormCol>
-                {inputType === 'text' && (
+                {inputType === 'text' ? (
                   <FormText
                     name='input'
                     value={initValue as string | undefined}
@@ -107,8 +118,7 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'number' && (
+                ) : inputType === 'number' ? (
                   <FormNumber
                     name='input'
                     value={initValue as number | undefined}
@@ -116,8 +126,7 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'url' && (
+                ) : inputType === 'url' ? (
                   <FormUrl
                     name='input'
                     value={initValue as string | undefined}
@@ -125,8 +134,7 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'tel' && (
+                ) : inputType === 'tel' ? (
                   <FormTel
                     name='input'
                     value={initValue as string | undefined}
@@ -134,8 +142,7 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'mobile' && (
+                ) : inputType === 'mobile' ? (
                   <FormMobile
                     name='input'
                     value={initValue as string | undefined}
@@ -143,8 +150,7 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'textarea' && (
+                ) : inputType === 'textarea' ? (
                   <FormTextarea
                     name='input'
                     value={initValue as string | undefined}
@@ -152,16 +158,14 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'tag' && (
+                ) : inputType === 'tag' ? (
                   <FormTag
                     name='input'
                     value={initValue as FormTagValue | undefined}
                     required={required}
                     {...inputProps}
                   />
-                )}
-                {inputType === 'email' && (
+                ) : inputType === 'email' ? (
                   <FormEmail
                     name='input'
                     value={initValue as string | undefined}
@@ -169,7 +173,16 @@ function InputDialog<
                     onKeyDown={handleKeyDown}
                     {...inputProps}
                   />
-                )}
+                ) : inputType === 'month' ? (
+                  <FlexRowBox centerHorizontal fullWidth>
+                    <FormEmbedMonthPicker
+                      name='input'
+                      value={initValue as FormEmbedMonthPickerValue | undefined}
+                      required={required}
+                      {...inputProps}
+                    />
+                  </FlexRowBox>
+                ) : null}
               </FormCol>
             </FormRow>
           </FormBody>

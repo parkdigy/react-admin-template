@@ -1,9 +1,18 @@
-export type InputDialogInputType = 'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag';
+export type InputDialogInputType =
+  'text' | 'number' | 'url' | 'tel' | 'mobile' | 'textarea' | 'email' | 'tag' | 'month';
+
+export type InputDialogMonthValue = Exclude<FormEmbedMonthPickerValue, null>;
 
 export interface InputDialogProps<
   T extends InputDialogInputType = 'text',
   Required extends boolean | undefined = undefined,
-  Value extends string | FormTagValue | number = T extends 'number' ? number : T extends 'tag' ? FormTagValue : string,
+  Value extends string | FormTagValue | InputDialogMonthValue | number = T extends 'number'
+    ? number
+    : T extends 'tag'
+      ? FormTagValue
+      : T extends 'month'
+        ? InputDialogMonthValue
+        : string,
 >
   extends DialogRequireProps, Pick<DialogProps, 'titleIcon' | 'title' | 'color' | 'maxWidth'> {
   inputType?: InputDialogInputType;
@@ -24,7 +33,9 @@ export interface InputDialogProps<
               ? InputDialogTagInputProps
               : T extends 'email'
                 ? InputDialogEmailInputProps
-                : InputDialogTextInputProps;
+                : T extends 'month'
+                  ? InputDialogMonthInputProps
+                  : InputDialogTextInputProps;
   onConfirm?: (dialog: DialogCommands, value: Value | ([Required] extends [true] ? never : undefined)) => void;
 }
 
@@ -64,3 +75,8 @@ export type InputDialogTextareaInputProps = Pick<FormTextareaProps, DefaultPickK
 export type InputDialogTagInputProps = Pick<FormTagProps, DefaultPickKeys>;
 
 export type InputDialogEmailInputProps = Pick<FormEmailProps, DefaultPickKeys>;
+
+export type InputDialogMonthInputProps = Pick<
+  FormEmbedMonthPickerProps,
+  'className' | 'style' | 'sx' | 'label' | 'focused' | 'size' | 'color' | 'helperText'
+>;
