@@ -13,20 +13,28 @@ import {
   PFormAutocomplete,
   PFormCheckbox,
   PFormDatePicker,
+  PFormEmbedDatePicker,
   PFormDateRangePicker,
+  PFormEmbedDateRangePicker,
   PFormDateTimePicker,
+  PFormEmbedDateTimePicker,
   PFormFile,
   PFormImageFile,
   PFormMonthPicker,
+  PFormEmbedMonthPicker,
   PFormMonthRangePicker,
+  PFormEmbedMonthRangePicker,
   PFormRadioGroup,
   PFormRating,
   PFormSwitch,
   PFormTextEditor,
   PFormTimePicker,
+  PFormEmbedTimePicker,
   PFormToggleButtonGroup,
   PFormYearPicker,
+  PFormEmbedYearPicker,
   PFormYearRangePicker,
+  PFormEmbedYearRangePicker,
 
   // FormItemTextFieldBase
   PFormBusinessNo,
@@ -76,20 +84,28 @@ export const FormContextProvider = PFormContextProvider;
 export const FormAutocomplete = PFormAutocomplete;
 export const FormCheckbox = PFormCheckbox;
 export const FormDatePicker = PFormDatePicker;
+export const FormEmbedDatePicker = PFormEmbedDatePicker;
 export const FormDateRangePicker = PFormDateRangePicker;
+export const FormEmbedDateRangePicker = PFormEmbedDateRangePicker;
 export const FormDateTimePicker = PFormDateTimePicker;
+export const FormEmbedDateTimePicker = PFormEmbedDateTimePicker;
 export const FormFile = PFormFile;
 export const FormImageFile = PFormImageFile;
 export const FormMonthPicker = PFormMonthPicker;
+export const FormEmbedMonthPicker = PFormEmbedMonthPicker;
 export const FormMonthRangePicker = PFormMonthRangePicker;
+export const FormEmbedMonthRangePicker = PFormEmbedMonthRangePicker;
 export const FormRadioGroup = PFormRadioGroup;
 export const FormRating = PFormRating;
 export const FormSwitch = PFormSwitch;
 export const FormTextEditor = PFormTextEditor;
 export const FormTimePicker = PFormTimePicker;
+export const FormEmbedTimePicker = PFormEmbedTimePicker;
 export const FormToggleButtonGroup = PFormToggleButtonGroup;
 export const FormYearPicker = PFormYearPicker;
+export const FormEmbedYearPicker = PFormEmbedYearPicker;
 export const FormYearRangePicker = PFormYearRangePicker;
+export const FormEmbedYearRangePicker = PFormEmbedYearRangePicker;
 
 // FormItemTextFieldBase
 export const FormBusinessNo = PFormBusinessNo;
