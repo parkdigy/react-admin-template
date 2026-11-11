@@ -182,7 +182,7 @@ const AdminGroupForm = ({ id, onValueChange, onSuccess, onCancel }: Props) => {
         setPrivacyAccess((prev) => {
           const newValue = { ...prev };
           if (newRole.new_read !== undefined) newValue.new_read = newRole.new_read;
-          return prev;
+          return newValue;
         });
       } else if (menu) {
         setMenu(
